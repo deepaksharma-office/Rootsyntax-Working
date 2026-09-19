@@ -1,0 +1,1048 @@
+{% comment %}
+  RootSyntax - Stats Cards
+  Compatible with Shopify Horizon Theme
+
+  Features:
+  - Adjustable desktop columns
+  - Adjustable mobile columns
+  - Mobile Grid / Swiper Slider
+  - Swiper autoplay
+  - Equal card design
+  - Shopify body font
+  - Editable icons / artwork / values / labels
+{% endcomment %}
+
+<div
+  id="StatsCards-{{ section.id }}"
+  class="rs-stats-section"
+  style="
+    --rs-section-bg: {{ section.settings.section_background }};
+    --rs-card-bg: {{ section.settings.card_background }};
+    --rs-text-color: {{ section.settings.text_color }};
+    --rs-border-color: {{ section.settings.border_color }};
+    --rs-card-radius: {{ section.settings.card_radius }}px;
+    --rs-gap: {{ section.settings.card_gap }}px;
+
+    --rs-desktop-columns: {{ section.settings.desktop_columns }};
+    --rs-mobile-columns: {{ section.settings.mobile_columns }};
+
+    --rs-desktop-padding-x: {{ section.settings.desktop_padding_horizontal }}px;
+    --rs-mobile-padding-x: {{ section.settings.mobile_padding_horizontal }}px;
+
+    --rs-padding-top: {{ section.settings.padding_top }}px;
+    --rs-padding-bottom: {{ section.settings.padding_bottom }}px;
+
+    --rs-icon-size: {{ section.settings.icon_size }}px;
+  "
+  data-section-id="{{ section.id }}"
+  data-mobile-layout="{{ section.settings.mobile_layout }}"
+  data-mobile-columns="{{ section.settings.mobile_columns }}"
+  data-autoplay="{{ section.settings.enable_autoplay }}"
+  data-autoplay-delay="{{ section.settings.autoplay_delay }}"
+  data-slider-speed="{{ section.settings.slider_speed }}"
+>
+  <div class="rs-stats-section__inner">
+    <div class="rs-stats-swiper swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div
+            class="rs-stat-card swiper-slide"
+            {{ block.shopify_attributes }}
+          >
+            <div class="rs-stat-card__top">
+              <div class="rs-stat-card__title">
+                {{ block.settings.title | escape }}
+              </div>
+
+              <div class="rs-stat-card__icon">
+                {% if block.settings.icon != blank %}
+                  {{
+                    block.settings.icon
+                    | image_url: width: 400
+                    | image_tag: loading: 'lazy', widths: '100, 150, 200, 300, 400', alt: block.settings.title
+                  }}
+                {% else %}
+                  <div class="rs-stat-card__icon-placeholder">
+                    {{ 'image' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="rs-stat-card__value">
+              {{ block.settings.value | escape }}
+            </div>
+
+            <div class="rs-stat-card__media">
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 1000
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '300, 400, 500, 600, 800, 1000',
+                    class: 'rs-stat-card__image',
+                    alt: block.settings.image_alt
+                }}
+              {% else %}
+                <div class="rs-stat-card__media-placeholder">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ==========================================================
+     SECTION
+  ========================================================== */
+
+  #StatsCards-{{ section.id }} {
+    width: 100%;
+    background: var(--rs-section-bg);
+    padding-top: var(--rs-padding-top);
+    padding-bottom: var(--rs-padding-bottom);
+
+    font-family: var(--font-body--family, inherit);
+    font-style: var(--font-body--style, normal);
+    font-weight: var(--font-body--weight, 400);
+    color: var(--rs-text-color);
+  }
+
+  #StatsCards-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  #StatsCards-{{ section.id }} .rs-stats-section__inner {
+    width: 100%;
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding-left: var(--rs-desktop-padding-x);
+    padding-right: var(--rs-desktop-padding-x);
+  }
+
+
+  /* ==========================================================
+     GRID
+  ========================================================== */
+
+  #StatsCards-{{ section.id }}
+  .rs-stats-swiper:not(.swiper-initialized)
+  .swiper-wrapper {
+    display: grid;
+    grid-template-columns:
+      repeat(
+        var(--rs-desktop-columns),
+        minmax(0, 1fr)
+      );
+    gap: var(--rs-gap);
+  }
+
+
+  /* ==========================================================
+     CARD
+  ========================================================== */
+
+  #StatsCards-{{ section.id }} .rs-stat-card {
+    min-width: 0;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px;
+
+    border: 1px solid var(--rs-border-color);
+    border-radius: var(--rs-card-radius);
+
+    background: var(--rs-card-bg);
+    color: var(--rs-text-color);
+
+    overflow: hidden;
+  }
+
+
+  /* ==========================================================
+     TOP AREA
+  ========================================================== */
+
+  #StatsCards-{{ section.id }} .rs-stat-card__top {
+    width: 100%;
+    min-height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+  }
+
+  #StatsCards-{{ section.id }} .rs-stat-card__title {
+    flex: 1;
+    min-width: 0;
+
+    font-family: var(--font-body--family, inherit);
+    font-size: clamp(18px, 1.4vw, 26px);
+    line-height: 1.32;
+    font-weight: 400;
+
+    color: var(--rs-text-color);
+  }
+
+
+  /* ==========================================================
+     CIRCULAR ICON
+  ========================================================== */
+
+  #StatsCards-{{ section.id }} .rs-stat-card__icon {
+    flex: 0 0 var(--rs-icon-size);
+    width: var(--rs-icon-size);
+    height: var(--rs-icon-size);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #StatsCards-{{ section.id }} .rs-stat-card__icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  #StatsCards-{{ section.id }} .rs-stat-card__icon-placeholder {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #StatsCards-{{ section.id }} .rs-stat-card__icon-placeholder svg {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  /* ==========================================================
+     NUMBER / STAT
+  ========================================================== */
+
+  #StatsCards-{{ section.id }} .rs-stat-card__value {
+    margin-top: 18px;
+    margin-bottom: 14px;
+
+    font-family: var(--font-body--family, inherit);
+    font-size: clamp(34px, 2.45vw, 44px);
+    line-height: 1;
+    font-weight: 400;
+
+    letter-spacing: -0.035em;
+
+    color: var(--rs-text-color);
+  }
+
+
+  /* ==========================================================
+     LARGE BOTTOM IMAGE
+  ========================================================== */
+
+  #StatsCards-{{ section.id }} .rs-stat-card__media {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background: {{ section.settings.image_background }};
+  }
+
+  #StatsCards-{{ section.id }} .rs-stat-card__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: {{ section.settings.image_fit }};
+    object-position: center;
+  }
+
+  #StatsCards-{{ section.id }} .rs-stat-card__media-placeholder {
+    width: 100%;
+    height: 100%;
+  }
+
+  #StatsCards-{{ section.id }} .rs-stat-card__media-placeholder svg {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  /* ==========================================================
+     SWIPER
+  ========================================================== */
+
+  #StatsCards-{{ section.id }} .rs-stats-swiper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #StatsCards-{{ section.id }}
+  .rs-stats-swiper.swiper-initialized
+  .swiper-wrapper {
+    display: flex;
+    gap: 0;
+  }
+
+  #StatsCards-{{ section.id }}
+  .rs-stats-swiper.swiper-initialized
+  .swiper-slide {
+    height: auto;
+  }
+
+
+  /* ==========================================================
+     TABLET
+  ========================================================== */
+
+  @media screen and (max-width: 1100px) and (min-width: 750px) {
+
+    #StatsCards-{{ section.id }} .rs-stat-card {
+      padding: 20px;
+    }
+
+    #StatsCards-{{ section.id }} .rs-stat-card__top {
+      min-height: 150px;
+    }
+
+    #StatsCards-{{ section.id }} .rs-stat-card__icon {
+      --rs-icon-size: min(
+        {{ section.settings.icon_size }}px,
+        95px
+      );
+    }
+  }
+
+
+  /* ==========================================================
+     MOBILE
+  ========================================================== */
+
+  @media screen and (max-width: 749px) {
+
+    #StatsCards-{{ section.id }} {
+      padding-top: calc(
+        var(--rs-padding-top) * 0.7
+      );
+
+      padding-bottom: calc(
+        var(--rs-padding-bottom) * 0.7
+      );
+    }
+
+    #StatsCards-{{ section.id }} .rs-stats-section__inner {
+      padding-left: var(--rs-mobile-padding-x);
+      padding-right: var(--rs-mobile-padding-x);
+    }
+
+    #StatsCards-{{ section.id }}
+    .rs-stats-swiper:not(.swiper-initialized)
+    .swiper-wrapper {
+      grid-template-columns:
+        repeat(
+          var(--rs-mobile-columns),
+          minmax(0, 1fr)
+        );
+
+      gap: var(--rs-gap);
+    }
+
+    #StatsCards-{{ section.id }} .rs-stat-card {
+      padding: 18px;
+      border-radius: min(
+        var(--rs-card-radius),
+        16px
+      );
+    }
+
+    #StatsCards-{{ section.id }} .rs-stat-card__top {
+      min-height: 130px;
+      gap: 12px;
+    }
+
+    #StatsCards-{{ section.id }} .rs-stat-card__title {
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    #StatsCards-{{ section.id }} .rs-stat-card__icon {
+      flex-basis: 88px;
+      width: 88px;
+      height: 88px;
+    }
+
+    #StatsCards-{{ section.id }} .rs-stat-card__value {
+      margin-top: 12px;
+      margin-bottom: 14px;
+
+      font-size: 34px;
+    }
+
+  }
+
+
+  /* ==========================================================
+     2 MOBILE COLUMNS
+  ========================================================== */
+
+  @media screen and (max-width: 749px) {
+
+    #StatsCards-{{ section.id }}[style*="--rs-mobile-columns: 2"]
+    .rs-stat-card {
+      padding: 13px;
+    }
+
+    #StatsCards-{{ section.id }}[style*="--rs-mobile-columns: 2"]
+    .rs-stat-card__top {
+      min-height: 100px;
+    }
+
+    #StatsCards-{{ section.id }}[style*="--rs-mobile-columns: 2"]
+    .rs-stat-card__title {
+      font-size: 14px;
+    }
+
+    #StatsCards-{{ section.id }}[style*="--rs-mobile-columns: 2"]
+    .rs-stat-card__icon {
+      width: 62px;
+      height: 62px;
+      flex-basis: 62px;
+    }
+
+    #StatsCards-{{ section.id }}[style*="--rs-mobile-columns: 2"]
+    .rs-stat-card__value {
+      font-size: 27px;
+    }
+  }
+</style>
+
+{% if section.settings.mobile_layout == 'slider' %}
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  >
+
+  <script>
+    (function() {
+
+      const SECTION_ID = 'StatsCards-{{ section.id }}';
+
+      function loadSwiperLibrary() {
+
+        if (window.Swiper) {
+          return Promise.resolve();
+        }
+
+        if (window.RSStatsSwiperPromise) {
+          return window.RSStatsSwiperPromise;
+        }
+
+        window.RSStatsSwiperPromise = new Promise(function(resolve, reject) {
+
+          const existingScript =
+            document.querySelector(
+              'script[data-rs-swiper-library]'
+            );
+
+          if (existingScript) {
+
+            existingScript.addEventListener(
+              'load',
+              resolve
+            );
+
+            return;
+          }
+
+          const script =
+            document.createElement('script');
+
+          script.src =
+            'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+
+          script.async = true;
+
+          script.setAttribute(
+            'data-rs-swiper-library',
+            'true'
+          );
+
+          script.onload = resolve;
+          script.onerror = reject;
+
+          document.head.appendChild(script);
+
+        });
+
+        return window.RSStatsSwiperPromise;
+      }
+
+
+      function initializeStatsSlider() {
+
+        const section =
+          document.getElementById(SECTION_ID);
+
+        if (!section) return;
+
+        const slider =
+          section.querySelector('.rs-stats-swiper');
+
+        if (!slider) return;
+
+
+        const isMobile =
+          window.matchMedia(
+            '(max-width: 749px)'
+          ).matches;
+
+
+        /*
+         * Desktop always remains a normal grid.
+         */
+        if (!isMobile) {
+
+          if (slider.rsSwiperInstance) {
+
+            slider.rsSwiperInstance.destroy(
+              true,
+              true
+            );
+
+            slider.rsSwiperInstance = null;
+          }
+
+          return;
+        }
+
+
+        /*
+         * Do not initialize twice.
+         */
+        if (slider.rsSwiperInstance) return;
+
+
+        const mobileColumns =
+          Number(
+            section.dataset.mobileColumns
+          ) || 1;
+
+
+        const autoplayEnabled =
+          section.dataset.autoplay === 'true';
+
+
+        const autoplayDelay =
+          Number(
+            section.dataset.autoplayDelay
+          ) || 2500;
+
+
+        const sliderSpeed =
+          Number(
+            section.dataset.sliderSpeed
+          ) || 700;
+
+
+        const totalSlides =
+          slider.querySelectorAll(
+            '.swiper-slide'
+          ).length;
+
+
+        const canLoop =
+          totalSlides > mobileColumns;
+
+
+        slider.rsSwiperInstance =
+          new Swiper(slider, {
+
+            slidesPerView: mobileColumns,
+
+            spaceBetween:
+              {{ section.settings.card_gap }},
+
+            speed: sliderSpeed,
+
+            loop: canLoop,
+
+            rewind: !canLoop,
+
+            grabCursor: true,
+
+            watchOverflow: true,
+
+            observer: true,
+
+            observeParents: true,
+
+            autoplay: autoplayEnabled
+              ? {
+                  delay: autoplayDelay,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true
+                }
+              : false
+
+          });
+
+      }
+
+
+      function destroyDesktopSlider() {
+
+        const section =
+          document.getElementById(SECTION_ID);
+
+        if (!section) return;
+
+        const slider =
+          section.querySelector('.rs-stats-swiper');
+
+        if (!slider) return;
+
+        const isMobile =
+          window.matchMedia(
+            '(max-width: 749px)'
+          ).matches;
+
+        if (
+          !isMobile &&
+          slider.rsSwiperInstance
+        ) {
+
+          slider.rsSwiperInstance.destroy(
+            true,
+            true
+          );
+
+          slider.rsSwiperInstance = null;
+        }
+
+      }
+
+
+      loadSwiperLibrary()
+        .then(function() {
+          initializeStatsSlider();
+        });
+
+
+      let resizeTimer;
+
+      window.addEventListener(
+        'resize',
+        function() {
+
+          clearTimeout(resizeTimer);
+
+          resizeTimer =
+            setTimeout(function() {
+
+              destroyDesktopSlider();
+
+              if (
+                window.matchMedia(
+                  '(max-width: 749px)'
+                ).matches
+              ) {
+
+                loadSwiperLibrary()
+                  .then(
+                    initializeStatsSlider
+                  );
+
+              }
+
+            }, 150);
+
+        }
+      );
+
+
+      /*
+       * Shopify Theme Editor support
+       */
+      document.addEventListener(
+        'shopify:section:load',
+        function(event) {
+
+          if (
+            event.detail.sectionId ===
+            '{{ section.id }}'
+          ) {
+
+            loadSwiperLibrary()
+              .then(
+                initializeStatsSlider
+              );
+
+          }
+
+        }
+      );
+
+
+      document.addEventListener(
+        'shopify:section:unload',
+        function(event) {
+
+          if (
+            event.detail.sectionId !==
+            '{{ section.id }}'
+          ) return;
+
+          const section =
+            document.getElementById(
+              SECTION_ID
+            );
+
+          const slider =
+            section?.querySelector(
+              '.rs-stats-swiper'
+            );
+
+          if (
+            slider &&
+            slider.rsSwiperInstance
+          ) {
+
+            slider.rsSwiperInstance.destroy(
+              true,
+              true
+            );
+
+            slider.rsSwiperInstance = null;
+          }
+
+        }
+      );
+
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Stats cards",
+  "tag": "section",
+  "class": "section-stats-cards",
+  "max_blocks": 20,
+
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "Cards per row - desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "default": "slider",
+      "options": [
+        {
+          "value": "slider",
+          "label": "Swiper slider"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "Cards per row - mobile",
+      "options": [
+        {
+            "label": "1",
+            "value": "1"
+        },
+        {
+            "label": "2",
+            "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum section width",
+      "min": 1200,
+      "max": 1500,
+      "step": 50,
+      "unit": "px",
+      "default": 1500
+    },
+    {
+      "type": "header",
+      "content": "Mobile slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay delay",
+      "min": 1000,
+      "max": 8000,
+      "step": 250,
+      "unit": "ms",
+      "default": 2500
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "label": "Slide animation speed",
+      "min": 200,
+      "max": 2000,
+      "step": 100,
+      "unit": "ms",
+      "default": 700
+    },
+
+    {
+      "type": "header",
+      "content": "Card design"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Desktop icon size",
+      "min": 60,
+      "max": 160,
+      "step": 5,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Bottom image fit",
+      "default": "contain",
+      "options": [
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "cover",
+          "label": "Cover"
+        }
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#E6E6E6"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Card border color",
+      "default": "#D8D8D8"
+    },
+    {
+      "type": "color_background",
+      "id": "image_background",
+      "label": "Image area background",
+      "default": "rgba(0,0,0,0)"
+    },
+
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_horizontal",
+      "label": "Desktop side padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_horizontal",
+      "label": "Mobile side padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "5 Star Reviews"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "800+"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Top icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bottom artwork"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Bottom image alt text"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Stats cards",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "title": "5 Star Reviews",
+            "value": "800+"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "title": "Years of Experience",
+            "value": "8+"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "title": "Countries Served",
+            "value": "26+"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "title": "Growth Rate",
+            "value": "125%"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "title": "Satisfied Customers",
+            "value": "3000+"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

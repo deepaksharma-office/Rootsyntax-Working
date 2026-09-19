@@ -1,0 +1,1086 @@
+{% doc %}
+  @prompt
+    Update the existing **RootSyntax Contact Us section** with a premium dark, modern UI. Keep the existing content and functionality, but make the following updates:
+    
+    ### Design
+    
+    * Background: `#050505`
+    * Two-column desktop layout: 65% form / 35% contact information
+    * Max-width: 1400px
+    * Card background: `#0F0F12`
+    * Border: `rgba(255,255,255,0.08)`
+    * Border radius: 20–24px
+    * Accent colors: Orange `#FF7A00` and Purple `#6C4CFF`
+    * White headings and light-gray body text
+    * Fully responsive on mobile
+    
+    ### Contact Form
+    
+    * Heading: **GET IN TOUCH**
+    * Keep Name, Email, Phone Number and Message fields.
+    * **Make all placeholder text inside the input fields clearly visible.** Do not use extremely dark placeholder text.
+    * Add a Theme Editor setting for **Input Placeholder Color** so I can customize it.
+    * Default placeholder color: `#777777` or another clearly readable gray.
+    * Input text should be white and clearly visible when the user types.
+    * Input labels should remain white/light gray.
+    * Keep Project Timeline options: ⚡ ASAP, 📅 1–2 Months, 🚀 3–6 Months.
+    * Selected timeline gets an orange border/glow.
+    * Keep Book A Time Slot with Date, Time and AM/PM.
+    * Full-width **SEND** button with orange-to-purple gradient.
+    * Keep existing consent/privacy text.
+    
+    ### Contact Information
+    
+    Heading: **WE'D LOVE TO HEAR FROM YOU.**
+    
+    Create clean informational cards for:
+    
+    **WORKING HOURS**
+    Monday to Friday – 9:30 am to 4 pm EST
+    
+    **EMAIL US**
+    [info@rootsyntax.com](mailto:info@rootsyntax.com)
+    
+    **CONTACT NUMBER**
+    +1 352-218-5661
+    
+    Use consistent orange/purple gradient circular icons with white icons.
+    
+    ### Office Locations
+    
+    Create two stacked informational cards:
+    
+    **USA, FLORIDA**
+    6160 SW Highway 200
+    Ste. 110 PMB508
+    Ocala, FL 34486
+    7901 4TH ST N STE 300,
+    Saint Petersburg, FL 33702
+    
+    **INDIA, BANGALORE**
+    91 Springboard Business Hub Private Ltd.,512/10,
+    Service Lane,
+    Outer Ring Road,
+    Mahadevapura,
+    Bangalore 560048
+    
+    For both location cards:
+    
+    * Location-pin icon on the left.
+    * Address content on the right.
+    * **Absolutely NO arrow or chevron on the right side.**
+    * Do not make these cards clickable.
+    * Do not add links, cursor-pointer behavior, directional icons, or navigation behavior.
+    * **Remove all hover effects from the location cards.**
+    * No hover lift, glow, color change, underline, or animation.
+    * They must behave strictly as static informational cards.
+    
+    ### Trust Card
+    
+    Add:
+    ★★★★★
+    **146+ Shopify Projects Delivered**
+    98% Client Satisfaction
+    
+    Include a subtle orange-to-purple gradient progress bar.
+    
+    ### Theme Editor Customization
+    
+    Make the following editable through the Shopify Theme Editor:
+    
+    * Section heading
+    * Form labels
+    * Placeholder text
+    * **Input placeholder color**
+    * Input text color
+    * Contact information
+    * Office addresses
+    * Button text
+    * Button colors
+    * Card background
+    * Border color
+    * Spacing
+    * Card radius
+    * Gradient colors
+    * Trust card visibility
+    
+    ### Important
+    
+    Keep the design minimal, premium, and conversion-focused.
+    
+    **The input placeholder text must be clearly visible.**
+    
+    **The USA and India location cards are static informational content only. They must NOT be clickable and must NOT have any hover effect, arrow, chevron, link icon, or directional icon.**
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .rootsyntax-contact-{{ ai_gen_id }} {
+    display: block;
+    background-color: {{ block.settings.section_background }};
+    padding: {{ block.settings.section_padding_top }}px 20px {{ block.settings.section_padding_bottom }}px;
+    width: 100%;
+  }
+
+  .rootsyntax-contact-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .rootsyntax-contact-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .rootsyntax-contact-form-card-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 48px;
+  }
+
+  .rootsyntax-contact-form-heading-{{ ai_gen_id }} {
+    font-size: 32px;
+    font-weight: 700;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 32px 0;
+    letter-spacing: 1px;
+  }
+
+  .rootsyntax-contact-form-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .rootsyntax-contact-form-row-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .rootsyntax-contact-form-group-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rootsyntax-contact-form-label-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 500;
+    color: {{ block.settings.label_color }};
+    letter-spacing: 0.5px;
+  }
+
+  .rootsyntax-contact-form-input-{{ ai_gen_id }} {
+    background: {{ block.settings.input_background }};
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: {{ block.settings.input_text_color }};
+    transition: border-color 0.3s ease;
+  }
+
+  .rootsyntax-contact-form-input-{{ ai_gen_id }}::placeholder {
+    color: {{ block.settings.input_placeholder_color }};
+    opacity: 1;
+  }
+
+  .rootsyntax-contact-form-input-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.accent_orange }};
+  }
+
+  .rootsyntax-contact-form-textarea-{{ ai_gen_id }} {
+    background: {{ block.settings.input_background }};
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: {{ block.settings.input_text_color }};
+    min-height: 120px;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+  }
+
+  .rootsyntax-contact-form-textarea-{{ ai_gen_id }}::placeholder {
+    color: {{ block.settings.input_placeholder_color }};
+    opacity: 1;
+  }
+
+  .rootsyntax-contact-form-textarea-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.accent_orange }};
+  }
+
+  .rootsyntax-contact-timeline-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rootsyntax-contact-timeline-options-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .rootsyntax-contact-timeline-option-{{ ai_gen_id }} {
+    background: {{ block.settings.input_background }};
+    border: 2px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    color: {{ block.settings.label_color }};
+  }
+
+  .rootsyntax-contact-timeline-option-{{ ai_gen_id }}:hover {
+    border-color: {{ block.settings.accent_orange }};
+  }
+
+  .rootsyntax-contact-timeline-option-{{ ai_gen_id }}.selected {
+    border-color: {{ block.settings.accent_orange }};
+    box-shadow: 0 0 12px rgba(255, 122, 0, 0.3);
+  }
+
+  .rootsyntax-contact-timeline-input-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .rootsyntax-contact-timeslot-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rootsyntax-contact-timeslot-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  .rootsyntax-contact-submit-{{ ai_gen_id }} {
+    background: linear-gradient(135deg, {{ block.settings.accent_orange }} 0%, {{ block.settings.accent_purple }} 100%);
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    color: {{ block.settings.button_text_color }};
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+
+  .rootsyntax-contact-submit-{{ ai_gen_id }}:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 122, 0, 0.4);
+  }
+
+  .rootsyntax-contact-consent-{{ ai_gen_id }} {
+    font-size: 12px;
+    color: {{ block.settings.body_text_color }};
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  .rootsyntax-contact-consent-{{ ai_gen_id }} a {
+    color: {{ block.settings.accent_orange }};
+    text-decoration: none;
+  }
+
+  .rootsyntax-contact-consent-{{ ai_gen_id }} a:hover {
+    text-decoration: underline;
+  }
+
+  .rootsyntax-contact-info-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .rootsyntax-contact-info-heading-{{ ai_gen_id }} {
+    font-size: 24px;
+    font-weight: 700;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 16px 0;
+    line-height: 1.3;
+  }
+
+  .rootsyntax-contact-info-card-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .rootsyntax-contact-info-icon-{{ ai_gen_id }} {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, {{ block.settings.accent_orange }} 0%, {{ block.settings.accent_purple }} 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rootsyntax-contact-info-icon-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+    stroke: #ffffff;
+    fill: none;
+  }
+
+  .rootsyntax-contact-info-content-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .rootsyntax-contact-info-title-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 700;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 4px 0;
+    letter-spacing: 0.5px;
+  }
+
+  .rootsyntax-contact-info-text-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.body_text_color }};
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .rootsyntax-contact-info-text-{{ ai_gen_id }} a {
+    color: {{ block.settings.body_text_color }};
+    text-decoration: none;
+  }
+
+  .rootsyntax-contact-info-text-{{ ai_gen_id }} a:hover {
+    color: {{ block.settings.accent_orange }};
+  }
+
+  .rootsyntax-contact-location-card-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .rootsyntax-contact-location-icon-{{ ai_gen_id }} {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, {{ block.settings.accent_orange }} 0%, {{ block.settings.accent_purple }} 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rootsyntax-contact-location-icon-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+    stroke: #ffffff;
+    fill: none;
+  }
+
+  .rootsyntax-contact-location-content-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .rootsyntax-contact-location-title-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 700;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 8px 0;
+    letter-spacing: 0.5px;
+  }
+
+  .rootsyntax-contact-location-address-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.body_text_color }};
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .rootsyntax-contact-trust-card-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .rootsyntax-contact-trust-stars-{{ ai_gen_id }} {
+    font-size: 24px;
+    color: {{ block.settings.accent_orange }};
+    margin-bottom: 12px;
+  }
+
+  .rootsyntax-contact-trust-title-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 700;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 4px 0;
+  }
+
+  .rootsyntax-contact-trust-subtitle-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.body_text_color }};
+    margin: 0 0 16px 0;
+  }
+
+  .rootsyntax-contact-trust-progress-{{ ai_gen_id }} {
+    width: 100%;
+    height: 6px;
+    background: {{ block.settings.input_border_color }};
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .rootsyntax-contact-trust-progress-bar-{{ ai_gen_id }} {
+    height: 100%;
+    width: 98%;
+    background: linear-gradient(90deg, {{ block.settings.accent_orange }} 0%, {{ block.settings.accent_purple }} 100%);
+    border-radius: 3px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .rootsyntax-contact-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .rootsyntax-contact-form-card-{{ ai_gen_id }} {
+      padding: 32px 24px;
+    }
+
+    .rootsyntax-contact-form-row-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .rootsyntax-contact-timeline-options-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .rootsyntax-contact-timeslot-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .rootsyntax-contact-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding_top | divided_by: 2 }}px 16px {{ block.settings.section_padding_bottom | divided_by: 2 }}px;
+    }
+
+    .rootsyntax-contact-form-heading-{{ ai_gen_id }} {
+      font-size: 24px;
+    }
+
+    .rootsyntax-contact-info-heading-{{ ai_gen_id }} {
+      font-size: 20px;
+    }
+  }
+{% endstyle %}
+
+<rootsyntax-contact-{{ ai_gen_id }} class="rootsyntax-contact-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="rootsyntax-contact-container-{{ ai_gen_id }}">
+    <div class="rootsyntax-contact-grid-{{ ai_gen_id }}">
+      <div class="rootsyntax-contact-form-card-{{ ai_gen_id }}">
+        <h2 class="rootsyntax-contact-form-heading-{{ ai_gen_id }}">{{ block.settings.form_heading }}</h2>
+        
+        {%- form 'contact' -%}
+          <div class="rootsyntax-contact-form-{{ ai_gen_id }}">
+            <div class="rootsyntax-contact-form-row-{{ ai_gen_id }}">
+              <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+                <label class="rootsyntax-contact-form-label-{{ ai_gen_id }}" for="contact-name-{{ ai_gen_id }}">
+                  {{ block.settings.name_label }}
+                </label>
+                <input
+                  type="text"
+                  id="contact-name-{{ ai_gen_id }}"
+                  name="contact[name]"
+                  class="rootsyntax-contact-form-input-{{ ai_gen_id }}"
+                  placeholder="{{ block.settings.name_placeholder }}"
+                  required
+                >
+              </div>
+              
+              <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+                <label class="rootsyntax-contact-form-label-{{ ai_gen_id }}" for="contact-email-{{ ai_gen_id }}">
+                  {{ block.settings.email_label }}
+                </label>
+                <input
+                  type="email"
+                  id="contact-email-{{ ai_gen_id }}"
+                  name="contact[email]"
+                  class="rootsyntax-contact-form-input-{{ ai_gen_id }}"
+                  placeholder="{{ block.settings.email_placeholder }}"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+              <label class="rootsyntax-contact-form-label-{{ ai_gen_id }}" for="contact-phone-{{ ai_gen_id }}">
+                {{ block.settings.phone_label }}
+              </label>
+              <input
+                type="tel"
+                id="contact-phone-{{ ai_gen_id }}"
+                name="contact[phone]"
+                class="rootsyntax-contact-form-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.phone_placeholder }}"
+              >
+            </div>
+
+            <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+              <label class="rootsyntax-contact-form-label-{{ ai_gen_id }}" for="contact-message-{{ ai_gen_id }}">
+                {{ block.settings.message_label }}
+              </label>
+              <textarea
+                id="contact-message-{{ ai_gen_id }}"
+                name="contact[body]"
+                class="rootsyntax-contact-form-textarea-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.message_placeholder }}"
+                required
+              ></textarea>
+            </div>
+
+            <div class="rootsyntax-contact-timeline-{{ ai_gen_id }}">
+              <label class="rootsyntax-contact-form-label-{{ ai_gen_id }}">
+                {{ block.settings.timeline_label }}
+              </label>
+              <div class="rootsyntax-contact-timeline-options-{{ ai_gen_id }}">
+                <label class="rootsyntax-contact-timeline-option-{{ ai_gen_id }}" data-timeline="asap">
+                  <input type="radio" name="contact[timeline]" value="ASAP" class="rootsyntax-contact-timeline-input-{{ ai_gen_id }}">
+                  ⚡ ASAP
+                </label>
+                <label class="rootsyntax-contact-timeline-option-{{ ai_gen_id }}" data-timeline="1-2-months">
+                  <input type="radio" name="contact[timeline]" value="1-2 Months" class="rootsyntax-contact-timeline-input-{{ ai_gen_id }}">
+                  📅 1–2 Months
+                </label>
+                <label class="rootsyntax-contact-timeline-option-{{ ai_gen_id }}" data-timeline="3-6-months">
+                  <input type="radio" name="contact[timeline]" value="3-6 Months" class="rootsyntax-contact-timeline-input-{{ ai_gen_id }}">
+                  🚀 3–6 Months
+                </label>
+              </div>
+            </div>
+
+            <div class="rootsyntax-contact-timeslot-{{ ai_gen_id }}">
+              <label class="rootsyntax-contact-form-label-{{ ai_gen_id }}">
+                {{ block.settings.timeslot_label }}
+              </label>
+              <div class="rootsyntax-contact-timeslot-grid-{{ ai_gen_id }}">
+                <input
+                  type="text"
+                  name="contact[date]"
+                  class="rootsyntax-contact-form-input-{{ ai_gen_id }}"
+                  placeholder="{{ block.settings.date_placeholder }}"
+                >
+                <input
+                  type="text"
+                  name="contact[time]"
+                  class="rootsyntax-contact-form-input-{{ ai_gen_id }}"
+                  placeholder="{{ block.settings.time_placeholder }}"
+                >
+                <select name="contact[period]" class="rootsyntax-contact-form-input-{{ ai_gen_id }}">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="rootsyntax-contact-submit-{{ ai_gen_id }}">
+              {{ block.settings.button_text }}
+            </button>
+
+            <div class="rootsyntax-contact-consent-{{ ai_gen_id }}">
+              {{ block.settings.consent_text }}
+            </div>
+          </div>
+        {%- endform -%}
+      </div>
+
+      <div class="rootsyntax-contact-info-{{ ai_gen_id }}">
+        <h3 class="rootsyntax-contact-info-heading-{{ ai_gen_id }}">{{ block.settings.info_heading }}</h3>
+
+        <div class="rootsyntax-contact-info-card-{{ ai_gen_id }}">
+          <div class="rootsyntax-contact-info-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div class="rootsyntax-contact-info-content-{{ ai_gen_id }}">
+            <h4 class="rootsyntax-contact-info-title-{{ ai_gen_id }}">{{ block.settings.hours_title }}</h4>
+            <p class="rootsyntax-contact-info-text-{{ ai_gen_id }}">{{ block.settings.hours_text }}</p>
+          </div>
+        </div>
+
+        <div class="rootsyntax-contact-info-card-{{ ai_gen_id }}">
+          <div class="rootsyntax-contact-info-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="rootsyntax-contact-info-content-{{ ai_gen_id }}">
+            <h4 class="rootsyntax-contact-info-title-{{ ai_gen_id }}">{{ block.settings.email_title }}</h4>
+            <p class="rootsyntax-contact-info-text-{{ ai_gen_id }}">
+              <a href="mailto:{{ block.settings.email_address }}">{{ block.settings.email_address }}</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="rootsyntax-contact-info-card-{{ ai_gen_id }}">
+          <div class="rootsyntax-contact-info-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="rootsyntax-contact-info-content-{{ ai_gen_id }}">
+            <h4 class="rootsyntax-contact-info-title-{{ ai_gen_id }}">{{ block.settings.phone_title }}</h4>
+            <p class="rootsyntax-contact-info-text-{{ ai_gen_id }}">
+              <a href="tel:{{ block.settings.contact_number }}">{{ block.settings.contact_number }}</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="rootsyntax-contact-location-card-{{ ai_gen_id }}">
+          <div class="rootsyntax-contact-location-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="rootsyntax-contact-location-content-{{ ai_gen_id }}">
+            <h4 class="rootsyntax-contact-location-title-{{ ai_gen_id }}">{{ block.settings.usa_location_title }}</h4>
+            <p class="rootsyntax-contact-location-address-{{ ai_gen_id }}">{{ block.settings.usa_location_address }}</p>
+          </div>
+        </div>
+
+        <div class="rootsyntax-contact-location-card-{{ ai_gen_id }}">
+          <div class="rootsyntax-contact-location-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="rootsyntax-contact-location-content-{{ ai_gen_id }}">
+            <h4 class="rootsyntax-contact-location-title-{{ ai_gen_id }}">{{ block.settings.india_location_title }}</h4>
+            <p class="rootsyntax-contact-location-address-{{ ai_gen_id }}">{{ block.settings.india_location_address }}</p>
+          </div>
+        </div>
+
+        {% if block.settings.show_trust_card %}
+          <div class="rootsyntax-contact-trust-card-{{ ai_gen_id }}">
+            <div class="rootsyntax-contact-trust-stars-{{ ai_gen_id }}">★★★★★</div>
+            <h4 class="rootsyntax-contact-trust-title-{{ ai_gen_id }}">{{ block.settings.trust_title }}</h4>
+            <p class="rootsyntax-contact-trust-subtitle-{{ ai_gen_id }}">{{ block.settings.trust_subtitle }}</p>
+            <div class="rootsyntax-contact-trust-progress-{{ ai_gen_id }}">
+              <div class="rootsyntax-contact-trust-progress-bar-{{ ai_gen_id }}"></div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</rootsyntax-contact-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class RootSyntaxContact{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupTimelineSelection();
+      }
+
+      setupTimelineSelection() {
+        const timelineOptions = this.querySelectorAll('.rootsyntax-contact-timeline-option-{{ ai_gen_id }}');
+        
+        timelineOptions.forEach(option => {
+          option.addEventListener('click', function() {
+            timelineOptions.forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            this.querySelector('input').checked = true;
+          });
+        });
+      }
+    }
+
+    customElements.define('rootsyntax-contact-{{ ai_gen_id }}', RootSyntaxContact{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "RootSyntax contact form",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Form content"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form heading",
+      "default": "GET IN TOUCH"
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name label",
+      "default": "NAME"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "Your name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "EMAIL"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "PHONE NUMBER"
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Phone placeholder",
+      "default": "+1 (555) 000-0000"
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Message label",
+      "default": "MESSAGE"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "Tell us about your project..."
+    },
+    {
+      "type": "text",
+      "id": "timeline_label",
+      "label": "Timeline label",
+      "default": "PROJECT TIMELINE"
+    },
+    {
+      "type": "text",
+      "id": "timeslot_label",
+      "label": "Time slot label",
+      "default": "BOOK A TIME SLOT"
+    },
+    {
+      "type": "text",
+      "id": "date_placeholder",
+      "label": "Date placeholder",
+      "default": "MM/DD/YYYY"
+    },
+    {
+      "type": "text",
+      "id": "time_placeholder",
+      "label": "Time placeholder",
+      "default": "00:00"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "SEND"
+    },
+    {
+      "type": "richtext",
+      "id": "consent_text",
+      "label": "Consent text",
+      "default": "<p>By submitting this form, you agree to our <a href=\"/pages/privacy-policy\">Privacy Policy</a> and consent to be contacted by our team.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Contact information"
+    },
+    {
+      "type": "text",
+      "id": "info_heading",
+      "label": "Info heading",
+      "default": "WE'D LOVE TO HEAR FROM YOU."
+    },
+    {
+      "type": "text",
+      "id": "hours_title",
+      "label": "Working hours title",
+      "default": "WORKING HOURS"
+    },
+    {
+      "type": "text",
+      "id": "hours_text",
+      "label": "Working hours text",
+      "default": "Monday to Friday – 9:30 am to 4 pm EST"
+    },
+    {
+      "type": "text",
+      "id": "email_title",
+      "label": "Email title",
+      "default": "EMAIL US"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email address",
+      "default": "info@rootsyntax.com"
+    },
+    {
+      "type": "text",
+      "id": "phone_title",
+      "label": "Contact number title",
+      "default": "CONTACT NUMBER"
+    },
+    {
+      "type": "text",
+      "id": "contact_number",
+      "label": "Contact number",
+      "default": "+1 352-218-5661"
+    },
+    {
+      "type": "header",
+      "content": "Office locations"
+    },
+    {
+      "type": "text",
+      "id": "usa_location_title",
+      "label": "USA location title",
+      "default": "USA, FLORIDA"
+    },
+    {
+      "type": "textarea",
+      "id": "usa_location_address",
+      "label": "USA location address",
+      "default": "6160 SW Highway 200 Ste. 110 PMB508 Ocala, FL 34486\n7901 4TH ST N STE 300, Saint Petersburg, FL 33702"
+    },
+    {
+      "type": "text",
+      "id": "india_location_title",
+      "label": "India location title",
+      "default": "INDIA, BANGALORE"
+    },
+    {
+      "type": "textarea",
+      "id": "india_location_address",
+      "label": "India location address",
+      "default": "91 Springboard Business Hub Private Ltd., 512/10, Service Lane, Outer Ring Road, Mahadevapura, Bangalore 560048"
+    },
+    {
+      "type": "header",
+      "content": "Trust card"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_card",
+      "label": "Show trust card",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_title",
+      "label": "Trust card title",
+      "default": "146+ Shopify Projects Delivered"
+    },
+    {
+      "type": "text",
+      "id": "trust_subtitle",
+      "label": "Trust card subtitle",
+      "default": "98% Client Satisfaction"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#050505"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#0F0F12"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "rgba(255,255,255,0.08)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#E5E5E5"
+    },
+    {
+      "type": "color",
+      "id": "body_text_color",
+      "label": "Body text color",
+      "default": "#A0A0A0"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "#1A1A1D"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border",
+      "default": "rgba(255,255,255,0.1)"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "input_placeholder_color",
+      "label": "Input placeholder color",
+      "default": "#777777"
+    },
+    {
+      "type": "color",
+      "id": "accent_orange",
+      "label": "Accent orange",
+      "default": "#FF7A00"
+    },
+    {
+      "type": "color",
+      "id": "accent_purple",
+      "label": "Accent purple",
+      "default": "#6C4CFF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "label": "Input border radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "RootSyntax contact form"
+    }
+  ]
+}
+{% endschema %}

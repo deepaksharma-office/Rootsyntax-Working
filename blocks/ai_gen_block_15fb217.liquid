@@ -1,0 +1,1241 @@
+{% doc %}
+  @prompt
+    ### Shopify Horizon AI Prompt
+    
+    > **Create a new custom Shopify section for the Horizon theme based on the provided reference design.** The section should be a premium, modern **Shopify Consultation / Lead Capture section** with a dark, high-end SaaS/agency aesthetic.
+    >
+    > ### Overall Layout
+    >
+    > * Use a **2-column desktop layout**.
+    > * Left column: approximately **42% width**.
+    > * Right column: approximately **58% width**.
+    > * Use a deep black background such as `#030407`.
+    > * Add subtle dark borders and very soft purple glow effects behind selected elements.
+    > * Maintain generous spacing and a clean, premium appearance.
+    > * On mobile, stack the columns vertically with the **left content first and form second**.
+    >
+    > ### LEFT COLUMN
+    >
+    > Add a small outlined pill at the top:
+    >
+    > **✦ Free Shopify Consultation**
+    >
+    > Use an orange/gold accent and a thin rounded border.
+    >
+    > Below it, add a strong headline:
+    >
+    > **Let’s Build, Optimize &
+    > Scale Your Shopify Store**
+    >
+    > Make **“Shopify Store”** use a subtle purple-to-orange gradient.
+    >
+    > Add this supporting paragraph:
+    >
+    > **Whether you're launching a new Shopify store, migrating from another platform, or looking to improve conversions, our Shopify experts are ready to help. We’ll review your requirements and recommend the best solution for your business.**
+    >
+    > ### Benefits List
+    >
+    > Create five horizontal benefit rows with a subtle bottom border:
+    >
+    > * ✓ Free Strategy Consultation
+    > * ✓ Response within 24 Hours
+    > * ✓ Shopify Plus & CRO Experts
+    > * ✓ No Obligation Quote
+    > * ✓ Trusted by 150+ Ecommerce Brands
+    >
+    > Each check icon should be inside a small circular outline with a subtle purple glow.
+    >
+    > ### Statistics
+    >
+    > Move the statistics to the **bottom of the left column**, underneath the benefits, to balance the form.
+    >
+    > Display three statistics horizontally on desktop:
+    >
+    > **150+**
+    > Happy Clients
+    >
+    > **98%**
+    > Satisfaction Rate
+    >
+    > **Under 24**
+    > Hours Response
+    >
+    > Use orange for the numbers and purple outline icons above them.
+    >
+    > ### RIGHT COLUMN — FORM CARD
+    >
+    > Create a large rounded form container with:
+    >
+    > * Dark charcoal/black background
+    > * 1px subtle border
+    > * 18–22px border radius
+    > * Comfortable internal padding
+    > * No excessive shadows
+    >
+    > Add these fields in exactly this order:
+    >
+    > **Name ***
+    > Placeholder: `Enter your name`
+    >
+    > **Email ***
+    > Placeholder: `Enter your email`
+    >
+    > **Phone Number ***
+    > Placeholder: `Enter your phone number`
+    >
+    > **Service Interested In ***
+    > Dropdown placeholder: `Select a service`
+    >
+    > Dropdown options:
+    >
+    > * Shopify Store Setup
+    > * Shopify Migration
+    > * Custom Solution
+    > * Pricing
+    > * Website Audit
+    >
+    > **Existing Website (Optional)**
+    > Placeholder: `https://yourwebsite.com`
+    >
+    > Add a small website/link icon inside this field.
+    >
+    > Under the field add subtle helper text:
+    >
+    > `Already have a website? Share the URL so we can review it and understand your current store.`
+    >
+    > **Message (Optional)**
+    > Use a larger textarea with placeholder:
+    > `Tell us about your project...`
+    >
+    > ### CTA
+    >
+    > Add a full-width button:
+    >
+    > **Get Free Proposal →**
+    >
+    > Use a **purple → pink → orange gradient** similar to the reference.
+    >
+    > Button should have:
+    >
+    > * 52–56px height
+    > * Rounded corners
+    > * Bold text
+    > * Smooth hover animation
+    > * Slightly brighter gradient on hover
+    >
+    > ### DESIGN DETAILS
+    >
+    > * Typography should feel similar to **Inter / modern Shopify premium typography**.
+    > * Headings should be bold and highly readable.
+    > * Body text should use a muted light gray.
+    > * Labels should be white/light gray.
+    > * Inputs should have dark backgrounds and subtle borders.
+    > * Input focus state should use a purple/orange accent.
+    > * Use clean line-style icons for Name, Email, Phone, Service, Website and Message.
+    > * Avoid unnecessary decorative elements.
+    > * Keep the section visually close to the provided reference image.
+    >
+    > ### SHOPIFY HORIZON REQUIREMENTS
+    >
+    > Build this as a **fully editable Shopify theme section** compatible with the **Horizon theme**.
+    >
+    > Add Theme Editor settings for:
+    >
+    > * Section heading
+    > * Description
+    > * Consultation badge text
+    > * All five benefit texts
+    > * Three statistics and their labels
+    > * Form field labels
+    > * Form placeholders
+    > * CTA text
+    > * Section background
+    > * Accent colors
+    > * Gradient colors
+    > * Desktop spacing
+    > * Mobile spacing
+    >
+    > The form must use **Shopify's native form functionality** and should properly submit the captured Name, Email, Phone Number, Service Interested In, Existing Website URL and Message.
+    >
+    > Do not use external apps or third-party form services.
+    >
+    > Make sure the section is **fully responsive, accessible, keyboard-friendly, and optimized for performance**.
+    >
+    > **Important:** Do not change the existing Horizon theme header, footer, global typography, or other sections. Create this as a standalone reusable section that can be added from the Shopify Theme Editor.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-consultation-section-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.section_background }};
+    padding: {{ block.settings.desktop_spacing }}px 20px;
+  }
+
+  .ai-consultation-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 42% 58%;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .ai-consultation-left-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .ai-consultation-badge-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid {{ block.settings.badge_border_color }};
+    border-radius: 100px;
+    color: {{ block.settings.badge_text_color }};
+    font-size: 14px;
+    font-weight: 500;
+    width: fit-content;
+  }
+
+  .ai-consultation-badge-icon-{{ ai_gen_id }} {
+    font-size: 16px;
+  }
+
+  .ai-consultation-heading-{{ ai_gen_id }} {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: {{ block.settings.heading_color }};
+    margin: 0;
+  }
+
+  .ai-consultation-gradient-text-{{ ai_gen_id }} {
+    background: linear-gradient(135deg, {{ block.settings.gradient_start }} 0%, {{ block.settings.gradient_end }} 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ai-consultation-description-{{ ai_gen_id }} {
+    font-size: 16px;
+    line-height: 1.6;
+    color: {{ block.settings.description_color }};
+    margin: 0;
+  }
+
+  .ai-consultation-benefits-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .ai-consultation-benefit-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid {{ block.settings.border_color }};
+    color: {{ block.settings.benefit_text_color }};
+    font-size: 16px;
+  }
+
+  .ai-consultation-benefit-{{ ai_gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .ai-consultation-check-icon-{{ ai_gen_id }} {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid {{ block.settings.check_border_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px {{ block.settings.check_glow_color }};
+  }
+
+  .ai-consultation-check-icon-{{ ai_gen_id }} svg {
+    width: 16px;
+    height: 16px;
+    stroke: {{ block.settings.check_icon_color }};
+    stroke-width: 2;
+  }
+
+  .ai-consultation-stats-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  .ai-consultation-stat-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .ai-consultation-stat-icon-{{ ai_gen_id }} {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid {{ block.settings.stat_icon_border }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-consultation-stat-icon-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+    stroke: {{ block.settings.stat_icon_color }};
+    stroke-width: 2;
+  }
+
+  .ai-consultation-stat-number-{{ ai_gen_id }} {
+    font-size: 32px;
+    font-weight: 700;
+    color: {{ block.settings.stat_number_color }};
+    line-height: 1;
+  }
+
+  .ai-consultation-stat-label-{{ ai_gen_id }} {
+    font-size: 13px;
+    color: {{ block.settings.stat_label_color }};
+    line-height: 1.3;
+  }
+
+  .ai-consultation-form-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.form_background }};
+    border: 1px solid {{ block.settings.form_border_color }};
+    border-radius: {{ block.settings.form_border_radius }}px;
+    padding: 40px;
+  }
+
+  .ai-consultation-form-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ai-consultation-field-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ai-consultation-label-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 500;
+    color: {{ block.settings.label_color }};
+  }
+
+  .ai-consultation-required-{{ ai_gen_id }} {
+    color: {{ block.settings.required_color }};
+  }
+
+  .ai-consultation-input-{{ ai_gen_id }},
+  .ai-consultation-select-{{ ai_gen_id }},
+  .ai-consultation-textarea-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: {{ block.settings.input_background }};
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: 8px;
+    color: {{ block.settings.input_text_color }};
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+  }
+
+  .ai-consultation-input-{{ ai_gen_id }}::placeholder,
+  .ai-consultation-select-{{ ai_gen_id }}::placeholder,
+  .ai-consultation-textarea-{{ ai_gen_id }}::placeholder {
+    color: {{ block.settings.placeholder_color }};
+  }
+
+  .ai-consultation-input-{{ ai_gen_id }}:focus,
+  .ai-consultation-select-{{ ai_gen_id }}:focus,
+  .ai-consultation-textarea-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.input_focus_color }};
+  }
+
+  .ai-consultation-select-{{ ai_gen_id }} {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23999' stroke-width='1.5' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .ai-consultation-textarea-{{ ai_gen_id }} {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .ai-consultation-url-wrapper-{{ ai_gen_id }} {
+    position: relative;
+  }
+
+  .ai-consultation-url-icon-{{ ai_gen_id }} {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    stroke: {{ block.settings.placeholder_color }};
+    stroke-width: 2;
+  }
+
+  .ai-consultation-url-wrapper-{{ ai_gen_id }} .ai-consultation-input-{{ ai_gen_id }} {
+    padding-left: 44px;
+  }
+
+  .ai-consultation-helper-text-{{ ai_gen_id }} {
+    font-size: 13px;
+    color: {{ block.settings.helper_text_color }};
+    line-height: 1.4;
+    margin-top: 4px;
+  }
+
+  .ai-consultation-button-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 18px 32px;
+    background: linear-gradient(135deg, {{ block.settings.button_gradient_start }} 0%, {{ block.settings.button_gradient_mid }} 50%, {{ block.settings.button_gradient_end }} 100%);
+    border: none;
+    border-radius: 12px;
+    color: {{ block.settings.button_text_color }};
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .ai-consultation-button-{{ ai_gen_id }}:hover {
+    background: linear-gradient(135deg, {{ block.settings.button_hover_gradient_start }} 0%, {{ block.settings.button_hover_gradient_mid }} 50%, {{ block.settings.button_hover_gradient_end }} 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+  }
+
+  .ai-consultation-success-{{ ai_gen_id }} {
+    padding: 16px;
+    background-color: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 8px;
+    color: #22c55e;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .ai-consultation-error-{{ ai_gen_id }} {
+    padding: 16px;
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    color: #ef4444;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-consultation-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .ai-consultation-heading-{{ ai_gen_id }} {
+      font-size: 36px;
+    }
+
+    .ai-consultation-stats-{{ ai_gen_id }} {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .ai-consultation-stat-number-{{ ai_gen_id }} {
+      font-size: 24px;
+    }
+
+    .ai-consultation-stat-label-{{ ai_gen_id }} {
+      font-size: 12px;
+    }
+
+    .ai-consultation-form-card-{{ ai_gen_id }} {
+      padding: 28px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-consultation-section-{{ ai_gen_id }} {
+      padding: {{ block.settings.mobile_spacing }}px 16px;
+    }
+
+    .ai-consultation-heading-{{ ai_gen_id }} {
+      font-size: 32px;
+    }
+
+    .ai-consultation-description-{{ ai_gen_id }} {
+      font-size: 15px;
+    }
+
+    .ai-consultation-benefit-{{ ai_gen_id }} {
+      font-size: 15px;
+    }
+
+    .ai-consultation-form-card-{{ ai_gen_id }} {
+      padding: 24px;
+    }
+  }
+{% endstyle %}
+
+<consultation-form-{{ ai_gen_id }} class="ai-consultation-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-consultation-container-{{ ai_gen_id }}">
+    <div class="ai-consultation-left-{{ ai_gen_id }}">
+      {% if block.settings.badge_text != blank %}
+        <div class="ai-consultation-badge-{{ ai_gen_id }}">
+          <span class="ai-consultation-badge-icon-{{ ai_gen_id }}">✦</span>
+          {{ block.settings.badge_text }}
+        </div>
+      {% endif %}
+
+      {% if block.settings.heading != blank %}
+        <h2 class="ai-consultation-heading-{{ ai_gen_id }}">
+          {{ block.settings.heading_part_1 }}
+          <span class="ai-consultation-gradient-text-{{ ai_gen_id }}">{{ block.settings.heading_gradient_part }}</span>
+        </h2>
+      {% endif %}
+
+      {% if block.settings.description != blank %}
+        <p class="ai-consultation-description-{{ ai_gen_id }}">
+          {{ block.settings.description }}
+        </p>
+      {% endif %}
+
+      <div class="ai-consultation-benefits-{{ ai_gen_id }}">
+        {% if block.settings.benefit_1 != blank %}
+          <div class="ai-consultation-benefit-{{ ai_gen_id }}">
+            <div class="ai-consultation-check-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            {{ block.settings.benefit_1 }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.benefit_2 != blank %}
+          <div class="ai-consultation-benefit-{{ ai_gen_id }}">
+            <div class="ai-consultation-check-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            {{ block.settings.benefit_2 }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.benefit_3 != blank %}
+          <div class="ai-consultation-benefit-{{ ai_gen_id }}">
+            <div class="ai-consultation-check-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            {{ block.settings.benefit_3 }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.benefit_4 != blank %}
+          <div class="ai-consultation-benefit-{{ ai_gen_id }}">
+            <div class="ai-consultation-check-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            {{ block.settings.benefit_4 }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.benefit_5 != blank %}
+          <div class="ai-consultation-benefit-{{ ai_gen_id }}">
+            <div class="ai-consultation-check-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            {{ block.settings.benefit_5 }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-consultation-stats-{{ ai_gen_id }}">
+        <div class="ai-consultation-stat-{{ ai_gen_id }}">
+          <div class="ai-consultation-stat-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="ai-consultation-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_1_number }}</div>
+          <div class="ai-consultation-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_1_label }}</div>
+        </div>
+
+        <div class="ai-consultation-stat-{{ ai_gen_id }}">
+          <div class="ai-consultation-stat-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="ai-consultation-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_2_number }}</div>
+          <div class="ai-consultation-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_2_label }}</div>
+        </div>
+
+        <div class="ai-consultation-stat-{{ ai_gen_id }}">
+          <div class="ai-consultation-stat-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="ai-consultation-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_3_number }}</div>
+          <div class="ai-consultation-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_3_label }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-consultation-form-card-{{ ai_gen_id }}">
+      {% form 'contact' %}
+        <input type="hidden" name="contact[consultation_form]" value="true">
+        
+        <div class="ai-consultation-form-{{ ai_gen_id }}">
+          {% if form.posted_successfully? %}
+            <div class="ai-consultation-success-{{ ai_gen_id }}">
+              {{ block.settings.success_message }}
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div class="ai-consultation-error-{{ ai_gen_id }}">
+              {{ form.errors.messages.email | default: 'Please check your form and try again.' }}
+            </div>
+          {% endif %}
+
+          <div class="ai-consultation-field-{{ ai_gen_id }}">
+            <label class="ai-consultation-label-{{ ai_gen_id }}" for="name-{{ ai_gen_id }}">
+              {{ block.settings.name_label }} <span class="ai-consultation-required-{{ ai_gen_id }}">*</span>
+            </label>
+            <input
+              type="text"
+              id="name-{{ ai_gen_id }}"
+              name="contact[name]"
+              class="ai-consultation-input-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.name_placeholder }}"
+              required
+            >
+          </div>
+
+          <div class="ai-consultation-field-{{ ai_gen_id }}">
+            <label class="ai-consultation-label-{{ ai_gen_id }}" for="email-{{ ai_gen_id }}">
+              {{ block.settings.email_label }} <span class="ai-consultation-required-{{ ai_gen_id }}">*</span>
+            </label>
+            <input
+              type="email"
+              id="email-{{ ai_gen_id }}"
+              name="contact[email]"
+              class="ai-consultation-input-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.email_placeholder }}"
+              required
+            >
+          </div>
+
+          <div class="ai-consultation-field-{{ ai_gen_id }}">
+            <label class="ai-consultation-label-{{ ai_gen_id }}" for="phone-{{ ai_gen_id }}">
+              {{ block.settings.phone_label }} <span class="ai-consultation-required-{{ ai_gen_id }}">*</span>
+            </label>
+            <input
+              type="tel"
+              id="phone-{{ ai_gen_id }}"
+              name="contact[phone]"
+              class="ai-consultation-input-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.phone_placeholder }}"
+              required
+            >
+          </div>
+
+          <div class="ai-consultation-field-{{ ai_gen_id }}">
+            <label class="ai-consultation-label-{{ ai_gen_id }}" for="service-{{ ai_gen_id }}">
+              {{ block.settings.service_label }} <span class="ai-consultation-required-{{ ai_gen_id }}">*</span>
+            </label>
+            <select
+              id="service-{{ ai_gen_id }}"
+              name="contact[service]"
+              class="ai-consultation-select-{{ ai_gen_id }}"
+              required
+            >
+              <option value="" disabled selected>{{ block.settings.service_placeholder }}</option>
+              <option value="Shopify Store Setup">Shopify Store Setup</option>
+              <option value="Shopify Migration">Shopify Migration</option>
+              <option value="Custom Solution">Custom Solution</option>
+              <option value="Pricing">Pricing</option>
+              <option value="Website Audit">Website Audit</option>
+            </select>
+          </div>
+
+          <div class="ai-consultation-field-{{ ai_gen_id }}">
+            <label class="ai-consultation-label-{{ ai_gen_id }}" for="website-{{ ai_gen_id }}">
+              {{ block.settings.website_label }}
+            </label>
+            <div class="ai-consultation-url-wrapper-{{ ai_gen_id }}">
+              <svg class="ai-consultation-url-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <input
+                type="url"
+                id="website-{{ ai_gen_id }}"
+                name="contact[website]"
+                class="ai-consultation-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.website_placeholder }}"
+              >
+            </div>
+            <div class="ai-consultation-helper-text-{{ ai_gen_id }}">
+              {{ block.settings.website_helper_text }}
+            </div>
+          </div>
+
+          <div class="ai-consultation-field-{{ ai_gen_id }}">
+            <label class="ai-consultation-label-{{ ai_gen_id }}" for="message-{{ ai_gen_id }}">
+              {{ block.settings.message_label }}
+            </label>
+            <textarea
+              id="message-{{ ai_gen_id }}"
+              name="contact[body]"
+              class="ai-consultation-textarea-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.message_placeholder }}"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="ai-consultation-button-{{ ai_gen_id }}">
+            {{ block.settings.button_text }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</consultation-form-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ConsultationForm{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.form = this.querySelector('form');
+        if (this.form) {
+          this.form.addEventListener('submit', this.handleSubmit.bind(this));
+        }
+      }
+
+      handleSubmit(event) {
+        const requiredFields = this.form.querySelectorAll('[required]');
+        let isValid = true;
+
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            isValid = false;
+            field.style.borderColor = '#ef4444';
+          } else {
+            field.style.borderColor = '';
+          }
+        });
+
+        if (!isValid) {
+          event.preventDefault();
+        }
+      }
+    }
+
+    customElements.define('consultation-form-{{ ai_gen_id }}', ConsultationForm{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Consultation form",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Background",
+      "default": "#030407"
+    },
+    {
+      "type": "range",
+      "id": "desktop_spacing",
+      "label": "Desktop spacing",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_spacing",
+      "label": "Mobile spacing",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Free Shopify Consultation"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text color",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "badge_border_color",
+      "label": "Border color",
+      "default": "#F97316"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_part_1",
+      "label": "Heading first part",
+      "default": "Let's Build, Optimize & Scale Your"
+    },
+    {
+      "type": "text",
+      "id": "heading_gradient_part",
+      "label": "Heading gradient part",
+      "default": "Shopify Store"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "gradient_start",
+      "label": "Gradient start",
+      "default": "#A855F7"
+    },
+    {
+      "type": "color",
+      "id": "gradient_end",
+      "label": "Gradient end",
+      "default": "#F97316"
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Whether you're launching a new Shopify store, migrating from another platform, or looking to improve conversions, our Shopify experts are ready to help. We'll review your requirements and recommend the best solution for your business."
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Text color",
+      "default": "#9ca3af"
+    },
+    {
+      "type": "header",
+      "content": "Benefits"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1",
+      "label": "Benefit 1",
+      "default": "Free Strategy Consultation"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2",
+      "label": "Benefit 2",
+      "default": "Response within 24 Hours"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3",
+      "label": "Benefit 3",
+      "default": "Shopify Plus & CRO Experts"
+    },
+    {
+      "type": "text",
+      "id": "benefit_4",
+      "label": "Benefit 4",
+      "default": "No Obligation Quote"
+    },
+    {
+      "type": "text",
+      "id": "benefit_5",
+      "label": "Benefit 5",
+      "default": "Trusted by 150+ Ecommerce Brands"
+    },
+    {
+      "type": "color",
+      "id": "benefit_text_color",
+      "label": "Text color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "check_icon_color",
+      "label": "Check icon color",
+      "default": "#A855F7"
+    },
+    {
+      "type": "color",
+      "id": "check_border_color",
+      "label": "Check border color",
+      "default": "#A855F7"
+    },
+    {
+      "type": "color",
+      "id": "check_glow_color",
+      "label": "Check glow color",
+      "default": "rgba(168, 85, 247, 0.2)"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Divider color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Stat 1 number",
+      "default": "150+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "Happy Clients"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Stat 2 number",
+      "default": "98%"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "Satisfaction Rate"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Stat 3 number",
+      "default": "Under 24"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 label",
+      "default": "Hours Response"
+    },
+    {
+      "type": "color",
+      "id": "stat_number_color",
+      "label": "Number color",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "stat_label_color",
+      "label": "Label color",
+      "default": "#9ca3af"
+    },
+    {
+      "type": "color",
+      "id": "stat_icon_color",
+      "label": "Icon color",
+      "default": "#A855F7"
+    },
+    {
+      "type": "color",
+      "id": "stat_icon_border",
+      "label": "Icon border",
+      "default": "#A855F7"
+    },
+    {
+      "type": "header",
+      "content": "Form card"
+    },
+    {
+      "type": "color",
+      "id": "form_background",
+      "label": "Background",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "form_border_color",
+      "label": "Border color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "range",
+      "id": "form_border_radius",
+      "label": "Border radius",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Form fields"
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name label",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "Enter your name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Phone placeholder",
+      "default": "Enter your phone number"
+    },
+    {
+      "type": "text",
+      "id": "service_label",
+      "label": "Service label",
+      "default": "Service Interested In"
+    },
+    {
+      "type": "text",
+      "id": "service_placeholder",
+      "label": "Service placeholder",
+      "default": "Select a service"
+    },
+    {
+      "type": "text",
+      "id": "website_label",
+      "label": "Website label",
+      "default": "Existing Website (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "website_placeholder",
+      "label": "Website placeholder",
+      "default": "https://yourwebsite.com"
+    },
+    {
+      "type": "text",
+      "id": "website_helper_text",
+      "label": "Website helper text",
+      "default": "Already have a website? Share the URL so we can review it and understand your current store."
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Message label",
+      "default": "Message (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "Tell us about your project..."
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "required_color",
+      "label": "Required asterisk color",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "#0f0f0f"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border",
+      "default": "#1f2937"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "Placeholder color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "color",
+      "id": "input_focus_color",
+      "label": "Focus border color",
+      "default": "#A855F7"
+    },
+    {
+      "type": "color",
+      "id": "helper_text_color",
+      "label": "Helper text color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "header",
+      "content": "Submit button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Get Free Proposal"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_gradient_start",
+      "label": "Gradient start",
+      "default": "#A855F7"
+    },
+    {
+      "type": "color",
+      "id": "button_gradient_mid",
+      "label": "Gradient middle",
+      "default": "#EC4899"
+    },
+    {
+      "type": "color",
+      "id": "button_gradient_end",
+      "label": "Gradient end",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_gradient_start",
+      "label": "Hover gradient start",
+      "default": "#9333EA"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_gradient_mid",
+      "label": "Hover gradient middle",
+      "default": "#DB2777"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_gradient_end",
+      "label": "Hover gradient end",
+      "default": "#EA580C"
+    },
+    {
+      "type": "header",
+      "content": "Messages"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! We'll be in touch within 24 hours."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Consultation form"
+    }
+  ]
+}
+{% endschema %}

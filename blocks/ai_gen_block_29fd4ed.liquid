@@ -1,0 +1,1143 @@
+{% doc %}
+  @prompt
+    Create a premium dark two-column Company Intro + Testimonials section inspired by the provided reference image.
+    
+    **Layout**
+    
+    * Full-width black background (#050505).
+    * Centered max-width container around 1400px.
+    * Two cards side-by-side on desktop with 24px gap.
+    * Both cards must always have the EXACT same fixed height.
+    * Large rounded corners around 28px.
+    * Stack cards vertically on mobile.
+    
+    **Left Card – Company Introduction**
+    
+    * Background #111111.
+    * Padding around 48px.
+    * Small outlined pill badge: “Technology” with blue sparkle icon.
+    * Large bold heading:
+      “Building high-performance Shopify experiences with AI-driven innovation”
+    * Highlight only “AI-driven innovation” in orange #FF7A1A.
+    * Supporting text:
+      “We combine Shopify expertise, intelligent automation, and scalable engineering to help brands launch faster, convert more customers, and grow with confidence.”
+    * Bottom statistics:
+      “3000+” — “Shopify Projects Delivered”
+      “98%” — “Client Satisfaction Rate”
+    * Statistics in a two-column row.
+    * Numbers orange #FF7A1A and large/bold.
+    
+    **Right Card – Testimonial Carousel**
+    
+    * Background deep navy #061F3A.
+    * Same height as the left card.
+    * Padding around 48px.
+    * Add a large subtle outlined quotation-mark icon in the top-right.
+    * Each testimonial contains:
+    
+      * Customer image, 64px circular.
+      * Customer name.
+      * Designation and company.
+      * Large italic testimonial text.
+    * Show ONLY ONE testimonial at a time.
+    
+    **CRITICAL HEIGHT REQUIREMENT**
+    The testimonial card MUST have a fixed/controlled height of approximately 570–600px on desktop.
+    
+    Adding 2, 5, 10, or 20 testimonials must NEVER increase the height of the section.
+    
+    Testimonials must be slides inside a fixed-height carousel, NOT stacked vertically.
+    
+    Use:
+    
+    * overflow: hidden
+    * fixed/min-height carousel container
+    * one active testimonial visible at a time
+    * inactive testimonials completely hidden
+    * testimonial content must not determine the card height
+    * navigation controls must stay anchored at the bottom
+    
+    Long testimonials must not expand the card. Limit the testimonial text area and gracefully truncate overflowing text if necessary.
+    
+    **Navigation**
+    
+    * Circular previous and next arrow buttons.
+    * Place both arrows together at the bottom center of the testimonial card.
+    * Keep their position fixed regardless of testimonial length.
+    * Smooth slide/fade transition.
+    * Optional autoplay with editable speed.
+    * Pause autoplay on hover.
+    * Support swipe gestures on mobile.
+    
+    **Theme Editor Settings**
+    Make these editable:
+    
+    * Badge text
+    * Heading
+    * Highlighted heading text
+    * Description
+    * Statistics numbers and labels
+    * Unlimited testimonial blocks
+    * Customer image
+    * Customer name
+    * Designation
+    * Company
+    * Testimonial text
+    * Autoplay on/off
+    * Autoplay speed
+    * Show/hide arrows
+    * Card background colors
+    * Border radius
+    * Section spacing
+    
+    **Responsive**
+    Desktop: two equal-height cards.
+    Tablet: maintain two columns when space allows.
+    Mobile: stack cards vertically.
+    Reduce heading size and padding on mobile.
+    Testimonial carousel remains fixed-height and never grows because of additional testimonials.
+    
+    Use a premium, minimal, Apple-inspired dark UI with clean typography, generous spacing, subtle borders, and smooth animations.
+    
+    Most importantly: the number of testimonial blocks must affect ONLY the carousel slides, NEVER the height or layout of the section.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-company-testimonials-{{ ai_gen_id }} {
+    display: block;
+    background-color: {{ block.settings.section_background }};
+    padding: {{ block.settings.section_padding_top }}px 20px {{ block.settings.section_padding_bottom }}px;
+  }
+
+  .ai-company-testimonials-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_max_width }}px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ block.settings.card_gap }}px;
+  }
+
+  .ai-company-card-{{ ai_gen_id }},
+  .ai-testimonial-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.company_card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    display: flex;
+    flex-direction: column;
+    height: {{ block.settings.card_height }}px;
+  }
+
+  .ai-testimonial-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.testimonial_card_background }};
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-company-badge-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid {{ block.settings.badge_border_color }};
+    border-radius: 100px;
+    font-size: 13px;
+    color: {{ block.settings.badge_text_color }};
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+
+  .ai-company-badge-icon-{{ ai_gen_id }} {
+    width: 16px;
+    height: 16px;
+    color: {{ block.settings.badge_icon_color }};
+  }
+
+  .ai-company-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 20px;
+  }
+
+  .ai-company-heading-highlight-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_highlight_color }};
+  }
+
+  .ai-company-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    line-height: 1.6;
+    color: {{ block.settings.description_color }};
+    margin: 0 0 auto;
+  }
+
+  .ai-company-stats-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .ai-company-stat-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ai-company-stat-number-{{ ai_gen_id }} {
+    font-size: {{ block.settings.stat_number_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.stat_number_color }};
+  }
+
+  .ai-company-stat-label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.stat_label_size }}px;
+    color: {{ block.settings.stat_label_color }};
+  }
+
+  .ai-testimonial-quote-icon-{{ ai_gen_id }} {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    opacity: 0.15;
+    color: {{ block.settings.quote_icon_color }};
+  }
+
+  .ai-testimonial-carousel-{{ ai_gen_id }} {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-testimonial-slides-{{ ai_gen_id }} {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .ai-testimonial-slide-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-right: 8px;
+  }
+
+  .ai-testimonial-slide-{{ ai_gen_id }}::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .ai-testimonial-slide-{{ ai_gen_id }}::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+  }
+
+  .ai-testimonial-slide-{{ ai_gen_id }}::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+
+  .ai-testimonial-slide-{{ ai_gen_id }}.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+  }
+
+  .ai-testimonial-customer-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .ai-testimonial-customer-image-{{ ai_gen_id }} {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .ai-testimonial-customer-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-testimonial-customer-info-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ai-testimonial-customer-name-{{ ai_gen_id }} {
+    font-size: {{ block.settings.customer_name_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.customer_name_color }};
+  }
+
+  .ai-testimonial-customer-designation-{{ ai_gen_id }} {
+    font-size: {{ block.settings.customer_designation_size }}px;
+    color: {{ block.settings.customer_designation_color }};
+  }
+
+  .ai-testimonial-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.testimonial_text_size }}px;
+    line-height: 1.7;
+    font-style: italic;
+    color: {{ block.settings.testimonial_text_color }};
+    margin: 0;
+  }
+
+  .ai-testimonial-navigation-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    flex-shrink: 0;
+  }
+
+  .ai-testimonial-nav-button-{{ ai_gen_id }} {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: {{ block.settings.nav_button_background }};
+    border: 1px solid {{ block.settings.nav_button_border }};
+    color: {{ block.settings.nav_button_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ai-testimonial-nav-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.nav_button_hover_background }};
+    border-color: {{ block.settings.nav_button_hover_border }};
+    transform: scale(1.05);
+  }
+
+  .ai-testimonial-nav-button-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-company-testimonials-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-company-card-{{ ai_gen_id }},
+    .ai-testimonial-card-{{ ai_gen_id }} {
+      height: auto;
+      min-height: 400px;
+    }
+
+    .ai-company-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.7 }}px;
+    }
+
+    .ai-company-card-{{ ai_gen_id }},
+    .ai-testimonial-card-{{ ai_gen_id }} {
+      padding: 32px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-company-stats-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .ai-company-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.6 }}px;
+    }
+
+    .ai-company-card-{{ ai_gen_id }},
+    .ai-testimonial-card-{{ ai_gen_id }} {
+      padding: 24px;
+    }
+  }
+{% endstyle %}
+
+<company-testimonials-{{ ai_gen_id }} class="ai-company-testimonials-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-company-testimonials-container-{{ ai_gen_id }}">
+    <div class="ai-company-card-{{ ai_gen_id }}">
+      {% if block.settings.badge_text != blank %}
+        <div class="ai-company-badge-{{ ai_gen_id }}">
+          <svg class="ai-company-badge-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          {{ block.settings.badge_text }}
+        </div>
+      {% endif %}
+
+      {% if block.settings.heading != blank %}
+        <h2 class="ai-company-heading-{{ ai_gen_id }}">
+          {% assign heading_parts = block.settings.heading | split: block.settings.heading_highlight %}
+          {% if heading_parts.size > 1 %}
+            {{ heading_parts[0] }}<span class="ai-company-heading-highlight-{{ ai_gen_id }}">{{ block.settings.heading_highlight }}</span>{{ heading_parts[1] }}
+          {% else %}
+            {{ block.settings.heading }}
+          {% endif %}
+        </h2>
+      {% endif %}
+
+      {% if block.settings.description != blank %}
+        <p class="ai-company-description-{{ ai_gen_id }}">
+          {{ block.settings.description }}
+        </p>
+      {% endif %}
+
+      <div class="ai-company-stats-{{ ai_gen_id }}">
+        <div class="ai-company-stat-{{ ai_gen_id }}">
+          <div class="ai-company-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_1_number }}</div>
+          <div class="ai-company-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_1_label }}</div>
+        </div>
+        <div class="ai-company-stat-{{ ai_gen_id }}">
+          <div class="ai-company-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_2_number }}</div>
+          <div class="ai-company-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_2_label }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-testimonial-card-{{ ai_gen_id }}">
+      <svg class="ai-testimonial-quote-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+      </svg>
+
+      <div class="ai-testimonial-carousel-{{ ai_gen_id }}">
+        <div class="ai-testimonial-slides-{{ ai_gen_id }}">
+          {% for i in (1..20) %}
+            {% liquid
+              assign customer_image_key = 'testimonial_' | append: i | append: '_image'
+              assign customer_name_key = 'testimonial_' | append: i | append: '_name'
+              assign customer_designation_key = 'testimonial_' | append: i | append: '_designation'
+              assign customer_company_key = 'testimonial_' | append: i | append: '_company'
+              assign testimonial_text_key = 'testimonial_' | append: i | append: '_text'
+
+              assign customer_image = block.settings[customer_image_key]
+              assign customer_name = block.settings[customer_name_key]
+              assign customer_designation = block.settings[customer_designation_key]
+              assign customer_company = block.settings[customer_company_key]
+              assign testimonial_text = block.settings[testimonial_text_key]
+            %}
+
+            {% if customer_name != blank or testimonial_text != blank %}
+              <div class="ai-testimonial-slide-{{ ai_gen_id }}" data-slide-index="{{ forloop.index0 }}">
+                <div class="ai-testimonial-customer-{{ ai_gen_id }}">
+                  <div class="ai-testimonial-customer-image-{{ ai_gen_id }}">
+                    {% if customer_image %}
+                      <img src="{{ customer_image | image_url: width: 128 }}" alt="{{ customer_name | escape }}" loading="lazy" width="64" height="64">
+                    {% else %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%; padding: 16px; opacity: 0.3;">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    {% endif %}
+                  </div>
+                  <div class="ai-testimonial-customer-info-{{ ai_gen_id }}">
+                    <div class="ai-testimonial-customer-name-{{ ai_gen_id }}">{{ customer_name }}</div>
+                    <div class="ai-testimonial-customer-designation-{{ ai_gen_id }}">
+                      {{ customer_designation }}{% if customer_company != blank %}, {{ customer_company }}{% endif %}
+                    </div>
+                  </div>
+                </div>
+                <p class="ai-testimonial-text-{{ ai_gen_id }}">{{ testimonial_text }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% if block.settings.show_navigation %}
+          <div class="ai-testimonial-navigation-{{ ai_gen_id }}">
+            <button class="ai-testimonial-nav-button-{{ ai_gen_id }} ai-testimonial-prev-{{ ai_gen_id }}" aria-label="Previous testimonial">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="ai-testimonial-nav-button-{{ ai_gen_id }} ai-testimonial-next-{{ ai_gen_id }}" aria-label="Next testimonial">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</company-testimonials-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CompanyTestimonials{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.autoplayInterval = null;
+        this.isHovered = false;
+      }
+
+      connectedCallback() {
+        this.slides = this.querySelectorAll('.ai-testimonial-slide-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('.ai-testimonial-prev-{{ ai_gen_id }}');
+        this.nextButton = this.querySelector('.ai-testimonial-next-{{ ai_gen_id }}');
+        this.carousel = this.querySelector('.ai-testimonial-carousel-{{ ai_gen_id }}');
+
+        if (this.slides.length === 0) return;
+
+        this.showSlide(0);
+        this.setupEventListeners();
+
+        {% if block.settings.autoplay %}
+          this.startAutoplay();
+        {% endif %}
+      }
+
+      setupEventListeners() {
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => this.previousSlide());
+        }
+
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => this.nextSlide());
+        }
+
+        if (this.carousel) {
+          this.carousel.addEventListener('mouseenter', () => {
+            this.isHovered = true;
+            this.stopAutoplay();
+          });
+
+          this.carousel.addEventListener('mouseleave', () => {
+            this.isHovered = false;
+            {% if block.settings.autoplay %}
+              this.startAutoplay();
+            {% endif %}
+          });
+
+          let touchStartX = 0;
+          let touchEndX = 0;
+
+          this.carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+          });
+
+          this.carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe(touchStartX, touchEndX);
+          });
+        }
+      }
+
+      handleSwipe(startX, endX) {
+        const swipeThreshold = 50;
+        const diff = startX - endX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+          if (diff > 0) {
+            this.nextSlide();
+          } else {
+            this.previousSlide();
+          }
+        }
+      }
+
+      showSlide(index) {
+        this.slides.forEach((slide, i) => {
+          if (i === index) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+        this.currentSlide = index;
+      }
+
+      nextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.slides.length;
+        this.showSlide(nextIndex);
+      }
+
+      previousSlide() {
+        const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        this.showSlide(prevIndex);
+      }
+
+      startAutoplay() {
+        this.stopAutoplay();
+        this.autoplayInterval = setInterval(() => {
+          if (!this.isHovered) {
+            this.nextSlide();
+          }
+        }, {{ block.settings.autoplay_speed }} * 1000);
+      }
+
+      stopAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+          this.autoplayInterval = null;
+        }
+      }
+
+      disconnectedCallback() {
+        this.stopAutoplay();
+      }
+    }
+
+    customElements.define('company-testimonials-{{ ai_gen_id }}', CompanyTestimonials{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Company testimonials",
+  "tag": null,
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "label": "Container max width",
+      "min": 1000,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Card gap",
+      "min": 12,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "label": "Card height (desktop)",
+      "min": 500,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "default": 580
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 24,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section padding top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Section colors"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#050505"
+    },
+    {
+      "type": "color",
+      "id": "company_card_background",
+      "label": "Company card background",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "testimonial_card_background",
+      "label": "Testimonial card",
+      "default": "#061F3A"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Technology"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "badge_border_color",
+      "label": "Border",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "badge_icon_color",
+      "label": "Icon",
+      "default": "#3B82F6"
+    },
+    {
+      "type": "header",
+      "content": "Company heading"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Building high-performance Shopify experiences with AI-driven innovation"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Highlighted text",
+      "default": "AI-driven innovation"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Size",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_highlight_color",
+      "label": "Highlight color",
+      "default": "#FF7A1A"
+    },
+    {
+      "type": "header",
+      "content": "Company description"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We combine Shopify expertise, intelligent automation, and scalable engineering to help brands launch faster, convert more customers, and grow with confidence."
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Color",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Statistic 1 number",
+      "default": "3000+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Statistic 1 label",
+      "default": "Shopify Projects Delivered"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Statistic 2 number",
+      "default": "98%"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Statistic 2 label",
+      "default": "Client Satisfaction Rate"
+    },
+    {
+      "type": "range",
+      "id": "stat_number_size",
+      "label": "Number size",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "stat_number_color",
+      "label": "Number color",
+      "default": "#FF7A1A"
+    },
+    {
+      "type": "range",
+      "id": "stat_label_size",
+      "label": "Label size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "stat_label_color",
+      "label": "Label color",
+      "default": "#999999"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial styling"
+    },
+    {
+      "type": "color",
+      "id": "quote_icon_color",
+      "label": "Quote icon",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "customer_name_size",
+      "label": "Customer name size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "customer_name_color",
+      "label": "Customer name",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "customer_designation_size",
+      "label": "Designation size",
+      "min": 12,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "customer_designation_color",
+      "label": "Designation",
+      "default": "#999999"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_text_size",
+      "label": "Text size",
+      "min": 16,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "testimonial_text_color",
+      "label": "Text color",
+      "default": "#E5E5E5"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show arrows",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "nav_button_background",
+      "label": "Button background",
+      "default": "#0A2540"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_border",
+      "label": "Button border",
+      "default": "#1E3A5F"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_color",
+      "label": "Button icon",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_hover_background",
+      "label": "Hover background",
+      "default": "#1E3A5F"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_hover_border",
+      "label": "Hover border",
+      "default": "#3B82F6"
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_name",
+      "label": "Name",
+      "default": "Sarah Johnson"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_designation",
+      "label": "Designation",
+      "default": "CEO"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_company",
+      "label": "Company",
+      "default": "TechCorp"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_1_text",
+      "label": "Text",
+      "default": "Working with this team has been transformative for our business. Their expertise in Shopify and commitment to innovation helped us achieve results beyond our expectations."
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_name",
+      "label": "Name",
+      "default": "Michael Chen"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_designation",
+      "label": "Designation",
+      "default": "Founder"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_company",
+      "label": "Company",
+      "default": "GrowthLabs"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_2_text",
+      "label": "Text",
+      "default": "The AI-driven approach they brought to our Shopify store was game-changing. We saw a 40% increase in conversions within the first month."
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_name",
+      "label": "Name",
+      "default": "Emily Rodriguez"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_designation",
+      "label": "Designation",
+      "default": "Director of E-commerce"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_company",
+      "label": "Company",
+      "default": "StyleHub"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_3_text",
+      "label": "Text",
+      "default": "Their attention to detail and deep understanding of Shopify best practices made our replatforming seamless. Highly recommend their services."
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_4_name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_4_designation",
+      "label": "Designation"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_4_company",
+      "label": "Company"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_4_text",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_5_name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_5_designation",
+      "label": "Designation"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_5_company",
+      "label": "Company"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_5_text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Company testimonials"
+    }
+  ]
+}
+{% endschema %}

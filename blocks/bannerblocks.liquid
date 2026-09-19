@@ -1,0 +1,675 @@
+{% assign section_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .rootsyntax-video-hero-{{ section_id }} {
+    position: relative;
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  .rootsyntax-video-hero-background-{{ section_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .rootsyntax-video-hero-video-{{ section_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+
+  .rootsyntax-video-hero-fallback-{{ section_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .rootsyntax-video-hero-overlay-{{ section_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, {{ block.settings.overlay_opacity | divided_by: 100.0 }});
+    z-index: 2;
+  }
+
+  .rootsyntax-video-hero-content-{{ section_id }} {
+    position: relative;
+    z-index: 3;
+    max-width: 750px;
+    width: 100%;
+    padding-inline: 10px;
+    text-align: center;
+    color: {{ block.settings.text_color }};
+  }
+
+  .rootsyntax-video-hero-heading-{{ section_id }} {
+    font-size: {{ block.settings.heading_size_desktop }}px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 24px;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: rootsyntax-video-hero-fade-up-{{ section_id }} 0.8s ease-out 0.2s forwards;
+  }
+
+  .rootsyntax-video-hero-heading-{{ section_id }} strong {
+    color: {{ block.settings.accent_color }};
+  }
+
+  .rootsyntax-video-hero-description-{{ section_id }} {
+    font-size: {{ block.settings.description_size_desktop }}px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0 auto 36px;
+    max-width: 650px;
+    opacity: 0.9;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: rootsyntax-video-hero-fade-up-{{ section_id }} 0.8s ease-out 0.4s forwards;
+  }
+
+  .rootsyntax-video-hero-buttons-{{ section_id }} {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: rootsyntax-video-hero-fade-up-{{ section_id }} 0.8s ease-out 0.6s forwards;
+  }
+
+  .rootsyntax-video-hero-button-primary-{{ section_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 40px;
+    background: {{ block.settings.primary_button_bg }};
+    color: {{ block.settings.primary_button_text_color }};
+    border-radius: 50px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  }
+
+  .rootsyntax-video-hero-button-primary-{{ section_id }}:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, {{ block.settings.primary_button_bg }} 0%, {{ block.settings.accent_color }} 100%);
+  }
+
+  .rootsyntax-video-hero-button-secondary-{{ section_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 40px;
+    background: transparent;
+    color: {{ block.settings.text_color }};
+    border: 1px solid {{ block.settings.text_color }};
+    border-radius: 50px;
+    font-size: 16px;
+    /* font-weight: 600; */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .rootsyntax-video-hero-button-secondary-{{ section_id }}:hover {
+    background: {{ block.settings.text_color }};
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .rootsyntax-video-hero-play-icon-{{ section_id }} {
+    width: 18px;
+    height: 18px;
+  }
+
+  .rootsyntax-video-hero-floating-icon-{{ section_id }} {
+    position: absolute;
+    z-index: 2;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+    will-change: transform;
+  }
+
+  .rootsyntax-video-hero-floating-icon-{{ section_id }} img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  }
+
+  .rootsyntax-video-hero-floating-icon-{{ section_id }}:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+  }
+
+  .rootsyntax-video-hero-icon-1-{{ section_id }} {
+    top: 10%;
+    left: 8%;
+    width: {{ block.settings.icon_size }}px;
+    animation: rootsyntax-video-hero-float-1-{{ section_id }} 6s ease-in-out infinite;
+  }
+
+  .rootsyntax-video-hero-icon-2-{{ section_id }} {
+    bottom: 15%;
+    left: 12%;
+    width: {{ block.settings.icon_size | times: 0.85 }}px;
+    animation: rootsyntax-video-hero-float-2-{{ section_id }} 7s ease-in-out infinite;
+  }
+
+  .rootsyntax-video-hero-icon-3-{{ section_id }} {
+    top: 15%;
+    right: 10%;
+    width: {{ block.settings.icon_size | times: 0.9 }}px;
+    animation: rootsyntax-video-hero-float-3-{{ section_id }} 8s ease-in-out infinite;
+  }
+
+  .rootsyntax-video-hero-icon-4-{{ section_id }} {
+    bottom: 12%;
+    right: 8%;
+    width: {{ block.settings.icon_size | times: 0.95 }}px;
+    animation: rootsyntax-video-hero-float-4-{{ section_id }} 7.5s ease-in-out infinite;
+  }
+
+  @keyframes rootsyntax-video-hero-fade-up-{{ section_id }} {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  {% if block.settings.enable_floating_animation %}
+    @keyframes rootsyntax-video-hero-float-1-{{ section_id }} {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+
+    @keyframes rootsyntax-video-hero-float-2-{{ section_id }} {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-25px) rotate(-5deg);
+      }
+    }
+
+    @keyframes rootsyntax-video-hero-float-3-{{ section_id }} {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-18px) rotate(3deg);
+      }
+    }
+
+    @keyframes rootsyntax-video-hero-float-4-{{ section_id }} {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-22px) rotate(-4deg);
+      }
+    }
+  {% endif %}
+
+  @media screen and (max-width: 989px) {
+    .rootsyntax-video-hero-{{ section_id }} {
+      min-height: {{ block.settings.hero_height_tablet }}px;
+    }
+
+    .rootsyntax-video-hero-heading-{{ section_id }} {
+      font-size: {{ block.settings.heading_size_desktop | times: 0.75 }}px;
+    }
+
+    .rootsyntax-video-hero-description-{{ section_id }} {
+      font-size: {{ block.settings.description_size_desktop | times: 0.9 }}px;
+    }
+
+    .rootsyntax-video-hero-icon-1-{{ section_id }},
+    .rootsyntax-video-hero-icon-2-{{ section_id }},
+    .rootsyntax-video-hero-icon-3-{{ section_id }},
+    .rootsyntax-video-hero-icon-4-{{ section_id }} {
+      width: {{ block.settings.icon_size | times: 0.7 }}px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .rootsyntax-video-hero-{{ section_id }} {
+      min-height: auto;
+    }
+
+    .rootsyntax-video-hero-content-{{ section_id }} {
+      padding: 80px 20px;
+    }
+
+    .rootsyntax-video-hero-heading-{{ section_id }} {
+      font-size: {{ block.settings.heading_size_mobile }}px;
+      margin-bottom: 20px;
+    }
+
+    .rootsyntax-video-hero-description-{{ section_id }} {
+      font-size: {{ block.settings.description_size_mobile }}px;
+      margin-bottom: 28px;
+    }
+
+    .rootsyntax-video-hero-buttons-{{ section_id }} {
+      flex-direction: column;
+      width: 100%;
+      gap: 12px;
+    }
+
+    .rootsyntax-video-hero-button-primary-{{ section_id }},
+    .rootsyntax-video-hero-button-secondary-{{ section_id }} {
+      width: 100%;
+      max-width: 100%;
+      padding: 14px 32px;
+    }
+
+    .rootsyntax-video-hero-icon-1-{{ section_id }},
+    .rootsyntax-video-hero-icon-2-{{ section_id }},
+    .rootsyntax-video-hero-icon-3-{{ section_id }},
+    .rootsyntax-video-hero-icon-4-{{ section_id }} {
+      width: 60px;
+      opacity: 1;
+    }
+
+    .rootsyntax-video-hero-icon-1-{{ section_id }} {
+      top: 5%;
+      left: 2%;
+    }
+
+    .rootsyntax-video-hero-icon-2-{{ section_id }} {
+      bottom: 3%;
+      left: 3%;
+    }
+
+    .rootsyntax-video-hero-icon-3-{{ section_id }} {
+      top: 5%;
+      right: 2%;
+    }
+
+    .rootsyntax-video-hero-icon-4-{{ section_id }} {
+      bottom: 3%;
+      right: 3%;
+    }
+  }
+{% endstyle %}
+
+<premium-video-hero-{{ section_id }} class="rootsyntax-video-hero-{{ section_id }}" {{ block.shopify_attributes }}>
+  <div class="rootsyntax-video-hero-background-{{ section_id }}">
+    <div
+      class="rootsyntax-video-hero-fallback-{{ section_id }}"
+      style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"
+    >
+      {% render 'banner-animation' %}
+    </div>
+
+    {% comment %} <div class="rootsyntax-video-hero-overlay-{{ section_id }}"></div> {% endcomment %}
+  </div>
+
+  {% if block.settings.floating_icon_1 %}
+    <div class="rootsyntax-video-hero-floating-icon-{{ section_id }} rootsyntax-video-hero-icon-1-{{ section_id }}">
+      <img
+        src="{{ block.settings.floating_icon_1 | image_url: width: 200 }}"
+        alt="{{ block.settings.floating_icon_1.alt | escape }}"
+        loading="lazy"
+        width="200"
+        height="200"
+      >
+    </div>
+  {% endif %}
+
+  {% if block.settings.floating_icon_2 %}
+    <div class="rootsyntax-video-hero-floating-icon-{{ section_id }} rootsyntax-video-hero-icon-2-{{ section_id }}">
+      <img
+        src="{{ block.settings.floating_icon_2 | image_url: width: 200 }}"
+        alt="{{ block.settings.floating_icon_2.alt | escape }}"
+        loading="lazy"
+        width="200"
+        height="200"
+      >
+    </div>
+  {% endif %}
+
+  {% if block.settings.floating_icon_3 %}
+    <div class="rootsyntax-video-hero-floating-icon-{{ section_id }} rootsyntax-video-hero-icon-3-{{ section_id }}">
+      <img
+        src="{{ block.settings.floating_icon_3 | image_url: width: 200 }}"
+        alt="{{ block.settings.floating_icon_3.alt | escape }}"
+        loading="lazy"
+        width="200"
+        height="200"
+      >
+    </div>
+  {% endif %}
+
+  {% if block.settings.floating_icon_4 %}
+    <div class="rootsyntax-video-hero-floating-icon-{{ section_id }} rootsyntax-video-hero-icon-4-{{ section_id }}">
+      <img
+        src="{{ block.settings.floating_icon_4 | image_url: width: 200 }}"
+        alt="{{ block.settings.floating_icon_4.alt | escape }}"
+        loading="lazy"
+        width="200"
+        height="200"
+      >
+    </div>
+  {% endif %}
+
+  <div class="rootsyntax-video-hero-content-{{ section_id }}">
+    {% if block.settings.heading != blank %}
+      <h1 class="rootsyntax-video-hero-heading-{{ section_id }}">
+        {{ block.settings.heading }}
+      </h1>
+    {% endif %}
+
+    {% if block.settings.description != blank %}
+      <div class="rootsyntax-video-hero-description-{{ section_id }}">
+        {{ block.settings.description }}
+      </div>
+    {% endif %}
+
+    <div class="rootsyntax-video-hero-buttons-{{ section_id }}">
+      {% if block.settings.primary_button_label != blank %}
+        <a
+          href="{{ block.settings.primary_button_link }}"
+          class="rootsyntax-video-hero-button-primary-{{ section_id }}"
+        >
+          {{ block.settings.primary_button_label }}
+        </a>
+      {% endif %}
+
+      {% if block.settings.secondary_button_label != blank %}
+        <a
+          href="{{ block.settings.secondary_button_link }}"
+          class="rootsyntax-video-hero-button-secondary-{{ section_id }}"
+          target="_blank"
+        >
+          <svg
+            class="rootsyntax-video-hero-play-icon-{{ section_id }}"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          {{ block.settings.secondary_button_label }}
+        </a>
+      {% endif %}
+      <div class="rootsyntax-video-partner-badge-wrapper">
+        <div class="rootsyntax-badge-flex">
+        <div class="rootsyntax-video-partner-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="106" height="44" viewBox="0 0 262 116" fill="none">
+            <path d="M116.439 33.7716C117.486 34.4327 119.056 34.9561 120.681 34.9561C123.105 34.9561 124.538 33.6889 124.538 31.8432C124.538 30.1352 123.546 29.1435 121.067 28.2069C118.064 27.1325 116.218 25.5623 116.218 23.0003C116.218 20.1353 118.588 18.0142 122.169 18.0142C124.042 18.0142 125.419 18.4549 126.218 18.8957L125.557 20.8516C124.979 20.4935 123.739 19.9701 122.086 19.9701C119.552 19.9701 118.615 21.4576 118.615 22.7249C118.615 24.4328 119.745 25.2593 122.279 26.251C125.392 27.4631 126.962 28.9782 126.962 31.6504C126.962 34.3225 124.896 36.9396 120.543 36.9396C118.78 36.9396 116.825 36.4162 115.86 35.755L116.494 33.7716H116.439Z" fill="white"/>
+            <path d="M136.384 18.2896V25.9754H145.254V18.2896H147.651V36.6365H145.254V28.014H136.384V36.6365H133.987V18.2896H136.384Z" fill="white"/>
+            <path d="M171.562 27.298C171.562 33.6065 167.733 36.9673 163.05 36.9673C158.366 36.9673 154.785 33.1933 154.785 27.6561C154.785 22.119 158.394 17.9868 163.297 17.9868C168.201 17.9868 171.562 21.816 171.562 27.298ZM157.32 27.5735C157.32 31.5128 159.441 35.0114 163.187 35.0114C166.934 35.0114 169.083 31.5679 169.083 27.3807C169.083 23.7168 167.182 19.9152 163.242 19.9152C159.303 19.9152 157.347 23.5515 157.347 27.5735H157.32Z" fill="white"/>
+            <path d="M178.752 18.51C179.909 18.3171 181.397 18.1519 183.325 18.1519C185.639 18.1519 187.374 18.7028 188.476 19.667C189.468 20.5485 190.102 21.8708 190.102 23.4961C190.102 25.1215 189.606 26.4713 188.669 27.4355C187.402 28.7853 185.363 29.4465 183.049 29.4465C182.333 29.4465 181.672 29.4465 181.121 29.2812V36.6365H178.752V18.51ZM181.121 27.3529C181.644 27.5181 182.306 27.5732 183.077 27.5732C185.942 27.5732 187.677 26.1683 187.677 23.6614C187.677 21.1546 185.942 20.0527 183.352 20.0527C182.306 20.0527 181.534 20.1629 181.121 20.2455V27.3804V27.3529Z" fill="white"/>
+            <path d="M199.523 18.2896V36.6365H197.126V18.2896H199.523Z" fill="white"/>
+            <path d="M207.539 18.2896H217.429V20.273H209.936V26.3886H216.878V28.3445H209.936V36.664H207.539V18.2896Z" fill="white"/>
+            <path d="M229.467 36.664V28.8679L223.654 18.2896H226.382L228.971 23.3584C229.66 24.7358 230.238 25.8652 230.789 27.16H230.844C231.34 25.9479 231.974 24.7358 232.69 23.3584L235.335 18.2896H238.034L231.891 28.8404V36.664H229.494H229.467Z" fill="white"/>
+            <path d="M116.605 49.1982C117.817 48.9778 119.497 48.8125 121.729 48.8125C124.181 48.8125 125.971 49.3359 127.128 50.3001C128.23 51.2092 128.919 52.6417 128.919 54.3772C128.919 56.1127 128.368 57.5452 127.349 58.5369C125.999 59.8868 123.933 60.5204 121.536 60.5204C120.902 60.5204 120.351 60.4928 119.883 60.3826V67.3247H116.55V49.1982H116.605ZM119.938 57.7656C120.379 57.8758 120.902 57.9309 121.591 57.9309C124.098 57.9309 125.641 56.6912 125.641 54.5425C125.641 52.5315 124.236 51.4296 121.894 51.4296C120.985 51.4296 120.296 51.5122 119.938 51.5948V57.7931V57.7656Z" fill="white"/>
+            <path d="M135.722 48.9785H139.083V64.5155H146.631V67.3254H135.722V48.9785Z" fill="white"/>
+            <path d="M156.109 48.9785V59.6671C156.109 63.2483 157.596 64.9288 159.883 64.9288C162.307 64.9288 163.74 63.2759 163.74 59.6671V48.9785H167.101V59.4743C167.101 65.1216 164.18 67.656 159.745 67.656C155.31 67.656 152.748 65.2869 152.748 59.5018V49.0061H156.109V48.9785Z" fill="white"/>
+            <path d="M174.621 63.6611C175.695 64.2947 177.348 64.8181 179.056 64.8181C181.204 64.8181 182.389 63.8264 182.389 62.3112C182.389 60.9338 181.452 60.1074 179.138 59.2534C176.108 58.179 174.18 56.5537 174.18 53.9091C174.18 50.9064 176.687 48.6475 180.681 48.6475C182.665 48.6475 184.125 49.0607 185.089 49.5565L184.29 52.2562C183.629 51.8981 182.334 51.3747 180.626 51.3747C178.505 51.3747 177.596 52.5042 177.596 53.5785C177.596 54.9835 178.67 55.6446 181.122 56.5813C184.317 57.7934 185.833 59.3911 185.833 62.0357C185.833 64.9834 183.601 67.5453 178.863 67.5453C176.907 67.5453 174.896 66.9944 173.904 66.3883L174.648 63.606L174.621 63.6611Z" fill="white"/>
+            <path d="M116.742 79.8591C117.899 79.6663 119.387 79.501 121.315 79.501C123.629 79.501 125.365 80.0519 126.467 81.0161C127.458 81.8976 128.092 83.2199 128.092 84.8453C128.092 86.4706 127.596 87.8204 126.659 88.7846C125.392 90.1345 123.354 90.7956 121.04 90.7956C120.323 90.7956 119.662 90.7956 119.111 90.6303V97.9856H116.742V79.8591ZM119.111 88.702C119.635 88.8673 120.296 88.9224 121.067 88.9224C123.932 88.9224 125.668 87.5174 125.668 85.0106C125.668 82.5037 123.932 81.4018 121.343 81.4018C120.296 81.4018 119.525 81.512 119.111 81.5946V88.7295V88.702Z" fill="white"/>
+            <path d="M137.154 92.2281L135.254 97.9856H132.802L139.055 79.6387H141.92L148.201 97.9856H145.667L143.711 92.2281H137.209H137.154ZM143.187 90.3548L141.369 85.0656C140.983 83.8535 140.708 82.7791 140.433 81.7048H140.377C140.102 82.7791 139.826 83.9086 139.468 85.0105L137.65 90.3273H143.187V90.3548Z" fill="white"/>
+            <path d="M155.308 79.8866C156.52 79.6387 158.228 79.501 159.881 79.501C162.387 79.501 164.068 79.9693 165.197 81.0161C166.106 81.815 166.63 83.0822 166.63 84.5147C166.63 86.9389 165.087 88.5367 163.159 89.1978V89.2529C164.564 89.7488 165.418 91.0711 165.858 92.9719C166.465 95.5339 166.905 97.2969 167.263 98.0132H164.812C164.536 97.4898 164.123 95.9195 163.6 93.6055C163.049 91.0986 162.057 90.1069 159.908 90.0518H157.677V98.0132H155.308V79.9142V79.8866ZM157.677 88.2337H160.101C162.635 88.2337 164.233 86.8563 164.233 84.7351C164.233 82.3384 162.525 81.3191 160.018 81.3191C158.861 81.3191 158.062 81.4293 157.677 81.5395V88.2337Z" fill="white"/>
+            <path d="M177.871 81.6223H172.278V79.6113H185.887V81.6223H180.267V97.9858H177.871V81.6223Z" fill="white"/>
+            <path d="M191.947 97.9856V79.6387H194.565L200.432 88.9223C201.782 91.0711 202.829 92.9994 203.71 94.9002H203.766C203.545 92.4209 203.518 90.1895 203.518 87.3245V79.6387H205.749V97.9856H203.325L197.485 88.6744C196.217 86.6083 194.978 84.5147 194.069 82.5312H193.986C194.124 84.8728 194.151 87.1042 194.151 90.1344V97.9856H191.92H191.947Z" fill="white"/>
+            <path d="M223.876 89.3909H216.769V96.03H224.73V98.0134H214.399V79.6665H224.317V81.65H216.769V87.4626H223.876V89.4185V89.3909Z" fill="white"/>
+            <path d="M232.388 79.8866C233.6 79.6387 235.308 79.501 236.961 79.501C239.468 79.501 241.148 79.9693 242.277 81.0161C243.186 81.815 243.71 83.0822 243.71 84.5147C243.71 86.9389 242.167 88.5367 240.239 89.1978V89.2529C241.644 89.7488 242.498 91.0711 242.939 92.9719C243.545 95.5339 243.985 97.2969 244.343 98.0132H241.892C241.616 97.4898 241.203 95.9195 240.68 93.6055C240.129 91.0986 239.137 90.1069 236.988 90.0518H234.757V98.0132H232.388V79.9142V79.8866ZM234.757 88.2337H237.181C239.715 88.2337 241.313 86.8563 241.313 84.7351C241.313 82.3384 239.605 81.3191 237.098 81.3191C235.941 81.3191 235.142 81.4293 234.757 81.5395V88.2337Z" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M97.9989 18.0007H18V97.9995H97.9989V18.0007ZM60.3546 39.7294C60.3546 38.6554 60.217 37.1408 59.6937 35.8465C61.3185 36.1494 62.1447 37.9944 62.4751 39.0684C61.8418 39.2612 61.1257 39.4815 60.3546 39.7294ZM51.7903 54.0768C51.8447 54.981 52.8299 55.605 54.0215 56.3598C55.8422 57.513 58.1447 58.9715 58.3444 62.2006C58.6198 66.414 56.0862 69.278 52.4512 69.5258C48.0726 69.8012 45.6768 67.2401 45.6768 67.2401L46.6131 63.3572C46.6131 63.3572 49.0363 65.1748 50.964 65.0371C52.2307 64.9544 52.6713 63.9355 52.6438 63.2195C52.5593 61.9166 51.5658 61.2161 50.4481 60.4282C49.0146 59.4176 47.3769 58.2631 47.1913 55.5088C46.9159 51.3781 49.6696 47.2198 55.7005 46.8342C58.0137 46.6966 59.2255 47.2749 59.2255 47.2749L57.8486 52.397C57.8486 52.397 56.3065 51.7085 54.489 51.8187C51.8178 51.9839 51.7903 53.6637 51.8178 54.0768H51.7903ZM55.9761 34.5246C56.4718 34.5246 56.9124 34.6348 57.2704 34.8551C56.6921 35.158 56.1138 35.5986 55.5906 36.1494C54.2137 37.6089 53.1671 39.8671 52.754 42.0426C51.9058 42.3133 51.0576 42.5722 50.2481 42.8192C49.8224 42.9492 49.4075 43.0758 49.0089 43.1992C49.7524 39.7569 52.644 34.6348 55.9761 34.5246ZM58.9226 40.17C58.4316 40.3211 57.9244 40.4754 57.4066 40.6329L57.406 40.6331C56.4137 40.935 55.3824 41.2488 54.3511 41.5744C54.7918 39.8946 55.6457 38.2423 56.6646 37.1408C57.0501 36.7277 57.5732 36.2871 58.2066 36.0117C58.8124 37.2509 58.9226 38.9858 58.9226 40.17ZM65.1738 38.2423C65.1738 38.2423 64.6782 38.4075 63.8521 38.6554C63.7144 38.2148 63.4941 37.664 63.2187 37.1132C62.2824 35.3232 60.9053 34.3869 59.2255 34.3869H58.8675L58.7024 34.2217C57.9864 33.4506 57.0501 33.0651 55.921 33.1202C53.773 33.1752 51.6248 34.7174 49.8624 37.4712C48.6232 39.3989 47.7144 41.8223 47.439 43.6949C44.9606 44.466 43.2259 44.9892 43.1983 44.9892C41.9591 45.3747 41.9039 45.4023 41.7387 46.5864C41.6286 47.4676 38.3516 72.5 38.3516 72.5L65.5043 77.1539V38.2148C65.5043 38.2148 65.2565 38.2423 65.1738 38.2698V38.2423ZM77.6767 74.5933L65.9453 77.3747V38.9587C66.7164 39.6747 68.7267 41.5198 68.7267 41.5198C68.7267 41.5198 72.031 41.5749 72.1962 41.5749C72.3615 41.5749 72.5818 41.7126 72.6094 41.9329C72.6369 42.1532 77.6767 74.5933 77.6767 74.5933Z" fill="white"/>
+          </svg>
+        </div>
+        <div class="rootsyntax-video-partner-label"> 
+           <span>
+           ✴  Shopify Plus Partner
+           </span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</premium-video-hero-{{ section_id }}>
+
+<script>
+  (function() {
+    class PremiumVideoHero{{ section_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.video = this.querySelector('.rootsyntax-video-hero-video-{{ section_id }}');
+      }
+
+      connectedCallback() {
+        if (this.video) {
+          this.video.play().catch(() => {});
+        }
+      }
+    }
+
+    customElements.define('premium-video-hero-{{ section_id }}', PremiumVideoHero{{ section_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Custom hero video",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>High-Converting<br>Ecommerce <strong>Experiences</strong></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Create stunning, conversion-optimized online stores that captivate your customers and drive sales with premium design and seamless user experience.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "Text",
+      "default": "Get Started"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Link"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_bg",
+      "label": "Background color",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Text",
+      "default": "Watch Demo"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Floating icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_floating_animation",
+      "label": "Enable floating animation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 60,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_icon_1",
+      "label": "Floating icon 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_icon_2",
+      "label": "Floating icon 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_icon_3",
+      "label": "Floating icon 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_icon_4",
+      "label": "Floating icon 4"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading size desktop",
+      "min": 32,
+      "max": 88,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading size mobile",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "label": "Description size desktop",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "label": "Description size mobile",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#F97316"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom hero video"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

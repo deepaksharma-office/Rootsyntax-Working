@@ -1,0 +1,825 @@
+{% doc %}
+  @prompt
+    Create a **“Platforms We Migrate From”** section in the existing RootSyntax website style, matching the provided reference design as closely as possible.
+    
+    Use **native Shopify Horizon sections** and keep everything editable in the Theme Editor. Do not create a completely custom page section.
+    
+    ### Design
+    
+    * Full-width dark/black background
+    * Premium minimal RootSyntax aesthetic
+    * Subtle purple glow on the left and orange glow on the right
+    * Center-aligned content
+    * Maximum content width around 1200px
+    * Generous vertical spacing
+    * White text with RootSyntax orange accent `#FF6A00`
+    * Very subtle purple/orange borders
+    * No unnecessary illustrations or large graphics
+    
+    ### Heading
+    
+    Small orange uppercase eyebrow:
+    **WE MIGRATE FROM**
+    
+    Main heading:
+    **Platforms We Migrate From**
+    
+    Make “Migrate From” orange and the rest white.
+    
+    Supporting text:
+    **We make your migration to Shopify seamless, secure, and stress-free from the platforms you’re already using.**
+    
+    ### Migration Grid
+    
+    Create a single large rounded rectangular container below the heading.
+    
+    Use a **2-column × 6-row grid** with exactly these items:
+    
+    **Left column**
+    
+    1. Magento to Shopify
+    2. Wix to Shopify
+    3. Squarespace to Shopify
+    4. Volusion to Shopify
+    5. GoDaddy to Shopify
+    6. Square to Shopify
+    
+    **Right column**
+    
+    1. Shopify to Shopify Plus
+    2. BigCommerce to Shopify
+    3. Webflow to Shopify
+    4. Etsy to Shopify
+    5. Custom Cart to Shopify
+    6. eBay to Shopify
+    
+    ### Grid Styling
+    
+    * Background: near-black `#09090B`
+    * Very subtle purple-to-orange gradient glow
+    * Thin `1px` dark purple/gray border
+    * Rounded corners: approximately 14px
+    * Each row separated by extremely subtle horizontal dividers
+    * Center vertical divider between the two columns
+    * Each item has an orange `→` arrow inside a subtle circular outline
+    * Arrow and circle should be purple/orange accented
+    * Text is white/light gray
+    * Font size around 17–18px desktop
+    * Comfortable horizontal and vertical padding
+    * No filled light-colored boxes
+    
+    ### Responsive
+    
+    Desktop: 2 columns × 6 rows.
+    
+    Tablet: 2 columns with reduced spacing.
+    
+    Mobile: 1 column, with all 12 migration options stacked vertically.
+    
+    ### Theme Editor Controls
+    
+    Make these editable:
+    
+    * Eyebrow text
+    * Heading
+    * Highlighted heading text
+    * Description
+    * Every migration item
+    * Arrow/icon
+    * Background color
+    * Accent color
+    * Border color
+    * Border radius
+    * Grid spacing
+    * Section padding
+    * Desktop/mobile column layout
+    
+    Use Horizon's native **Multicolumn / Rich Text / Grid-compatible section structure** wherever possible so the section remains easy to customize.
+    
+    The final result should visually match the reference: **minimal black background, centered heading, orange accent typography, and a large premium two-column migration list with subtle purple/orange glowing borders.**
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-migrate-section-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding_top }}px 20px {{ block.settings.section_padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-migrate-section-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: radial-gradient(ellipse at left, {{ block.settings.glow_color_left }}, transparent 70%);
+    opacity: {{ block.settings.glow_opacity | divided_by: 100.0 }};
+    pointer-events: none;
+  }
+
+  .ai-migrate-section-{{ ai_gen_id }}::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: radial-gradient(ellipse at right, {{ block.settings.glow_color_right }}, transparent 70%);
+    opacity: {{ block.settings.glow_opacity | divided_by: 100.0 }};
+    pointer-events: none;
+  }
+
+  .ai-migrate-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ai-migrate-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: {{ block.settings.header_spacing }}px;
+  }
+
+  .ai-migrate-eyebrow-{{ ai_gen_id }} {
+    font-size: {{ block.settings.eyebrow_size }}px;
+    color: {{ block.settings.accent_color }};
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  .ai-migrate-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.text_color }};
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .ai-migrate-heading-{{ ai_gen_id }} .ai-migrate-highlight-{{ ai_gen_id }} {
+    color: {{ block.settings.accent_color }};
+  }
+
+  .ai-migrate-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.text_color }};
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  .ai-migrate-grid-wrapper-{{ ai_gen_id }} {
+    background: {{ block.settings.grid_background }};
+    border: {{ block.settings.grid_border_width }}px solid {{ block.settings.grid_border_color }};
+    border-radius: {{ block.settings.grid_border_radius }}px;
+    padding: {{ block.settings.grid_padding }}px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-migrate-grid-wrapper-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: {{ block.settings.grid_border_radius }}px;
+    padding: 1px;
+    background: linear-gradient(135deg, {{ block.settings.glow_color_left }}, transparent 40%, transparent 60%, {{ block.settings.glow_color_right }});
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: {{ block.settings.gradient_border_opacity | divided_by: 100.0 }};
+    pointer-events: none;
+  }
+
+  .ai-migrate-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.desktop_columns }}, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .ai-migrate-grid-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background: {{ block.settings.divider_color }};
+    opacity: {{ block.settings.divider_opacity | divided_by: 100.0 }};
+  }
+
+  .ai-migrate-item-{{ ai_gen_id }} {
+    padding: {{ block.settings.item_padding }}px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid {{ block.settings.divider_color }};
+    transition: background 0.3s ease;
+  }
+
+  .ai-migrate-item-{{ ai_gen_id }}:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .ai-migrate-item-{{ ai_gen_id }}:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .ai-migrate-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    border-radius: 50%;
+    border: 1px solid {{ block.settings.icon_border_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .ai-migrate-icon-{{ ai_gen_id }} svg {
+    width: 16px;
+    height: 16px;
+    stroke: {{ block.settings.accent_color }};
+    stroke-width: 2;
+  }
+
+  .ai-migrate-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.item_text_size }}px;
+    color: {{ block.settings.text_color }};
+    font-weight: 400;
+    opacity: 0.95;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-migrate-section-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding_top | times: 0.6 }}px 16px {{ block.settings.section_padding_bottom | times: 0.6 }}px;
+    }
+
+    .ai-migrate-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-migrate-grid-{{ ai_gen_id }}::before {
+      display: none;
+    }
+
+    .ai-migrate-item-{{ ai_gen_id }}:last-child {
+      border-bottom: none;
+    }
+
+    .ai-migrate-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.6 }}px;
+    }
+
+    .ai-migrate-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size | times: 0.9 }}px;
+    }
+
+    .ai-migrate-grid-wrapper-{{ ai_gen_id }} {
+      padding: {{ block.settings.grid_padding | times: 0.7 }}px;
+    }
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .ai-migrate-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-migrate-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-migrate-container-{{ ai_gen_id }}">
+    <div class="ai-migrate-header-{{ ai_gen_id }}">
+      {% if block.settings.eyebrow != blank %}
+        <div class="ai-migrate-eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow }}</div>
+      {% endif %}
+
+      {% if block.settings.heading != blank %}
+        <h2 class="ai-migrate-heading-{{ ai_gen_id }}">
+          {{ block.settings.heading_part_1 }}
+          {% if block.settings.heading_highlight != blank %}
+            <span class="ai-migrate-highlight-{{ ai_gen_id }}">{{ block.settings.heading_highlight }}</span>
+          {% endif %}
+          {{ block.settings.heading_part_2 }}
+        </h2>
+      {% endif %}
+
+      {% if block.settings.description != blank %}
+        <div class="ai-migrate-description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+      {% endif %}
+    </div>
+
+    <div class="ai-migrate-grid-wrapper-{{ ai_gen_id }}">
+      <div class="ai-migrate-grid-{{ ai_gen_id }}">
+        {% if block.settings.item_1 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_1 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_2 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_2 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_3 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_3 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_4 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_4 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_5 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_5 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_6 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_6 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_7 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_7 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_8 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_8 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_9 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_9 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_10 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_10 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_11 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_11 }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.item_12 != blank %}
+          <div class="ai-migrate-item-{{ ai_gen_id }}">
+            <div class="ai-migrate-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ai-migrate-text-{{ ai_gen_id }}">{{ block.settings.item_12 }}</div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Platforms we migrate from",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "WE MIGRATE FROM"
+    },
+    {
+      "type": "text",
+      "id": "heading_part_1",
+      "label": "Heading part 1",
+      "default": "Platforms We"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading highlight",
+      "default": "Migrate From"
+    },
+    {
+      "type": "text",
+      "id": "heading_part_2",
+      "label": "Heading part 2"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We make your migration to Shopify seamless, secure, and stress-free from the platforms you're already using."
+    },
+    {
+      "type": "header",
+      "content": "Migration items"
+    },
+    {
+      "type": "text",
+      "id": "item_1",
+      "label": "Item 1",
+      "default": "Magento to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_2",
+      "label": "Item 2",
+      "default": "Shopify to Shopify Plus"
+    },
+    {
+      "type": "text",
+      "id": "item_3",
+      "label": "Item 3",
+      "default": "Wix to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_4",
+      "label": "Item 4",
+      "default": "BigCommerce to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_5",
+      "label": "Item 5",
+      "default": "Squarespace to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_6",
+      "label": "Item 6",
+      "default": "Webflow to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_7",
+      "label": "Item 7",
+      "default": "Volusion to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_8",
+      "label": "Item 8",
+      "default": "Etsy to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_9",
+      "label": "Item 9",
+      "default": "GoDaddy to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_10",
+      "label": "Item 10",
+      "default": "Custom Cart to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_11",
+      "label": "Item 11",
+      "default": "Square to Shopify"
+    },
+    {
+      "type": "text",
+      "id": "item_12",
+      "label": "Item 12",
+      "default": "eBay to Shopify"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum content width",
+      "min": 800,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "Desktop columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Header spacing",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#FF6A00"
+    },
+    {
+      "type": "color",
+      "id": "glow_color_left",
+      "label": "Left glow",
+      "default": "#8B5CF6"
+    },
+    {
+      "type": "color",
+      "id": "glow_color_right",
+      "label": "Right glow",
+      "default": "#FF6A00"
+    },
+    {
+      "type": "range",
+      "id": "glow_opacity",
+      "label": "Glow opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Grid style"
+    },
+    {
+      "type": "color",
+      "id": "grid_background",
+      "label": "Grid background",
+      "default": "#09090B"
+    },
+    {
+      "type": "color",
+      "id": "grid_border_color",
+      "label": "Grid border",
+      "default": "#27272A"
+    },
+    {
+      "type": "range",
+      "id": "grid_border_width",
+      "label": "Grid border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "grid_border_radius",
+      "label": "Grid border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "gradient_border_opacity",
+      "label": "Gradient border opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "grid_padding",
+      "label": "Grid padding",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#27272A"
+    },
+    {
+      "type": "range",
+      "id": "divider_opacity",
+      "label": "Divider opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Item style"
+    },
+    {
+      "type": "range",
+      "id": "item_padding",
+      "label": "Item padding",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "icon_border_color",
+      "label": "Icon border",
+      "default": "#27272A"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_text_size",
+      "label": "Item text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    }
+  ],
+  "presets": [
+    {
+      "name": "Platforms we migrate from"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1107 @@
+{% doc %}
+  @prompt
+    # Shopify Horizon AI Prompt – Editable Video Hero with Blocks
+    
+    Create a premium, responsive Hero Banner for the Shopify **Horizon theme**, matching the attached reference image. Keep the cinematic dark/futuristic style, centered content, orange accent, background video, and floating glass icons.
+    
+    ### Hero Layout
+    
+    * Full-width hero with responsive height.
+    * Center all main content vertically and horizontally.
+    * Support uploaded background MP4 video with autoplay, muted, loop, and playsinline.
+    * Add editable fallback image and dark overlay.
+    * Prevent horizontal scrolling.
+    
+    ### Hero Content
+    
+    Make these editable in the Theme Editor:
+    
+    * Heading with rich-text support.
+    * Highlight/accent color for selected heading text.
+    * Description.
+    * Primary CTA text + link.
+    * Secondary CTA text + link + play icon.
+    
+    Desktop buttons should be side-by-side; mobile buttons should stack.
+    
+    ### NEW: Editable Content Blocks
+    
+    Use **Shopify section blocks** so merchants can add, remove, and reorder elements from the Theme Editor.
+    
+    Create a block type called **Hero Feature/Icon** with:
+    
+    * Image picker for my custom icon/image.
+    * Optional text.
+    * Optional link.
+    * Image size control.
+    * Spacing control.
+    * Show/hide text option.
+    
+    Place these blocks **directly underneath the CTA buttons**, centered horizontally.
+    
+    The default design should support **one centered icon/image under the CTAs**, matching the reference. If multiple blocks are added, display them neatly in a centered horizontal row on desktop and stack/ wrap them responsively on mobile.
+    
+    Allow unlimited reasonable blocks.
+    
+    ### Floating Glass Icons
+    
+    Add 4 separate editable image settings:
+    
+    * Top Left
+    * Bottom Left
+    * Top Right
+    * Bottom Right
+    
+    Each icon should have a subtle floating animation, slight rotation, and responsive sizing. Never allow them to overlap the hero content.
+    
+    ### Theme Editor Settings
+    
+    Include controls for:
+    
+    * Background video
+    * Fallback image
+    * Overlay opacity
+    * Hero height
+    * Heading
+    * Description
+    * CTA text/links
+    * Accent color
+    * Text color
+    * Floating icon images
+    * Enable/disable floating animation
+    * Hero Feature/Icon blocks
+    
+    ### Responsive Design
+    
+    Desktop: large heading, centered content, floating icons, horizontal CTAs and feature blocks.
+    
+    Mobile: smaller heading, stacked CTAs, smaller floating icons, and vertically stacked feature blocks. Ensure nothing overlaps or causes horizontal scrolling.
+    
+    ### Visual Style
+    
+    Premium, modern, futuristic, minimal, conversion-focused. Use smooth animations, strong typography, rounded CTA buttons, subtle glass effects, and clean spacing.
+    
+    ### Performance
+    
+    Use lightweight CSS animations with transforms, minimal JavaScript, responsive images, and optimized video handling. Maintain strong Lighthouse performance and accessibility.
+    , # Shopify Horizon AI Prompt – Centered Hero + Larger Feature Icon
+    
+    Update the existing Hero section to match the attached reference.
+    
+    ### Main Content Alignment
+    
+    Make the entire hero content **strictly center aligned**:
+    
+    * Heading centered horizontally.
+    * Subheading centered horizontally.
+    * Primary and secondary CTA buttons centered as a group.
+    * Feature icon centered directly underneath the CTA buttons.
+    * Keep equal spacing between heading → subheading → CTAs → feature icon.
+    
+    Do not allow any of these elements to shift left or right on desktop, tablet, or mobile.
+    
+    ### Heading
+    
+    * Large, bold, premium typography.
+    * Center aligned.
+    * Keep the existing highlighted accent text.
+    * Allow heading text and highlighted text to remain editable.
+    * Maximum width around 800px and centered.
+    
+    ### Subheading
+    
+    * Center aligned.
+    * Maximum width around 650px.
+    * Keep it visually balanced below the heading.
+    
+    ### CTA Buttons
+    
+    * Center both buttons as a single group.
+    * Keep them side-by-side on desktop.
+    * Stack them vertically on mobile.
+    * Maintain consistent spacing between buttons.
+    
+    ### Featured Icon – IMPORTANT
+    
+    Keep the **Hero Feature/Icon as an editable Shopify block** so I can add, remove, and reorder it from the Theme Editor.
+    
+    For the featured icon:
+    
+    * Place it **directly underneath the CTA buttons**.
+    * Center it perfectly horizontally.
+    * Increase the icon/image size significantly compared with the current version.
+    * Default recommended width: **140–180px desktop**.
+    * Allow the merchant to control the icon size from the Theme Editor.
+    * Mobile default: **100–130px**.
+    * Preserve the original image aspect ratio.
+    * Do not crop or distort the uploaded image.
+    * Add an optional text field below the icon.
+    * Keep the entire feature block centered.
+    
+    ### Feature Blocks
+    
+    Allow multiple feature blocks to be added/removed from the Theme Editor.
+    
+    Each block should support:
+    
+    * Custom image/icon
+    * Custom text
+    * Optional link
+    * Image size control
+    * Spacing control
+    * Show/hide text
+    
+    If only one feature block exists, display it **large and centered underneath the CTAs**.
+    
+    If multiple blocks are added, keep them centered in a clean horizontal row on desktop and stack them on mobile.
+    
+    ### Floating Glass Icons
+    
+    Keep the four decorative floating glass icons in their existing corner positions:
+    
+    * Top left
+    * Top right
+    * Bottom left
+    * Bottom right
+    
+    They must never interfere with the centered hero content.
+    
+    ### Responsive
+    
+    Desktop:
+    **Heading → Subheading → CTA buttons → Large centered feature icon**
+    
+    Mobile:
+    **Heading → Subheading → CTA buttons → Large centered feature icon**
+    
+    Ensure perfect alignment, responsive spacing, no overlap, and no horizontal scrolling.
+    
+    Keep the existing dark cinematic background/video, orange accent color, animations, and premium visual style unchanged.
+    , can you make the the heading subheading cta button middle or center align 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-video-hero-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: {{ block.settings.hero_height_desktop }}vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+  }
+
+  .ai-video-hero-background-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .ai-video-hero-video-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+
+  .ai-video-hero-fallback-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-video-hero-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, {{ block.settings.overlay_opacity | divided_by: 100.0 }});
+    z-index: 2;
+  }
+
+  .ai-video-hero-content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 40px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-video-hero-heading-wrapper-{{ ai_gen_id }} {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 24px;
+    text-align: center;
+  }
+
+  .ai-video-hero-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size_desktop }}px;
+    line-height: 1.1;
+    margin: 0 auto;
+    color: {{ block.settings.text_color }};
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .ai-video-hero-heading-{{ ai_gen_id }} p {
+    margin: 0;
+    text-align: center;
+  }
+
+  .ai-video-hero-heading-{{ ai_gen_id }} em {
+    color: {{ block.settings.accent_color }};
+    font-style: normal;
+  }
+
+  .ai-video-hero-description-wrapper-{{ ai_gen_id }} {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+
+  .ai-video-hero-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size_desktop }}px;
+    line-height: 1.6;
+    margin: 0 auto;
+    color: {{ block.settings.text_color }};
+    opacity: 0.9;
+    text-align: center;
+  }
+
+  .ai-video-hero-description-{{ ai_gen_id }} p {
+    margin: 0;
+    text-align: center;
+  }
+
+  .ai-video-hero-cta-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+
+  .ai-video-hero-cta-primary-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    background-color: {{ block.settings.primary_button_bg }};
+    color: {{ block.settings.primary_button_text }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+  }
+
+  .ai-video-hero-cta-primary-{{ ai_gen_id }}:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+  }
+
+  .ai-video-hero-cta-secondary-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background-color: {{ block.settings.secondary_button_bg }};
+    color: {{ block.settings.secondary_button_text }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-weight: 600;
+    font-size: 16px;
+    border: 1px solid {{ block.settings.secondary_button_border }};
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .ai-video-hero-cta-secondary-{{ ai_gen_id }}:hover {
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .ai-video-hero-play-icon-{{ ai_gen_id }} {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ai-video-hero-features-{{ ai_gen_id }} {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .ai-video-hero-feature-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: {{ block.settings.feature_spacing }}px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-video-hero-feature-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+  }
+
+  .ai-video-hero-feature-image-{{ ai_gen_id }} {
+    width: {{ block.settings.feature_image_size_desktop }}px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .ai-video-hero-feature-text-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .ai-video-hero-floating-icon-{{ ai_gen_id }} {
+    position: absolute;
+    z-index: 2;
+    width: {{ block.settings.floating_icon_size }}px;
+    height: {{ block.settings.floating_icon_size }}px;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  .ai-video-hero-floating-icon-{{ ai_gen_id }}.top-left {
+    top: 10%;
+    left: 5%;
+  }
+
+  .ai-video-hero-floating-icon-{{ ai_gen_id }}.bottom-left {
+    bottom: 15%;
+    left: 8%;
+  }
+
+  .ai-video-hero-floating-icon-{{ ai_gen_id }}.top-right {
+    top: 15%;
+    right: 5%;
+  }
+
+  .ai-video-hero-floating-icon-{{ ai_gen_id }}.bottom-right {
+    bottom: 10%;
+    right: 8%;
+  }
+
+  {% if block.settings.enable_floating_animation %}
+    @keyframes ai-float-{{ ai_gen_id }}-1 {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+
+    @keyframes ai-float-{{ ai_gen_id }}-2 {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-25px) rotate(-5deg);
+      }
+    }
+
+    @keyframes ai-float-{{ ai_gen_id }}-3 {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-18px) rotate(3deg);
+      }
+    }
+
+    @keyframes ai-float-{{ ai_gen_id }}-4 {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-22px) rotate(-3deg);
+      }
+    }
+
+    .ai-video-hero-floating-icon-{{ ai_gen_id }}.top-left {
+      animation: ai-float-{{ ai_gen_id }}-1 4s ease-in-out infinite;
+    }
+
+    .ai-video-hero-floating-icon-{{ ai_gen_id }}.bottom-left {
+      animation: ai-float-{{ ai_gen_id }}-2 5s ease-in-out infinite;
+    }
+
+    .ai-video-hero-floating-icon-{{ ai_gen_id }}.top-right {
+      animation: ai-float-{{ ai_gen_id }}-3 4.5s ease-in-out infinite;
+    }
+
+    .ai-video-hero-floating-icon-{{ ai_gen_id }}.bottom-right {
+      animation: ai-float-{{ ai_gen_id }}-4 5.5s ease-in-out infinite;
+    }
+  {% endif %}
+
+  @media screen and (max-width: 749px) {
+    .ai-video-hero-{{ ai_gen_id }} {
+      height: {{ block.settings.hero_height_mobile }}vh;
+    }
+
+    .ai-video-hero-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size_mobile }}px;
+    }
+
+    .ai-video-hero-heading-wrapper-{{ ai_gen_id }} {
+      margin-bottom: 16px;
+    }
+
+    .ai-video-hero-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size_mobile }}px;
+    }
+
+    .ai-video-hero-description-wrapper-{{ ai_gen_id }} {
+      margin-bottom: 24px;
+    }
+
+    .ai-video-hero-cta-wrapper-{{ ai_gen_id }} {
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    .ai-video-hero-cta-primary-{{ ai_gen_id }},
+    .ai-video-hero-cta-secondary-{{ ai_gen_id }} {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .ai-video-hero-features-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .ai-video-hero-feature-image-{{ ai_gen_id }} {
+      width: {{ block.settings.feature_image_size_mobile }}px;
+    }
+
+    .ai-video-hero-floating-icon-{{ ai_gen_id }} {
+      width: {{ block.settings.floating_icon_size | times: 0.6 }}px;
+      height: {{ block.settings.floating_icon_size | times: 0.6 }}px;
+    }
+
+    .ai-video-hero-floating-icon-{{ ai_gen_id }}.top-left {
+      top: 5%;
+      left: 3%;
+    }
+
+    .ai-video-hero-floating-icon-{{ ai_gen_id }}.bottom-left {
+      bottom: 8%;
+      left: 3%;
+    }
+
+    .ai-video-hero-floating-icon-{{ ai_gen_id }}.top-right {
+      top: 8%;
+      right: 3%;
+    }
+
+    .ai-video-hero-floating-icon-{{ ai_gen_id }}.bottom-right {
+      bottom: 5%;
+      right: 3%;
+    }
+  }
+{% endstyle %}
+
+<video-hero-{{ ai_gen_id }} class="ai-video-hero-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-video-hero-background-{{ ai_gen_id }}">
+    {% if block.settings.background_video != blank %}
+      <video
+        class="ai-video-hero-video-{{ ai_gen_id }}"
+        autoplay
+        muted
+        loop
+        playsinline
+        {% if block.settings.fallback_image != blank %}
+          poster="{{ block.settings.fallback_image | image_url: width: 2000 }}"
+        {% endif %}
+      >
+        <source src="{{ block.settings.background_video }}" type="video/mp4">
+      </video>
+    {% elsif block.settings.fallback_image != blank %}
+      <img
+        src="{{ block.settings.fallback_image | image_url: width: 2000 }}"
+        alt="{{ block.settings.fallback_image.alt | escape }}"
+        class="ai-video-hero-fallback-{{ ai_gen_id }}"
+        loading="eager"
+      >
+    {% endif %}
+  </div>
+
+  <div class="ai-video-hero-overlay-{{ ai_gen_id }}"></div>
+
+  {% if block.settings.floating_icon_top_left != blank %}
+    <img
+      src="{{ block.settings.floating_icon_top_left | image_url: width: 200 }}"
+      alt=""
+      class="ai-video-hero-floating-icon-{{ ai_gen_id }} top-left"
+      loading="lazy"
+    >
+  {% endif %}
+
+  {% if block.settings.floating_icon_bottom_left != blank %}
+    <img
+      src="{{ block.settings.floating_icon_bottom_left | image_url: width: 200 }}"
+      alt=""
+      class="ai-video-hero-floating-icon-{{ ai_gen_id }} bottom-left"
+      loading="lazy"
+    >
+  {% endif %}
+
+  {% if block.settings.floating_icon_top_right != blank %}
+    <img
+      src="{{ block.settings.floating_icon_top_right | image_url: width: 200 }}"
+      alt=""
+      class="ai-video-hero-floating-icon-{{ ai_gen_id }} top-right"
+      loading="lazy"
+    >
+  {% endif %}
+
+  {% if block.settings.floating_icon_bottom_right != blank %}
+    <img
+      src="{{ block.settings.floating_icon_bottom_right | image_url: width: 200 }}"
+      alt=""
+      class="ai-video-hero-floating-icon-{{ ai_gen_id }} bottom-right"
+      loading="lazy"
+    >
+  {% endif %}
+
+  <div class="ai-video-hero-content-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <div class="ai-video-hero-heading-wrapper-{{ ai_gen_id }}">
+        <h1 class="ai-video-hero-heading-{{ ai_gen_id }}">
+          {{ block.settings.heading }}
+        </h1>
+      </div>
+    {% endif %}
+
+    {% if block.settings.description != blank %}
+      <div class="ai-video-hero-description-wrapper-{{ ai_gen_id }}">
+        <div class="ai-video-hero-description-{{ ai_gen_id }}">
+          {{ block.settings.description }}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="ai-video-hero-cta-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.primary_cta_text != blank %}
+        <a
+          href="{{ block.settings.primary_cta_link }}"
+          class="ai-video-hero-cta-primary-{{ ai_gen_id }}"
+        >
+          {{ block.settings.primary_cta_text }}
+        </a>
+      {% endif %}
+
+      {% if block.settings.secondary_cta_text != blank %}
+        <a
+          href="{{ block.settings.secondary_cta_link }}"
+          class="ai-video-hero-cta-secondary-{{ ai_gen_id }}"
+        >
+          <svg class="ai-video-hero-play-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          {{ block.settings.secondary_cta_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% assign has_features = false %}
+    {% if block.settings.feature_1_image != blank or block.settings.feature_2_image != blank or block.settings.feature_3_image != blank %}
+      {% assign has_features = true %}
+    {% endif %}
+
+    {% if has_features %}
+      <div class="ai-video-hero-features-{{ ai_gen_id }}">
+        {% if block.settings.feature_1_image != blank %}
+          {% if block.settings.feature_1_link != blank %}
+            <a href="{{ block.settings.feature_1_link }}" class="ai-video-hero-feature-{{ ai_gen_id }}">
+              <img
+                src="{{ block.settings.feature_1_image | image_url: width: 400 }}"
+                alt="{{ block.settings.feature_1_image.alt | escape }}"
+                class="ai-video-hero-feature-image-{{ ai_gen_id }}"
+                loading="lazy"
+              >
+              {% if block.settings.show_feature_text and block.settings.feature_1_text != blank %}
+                <span class="ai-video-hero-feature-text-{{ ai_gen_id }}">
+                  {{ block.settings.feature_1_text }}
+                </span>
+              {% endif %}
+            </a>
+          {% else %}
+            <div class="ai-video-hero-feature-{{ ai_gen_id }}">
+              <img
+                src="{{ block.settings.feature_1_image | image_url: width: 400 }}"
+                alt="{{ block.settings.feature_1_image.alt | escape }}"
+                class="ai-video-hero-feature-image-{{ ai_gen_id }}"
+                loading="lazy"
+              >
+              {% if block.settings.show_feature_text and block.settings.feature_1_text != blank %}
+                <span class="ai-video-hero-feature-text-{{ ai_gen_id }}">
+                  {{ block.settings.feature_1_text }}
+                </span>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endif %}
+
+        {% if block.settings.feature_2_image != blank %}
+          {% if block.settings.feature_2_link != blank %}
+            <a href="{{ block.settings.feature_2_link }}" class="ai-video-hero-feature-{{ ai_gen_id }}">
+              <img
+                src="{{ block.settings.feature_2_image | image_url: width: 400 }}"
+                alt="{{ block.settings.feature_2_image.alt | escape }}"
+                class="ai-video-hero-feature-image-{{ ai_gen_id }}"
+                loading="lazy"
+              >
+              {% if block.settings.show_feature_text and block.settings.feature_2_text != blank %}
+                <span class="ai-video-hero-feature-text-{{ ai_gen_id }}">
+                  {{ block.settings.feature_2_text }}
+                </span>
+              {% endif %}
+            </a>
+          {% else %}
+            <div class="ai-video-hero-feature-{{ ai_gen_id }}">
+              <img
+                src="{{ block.settings.feature_2_image | image_url: width: 400 }}"
+                alt="{{ block.settings.feature_2_image.alt | escape }}"
+                class="ai-video-hero-feature-image-{{ ai_gen_id }}"
+                loading="lazy"
+              >
+              {% if block.settings.show_feature_text and block.settings.feature_2_text != blank %}
+                <span class="ai-video-hero-feature-text-{{ ai_gen_id }}">
+                  {{ block.settings.feature_2_text }}
+                </span>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endif %}
+
+        {% if block.settings.feature_3_image != blank %}
+          {% if block.settings.feature_3_link != blank %}
+            <a href="{{ block.settings.feature_3_link }}" class="ai-video-hero-feature-{{ ai_gen_id }}">
+              <img
+                src="{{ block.settings.feature_3_image | image_url: width: 400 }}"
+                alt="{{ block.settings.feature_3_image.alt | escape }}"
+                class="ai-video-hero-feature-image-{{ ai_gen_id }}"
+                loading="lazy"
+              >
+              {% if block.settings.show_feature_text and block.settings.feature_3_text != blank %}
+                <span class="ai-video-hero-feature-text-{{ ai_gen_id }}">
+                  {{ block.settings.feature_3_text }}
+                </span>
+              {% endif %}
+            </a>
+          {% else %}
+            <div class="ai-video-hero-feature-{{ ai_gen_id }}">
+              <img
+                src="{{ block.settings.feature_3_image | image_url: width: 400 }}"
+                alt="{{ block.settings.feature_3_image.alt | escape }}"
+                class="ai-video-hero-feature-image-{{ ai_gen_id }}"
+                loading="lazy"
+              >
+              {% if block.settings.show_feature_text and block.settings.feature_3_text != blank %}
+                <span class="ai-video-hero-feature-text-{{ ai_gen_id }}">
+                  {{ block.settings.feature_3_text }}
+                </span>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</video-hero-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class VideoHero{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.style.display = 'block';
+      }
+
+      connectedCallback() {
+        const video = this.querySelector('.ai-video-hero-video-{{ ai_gen_id }}');
+        if (video) {
+          video.play().catch(() => {});
+        }
+      }
+    }
+
+    customElements.define('video-hero-{{ ai_gen_id }}', VideoHero{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Video hero",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "url",
+      "id": "background_video",
+      "label": "Background video URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "fallback_image",
+      "label": "Fallback image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Hero dimensions"
+    },
+    {
+      "type": "range",
+      "id": "hero_height_desktop",
+      "label": "Desktop height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "hero_height_mobile",
+      "label": "Mobile height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "default": 70
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Transform Your <em>Digital Experience</em></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Discover cutting-edge solutions designed for the future</p>"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading size desktop",
+      "min": 32,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading size mobile",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "label": "Description size desktop",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "label": "Description size mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Primary CTA"
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Button text",
+      "default": "Get Started"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary CTA"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Button text",
+      "default": "Watch Demo"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_bg",
+      "label": "Primary button background",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_text",
+      "label": "Primary button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_bg",
+      "label": "Secondary button background",
+      "default": "rgba(255, 255, 255, 0.1)"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_text",
+      "label": "Secondary button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_border",
+      "label": "Secondary button border",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Feature icons"
+    },
+    {
+      "type": "range",
+      "id": "feature_image_size_desktop",
+      "label": "Desktop image size",
+      "min": 80,
+      "max": 240,
+      "step": 10,
+      "unit": "px",
+      "default": 160
+    },
+    {
+      "type": "range",
+      "id": "feature_image_size_mobile",
+      "label": "Mobile image size",
+      "min": 60,
+      "max": 180,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "feature_spacing",
+      "label": "Spacing",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "show_feature_text",
+      "label": "Show text",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Feature 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_text",
+      "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "feature_1_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Feature 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_text",
+      "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "feature_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Feature 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_text",
+      "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "feature_3_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Floating icons"
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_icon_top_left",
+      "label": "Top left icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_icon_bottom_left",
+      "label": "Bottom left icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_icon_top_right",
+      "label": "Top right icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_icon_bottom_right",
+      "label": "Bottom right icon"
+    },
+    {
+      "type": "range",
+      "id": "floating_icon_size",
+      "label": "Icon size",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_floating_animation",
+      "label": "Enable floating animation",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video hero"
+    }
+  ]
+}
+{% endschema %}

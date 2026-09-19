@@ -1,0 +1,79 @@
+<div class="smooth-fire-bg">
+  <div class="smooth-fire-gradient"></div>
+</div>
+
+<style>
+    .smooth-fire-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    }
+
+  .smooth-fire-gradient {
+    position: absolute;
+
+    width: 130%;
+    height: 85%;
+
+    left: -15%;
+    bottom: -38%;
+
+    background: radial-gradient(
+      ellipse at center,
+      rgba(38, 55, 190, 0.95) 0%,
+      rgba(78, 65, 165, 0.9) 22%,
+      rgba(135, 75, 130, 0.9) 42%,
+      rgba(190, 80, 75, 0.9) 62%,
+      rgba(255, 105, 10, 0.95) 80%,
+      rgba(255, 120, 10, 0.65) 90%,
+      transparent 100%
+    );
+
+    filter: blur(75px);
+
+    transform-origin: center bottom;
+
+    animation: smoothFire 4s ease-in-out infinite;
+
+    will-change: transform;
+  }
+
+  @keyframes smoothFire {
+    0% {
+      transform:
+        translate3d(-2%, 3%, 0)
+        scaleX(1)
+        scaleY(1);
+    }
+
+    25% {
+      transform:
+        translate3d(2%, -2%, 0)
+        scaleX(1.04)
+        scaleY(1.08);
+    }
+
+    50% {
+      transform:
+        translate3d(4%, -5%, 0)
+        scaleX(1.08)
+        scaleY(1.13);
+    }
+
+    75% {
+      transform:
+        translate3d(-1%, -2%, 0)
+        scaleX(1.03)
+        scaleY(1.07);
+    }
+
+    100% {
+      transform:
+        translate3d(-2%, 3%, 0)
+        scaleX(1)
+        scaleY(1);
+    }
+  }
+</style>

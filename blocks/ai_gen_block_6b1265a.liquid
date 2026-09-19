@@ -1,0 +1,1318 @@
+{% doc %}
+  @prompt
+    Here's a detailed **Shopify AI prompt** that will recreate this section as closely as possible to the reference UI.
+    
+    ---
+    
+    ### Shopify AI Prompt
+    
+    **Create a premium dark-themed "Blog / Insights" section that exactly matches the attached reference.**
+    
+    #### Section Layout
+    
+    * Full-width section.
+    * Background color: **#000000**.
+    * Max content width: **1320px**.
+    * Center the entire content.
+    * Top padding: **90px**.
+    * Bottom padding: **100px**.
+    * Horizontal padding: **24px desktop**, **20px tablet**, **16px mobile**.
+    
+    ---
+    
+    ### Heading
+    
+    Center align.
+    
+    Title:
+    
+    **Insights for**
+    **Ecommerce Growth**
+    
+    Typography:
+    
+    * Font Weight: 800
+    * Font Size: 64px desktop
+    * 48px tablet
+    * 34px mobile
+    * Line height: 1.05
+    * Letter spacing: -2px
+    
+    Colors:
+    
+    * "Insights for" → White (#FFFFFF)
+    * "Ecommerce" → Lime Green (#9CCB2F)
+    * "Growth" → White (#FFFFFF)
+    
+    Spacing below heading:
+    50px
+    
+    ---
+    
+    ### Blog Cards Grid
+    
+    Desktop:
+    
+    * 3 columns
+    * Equal width
+    
+    Tablet:
+    
+    * 2 columns
+    
+    Mobile:
+    
+    * Single column
+    
+    Gap:
+    24px
+    
+    ---
+    
+    ### Card Design
+    
+    Each card should have:
+    
+    Background:
+    #121212
+    
+    Border:
+    1px solid rgba(255,255,255,.08)
+    
+    Border Radius:
+    18px
+    
+    Overflow:
+    Hidden
+    
+    Transition:
+    0.3s ease
+    
+    Hover:
+    
+    * translateY(-6px)
+    * slightly brighter border
+    * image zoom 1.05
+    
+    ---
+    
+    ### Featured Image
+    
+    Top image.
+    
+    Height:
+    230px
+    
+    Width:
+    100%
+    
+    Object-fit:
+    Cover
+    
+    Top corners rounded.
+    
+    ---
+    
+    ### Category Badge
+    
+    Place on top-left of image.
+    
+    Background:
+    #ECECEC
+    
+    Text Color:
+    #8DB62E
+    
+    Padding:
+    8px 16px
+    
+    Border Radius:
+    999px
+    
+    Font:
+    13px
+    
+    Weight:
+    600
+    
+    Examples:
+    
+    * AI Ethics
+    * Machine Learning
+    * Future Tech
+    
+    ---
+    
+    ### Card Content
+    
+    Padding:
+    24px
+    
+    ---
+    
+    ### Date
+    
+    Color:
+    #7B7B7B
+    
+    Font Size:
+    14px
+    
+    Weight:
+    400
+    
+    Example:
+    
+    May 12, 2026
+    
+    Spacing:
+    20px below image
+    
+    ---
+    
+    ### Blog Title
+    
+    Large bold heading.
+    
+    Font Size:
+    38px
+    
+    Weight:
+    700
+    
+    Color:
+    White
+    
+    Line Height:
+    1.25
+    
+    Limit:
+    3 lines
+    
+    Spacing below:
+    22px
+    
+    ---
+    
+    ### Description
+    
+    Color:
+    #A7A7A7
+    
+    Font Size:
+    18px
+    
+    Weight:
+    400
+    
+    Line Height:
+    1.7
+    
+    Limit:
+    3 lines
+    
+    Spacing below:
+    30px
+    
+    ---
+    
+    ### Read More Link
+    
+    Place at bottom left.
+    
+    Text:
+    Read More
+    
+    Color:
+    #9CCB2F
+    
+    Font Weight:
+    600
+    
+    Font Size:
+    17px
+    
+    Add a right arrow icon after the text.
+    
+    Arrow should animate slightly to the right on hover.
+    
+    Whole row is clickable.
+    
+    ---
+    
+    ### Images
+    
+    Use Shopify Blog featured image.
+    
+    Fallback placeholder if image is missing.
+    
+    ---
+    
+    ### Dynamic Content
+    
+    Connect with Shopify Blog.
+    
+    Display:
+    
+    * Featured Image
+    * Blog Category/Tag
+    * Published Date
+    * Blog Title
+    * Blog Excerpt
+    * Read More Button
+    
+    Maximum:
+    3 blog posts.
+    
+    ---
+    
+    ### Animations
+    
+    When section enters viewport:
+    
+    * Fade Up
+    * Duration: 700ms
+    * Stagger cards by 120ms.
+    
+    Hover:
+    
+    * Card lifts
+    * Image zooms
+    * Arrow slides right
+    * Border becomes brighter
+    
+    ---
+    
+    ### Responsive
+    
+    Desktop:
+    
+    * 3 equal cards
+    
+    Tablet:
+    
+    * 2 cards
+    
+    Mobile:
+    
+    * Single column
+    * Heading centered
+    * Cards full width
+    * Maintain 18px radius
+    * Images height 220px
+    
+    ---
+    
+    ### Styling
+    
+    Maintain the exact premium aesthetic of the reference:
+    
+    * Pure black background
+    * Dark charcoal cards
+    * Large bold typography
+    * Lime green accent (#9CCB2F)
+    * Rounded modern cards
+    * Clean spacing
+    * Editorial magazine-inspired layout
+    * Pixel-perfect alignment with generous whitespace
+    * Smooth hover animations
+    * No shadows, relying on subtle borders and contrast for depth
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-blog-insights-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_top }}px {{ block.settings.padding_horizontal_desktop }}px {{ block.settings.padding_bottom }}px;
+  }
+
+  .ai-blog-insights-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-blog-insights-heading-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: {{ block.settings.heading_spacing }}px;
+  }
+
+  .ai-blog-insights-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size_desktop }}px;
+    font-weight: {{ block.settings.heading_weight }};
+    line-height: {{ block.settings.heading_line_height }};
+    letter-spacing: {{ block.settings.heading_letter_spacing }}px;
+    margin: 0;
+  }
+
+  .ai-blog-insights-title-line1-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color_line1 }};
+  }
+
+  .ai-blog-insights-title-accent-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_accent_color }};
+  }
+
+  .ai-blog-insights-title-line2-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color_line2 }};
+  }
+
+  .ai-blog-insights-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+  }
+
+  .ai-blog-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border: {{ block.settings.card_border_width }}px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    transition: all {{ block.settings.hover_transition_duration }}s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .ai-blog-card-{{ ai_gen_id }}.ai-blog-card-visible-{{ ai_gen_id }} {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ai-blog-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-6px);
+    border-color: {{ block.settings.card_border_hover_color }};
+  }
+
+  .ai-blog-card-link-{{ ai_gen_id }} {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .ai-blog-card-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: {{ block.settings.image_height }}px;
+    overflow: hidden;
+  }
+
+  .ai-blog-card-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform {{ block.settings.hover_transition_duration }}s ease;
+  }
+
+  .ai-blog-card-{{ ai_gen_id }}:hover .ai-blog-card-image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-blog-card-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-blog-card-image-placeholder-{{ ai_gen_id }} svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+
+  .ai-blog-card-badge-{{ ai_gen_id }} {
+    position: absolute;
+    top: {{ block.settings.badge_position_top }}px;
+    left: {{ block.settings.badge_position_left }}px;
+    background-color: {{ block.settings.badge_background }};
+    color: {{ block.settings.badge_text_color }};
+    padding: {{ block.settings.badge_padding_vertical }}px {{ block.settings.badge_padding_horizontal }}px;
+    border-radius: {{ block.settings.badge_border_radius }}px;
+    font-size: {{ block.settings.badge_font_size }}px;
+    font-weight: {{ block.settings.badge_font_weight }};
+    text-transform: uppercase;
+  }
+
+  .ai-blog-card-content-{{ ai_gen_id }} {
+    padding: {{ block.settings.card_padding }}px;
+  }
+
+  .ai-blog-card-date-{{ ai_gen_id }} {
+    color: {{ block.settings.date_color }};
+    font-size: {{ block.settings.date_font_size }}px;
+    font-weight: {{ block.settings.date_font_weight }};
+    margin-bottom: {{ block.settings.date_spacing }}px;
+  }
+
+  .ai-blog-card-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_title_size }}px;
+    font-weight: {{ block.settings.card_title_weight }};
+    color: {{ block.settings.card_title_color }};
+    line-height: {{ block.settings.card_title_line_height }};
+    margin: 0 0 {{ block.settings.title_spacing }}px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ai-blog-card-description-{{ ai_gen_id }} {
+    color: {{ block.settings.description_color }};
+    font-size: {{ block.settings.description_font_size }}px;
+    font-weight: {{ block.settings.description_font_weight }};
+    line-height: {{ block.settings.description_line_height }};
+    margin-bottom: {{ block.settings.description_spacing }}px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ai-blog-card-read-more-{{ ai_gen_id }} {
+    color: {{ block.settings.read_more_color }};
+    font-size: {{ block.settings.read_more_font_size }}px;
+    font-weight: {{ block.settings.read_more_font_weight }};
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-blog-card-arrow-{{ ai_gen_id }} {
+    transition: transform {{ block.settings.hover_transition_duration }}s ease;
+  }
+
+  .ai-blog-card-{{ ai_gen_id }}:hover .ai-blog-card-arrow-{{ ai_gen_id }} {
+    transform: translateX(4px);
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-blog-insights-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_top_tablet }}px {{ block.settings.padding_horizontal_tablet }}px {{ block.settings.padding_bottom_tablet }}px;
+    }
+
+    .ai-blog-insights-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size_tablet }}px;
+    }
+
+    .ai-blog-insights-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_tablet }}, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-blog-insights-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_top_mobile }}px {{ block.settings.padding_horizontal_mobile }}px {{ block.settings.padding_bottom_mobile }}px;
+    }
+
+    .ai-blog-insights-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size_mobile }}px;
+    }
+
+    .ai-blog-insights-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-blog-card-image-wrapper-{{ ai_gen_id }} {
+      height: {{ block.settings.image_height_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<blog-insights-{{ ai_gen_id }} class="ai-blog-insights-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-blog-insights-container-{{ ai_gen_id }}">
+    <div class="ai-blog-insights-heading-{{ ai_gen_id }}">
+      <h2 class="ai-blog-insights-title-{{ ai_gen_id }}">
+        <span class="ai-blog-insights-title-line1-{{ ai_gen_id }}">{{ block.settings.heading_line1 }}</span>
+        <br>
+        <span class="ai-blog-insights-title-accent-{{ ai_gen_id }}">{{ block.settings.heading_accent }}</span>
+        <span class="ai-blog-insights-title-line2-{{ ai_gen_id }}"> {{ block.settings.heading_line2 }}</span>
+      </h2>
+    </div>
+
+    <div class="ai-blog-insights-grid-{{ ai_gen_id }}">
+      {% if block.settings.blog != blank %}
+        {% assign articles = block.settings.blog.articles | limit: block.settings.max_posts %}
+        {% for article in articles %}
+          <article class="ai-blog-card-{{ ai_gen_id }}" data-card-index="{{ forloop.index }}">
+            <a href="{{ article.url }}" class="ai-blog-card-link-{{ ai_gen_id }}">
+              <div class="ai-blog-card-image-wrapper-{{ ai_gen_id }}">
+                {% if article.image %}
+                  <img
+                    src="{{ article.image | image_url: width: 800 }}"
+                    alt="{{ article.image.alt | escape }}"
+                    class="ai-blog-card-image-{{ ai_gen_id }}"
+                    loading="lazy"
+                    width="800"
+                    height="{{ block.settings.image_height }}"
+                  >
+                {% else %}
+                  <div class="ai-blog-card-image-placeholder-{{ ai_gen_id }}">
+                    {{ 'image' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+
+                {% if article.tags.size > 0 %}
+                  <div class="ai-blog-card-badge-{{ ai_gen_id }}">
+                    {{ article.tags.first }}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="ai-blog-card-content-{{ ai_gen_id }}">
+                <div class="ai-blog-card-date-{{ ai_gen_id }}">
+                  {{ article.published_at | date: '%B %d, %Y' }}
+                </div>
+
+                <h3 class="ai-blog-card-title-{{ ai_gen_id }}">
+                  {{ article.title }}
+                </h3>
+
+                {% if article.excerpt != blank %}
+                  <div class="ai-blog-card-description-{{ ai_gen_id }}">
+                    {{ article.excerpt | strip_html }}
+                  </div>
+                {% endif %}
+
+                <div class="ai-blog-card-read-more-{{ ai_gen_id }}">
+                  {{ block.settings.read_more_text }}
+                  <svg class="ai-blog-card-arrow-{{ ai_gen_id }}" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..3) %}
+          <article class="ai-blog-card-{{ ai_gen_id }}" data-card-index="{{ i }}">
+            <div class="ai-blog-card-link-{{ ai_gen_id }}">
+              <div class="ai-blog-card-image-wrapper-{{ ai_gen_id }}">
+                <div class="ai-blog-card-image-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+                <div class="ai-blog-card-badge-{{ ai_gen_id }}">
+                  {% if i == 1 %}AI Ethics{% elsif i == 2 %}Machine Learning{% else %}Future Tech{% endif %}
+                </div>
+              </div>
+
+              <div class="ai-blog-card-content-{{ ai_gen_id }}">
+                <div class="ai-blog-card-date-{{ ai_gen_id }}">
+                  May 12, 2026
+                </div>
+
+                <h3 class="ai-blog-card-title-{{ ai_gen_id }}">
+                  {% if i == 1 %}
+                    The Future of Ethical AI in Ecommerce
+                  {% elsif i == 2 %}
+                    Machine Learning Trends Shaping Retail
+                  {% else %}
+                    Next-Gen Technology for Growth
+                  {% endif %}
+                </h3>
+
+                <div class="ai-blog-card-description-{{ ai_gen_id }}">
+                  Discover how cutting-edge technology is transforming the way businesses connect with customers and drive sustainable growth in the digital age.
+                </div>
+
+                <div class="ai-blog-card-read-more-{{ ai_gen_id }}">
+                  {{ block.settings.read_more_text }}
+                  <svg class="ai-blog-card-arrow-{{ ai_gen_id }}" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</blog-insights-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class BlogInsights{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupIntersectionObserver();
+      }
+
+      setupIntersectionObserver() {
+        const cards = this.querySelectorAll('.ai-blog-card-{{ ai_gen_id }}');
+        const staggerDelay = {{ block.settings.stagger_delay }};
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const card = entry.target;
+              const index = parseInt(card.getAttribute('data-card-index')) - 1;
+              const delay = index * staggerDelay;
+
+              setTimeout(() => {
+                card.classList.add('ai-blog-card-visible-{{ ai_gen_id }}');
+              }, delay);
+
+              observer.unobserve(card);
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        cards.forEach((card) => {
+          observer.observe(card);
+        });
+      }
+    }
+
+    customElements.define('blog-insights-{{ ai_gen_id }}', BlogInsights{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Blog insights",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Blog source"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "range",
+      "id": "max_posts",
+      "label": "Maximum posts",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading line 1",
+      "default": "Insights for"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading accent word",
+      "default": "Ecommerce"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Heading line 2",
+      "default": "Growth"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_line1",
+      "label": "Line 1 color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_accent_color",
+      "label": "Accent color",
+      "default": "#9CCB2F"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_line2",
+      "label": "Line 2 color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Desktop size",
+      "min": 24,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "heading_size_tablet",
+      "label": "Tablet size",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "heading_weight",
+      "label": "Font weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Line height",
+      "min": 0.8,
+      "max": 1.5,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "label": "Letter spacing",
+      "min": -4,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": -2
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Spacing below heading",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1320
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Tablet columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid gap",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "label": "Horizontal padding desktop",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "label": "Top padding tablet",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "label": "Bottom padding tablet",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_tablet",
+      "label": "Horizontal padding tablet",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "rgba(255, 255, 255, 0.08)"
+    },
+    {
+      "type": "color",
+      "id": "card_border_hover_color",
+      "label": "Card border hover",
+      "default": "rgba(255, 255, 255, 0.15)"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Desktop height",
+      "min": 150,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 230
+    },
+    {
+      "type": "range",
+      "id": "image_height_mobile",
+      "label": "Mobile height",
+      "min": 150,
+      "max": 350,
+      "step": 10,
+      "unit": "px",
+      "default": 220
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Background",
+      "default": "#ECECEC"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text color",
+      "default": "#8DB62E"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "badge_font_weight",
+      "label": "Font weight",
+      "min": 400,
+      "max": 700,
+      "step": 100,
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_vertical",
+      "label": "Vertical padding",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "badge_position_top",
+      "label": "Position from top",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "badge_position_left",
+      "label": "Position from left",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Date"
+    },
+    {
+      "type": "color",
+      "id": "date_color",
+      "label": "Color",
+      "default": "#7B7B7B"
+    },
+    {
+      "type": "range",
+      "id": "date_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "date_font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "date_spacing",
+      "label": "Spacing below",
+      "min": 5,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Card title"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "label": "Font size",
+      "min": 18,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "card_title_weight",
+      "label": "Font weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "card_title_line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.3
+    },
+    {
+      "type": "range",
+      "id": "title_spacing",
+      "label": "Spacing below",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Color",
+      "default": "#A7A7A7"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "description_font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 600,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "description_line_height",
+      "label": "Line height",
+      "min": 1.2,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.7
+    },
+    {
+      "type": "range",
+      "id": "description_spacing",
+      "label": "Spacing below",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Read more link"
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Text",
+      "default": "Read More"
+    },
+    {
+      "type": "color",
+      "id": "read_more_color",
+      "label": "Color",
+      "default": "#9CCB2F"
+    },
+    {
+      "type": "range",
+      "id": "read_more_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "read_more_font_weight",
+      "label": "Font weight",
+      "min": 400,
+      "max": 700,
+      "step": 100,
+      "default": 600
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "hover_transition_duration",
+      "label": "Hover transition",
+      "min": 0.1,
+      "max": 1,
+      "step": 0.1,
+      "unit": "s",
+      "default": 0.3
+    },
+    {
+      "type": "range",
+      "id": "stagger_delay",
+      "label": "Card stagger delay",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "ms",
+      "default": 120
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog insights"
+    }
+  ]
+}
+{% endschema %}

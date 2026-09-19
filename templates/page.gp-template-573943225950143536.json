@@ -1,0 +1,238 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gp_section_573943243130012441": {
+      "settings": {
+        "checksum": "017cfc0e14b9d326310b46b07c750b32ff02ff43706d30276b59f90b4328566a_1_1_1_0__1",
+        "gg1KwAqOTJv_errorMessage": "Can’t send email. Please try again later.",
+        "gg1KwAqOTJv_successMessage": "Thanks for contacting us. We'll get back to you as soon as possible.",
+        "ggJk7a9l-yT_placeholder": "Name",
+        "ggUYReKgQoE_text": "<p>From Shopify to Custom Web Development — we design fast, scalable, and conversion-focused websites tailored to your business goals.</p>",
+        "gg_eGdwRsqb_placeholder": "Email",
+        "ggbfg4cb8Dr_label": "Get a Free Website Quote",
+        "ggce9OrBCZV_text": "<p>Free Website Audit Today only, hurry up!</p><p>&nbsp;</p><p>✔️ <i>3000+ Websites Delivered Worldwide</i></p><p>&nbsp;</p>",
+        "ggdSQNs3JOG_text": "Custom Websites That Drive Results",
+        "gghhfm0lxKz_background_desktop_videoHtml5": "https://cdn.shopify.com/videos/c/o/v/c87d02b9969047c0abe3ecfe4625ef86.mp4",
+        "gghhfm0lxKz_background_mobile_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "gghhfm0lxKz_background_tablet_image_src": "https://ucarecdn.com/53ff8b78-e3c0-4007-8f6d-aa4b632bd7a0/",
+        "gghhfm0lxKz_background_tablet_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggqLIrKmDKy_background_mobile_image_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-f4c9836a-af2f-43b9-af22-1b14fad0cb92.png",
+        "ggyjLeQRl3e_placeholder": "Your Message",
+        "section_preload": "true"
+      },
+      "type": "gp-section-573943243130012441"
+    },
+    "gp_section_573943243683660569": {
+      "settings": {
+        "checksum": "d32162bb98bb2917020393efdf6148c3a19013e157a84bd08107a63ba59f61a0_1_1_1_0__1",
+        "gg4eOmM0KGH_text": "<p>100%</p>",
+        "ggEaK8M4xI9_text": "<p>Global Clients</p>",
+        "ggIv55FhhiD_text": "<p>10+</p>",
+        "ggLGl9zAOQf_text": "<p>3K+</p>",
+        "ggZdxWk9E7g_text": "<strong>Why Choose Us?</strong>",
+        "ggf3N0z3UU7_text": "<p>Customer Success Achieved&nbsp;</p>",
+        "ggiDTX2hUP9_text": "<p>Websites Delivered&nbsp;</p>",
+        "ggvpCkpfAIb_text": "<p>Years Of Expertise&nbsp;</p>",
+        "ggwBnTuOmMg_text": "<p>1K+</p>"
+      },
+      "type": "gp-section-573943243683660569"
+    },
+    "gp_section_573943243750769433": {
+      "settings": {
+        "checksum": "9830c6ff7769b765f79c36f8344317db06211cf057fd125a77a3ff818a112b78_1_1_1_0__1"
+      },
+      "type": "gp-section-573943243750769433"
+    },
+    "gp_section_573943243767546928": {
+      "settings": {
+        "checksum": "5b6b1cfb0976f2ca319ebd029bb5e722d00fa2eb7b4fdad563bc7a4c5c95de83_1_1_1_0__1",
+        "gg3yqscrJlV_text": "<p>Website Design &amp; Development</p>",
+        "gg7xFzZQGrp_text": "<p>eCommerce Development</p>",
+        "ggP7sDzQPCu_text": "<p>We build scalable, secure, and conversion-focused eCommerce solutions tailored to your business needs—whether you're starting from scratch or enhancing your existing store.</p>",
+        "ggQa5eOOm8q_text": "Our Services / What We Offer",
+        "ggayb-Fb0ws_text": "<p>Craft visually stunning, fast, and user-friendly websites tailored to your brand and business goals. From concept to launch, we build responsive, SEO-optimized websites that convert visitors into customers.</p>",
+        "ggekucECnib_alt": "Alt Image",
+        "ggekucECnib_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-6ce56088-0817-43cd-b82b-cac072cda75e.jpg",
+        "ggekucECnib_title": "Image Title",
+        "ggmbAp9X_Jl_text": "<p>Launch a powerful Shopify store that reflects your brand. We handle everything from initial setup to advanced theme customization, ensuring a seamless shopping experience that drives sales.</p>",
+        "ggoygv83Xpt_text": "<p>Shopify Store Setup &amp; Customization</p>",
+        "ggsIHylSp6e_alt": "Alt Image",
+        "ggsIHylSp6e_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-0aa247a7-9f4d-4690-8068-5237ca33507b.jpg",
+        "ggsIHylSp6e_title": "Image Title",
+        "ggwd3db0c0U_alt": "Alt Image",
+        "ggwd3db0c0U_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-f4c9836a-af2f-43b9-af22-1b14fad0cb92.png",
+        "ggwd3db0c0U_title": "Image Title"
+      },
+      "type": "gp-section-573943243767546928"
+    },
+    "gp_section_573951651199583280": {
+      "settings": {
+        "checksum": "1fa643741b39698ff7569287b8f6e91f8f3de9d7a1d468875defacbe35c8b736_1_1_1_0__1",
+        "gg7597P4I6W_text": "Portfolio",
+        "gg9Qps98zkb_text": "<p>COPAN TRADE</p>",
+        "ggBV3ZCoSNc_text": "<p>From design to deployment, everything was smooth. The team was always responsive and proactive...</p>",
+        "ggKfUGcqX53_srcSet_desktop_src": "https://www.rootsyntax.com/cdn/shop/files/Screenshot_2025-05-30_225646.png?v=1748626020",
+        "ggNyjz4sI4B_srcSet_desktop_src": "https://www.rootsyntax.com/cdn/shop/files/Screenshot_2025-05-30_223713.png?v=1748625071",
+        "ggRhyLMrJ0j_text": "<p>MICHELE TAUGUSTIN</p>",
+        "ggStLlWt0kd_srcSet_desktop_src": "https://www.rootsyntax.com/cdn/shop/files/Screenshot_2025-03-29_175453.png?v=1743251118",
+        "gggoQkkQ5vz_text": "<p>TEVEO</p>",
+        "ggkmF_Et0Jz_text": "<p>Our new site is not only beautiful but also super responsive. Thanks to RootSyntax, our bounce rate dropped significantly...</p>",
+        "ggsZlOMquyg_text": "<p>They understood our business needs perfectly and built a website that truly reflects our brand. Highly recommended...</p>",
+        "ggvhmc-_nDP_text": "<p>LUNA MICROCARE</p>",
+        "ggy3HviNmGE_text": "<p>Fantastic web development team! They delivered exactly what we envisioned — on time and with great support...</p>",
+        "ggzKXsAz-I5_srcSet_desktop_src": "https://www.rootsyntax.com/cdn/shop/files/Screenshot_2025-03-29_181357.png?v=1743252252"
+      },
+      "type": "gp-section-573951651199583280"
+    },
+    "gp_section_573951869202727787": {
+      "settings": {
+        "checksum": "c2431232c0f2ae6bfe2591458ec327455d24b42bdabcd9614b694bec48450470_1_1_1_0__1",
+        "gg1c5FKC0H8_srcSet_desktop_src": "https://www.rootsyntax.com/cdn/shop/files/Screenshot_2025-05-30_223641.png?v=1748625069",
+        "gg3Fdnq8M2r_text": "<p>EYWA NATURE&nbsp;</p>",
+        "ggDODwW03rP_text": "<p>MESTIZA NEWYORK</p>",
+        "ggKatCOKkqu_srcSet_desktop_src": "https://www.rootsyntax.com/cdn/shop/files/Screenshot_2025-05-30_223525.png?v=1748625058",
+        "ggMKH1UJhrX_text": "<p>The best experience we've had with a dev agency. RootSyntax nailed the UI/UX and boosted our conversions...</p>",
+        "ggP6OG9qzKK_text": "<p>They don’t just build websites — they build solutions. Excellent communication and solid technical expertise...</p>",
+        "ggRy2TXCrR6_text": "<p>SHOP TINY HAND&nbsp;</p>",
+        "ggjOmd7DAtJ_text": "<p>RootSyntax helped us migrate to Shopify without any SEO loss. Our traffic remained stable and sales improved...</p>",
+        "ggoq1Kesznz_text": "<p>From design to deployment, everything was smooth. The team was always responsive and proactive....</p>",
+        "ggsEke4ET-7_srcSet_desktop_src": "https://www.rootsyntax.com/cdn/shop/files/Screenshot_2025-05-30_223738.png?v=1748625071",
+        "ggsJY_XUe9m_srcSet_desktop_src": "https://www.rootsyntax.com/cdn/shop/files/Screenshot_2025-03-29_181300.png?v=1743252194",
+        "ggt5flQ1-dx_text": "<p>CUSTOM JEWELLERY AUSTRALIA</p>"
+      },
+      "type": "gp-section-573951869202727787"
+    },
+    "gp_section_573957390081197104": {
+      "settings": {
+        "checksum": "bdd8929af49daf3fb7f13763a45d303ae35d9975c268bc12770fe8f468d39753_1_1_1_0__1",
+        "gg-4B2rUAmP_text": "<p>Great team, smooth process, supportive and on-time delivery.</p>",
+        "gg0DVi2XJJr_text": "What Our Clients Are Saying",
+        "gg58Ap20l9x_text": "<p>We needed a quick addition to the homepage of our site which is running a highly customized template. RootSyntax was prompt, their services complete and at a good value. We will definitely contact in the future.</p>",
+        "gg90wU02Izs_text": "<p>- Sonoran Gold Honey</p>",
+        "gg9_KwkiHMg_text": "<p>RootSyntax Technologies was a pleasure to work with and help me to accomplish all that I wanted with my website! Audrey was qucik to reply to my questions and my website received all of the upgrades I had wanted.</p>",
+        "gg9kwx7ftdp_text": "<p>- Table Wraps</p>",
+        "ggBN2DX9aVp_text": "<p>Pleasant experience, responsive team, all upgrades delivered.</p>",
+        "ggC5Hgfd1xU_text": "<p>- Rare Aviation</p>",
+        "ggHLnHhtSCH_text": "<p>- 3 Monkeys Publishing</p>",
+        "ggLIaxc4fkc_text": "<p>Work well for my problem feet</p>",
+        "ggO2vmUf6Cs_text": "<p>Quick, valuable service on customized homepage update.</p>",
+        "ggOkMOswdD1_text": "<p>- Rare Aviation</p>",
+        "ggOuQqzrTFO_text": "<p>Our customer advocates are standing by 24/7 to support you via email.</p>",
+        "ggQrPGyPoL-_text": "<p>- Table Wraps</p>",
+        "ggShp3wthVA_text": "<p>- Pine House</p>",
+        "gg_XBjbzpd-_text": "<p>Awesome job. Will hire again. Great communications. It was delivered as promised. The best part was they did not require micromanaging. Just got on with the work and finished the project on time and budget.</p>",
+        "ggb5PWkGiNI_text": "<p>- Kiryosity</p>",
+        "ggcHMiami19_text": "<p>We couldn’t be happier with the incredible work done by our Shopify partner who revamped our website! &nbsp;Their expertise, creativity, and attention to detail have completely transformed our online store into a modern, user-friendly, and visually stunning platform. From seamless navigation to sleek design elements, every aspect of the site reflects their deep understanding of e-commerce and our brand vision.</p>",
+        "ggdEz11IsG8_text": "<p>Expert revamp delivered stunning, user-friendly Shopify store.</p>",
+        "gggVfz4fWxP_text": "<p>My experience in putting together a website was zero. &nbsp;Rootsyntax listened to my needs and delivered. &nbsp;I love my website! &nbsp;The instructional videos on how to make changes have been very helpful with a slight challenge on language barrier.</p>",
+        "ggkI8qE1MAs_text": "<p>Audrey and her team did an amazing &nbsp;job. They were very easy to work with and to communicate with. &nbsp;They really listened to me when creating my website. My project was completed on time, and I was left with the tools and support I need to makesure my project runs smoothly in the future. Rootsyntax is worth the price.</p>",
+        "ggoXzed3swj_text": "<p>Great work, timely delivery, no micromanagement needed.</p>",
+        "ggoeJvhZY4-_text": "<p>Awesome job. Will hire again. Great communications. It was delivered as promised. The best part was they did not require micromanaging. Just got on with the work and finished the project on time and budget.</p>",
+        "ggqs-PMFmXN_text": "<p>You're walking on a cloud!</p>",
+        "ggvyj7kQsGM_text": "<p>Rootsyntax delivered helpful, loved website.</p>",
+        "ggyFpTNYy_V_text": "<p>We needed a quick addition to the homepage of our site which is running a highly customized template. RootSyntax was prompt, their services complete and at a good value. We will definitely contact in the future.</p>"
+      },
+      "type": "gp-section-573957390081197104"
+    },
+    "gp_section_573957758877959019": {
+      "settings": {
+        "checksum": "7804ac8c4701c27a7204d1664b066617846cec18152e64519aaf13959b91e675_1_1_1_0__1",
+        "gg3nWc_I1nq_placeholder": "Enter your email",
+        "gg4cDrSJU5l_alt": "Alt Image",
+        "gg4cDrSJU5l_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-4d57cb4d-0959-45cd-b2b6-1e5fa3610c59.png",
+        "gg4cDrSJU5l_title": "Image Title",
+        "gg55iFyh5P8_text": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);font-size:16px;\">+1 352-218-5661</span></p>",
+        "gg6zVXSzLxK_text": "<p>Email</p>",
+        "gg7EhqFcZ-O_label": "Send Message",
+        "gg8jamzW4mL_alt": "Alt Image",
+        "gg8jamzW4mL_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-3ca615cc-3591-427a-ba6e-10f6cc55142b.png",
+        "gg8jamzW4mL_title": "Image Title",
+        "ggAVx_YJZNy_text": "<p>MESSAGE</p>",
+        "ggDH2ADK_nM_errorMessage": "Can’t send email. Please try again later.",
+        "ggDH2ADK_nM_successMessage": "Thanks for contacting us. We'll get back to you as soon as possible.",
+        "ggI7tiyavfT_placeholder": "Enter your message",
+        "ggJHZ4-mlIB_text": "<p>MESSAGE</p>",
+        "ggK0JrXE9gV_text": "<p>Fill up the form and our Team will get back to you within 24 hours</p>",
+        "ggLywBKIavk_text": "<p>NAME</p>",
+        "ggM5D1qyzcN_text": "<p>LAST NAME</p>",
+        "ggP5WReX1UT_placeholder": "Enter your first name",
+        "ggP5xuiIXG7_errorMessage": "Can’t send email. Please try again later.",
+        "ggP5xuiIXG7_successMessage": "Thanks for contacting us. We'll get back to you as soon as possible.",
+        "ggR46LuVZkN_placeholder": "Enter your message",
+        "ggVGzjsxYKl_placeholder": "Enter your first name",
+        "ggXPI0JIrxf_text": "<p>No spam, no obligation</p>",
+        "ggZiyQ6WoiP_label": "Send Message",
+        "ggaZyqLt9qs_text": "<p>NAME</p>",
+        "ggbtaoES3Bt_text": "<p>support@rootsyntax.com</p>",
+        "ggdcxlfcyGW_text": "<p>Contact Information</p>",
+        "ggdylIp-AiA_text": "<p>FIRST NAME</p>",
+        "ggfAhYJ-u6H_text": "<p>Email</p>",
+        "ggfVtTrEb-P_text": "<p>MESSAGE</p>",
+        "ggfyTiKJTEn_text": "<p>LAST NAME</p>",
+        "ggjaml5vh3M_text": "<p>Contact Info</p>",
+        "ggkDnx98gx1_text": "Talk to an Expert",
+        "ggkcTI3Y46n_placeholder": "Enter your email",
+        "ggl82y4CHCd_text": "<p>FIRST NAME</p>",
+        "ggq2q-Rw_Bs_text": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);font-size:16px;\">7901 4TH ST N STE 300,</span><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);font-size:16px;\">Saint Petersburg, FL 33702.</span></p>",
+        "ggreDJFSl8a_alt": "Alt Image",
+        "ggreDJFSl8a_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-ef1f25d1-d508-46a8-a04a-3053a6854709.png",
+        "ggreDJFSl8a_title": "Image Title",
+        "gguaQQLBP_I_text": "<p>MESSAGE</p>"
+      },
+      "type": "gp-section-573957758877959019"
+    },
+    "gp_section_573958366498390809": {
+      "settings": {
+        "checksum": "b4ecd5aa57642722c162e89ebe00240e6f5e1629f985fea6c95735cd2c401890_1_1_1_0__1",
+        "ggAt2YEaCYV_text": "<p>Yes, we offer maintenance plans, updates, and long-term support to keep your website running smoothly after launch.</p>",
+        "ggBLBQGHr3w_text": "<p>Absolutely. Every site we build is 100% responsive and optimized for speed, SEO, and user experience across all devices.</p>",
+        "ggL6L2g80OM_childItem_0": "<p><strong>How long will it take to develop my website?</strong></p>",
+        "ggL6L2g80OM_childItem_1": "<p>Do you offer Shopify, WordPress, or custom development?</p>",
+        "ggL6L2g80OM_childItem_2": "<p>Will my website be mobile-friendly and SEO-optimized?</p>",
+        "ggL6L2g80OM_childItem_3": "<p>What is the cost of a new website?</p>",
+        "ggL6L2g80OM_childItem_4": "<p>Do you provide ongoing support or updates?</p>",
+        "ggOqDmzMR4h_text": "<p>Have questions?<br>We have answers!</p>",
+        "ggh2wPUXBxR_text": "<p>Costs depend on features, design complexity, and platform. We offer competitive pricing starting from $50 or $10000. Get a free quote now!</p>",
+        "ggoa9d9F4z6_label": "<p>Get Started&nbsp;</p>",
+        "ggpq4RKXkea_text": "<p>Timelines vary based on complexity, but most websites are delivered within 30 business days. Urgent deliveries starting in 7-10 days are also available.</p>",
+        "ggzU01s7zKW_text": "<p>Yes, we specialize in Shopify, WordPress, Webflow, and fully custom-built websites using modern frameworks like React and Laravel.</p>"
+      },
+      "type": "gp-section-573958366498390809"
+    },
+    "gp_section_573959816234402667": {
+      "settings": {
+        "checksum": "b2b843f206fb206dbec4720ad5d2391aa08a50d593aefc1d57a4c060437736b7_1_1_1_0__1",
+        "ggCSU1XI2aa_text": "<p>A decade of building fast, scalable, and conversion-focused websites.</p>",
+        "ggEVTOGvKnv_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-989f56de-2a4f-4a31-8cab-b0272148fee6.png",
+        "ggKaWCMVEwL_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-38c411fe-4d51-478a-aab5-3f3541745634.png",
+        "ggRU07s2Hq5_text": "<p>Recognized Shopify Partner trusted for high-performing eCommerce stores.</p>",
+        "ggaNH_eVO4O_text": "<p>Trusted Shopify Partner</p>",
+        "ggkW4qHde1v_text": "<p>10 Years Of Expertise&nbsp;</p>",
+        "ggnYc3Robos_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0334/6943/1944/files/gempages_568308920112645057-e7ea54a3-3ffe-45e3-b2d5-f9bc86d33617.png",
+        "ggqa4gKPpKI_text": "<p>3000+ Projects&nbsp;</p>",
+        "ggtrvY4N_RC_text": "<p>Successfully delivered over 3000 websites across 15+ industries worldwide.</p>"
+      },
+      "type": "gp-section-573959816234402667"
+    }
+  },
+  "order": [
+    "gp_section_573943243130012441",
+    "gp_section_573943243683660569",
+    "gp_section_573943243767546928",
+    "gp_section_573951651199583280",
+    "gp_section_573951869202727787",
+    "gp_section_573957390081197104",
+    "gp_section_573957758877959019",
+    "gp_section_573958366498390809",
+    "gp_section_573959816234402667",
+    "gp_section_573943243750769433"
+  ]
+}

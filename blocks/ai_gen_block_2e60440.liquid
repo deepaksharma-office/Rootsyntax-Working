@@ -1,0 +1,2067 @@
+{% doc %}
+  @prompt
+    Based on your reference, I understand the flow:
+    
+    * **Filter Group 1:** Services (Build, Migrate, Marketing, Shopify Ongoing Support)
+    * **Filter Group 2:** Industries (Fashion, Coffee, Cosmetics, Electronics, etc.)
+    * **Case Study Grid:** Dynamically filters based on the selected Service + Industry.
+    * **Each card:** Website preview image, project name, short description, technology stack icons, and CTA.
+    
+    Since you're using **Shopify AI**, here's a detailed prompt that should generate a polished, premium section.
+    
+    ---
+    
+    # Shopify AI Prompt
+    
+    Create a premium **"Case Studies"** section for a Shopify agency website with a modern **black luxury theme** inspired by Linear, Vercel, Apple Developer, Framer and Stripe.
+    
+    The entire section should be fully customizable from the Shopify Theme Editor.
+    
+    ## Overall Design
+    
+    * Background: #080808
+    * Secondary Surface: #111111
+    * Card Background: #161616
+    * Border: rgba(255,255,255,0.08)
+    * Heading Color: #FFFFFF
+    * Secondary Text: #A1A1AA
+    * Accent Color: #FFFFFF
+    * Border Radius: 20px
+    * Large spacing with premium typography
+    * Smooth hover animations
+    * Fully responsive
+    
+    ---
+    
+    ## Section Header
+    
+    Large heading
+    
+    **CASE STUDIES**
+    
+    Below the heading add a short description
+    
+    "Explore some of the Shopify experiences we've designed, developed and optimized across multiple industries."
+    
+    ---
+    
+    # Filter Panel
+    
+    Create two independent filter groups.
+    
+    Both should support multiple options.
+    
+    Use pill buttons.
+    
+    Inactive
+    
+    * Background #1A1A1A
+    * Text #BDBDBD
+    
+    Active
+    
+    * White background
+    * Black text
+    * Slight shadow
+    * Smooth transition
+    
+    ---
+    
+    ## Filter Group 1
+    
+    Title
+    
+    Services
+    
+    Filter Pills
+    
+    * Build
+    * Migrate
+    * Marketing
+    * Shopify Ongoing Support
+    
+    ---
+    
+    ## Filter Group 2
+    
+    Title
+    
+    Industries
+    
+    Pills
+    
+    * Women's Boutique
+    * Clothing
+    * Cosmetics
+    * Sports
+    * Coffee
+    * Food & Nutrition
+    * Home Decor
+    * Furniture
+    * Jewelry
+    * Electronics
+    * Subscription
+    * Automotive
+    * Pet Store
+    * Print On Demand
+    
+    Allow merchants to add unlimited filters from Theme Editor.
+    
+    ---
+    
+    # Filtering Logic
+    
+    Each Case Study should support assigning
+    
+    * Multiple Services
+    * Multiple Industries
+    
+    Display only matching case studies.
+    
+    If only one filter group is selected, filter accordingly.
+    
+    If both are selected, show matching items only.
+    
+    Include an "All" option.
+    
+    Filtering must happen instantly with no page refresh.
+    
+    Use smooth fade animation.
+    
+    ---
+    
+    # Case Study Grid
+    
+    Desktop
+    
+    3 Cards per row
+    
+    Tablet
+    
+    2 Cards
+    
+    Mobile
+    
+    1 Card
+    
+    Large spacing between cards.
+    
+    ---
+    
+    # Case Study Card
+    
+    Premium floating card.
+    
+    Background
+    
+    #141414
+    
+    Border
+    
+    1px rgba(255,255,255,.08)
+    
+    Radius
+    
+    20px
+    
+    Overflow hidden.
+    
+    Soft shadow.
+    
+    Hover
+    
+    Lift card upward
+    
+    Scale image slightly
+    
+    Border becomes brighter
+    
+    Shadow increases
+    
+    Transition 300ms
+    
+    Cursor pointer.
+    
+    ---
+    
+    ## Website Header Preview
+    
+    At the top of every card display a screenshot of the website homepage.
+    
+    Use the screenshot exactly as uploaded by the merchant.
+    
+    Image
+    
+    * Full Width
+    * 16:9 Ratio
+    * Cover
+    * Rounded top corners
+    
+    On hover
+    
+    Image zoom 105%
+    
+    ---
+    
+    ## Project Name
+    
+    Large Bold
+    
+    Example
+    
+    TEVEO
+    
+    MESTIZA NEW YORK
+    
+    DANISH ENDURANCE
+    
+    Font Size
+    
+    24px
+    
+    Weight
+    
+    700
+    
+    White
+    
+    ---
+    
+    ## Short Description
+    
+    Maximum
+    
+    2 lines
+    
+    Examples
+    
+    "Performance-driven Shopify experience for a premium fitness apparel brand."
+    
+    "Luxury fashion storefront focused on storytelling and conversion."
+    
+    Color
+    
+    #B5B5B5
+    
+    Font
+    
+    16px
+    
+    ---
+    
+    ## Technology Stack
+    
+    Below description show icons representing technologies used.
+    
+    Display icons horizontally.
+    
+    Examples
+    
+    🟢 Shopify
+    
+    🟟 Shopify Plus
+    
+    🟢 Hydrogen
+    
+    🟢 Liquid
+    
+    🟢 Meta Ads
+    
+    🟢 Klaviyo
+    
+    🟢 Recharge
+    
+    🟢 Judge.me
+    
+    🟢 Yotpo
+    
+    🟢 GA4
+    
+    🟢 CRO
+    
+    🟢 SEO
+    
+    Use official SVG logos wherever possible.
+    
+    Icons inside rounded containers.
+    
+    Hover
+    
+    Small tooltip
+    
+    Example
+    
+    "Shopify Plus"
+    
+    Allow merchant to add/remove icons per project.
+    
+    ---
+    
+    ## Tags
+    
+    Below technologies add small badges.
+    
+    Examples
+    
+    Migration
+    
+    Design
+    
+    Development
+    
+    Optimization
+    
+    Retention
+    
+    Subscriptions
+    
+    SEO
+    
+    Apps
+    
+    Black pill
+    
+    White text
+    
+    ---
+    
+    ## Bottom CTA
+    
+    Add
+    
+    View Case Study →
+    
+    Button
+    
+    White
+    
+    Text Black
+    
+    Rounded
+    
+    Hover
+    
+    Invert colors
+    
+    ---
+    
+    # Theme Editor Settings
+    
+    Merchant should be able to add unlimited Case Studies.
+    
+    Each Case Study should have:
+    
+    * Project Name
+    * Short Description
+    * Website Screenshot
+    * Website URL
+    * Client Logo (optional)
+    * Services (multi-select)
+    * Industries (multi-select)
+    * Technology Icons
+    * Tags
+    * CTA Text
+    * CTA URL
+    
+    Merchant should also be able to reorder projects.
+    
+    ---
+    
+    # Animations
+    
+    Entire section fades upward.
+    
+    Cards stagger into view.
+    
+    Filter pills animate smoothly.
+    
+    Cards animate when filtering.
+    
+    Images zoom on hover.
+    
+    Buttons animate.
+    
+    No flashy effects.
+    
+    Everything should feel premium.
+    
+    ---
+    
+    # Performance
+    
+    * Native Shopify section
+    * No external libraries
+    * Lazy-load images
+    * Responsive images (`image_picker`)
+    * SVG icons
+    * Minimal JavaScript
+    * Fast filtering
+    * Accessibility compliant (keyboard navigation and ARIA labels)
+    
+    ---
+    
+    ## Visual Inspiration
+    
+    The final design should feel like a premium Shopify agency portfolio with a clean, editorial aest
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-case-studies-{{ ai_gen_id }} {
+    display: block;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding_top }}px 20px {{ block.settings.section_padding_bottom }}px;
+    width: 100%;
+  }
+
+  .ai-case-studies-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-case-studies-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .ai-case-studies-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .ai-case-studies-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .ai-case-studies-filters-{{ ai_gen_id }} {
+    margin-bottom: 48px;
+  }
+
+  .ai-case-studies-filter-group-{{ ai_gen_id }} {
+    margin-bottom: 32px;
+  }
+
+  .ai-case-studies-filter-title-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 600;
+    color: {{ block.settings.filter_title_color }};
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .ai-case-studies-filter-pills-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .ai-case-studies-filter-pill-{{ ai_gen_id }} {
+    padding: 10px 20px;
+    background-color: {{ block.settings.pill_inactive_bg }};
+    color: {{ block.settings.pill_inactive_text }};
+    border: none;
+    border-radius: {{ block.settings.pill_border_radius }}px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .ai-case-studies-filter-pill-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.pill_hover_bg }};
+    transform: translateY(-1px);
+  }
+
+  .ai-case-studies-filter-pill-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.pill_active_bg }};
+    color: {{ block.settings.pill_active_text }};
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  }
+
+  .ai-case-studies-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-case-studies-grid-{{ ai_gen_id }}.filtering {
+    opacity: 0.5;
+  }
+
+  .ai-case-studies-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_bg }};
+    border: 1px solid {{ block.settings.card_border }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-case-studies-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: {{ block.settings.card_border_hover }};
+  }
+
+  .ai-case-studies-card-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+    background-color: #0a0a0a;
+  }
+
+  .ai-case-studies-card-image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .ai-case-studies-card-{{ ai_gen_id }}:hover .ai-case-studies-card-image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-case-studies-card-content-{{ ai_gen_id }} {
+    padding: 28px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-case-studies-card-name-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_name_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.card_name_color }};
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .ai-case-studies-card-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_description_size }}px;
+    color: {{ block.settings.card_description_color }};
+    line-height: 1.5;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ai-case-studies-card-tech-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .ai-case-studies-tech-icon-{{ ai_gen_id }} {
+    width: 28px;
+    height: 28px;
+    background-color: {{ block.settings.tech_icon_bg }};
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: {{ block.settings.tech_icon_text }};
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+
+  .ai-case-studies-tech-icon-{{ ai_gen_id }}:hover {
+    transform: scale(1.1);
+  }
+
+  .ai-case-studies-tech-tooltip-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 10;
+  }
+
+  .ai-case-studies-tech-icon-{{ ai_gen_id }}:hover .ai-case-studies-tech-tooltip-{{ ai_gen_id }} {
+    opacity: 1;
+  }
+
+  .ai-case-studies-card-tags-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .ai-case-studies-tag-{{ ai_gen_id }} {
+    padding: 6px 12px;
+    background-color: {{ block.settings.tag_bg }};
+    color: {{ block.settings.tag_text }};
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .ai-case-studies-card-cta-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: {{ block.settings.cta_bg }};
+    color: {{ block.settings.cta_text }};
+    border-radius: {{ block.settings.cta_border_radius }}px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+  .ai-case-studies-card-cta-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.cta_hover_bg }};
+    color: {{ block.settings.cta_hover_text }};
+    transform: translateX(4px);
+  }
+
+  .ai-case-studies-card-cta-arrow-{{ ai_gen_id }} {
+    transition: transform 0.3s ease;
+  }
+
+  .ai-case-studies-card-cta-{{ ai_gen_id }}:hover .ai-case-studies-card-cta-arrow-{{ ai_gen_id }} {
+    transform: translateX(4px);
+  }
+
+  .ai-case-studies-empty-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 80px 20px;
+    color: {{ block.settings.description_color }};
+    font-size: 16px;
+  }
+
+  .ai-case-studies-card-{{ ai_gen_id }}.hidden {
+    display: none;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-case-studies-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .ai-case-studies-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.7);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-case-studies-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding_top | times: 0.6 }}px 16px {{ block.settings.section_padding_bottom | times: 0.6 }}px;
+    }
+
+    .ai-case-studies-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .ai-case-studies-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.5);
+    }
+
+    .ai-case-studies-description-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.description_size }}px * 0.9);
+    }
+
+    .ai-case-studies-filter-pills-{{ ai_gen_id }} {
+      gap: 8px;
+    }
+
+    .ai-case-studies-filter-pill-{{ ai_gen_id }} {
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+
+    .ai-case-studies-card-content-{{ ai_gen_id }} {
+      padding: 20px;
+    }
+  }
+{% endstyle %}
+
+<case-studies-{{ ai_gen_id }} class="ai-case-studies-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-case-studies-container-{{ ai_gen_id }}">
+    <div class="ai-case-studies-header-{{ ai_gen_id }}">
+      {% if block.settings.heading != blank %}
+        <h2 class="ai-case-studies-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+      {% endif %}
+      {% if block.settings.description != blank %}
+        <div class="ai-case-studies-description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+      {% endif %}
+    </div>
+
+    <div class="ai-case-studies-filters-{{ ai_gen_id }}">
+      {% if block.settings.show_service_filters %}
+        <div class="ai-case-studies-filter-group-{{ ai_gen_id }}">
+          <div class="ai-case-studies-filter-title-{{ ai_gen_id }}">{{ block.settings.service_filter_title }}</div>
+          <div class="ai-case-studies-filter-pills-{{ ai_gen_id }}" data-filter-type="service">
+            <button class="ai-case-studies-filter-pill-{{ ai_gen_id }} active" data-filter="all">
+              All
+            </button>
+            {% if block.settings.service_1 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.service_1 | handleize }}">
+                {{ block.settings.service_1 }}
+              </button>
+            {% endif %}
+            {% if block.settings.service_2 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.service_2 | handleize }}">
+                {{ block.settings.service_2 }}
+              </button>
+            {% endif %}
+            {% if block.settings.service_3 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.service_3 | handleize }}">
+                {{ block.settings.service_3 }}
+              </button>
+            {% endif %}
+            {% if block.settings.service_4 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.service_4 | handleize }}">
+                {{ block.settings.service_4 }}
+              </button>
+            {% endif %}
+            {% if block.settings.service_5 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.service_5 | handleize }}">
+                {{ block.settings.service_5 }}
+              </button>
+            {% endif %}
+            {% if block.settings.service_6 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.service_6 | handleize }}">
+                {{ block.settings.service_6 }}
+              </button>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_industry_filters %}
+        <div class="ai-case-studies-filter-group-{{ ai_gen_id }}">
+          <div class="ai-case-studies-filter-title-{{ ai_gen_id }}">{{ block.settings.industry_filter_title }}</div>
+          <div class="ai-case-studies-filter-pills-{{ ai_gen_id }}" data-filter-type="industry">
+            <button class="ai-case-studies-filter-pill-{{ ai_gen_id }} active" data-filter="all">
+              All
+            </button>
+            {% if block.settings.industry_1 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_1 | handleize }}">
+                {{ block.settings.industry_1 }}
+              </button>
+            {% endif %}
+            {% if block.settings.industry_2 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_2 | handleize }}">
+                {{ block.settings.industry_2 }}
+              </button>
+            {% endif %}
+            {% if block.settings.industry_3 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_3 | handleize }}">
+                {{ block.settings.industry_3 }}
+              </button>
+            {% endif %}
+            {% if block.settings.industry_4 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_4 | handleize }}">
+                {{ block.settings.industry_4 }}
+              </button>
+            {% endif %}
+            {% if block.settings.industry_5 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_5 | handleize }}">
+                {{ block.settings.industry_5 }}
+              </button>
+            {% endif %}
+            {% if block.settings.industry_6 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_6 | handleize }}">
+                {{ block.settings.industry_6 }}
+              </button>
+            {% endif %}
+            {% if block.settings.industry_7 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_7 | handleize }}">
+                {{ block.settings.industry_7 }}
+              </button>
+            {% endif %}
+            {% if block.settings.industry_8 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_8 | handleize }}">
+                {{ block.settings.industry_8 }}
+              </button>
+            {% endif %}
+            {% if block.settings.industry_9 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_9 | handleize }}">
+                {{ block.settings.industry_9 }}
+              </button>
+            {% endif %}
+            {% if block.settings.industry_10 != blank %}
+              <button class="ai-case-studies-filter-pill-{{ ai_gen_id }}" data-filter="{{ block.settings.industry_10 | handleize }}">
+                {{ block.settings.industry_10 }}
+              </button>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ai-case-studies-grid-{{ ai_gen_id }}">
+      {% for i in (1..12) %}
+        {% liquid
+          assign project_name_key = 'project_' | append: i | append: '_name'
+          assign project_description_key = 'project_' | append: i | append: '_description'
+          assign project_image_key = 'project_' | append: i | append: '_image'
+          assign project_url_key = 'project_' | append: i | append: '_url'
+          assign project_services_key = 'project_' | append: i | append: '_services'
+          assign project_industries_key = 'project_' | append: i | append: '_industries'
+          assign project_tech_key = 'project_' | append: i | append: '_tech'
+          assign project_tags_key = 'project_' | append: i | append: '_tags'
+          assign project_cta_key = 'project_' | append: i | append: '_cta_text'
+
+          assign project_name = block.settings[project_name_key]
+          assign project_description = block.settings[project_description_key]
+          assign project_image = block.settings[project_image_key]
+          assign project_url = block.settings[project_url_key]
+          assign project_services = block.settings[project_services_key]
+          assign project_industries = block.settings[project_industries_key]
+          assign project_tech = block.settings[project_tech_key]
+          assign project_tags = block.settings[project_tags_key]
+          assign project_cta = block.settings[project_cta_key]
+        %}
+
+        {% if project_name != blank %}
+          <div 
+            class="ai-case-studies-card-{{ ai_gen_id }}"
+            data-services="{{ project_services | handleize }}"
+            data-industries="{{ project_industries | handleize }}"
+          >
+            <div class="ai-case-studies-card-image-wrapper-{{ ai_gen_id }}">
+              {% if project_image %}
+                <img
+                  src="{{ project_image | image_url: width: 800 }}"
+                  alt="{{ project_name | escape }}"
+                  class="ai-case-studies-card-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="800"
+                  height="450"
+                >
+              {% else %}
+                <div class="ai-case-studies-card-image-{{ ai_gen_id }}" style="background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);"></div>
+              {% endif %}
+            </div>
+
+            <div class="ai-case-studies-card-content-{{ ai_gen_id }}">
+              <h3 class="ai-case-studies-card-name-{{ ai_gen_id }}">{{ project_name }}</h3>
+
+              {% if project_description != blank %}
+                <div class="ai-case-studies-card-description-{{ ai_gen_id }}">{{ project_description }}</div>
+              {% endif %}
+
+              {% if project_tech != blank %}
+                <div class="ai-case-studies-card-tech-{{ ai_gen_id }}">
+                  {% assign tech_items = project_tech | split: ',' %}
+                  {% for tech in tech_items %}
+                    {% assign tech_trimmed = tech | strip %}
+                    {% assign tech_initial = tech_trimmed | slice: 0, 2 | upcase %}
+                    <div class="ai-case-studies-tech-icon-{{ ai_gen_id }}">
+                      {{ tech_initial }}
+                      <div class="ai-case-studies-tech-tooltip-{{ ai_gen_id }}">{{ tech_trimmed }}</div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if project_tags != blank %}
+                <div class="ai-case-studies-card-tags-{{ ai_gen_id }}">
+                  {% assign tag_items = project_tags | split: ',' %}
+                  {% for tag in tag_items %}
+                    <span class="ai-case-studies-tag-{{ ai_gen_id }}">{{ tag | strip }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if project_url != blank %}
+                <a href="{{ project_url }}" class="ai-case-studies-card-cta-{{ ai_gen_id }}">
+                  {% if project_cta != blank %}
+                    {{ project_cta }}
+                  {% else %}
+                    View Case Study
+                  {% endif %}
+                  <span class="ai-case-studies-card-cta-arrow-{{ ai_gen_id }}">→</span>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="ai-case-studies-empty-{{ ai_gen_id }}" style="display: none;">
+      No case studies match your selected filters.
+    </div>
+  </div>
+</case-studies-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CaseStudies{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.activeServiceFilter = 'all';
+        this.activeIndustryFilter = 'all';
+      }
+
+      connectedCallback() {
+        this.filterButtons = this.querySelectorAll('.ai-case-studies-filter-pill-{{ ai_gen_id }}');
+        this.cards = this.querySelectorAll('.ai-case-studies-card-{{ ai_gen_id }}');
+        this.grid = this.querySelector('.ai-case-studies-grid-{{ ai_gen_id }}');
+        this.emptyState = this.querySelector('.ai-case-studies-empty-{{ ai_gen_id }}');
+        
+        this.setupFilters();
+      }
+
+      setupFilters() {
+        this.filterButtons.forEach(button => {
+          button.addEventListener('click', (e) => {
+            const filterType = e.target.closest('[data-filter-type]').dataset.filterType;
+            const filterValue = e.target.dataset.filter;
+            
+            const siblings = e.target.parentElement.querySelectorAll('.ai-case-studies-filter-pill-{{ ai_gen_id }}');
+            siblings.forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            if (filterType === 'service') {
+              this.activeServiceFilter = filterValue;
+            } else if (filterType === 'industry') {
+              this.activeIndustryFilter = filterValue;
+            }
+            
+            this.filterCards();
+          });
+        });
+      }
+
+      filterCards() {
+        this.grid.classList.add('filtering');
+        
+        setTimeout(() => {
+          let visibleCount = 0;
+          
+          this.cards.forEach(card => {
+            const cardServices = card.dataset.services || '';
+            const cardIndustries = card.dataset.industries || '';
+            
+            const serviceMatch = this.activeServiceFilter === 'all' || 
+                                cardServices.includes(this.activeServiceFilter);
+            const industryMatch = this.activeIndustryFilter === 'all' || 
+                                  cardIndustries.includes(this.activeIndustryFilter);
+            
+            if (serviceMatch && industryMatch) {
+              card.classList.remove('hidden');
+              visibleCount++;
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+          
+          if (visibleCount === 0) {
+            this.emptyState.style.display = 'block';
+            this.grid.style.display = 'none';
+          } else {
+            this.emptyState.style.display = 'none';
+            this.grid.style.display = 'grid';
+          }
+          
+          this.grid.classList.remove('filtering');
+        }, 150);
+      }
+    }
+
+    customElements.define('case-studies-{{ ai_gen_id }}', CaseStudies{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Case studies",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "CASE STUDIES"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Explore some of the Shopify experiences we've designed, developed and optimized across multiple industries."
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Service filters"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_service_filters",
+      "label": "Show service filters",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "service_filter_title",
+      "label": "Filter title",
+      "default": "Services"
+    },
+    {
+      "type": "text",
+      "id": "service_1",
+      "label": "Service 1",
+      "default": "Build"
+    },
+    {
+      "type": "text",
+      "id": "service_2",
+      "label": "Service 2",
+      "default": "Migrate"
+    },
+    {
+      "type": "text",
+      "id": "service_3",
+      "label": "Service 3",
+      "default": "Marketing"
+    },
+    {
+      "type": "text",
+      "id": "service_4",
+      "label": "Service 4",
+      "default": "Shopify Ongoing Support"
+    },
+    {
+      "type": "text",
+      "id": "service_5",
+      "label": "Service 5"
+    },
+    {
+      "type": "text",
+      "id": "service_6",
+      "label": "Service 6"
+    },
+    {
+      "type": "header",
+      "content": "Industry filters"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_industry_filters",
+      "label": "Show industry filters",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "industry_filter_title",
+      "label": "Filter title",
+      "default": "Industries"
+    },
+    {
+      "type": "text",
+      "id": "industry_1",
+      "label": "Industry 1",
+      "default": "Women's Boutique"
+    },
+    {
+      "type": "text",
+      "id": "industry_2",
+      "label": "Industry 2",
+      "default": "Clothing"
+    },
+    {
+      "type": "text",
+      "id": "industry_3",
+      "label": "Industry 3",
+      "default": "Cosmetics"
+    },
+    {
+      "type": "text",
+      "id": "industry_4",
+      "label": "Industry 4",
+      "default": "Sports"
+    },
+    {
+      "type": "text",
+      "id": "industry_5",
+      "label": "Industry 5",
+      "default": "Coffee"
+    },
+    {
+      "type": "text",
+      "id": "industry_6",
+      "label": "Industry 6",
+      "default": "Food & Nutrition"
+    },
+    {
+      "type": "text",
+      "id": "industry_7",
+      "label": "Industry 7",
+      "default": "Home Decor"
+    },
+    {
+      "type": "text",
+      "id": "industry_8",
+      "label": "Industry 8",
+      "default": "Furniture"
+    },
+    {
+      "type": "text",
+      "id": "industry_9",
+      "label": "Industry 9",
+      "default": "Jewelry"
+    },
+    {
+      "type": "text",
+      "id": "industry_10",
+      "label": "Industry 10",
+      "default": "Electronics"
+    },
+    {
+      "type": "header",
+      "content": "Project 1"
+    },
+    {
+      "type": "text",
+      "id": "project_1_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_1_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_1_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_1_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_1_services",
+      "label": "Services",
+      "info": "Comma-separated (e.g., Build, Marketing)"
+    },
+    {
+      "type": "text",
+      "id": "project_1_industries",
+      "label": "Industries",
+      "info": "Comma-separated (e.g., Clothing, Sports)"
+    },
+    {
+      "type": "text",
+      "id": "project_1_tech",
+      "label": "Technologies",
+      "info": "Comma-separated (e.g., Shopify Plus, Klaviyo, Meta Ads)"
+    },
+    {
+      "type": "text",
+      "id": "project_1_tags",
+      "label": "Tags",
+      "info": "Comma-separated (e.g., Migration, Design, SEO)"
+    },
+    {
+      "type": "text",
+      "id": "project_1_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 2"
+    },
+    {
+      "type": "text",
+      "id": "project_2_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_2_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_2_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_2_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_2_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_2_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_2_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_2_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_2_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 3"
+    },
+    {
+      "type": "text",
+      "id": "project_3_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_3_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_3_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_3_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_3_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_3_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_3_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_3_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_3_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 4"
+    },
+    {
+      "type": "text",
+      "id": "project_4_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_4_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_4_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_4_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_4_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_4_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_4_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_4_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_4_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 5"
+    },
+    {
+      "type": "text",
+      "id": "project_5_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_5_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_5_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_5_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_5_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_5_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_5_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_5_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_5_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 6"
+    },
+    {
+      "type": "text",
+      "id": "project_6_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_6_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_6_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_6_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_6_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_6_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_6_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_6_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_6_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 7"
+    },
+    {
+      "type": "text",
+      "id": "project_7_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_7_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_7_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_7_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_7_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_7_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_7_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_7_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_7_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 8"
+    },
+    {
+      "type": "text",
+      "id": "project_8_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_8_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_8_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_8_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_8_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_8_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_8_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_8_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_8_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 9"
+    },
+    {
+      "type": "text",
+      "id": "project_9_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_9_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_9_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_9_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_9_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_9_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_9_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_9_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_9_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 10"
+    },
+    {
+      "type": "text",
+      "id": "project_10_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_10_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_10_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_10_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_10_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_10_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_10_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_10_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_10_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 11"
+    },
+    {
+      "type": "text",
+      "id": "project_11_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_11_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_11_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_11_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_11_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_11_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_11_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_11_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_11_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Project 12"
+    },
+    {
+      "type": "text",
+      "id": "project_12_name",
+      "label": "Project name"
+    },
+    {
+      "type": "textarea",
+      "id": "project_12_description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "project_12_image",
+      "label": "Website screenshot"
+    },
+    {
+      "type": "url",
+      "id": "project_12_url",
+      "label": "Case study URL"
+    },
+    {
+      "type": "text",
+      "id": "project_12_services",
+      "label": "Services",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_12_industries",
+      "label": "Industries",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_12_tech",
+      "label": "Technologies",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_12_tags",
+      "label": "Tags",
+      "info": "Comma-separated"
+    },
+    {
+      "type": "text",
+      "id": "project_12_cta_text",
+      "label": "CTA text",
+      "default": "View Case Study"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container width",
+      "min": 1000,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#080808"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description",
+      "default": "#A1A1AA"
+    },
+    {
+      "type": "color",
+      "id": "filter_title_color",
+      "label": "Filter title",
+      "default": "#A1A1AA"
+    },
+    {
+      "type": "header",
+      "content": "Filter pills"
+    },
+    {
+      "type": "color",
+      "id": "pill_inactive_bg",
+      "label": "Inactive background",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "pill_inactive_text",
+      "label": "Inactive text",
+      "default": "#BDBDBD"
+    },
+    {
+      "type": "color",
+      "id": "pill_hover_bg",
+      "label": "Hover background",
+      "default": "#252525"
+    },
+    {
+      "type": "color",
+      "id": "pill_active_bg",
+      "label": "Active background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "pill_active_text",
+      "label": "Active text",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "pill_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Background",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Border",
+      "default": "rgba(255, 255, 255, 0.08)"
+    },
+    {
+      "type": "color",
+      "id": "card_border_hover",
+      "label": "Border hover",
+      "default": "rgba(255, 255, 255, 0.15)"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "card_name_color",
+      "label": "Project name",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "card_name_size",
+      "label": "Project name size",
+      "min": 16,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "card_description_color",
+      "label": "Description",
+      "default": "#B5B5B5"
+    },
+    {
+      "type": "range",
+      "id": "card_description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Technology icons"
+    },
+    {
+      "type": "color",
+      "id": "tech_icon_bg",
+      "label": "Background",
+      "default": "#1F1F1F"
+    },
+    {
+      "type": "color",
+      "id": "tech_icon_text",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Tags"
+    },
+    {
+      "type": "color",
+      "id": "tag_bg",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tag_text",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "cta_text",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "cta_hover_bg",
+      "label": "Hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "cta_hover_text",
+      "label": "Hover text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "cta_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Case studies"
+    }
+  ]
+}
+{% endschema %}

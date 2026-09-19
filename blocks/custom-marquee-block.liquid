@@ -1,0 +1,178 @@
+<div
+  class="marquee-item"
+  {{ block.shopify_attributes }}
+  style="
+    --marquee-item-color: {{ block.settings.text_color }};
+    --marquee-item-size: {{ block.settings.font_size }}px;
+    --marquee-item-size-mobile: {{ block.settings.font_size_mobile }}px;
+    --marquee-item-weight: {{ block.settings.font_weight }};
+  "
+>
+  {% if block.settings.link != blank %}
+    <a
+      href="{{ block.settings.link }}"
+      class="marquee-item__link"
+    >
+  {% endif %}
+
+    <span class="marquee-item__text">
+      {{ block.settings.text }}
+    </span>
+
+  {% if block.settings.link != blank %}
+    </a>
+  {% endif %}
+
+  {% if block.settings.show_separator %}
+    <span
+      class="marquee-item__separator"
+      aria-hidden="true"
+    >
+      {{ block.settings.separator }}
+    </span>
+  {% endif %}
+</div>
+
+
+{% stylesheet %}
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: var(--marquee-gap, 30px);
+
+    color: var(--marquee-item-color);
+  }
+
+  .marquee-item__text {
+    display: block;
+
+    font-family: var(--font-body-family);
+    font-size: var(--marquee-item-size);
+    font-weight: var(--marquee-item-weight);
+
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .marquee-item__link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .marquee-item__link:hover {
+    opacity: 0.7;
+  }
+
+  .marquee-item__separator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: var(--marquee-separator-size, 16px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 749px) {
+    .marquee-item__text {
+      font-size: var(--marquee-item-size-mobile);
+    }
+  }
+{% endstylesheet %}
+
+
+{% schema %}
+{
+  "name": "Marquee text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Marquee text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Desktop font size",
+      "min": 12,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Mobile font size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Separator"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_separator",
+      "label": "Show separator after text",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator",
+      "default": "✦"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee text"
+    }
+  ]
+}
+{% endschema %}

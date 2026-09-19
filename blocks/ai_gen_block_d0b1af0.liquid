@@ -1,0 +1,1157 @@
+{% doc %}
+  @prompt
+    Create a new, fully customizable Shopify section that closely matches the attached reference image. The section should present six Shopify services in a premium dark two-column card layout.
+    
+    SECTION DESIGN
+    
+    * Full-width section with a near-black background: #020509.
+    * Content container maximum width: 1440px.
+    * Desktop horizontal padding: 20px.
+    * Mobile horizontal padding: 16px.
+    * Top and bottom spacing should be adjustable in the theme editor.
+    * Use clean, modern typography with strong visual hierarchy.
+    * Do not add decorative graphics outside the cards.
+    
+    SECTION HEADER
+    
+    Center the header above the service cards.
+    
+    * Small uppercase eyebrow text: “WHAT WE DO”
+    * Eyebrow color: orange #FF7A1A
+    * Letter spacing: approximately 2px
+    * Main heading: “End-to-End Shopify Solutions That Drive Results”
+    * Heading color: #F7F7F7
+    * Large, bold font with tight line height
+    * Allow the eyebrow and heading to be edited in the Shopify theme editor
+    * Add adjustable spacing between the heading and card grid
+    
+    SERVICE CARD GRID
+    
+    * Display cards in a two-column grid on desktop and tablet.
+    * Display one card per row on mobile.
+    * Gap between cards: approximately 28px horizontally and 24px vertically.
+    * All cards should have equal height within each row.
+    * Card background should match the section background or use a slightly lighter shade: #03070B.
+    * Add a subtle 1px border: #242A31.
+    * Border radius: 18px.
+    * Desktop card padding: 38px.
+    * Mobile card padding: 24px.
+    * Cards should have generous empty space and a clean, minimal appearance.
+    
+    Each service card must include:
+    
+    1. A small icon container at the top
+    2. Service title
+    3. Short description
+    
+    ICON DESIGN
+    
+    * Icon container size: approximately 42px × 42px.
+    * Rounded corners: 11px.
+    * Use a subtle dark purple-to-brown gradient background.
+    * Allow each block to use an uploaded image, SVG, Shopify icon, or emoji.
+    * Keep icons centered inside the container.
+    * Provide adjustable icon size.
+    * Do not display a broken-image placeholder if no icon is selected.
+    
+    CARD TYPOGRAPHY
+    
+    * Title color: #F5F5F5.
+    * Title size: approximately 20px.
+    * Title weight: 650–700.
+    * Description color: #AEB2B9.
+    * Description size: approximately 15px.
+    * Description line height: 1.55.
+    * Keep approximately 14px between the icon and title.
+    * Keep approximately 8px between the title and description.
+    
+    ADD THESE SIX DEFAULT SERVICE BLOCKS
+    
+    1. Icon: 🎨
+       Title: Shopify Design
+       Description: Conversion-focused designs that elevate your brand and improve user engagement.
+    
+    2. Icon: ⚙️
+       Title: Shopify Development
+       Description: Custom, scalable, and high-performance development built around your business goals.
+    
+    3. Icon: 🚀
+       Title: Migration to Shopify
+       Description: Smooth migration from other platforms with minimal downtime and clean execution.
+    
+    4. Icon: 📈
+       Title: Conversion Optimization
+       Description: Data-driven UX improvements that turn visitors into customers.
+    
+    5. Icon: ⚡
+       Title: Performance Optimization
+       Description: Speed and SEO enhancements that improve rankings and user experience.
+    
+    6. Icon: 💡
+       Title: Growth Strategy
+       Description: Strategic planning and execution to scale your Shopify store profitably.
+    
+    HOVER INTERACTION
+    
+    * On desktop hover, move the card upward by 3px.
+    * Slightly brighten the border and add a soft orange or purple glow.
+    * Keep the effect subtle and premium.
+    * Use a smooth 250ms transition.
+    * Disable movement on touch devices.
+    * Respect the reduced-motion accessibility setting.
+    
+    SHOPIFY THEME EDITOR SETTINGS
+    
+    Make the section completely editable and compatible with Shopify Online Store 2.0, including the Horizon theme.
+    
+    Add settings for:
+    
+    * Eyebrow text
+    * Main heading
+    * Heading maximum width
+    * Heading alignment
+    * Section background color
+    * Card background color
+    * Card border color
+    * Heading, title and description colors
+    * Accent color
+    * Desktop and mobile section padding
+    * Grid spacing
+    * Card padding
+    * Card corner radius
+    * Card border thickness
+    * Heading and text sizes
+    * Enable or disable hover effects
+    * Maximum content width
+    
+    Build every service as a repeatable Shopify block. Each block must support:
+    
+    * Icon or image upload
+    * Emoji fallback
+    * Service title
+    * Description
+    * Optional link
+    * Optional accessible link label
+    * Block reordering
+    * Adding or removing service cards
+    
+    RESPONSIVE BEHAVIOUR
+    
+    * Desktop: two equal-width columns.
+    * Tablet: two columns with reduced padding.
+    * Mobile: one card per row.
+    * Reduce the heading size smoothly on smaller screens.
+    * Prevent text overflow and horizontal scrolling.
+    * Maintain consistent card spacing and alignment.
+    * Keep all tap targets accessible.
+    
+    Do not add a button, slider, carousel, pagination, shadows that are too strong, or additional content. The final section should closely match the attached reference: minimal, spacious, dark, professional, and conversion-focused.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-services-section-{{ ai_gen_id }} {
+    background-color: {{ block.settings.section_background_color }};
+    padding-top: {{ block.settings.padding_top_desktop }}px;
+    padding-bottom: {{ block.settings.padding_bottom_desktop }}px;
+    width: 100%;
+    display: block;
+  }
+
+  .ai-services-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_content_width }}px;
+    margin: 0 auto;
+    padding-left: {{ block.settings.horizontal_padding_desktop }}px;
+    padding-right: {{ block.settings.horizontal_padding_desktop }}px;
+  }
+
+  .ai-services-header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.heading_alignment }};
+    margin-bottom: {{ block.settings.header_spacing }}px;
+  }
+
+  .ai-services-eyebrow-{{ ai_gen_id }} {
+    color: {{ block.settings.eyebrow_color }};
+    font-size: {{ block.settings.eyebrow_size }}px;
+    text-transform: uppercase;
+    letter-spacing: {{ block.settings.eyebrow_letter_spacing }}px;
+    margin: 0 0 {{ block.settings.eyebrow_margin_bottom }}px 0;
+    font-weight: 600;
+  }
+
+  .ai-services-heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: {{ block.settings.heading_weight }};
+    line-height: {{ block.settings.heading_line_height }};
+    margin: 0 auto;
+    max-width: {{ block.settings.heading_max_width }}px;
+  }
+
+  .ai-services-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ block.settings.grid_gap_vertical }}px {{ block.settings.grid_gap_horizontal }}px;
+  }
+
+  .ai-service-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background_color }};
+    border: {{ block.settings.card_border_width }}px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding_desktop }}px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+  }
+
+  {% if block.settings.enable_hover_effect %}
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .ai-service-card-{{ ai_gen_id }}:hover {
+        transform: translateY(-3px);
+        border-color: {{ block.settings.accent_color }};
+        box-shadow: 0 8px 24px rgba({{ block.settings.accent_color | color_extract: 'red' }}, {{ block.settings.accent_color | color_extract: 'green' }}, {{ block.settings.accent_color | color_extract: 'blue' }}, 0.15);
+      }
+    }
+  {% endif %}
+
+  .ai-service-icon-container-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_container_size }}px;
+    height: {{ block.settings.icon_container_size }}px;
+    border-radius: {{ block.settings.icon_border_radius }}px;
+    background: linear-gradient(135deg, #4A1D6E 0%, #5C3A2E 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: {{ block.settings.icon_margin_bottom }}px;
+    flex-shrink: 0;
+  }
+
+  .ai-service-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    object-fit: contain;
+  }
+
+  .ai-service-emoji-{{ ai_gen_id }} {
+    font-size: {{ block.settings.icon_size }}px;
+    line-height: 1;
+  }
+
+  .ai-service-title-{{ ai_gen_id }} {
+    color: {{ block.settings.title_color }};
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: {{ block.settings.title_weight }};
+    margin: 0 0 {{ block.settings.title_margin_bottom }}px 0;
+    line-height: 1.3;
+  }
+
+  .ai-service-description-{{ ai_gen_id }} {
+    color: {{ block.settings.description_color }};
+    font-size: {{ block.settings.description_size }}px;
+    line-height: {{ block.settings.description_line_height }};
+    margin: 0;
+  }
+
+  .ai-service-link-{{ ai_gen_id }} {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-services-section-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.padding_top_mobile }}px;
+      padding-bottom: {{ block.settings.padding_bottom_mobile }}px;
+    }
+
+    .ai-services-container-{{ ai_gen_id }} {
+      padding-left: {{ block.settings.horizontal_padding_mobile }}px;
+      padding-right: {{ block.settings.horizontal_padding_mobile }}px;
+    }
+
+    .ai-services-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.7);
+    }
+
+    .ai-services-eyebrow-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.eyebrow_size }}px * 0.9);
+    }
+
+    .ai-service-card-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding_mobile }}px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-services-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-services-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.6);
+    }
+  }
+{% endstyle %}
+
+<ai-services-section-{{ ai_gen_id }} class="ai-services-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-services-container-{{ ai_gen_id }}">
+    {% if block.settings.eyebrow_text != blank or block.settings.heading_text != blank %}
+      <div class="ai-services-header-{{ ai_gen_id }}">
+        {% if block.settings.eyebrow_text != blank %}
+          <p class="ai-services-eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow_text }}</p>
+        {% endif %}
+        {% if block.settings.heading_text != blank %}
+          <h2 class="ai-services-heading-{{ ai_gen_id }}">{{ block.settings.heading_text }}</h2>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ai-services-grid-{{ ai_gen_id }}">
+      <div class="ai-service-card-{{ ai_gen_id }}">
+        {% if block.settings.service_1_link != blank %}
+          <a href="{{ block.settings.service_1_link }}" class="ai-service-link-{{ ai_gen_id }}" {% if block.settings.service_1_link_label != blank %}aria-label="{{ block.settings.service_1_link_label }}"{% endif %}>
+        {% endif %}
+
+        <div class="ai-service-icon-container-{{ ai_gen_id }}">
+          {% if block.settings.service_1_icon != blank %}
+            <img
+              src="{{ block.settings.service_1_icon | image_url: width: 100 }}"
+              alt="{{ block.settings.service_1_title | escape }}"
+              class="ai-service-icon-{{ ai_gen_id }}"
+              loading="lazy"
+              width="100"
+              height="100"
+            >
+          {% elsif block.settings.service_1_emoji != blank %}
+            <span class="ai-service-emoji-{{ ai_gen_id }}">{{ block.settings.service_1_emoji }}</span>
+          {% endif %}
+        </div>
+
+        {% if block.settings.service_1_title != blank %}
+          <h3 class="ai-service-title-{{ ai_gen_id }}">{{ block.settings.service_1_title }}</h3>
+        {% endif %}
+
+        {% if block.settings.service_1_description != blank %}
+          <p class="ai-service-description-{{ ai_gen_id }}">{{ block.settings.service_1_description }}</p>
+        {% endif %}
+
+        {% if block.settings.service_1_link != blank %}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="ai-service-card-{{ ai_gen_id }}">
+        {% if block.settings.service_2_link != blank %}
+          <a href="{{ block.settings.service_2_link }}" class="ai-service-link-{{ ai_gen_id }}" {% if block.settings.service_2_link_label != blank %}aria-label="{{ block.settings.service_2_link_label }}"{% endif %}>
+        {% endif %}
+
+        <div class="ai-service-icon-container-{{ ai_gen_id }}">
+          {% if block.settings.service_2_icon != blank %}
+            <img
+              src="{{ block.settings.service_2_icon | image_url: width: 100 }}"
+              alt="{{ block.settings.service_2_title | escape }}"
+              class="ai-service-icon-{{ ai_gen_id }}"
+              loading="lazy"
+              width="100"
+              height="100"
+            >
+          {% elsif block.settings.service_2_emoji != blank %}
+            <span class="ai-service-emoji-{{ ai_gen_id }}">{{ block.settings.service_2_emoji }}</span>
+          {% endif %}
+        </div>
+
+        {% if block.settings.service_2_title != blank %}
+          <h3 class="ai-service-title-{{ ai_gen_id }}">{{ block.settings.service_2_title }}</h3>
+        {% endif %}
+
+        {% if block.settings.service_2_description != blank %}
+          <p class="ai-service-description-{{ ai_gen_id }}">{{ block.settings.service_2_description }}</p>
+        {% endif %}
+
+        {% if block.settings.service_2_link != blank %}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="ai-service-card-{{ ai_gen_id }}">
+        {% if block.settings.service_3_link != blank %}
+          <a href="{{ block.settings.service_3_link }}" class="ai-service-link-{{ ai_gen_id }}" {% if block.settings.service_3_link_label != blank %}aria-label="{{ block.settings.service_3_link_label }}"{% endif %}>
+        {% endif %}
+
+        <div class="ai-service-icon-container-{{ ai_gen_id }}">
+          {% if block.settings.service_3_icon != blank %}
+            <img
+              src="{{ block.settings.service_3_icon | image_url: width: 100 }}"
+              alt="{{ block.settings.service_3_title | escape }}"
+              class="ai-service-icon-{{ ai_gen_id }}"
+              loading="lazy"
+              width="100"
+              height="100"
+            >
+          {% elsif block.settings.service_3_emoji != blank %}
+            <span class="ai-service-emoji-{{ ai_gen_id }}">{{ block.settings.service_3_emoji }}</span>
+          {% endif %}
+        </div>
+
+        {% if block.settings.service_3_title != blank %}
+          <h3 class="ai-service-title-{{ ai_gen_id }}">{{ block.settings.service_3_title }}</h3>
+        {% endif %}
+
+        {% if block.settings.service_3_description != blank %}
+          <p class="ai-service-description-{{ ai_gen_id }}">{{ block.settings.service_3_description }}</p>
+        {% endif %}
+
+        {% if block.settings.service_3_link != blank %}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="ai-service-card-{{ ai_gen_id }}">
+        {% if block.settings.service_4_link != blank %}
+          <a href="{{ block.settings.service_4_link }}" class="ai-service-link-{{ ai_gen_id }}" {% if block.settings.service_4_link_label != blank %}aria-label="{{ block.settings.service_4_link_label }}"{% endif %}>
+        {% endif %}
+
+        <div class="ai-service-icon-container-{{ ai_gen_id }}">
+          {% if block.settings.service_4_icon != blank %}
+            <img
+              src="{{ block.settings.service_4_icon | image_url: width: 100 }}"
+              alt="{{ block.settings.service_4_title | escape }}"
+              class="ai-service-icon-{{ ai_gen_id }}"
+              loading="lazy"
+              width="100"
+              height="100"
+            >
+          {% elsif block.settings.service_4_emoji != blank %}
+            <span class="ai-service-emoji-{{ ai_gen_id }}">{{ block.settings.service_4_emoji }}</span>
+          {% endif %}
+        </div>
+
+        {% if block.settings.service_4_title != blank %}
+          <h3 class="ai-service-title-{{ ai_gen_id }}">{{ block.settings.service_4_title }}</h3>
+        {% endif %}
+
+        {% if block.settings.service_4_description != blank %}
+          <p class="ai-service-description-{{ ai_gen_id }}">{{ block.settings.service_4_description }}</p>
+        {% endif %}
+
+        {% if block.settings.service_4_link != blank %}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="ai-service-card-{{ ai_gen_id }}">
+        {% if block.settings.service_5_link != blank %}
+          <a href="{{ block.settings.service_5_link }}" class="ai-service-link-{{ ai_gen_id }}" {% if block.settings.service_5_link_label != blank %}aria-label="{{ block.settings.service_5_link_label }}"{% endif %}>
+        {% endif %}
+
+        <div class="ai-service-icon-container-{{ ai_gen_id }}">
+          {% if block.settings.service_5_icon != blank %}
+            <img
+              src="{{ block.settings.service_5_icon | image_url: width: 100 }}"
+              alt="{{ block.settings.service_5_title | escape }}"
+              class="ai-service-icon-{{ ai_gen_id }}"
+              loading="lazy"
+              width="100"
+              height="100"
+            >
+          {% elsif block.settings.service_5_emoji != blank %}
+            <span class="ai-service-emoji-{{ ai_gen_id }}">{{ block.settings.service_5_emoji }}</span>
+          {% endif %}
+        </div>
+
+        {% if block.settings.service_5_title != blank %}
+          <h3 class="ai-service-title-{{ ai_gen_id }}">{{ block.settings.service_5_title }}</h3>
+        {% endif %}
+
+        {% if block.settings.service_5_description != blank %}
+          <p class="ai-service-description-{{ ai_gen_id }}">{{ block.settings.service_5_description }}</p>
+        {% endif %}
+
+        {% if block.settings.service_5_link != blank %}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="ai-service-card-{{ ai_gen_id }}">
+        {% if block.settings.service_6_link != blank %}
+          <a href="{{ block.settings.service_6_link }}" class="ai-service-link-{{ ai_gen_id }}" {% if block.settings.service_6_link_label != blank %}aria-label="{{ block.settings.service_6_link_label }}"{% endif %}>
+        {% endif %}
+
+        <div class="ai-service-icon-container-{{ ai_gen_id }}">
+          {% if block.settings.service_6_icon != blank %}
+            <img
+              src="{{ block.settings.service_6_icon | image_url: width: 100 }}"
+              alt="{{ block.settings.service_6_title | escape }}"
+              class="ai-service-icon-{{ ai_gen_id }}"
+              loading="lazy"
+              width="100"
+              height="100"
+            >
+          {% elsif block.settings.service_6_emoji != blank %}
+            <span class="ai-service-emoji-{{ ai_gen_id }}">{{ block.settings.service_6_emoji }}</span>
+          {% endif %}
+        </div>
+
+        {% if block.settings.service_6_title != blank %}
+          <h3 class="ai-service-title-{{ ai_gen_id }}">{{ block.settings.service_6_title }}</h3>
+        {% endif %}
+
+        {% if block.settings.service_6_description != blank %}
+          <p class="ai-service-description-{{ ai_gen_id }}">{{ block.settings.service_6_description }}</p>
+        {% endif %}
+
+        {% if block.settings.service_6_link != blank %}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</ai-services-section-{{ ai_gen_id }}>
+
+{% schema %}
+{
+  "name": "Shopify services",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "WHAT WE DO"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "End-to-End Shopify Solutions That Drive Results"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_max_width",
+      "label": "Heading max width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "default": 900
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Space below header",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "horizontal_padding_desktop",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "horizontal_padding_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "max_content_width",
+      "label": "Maximum content width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1440
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section background",
+      "default": "#020509"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background",
+      "default": "#03070B"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#242A31"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow",
+      "default": "#FF7A1A"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#F7F7F7"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Service title",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description",
+      "default": "#AEB2B9"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent (hover)",
+      "default": "#FF7A1A"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_letter_spacing",
+      "label": "Eyebrow letter spacing",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_margin_bottom",
+      "label": "Eyebrow bottom margin",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Heading line height",
+      "min": 1,
+      "max": 1.5,
+      "step": 0.1,
+      "default": 1.2
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Service title size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "title_weight",
+      "label": "Service title weight",
+      "min": 400,
+      "max": 900,
+      "step": 50,
+      "default": 650
+    },
+    {
+      "type": "range",
+      "id": "title_margin_bottom",
+      "label": "Title bottom margin",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "description_line_height",
+      "label": "Description line height",
+      "min": 1.2,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.6
+    },
+    {
+      "type": "header",
+      "content": "Card layout"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_horizontal",
+      "label": "Horizontal gap",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_vertical",
+      "label": "Vertical gap",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_padding_desktop",
+      "label": "Card padding (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "card_padding_mobile",
+      "label": "Card padding (mobile)",
+      "min": 15,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Card border width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Icon settings"
+    },
+    {
+      "type": "range",
+      "id": "icon_container_size",
+      "label": "Icon container size",
+      "min": 30,
+      "max": 70,
+      "step": 2,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "icon_border_radius",
+      "label": "Icon container radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "icon_margin_bottom",
+      "label": "Icon bottom margin",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Interaction"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover_effect",
+      "label": "Enable hover effect",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Service 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "service_1_icon",
+      "label": "Icon image"
+    },
+    {
+      "type": "text",
+      "id": "service_1_emoji",
+      "label": "Emoji (if no image)",
+      "default": "🎨"
+    },
+    {
+      "type": "text",
+      "id": "service_1_title",
+      "label": "Title",
+      "default": "Shopify Design"
+    },
+    {
+      "type": "textarea",
+      "id": "service_1_description",
+      "label": "Description",
+      "default": "Conversion-focused designs that elevate your brand and improve user engagement."
+    },
+    {
+      "type": "url",
+      "id": "service_1_link",
+      "label": "Link (optional)"
+    },
+    {
+      "type": "text",
+      "id": "service_1_link_label",
+      "label": "Accessible link label"
+    },
+    {
+      "type": "header",
+      "content": "Service 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "service_2_icon",
+      "label": "Icon image"
+    },
+    {
+      "type": "text",
+      "id": "service_2_emoji",
+      "label": "Emoji (if no image)",
+      "default": "⚙️"
+    },
+    {
+      "type": "text",
+      "id": "service_2_title",
+      "label": "Title",
+      "default": "Shopify Development"
+    },
+    {
+      "type": "textarea",
+      "id": "service_2_description",
+      "label": "Description",
+      "default": "Custom, scalable, and high-performance development built around your business goals."
+    },
+    {
+      "type": "url",
+      "id": "service_2_link",
+      "label": "Link (optional)"
+    },
+    {
+      "type": "text",
+      "id": "service_2_link_label",
+      "label": "Accessible link label"
+    },
+    {
+      "type": "header",
+      "content": "Service 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "service_3_icon",
+      "label": "Icon image"
+    },
+    {
+      "type": "text",
+      "id": "service_3_emoji",
+      "label": "Emoji (if no image)",
+      "default": "🚀"
+    },
+    {
+      "type": "text",
+      "id": "service_3_title",
+      "label": "Title",
+      "default": "Migration to Shopify"
+    },
+    {
+      "type": "textarea",
+      "id": "service_3_description",
+      "label": "Description",
+      "default": "Smooth migration from other platforms with minimal downtime and clean execution."
+    },
+    {
+      "type": "url",
+      "id": "service_3_link",
+      "label": "Link (optional)"
+    },
+    {
+      "type": "text",
+      "id": "service_3_link_label",
+      "label": "Accessible link label"
+    },
+    {
+      "type": "header",
+      "content": "Service 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "service_4_icon",
+      "label": "Icon image"
+    },
+    {
+      "type": "text",
+      "id": "service_4_emoji",
+      "label": "Emoji (if no image)",
+      "default": "📈"
+    },
+    {
+      "type": "text",
+      "id": "service_4_title",
+      "label": "Title",
+      "default": "Conversion Optimization"
+    },
+    {
+      "type": "textarea",
+      "id": "service_4_description",
+      "label": "Description",
+      "default": "Data-driven UX improvements that turn visitors into customers."
+    },
+    {
+      "type": "url",
+      "id": "service_4_link",
+      "label": "Link (optional)"
+    },
+    {
+      "type": "text",
+      "id": "service_4_link_label",
+      "label": "Accessible link label"
+    },
+    {
+      "type": "header",
+      "content": "Service 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "service_5_icon",
+      "label": "Icon image"
+    },
+    {
+      "type": "text",
+      "id": "service_5_emoji",
+      "label": "Emoji (if no image)",
+      "default": "⚡"
+    },
+    {
+      "type": "text",
+      "id": "service_5_title",
+      "label": "Title",
+      "default": "Performance Optimization"
+    },
+    {
+      "type": "textarea",
+      "id": "service_5_description",
+      "label": "Description",
+      "default": "Speed and SEO enhancements that improve rankings and user experience."
+    },
+    {
+      "type": "url",
+      "id": "service_5_link",
+      "label": "Link (optional)"
+    },
+    {
+      "type": "text",
+      "id": "service_5_link_label",
+      "label": "Accessible link label"
+    },
+    {
+      "type": "header",
+      "content": "Service 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "service_6_icon",
+      "label": "Icon image"
+    },
+    {
+      "type": "text",
+      "id": "service_6_emoji",
+      "label": "Emoji (if no image)",
+      "default": "💡"
+    },
+    {
+      "type": "text",
+      "id": "service_6_title",
+      "label": "Title",
+      "default": "Growth Strategy"
+    },
+    {
+      "type": "textarea",
+      "id": "service_6_description",
+      "label": "Description",
+      "default": "Strategic planning and execution to scale your Shopify store profitably."
+    },
+    {
+      "type": "url",
+      "id": "service_6_link",
+      "label": "Link (optional)"
+    },
+    {
+      "type": "text",
+      "id": "service_6_link_label",
+      "label": "Accessible link label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shopify services"
+    }
+  ]
+}
+{% endschema %}

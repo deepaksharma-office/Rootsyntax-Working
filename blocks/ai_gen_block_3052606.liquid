@@ -1,0 +1,1188 @@
+{% doc %}
+  @prompt
+    ## Shopify Horizon AI Prompt – "Our Proven Shopify Growth Process" Section (Pixel-Perfect)
+    
+    Create a premium enterprise-style **"How It Works"** section that matches the attached reference as closely as possible. The layout, spacing, typography, sizing, and proportions should be nearly identical while replacing the static Shopify illustration with a **dynamic image upload** from the Shopify Theme Editor.
+    
+    The design should feel modern, minimal, and premium, similar to Shopify Plus, Stripe, Linear, or Vercel.
+    
+    ---
+    
+    # Overall Layout
+    
+    * Full-width section
+    * Max content width: **1320px**
+    * Background: **#050505**
+    * Section padding:
+    
+      * Desktop: **100px top & bottom**
+      * Horizontal: **60px**
+    * Two-column layout
+    
+      * Left column: **46%**
+      * Right column: **54%**
+    * Gap between columns: **70px**
+    * Vertically centered
+    * Responsive for tablet and mobile
+    
+    Add very thin vertical accent lines near the left and right edges of the section using **#B85C1C** at 40% opacity.
+    
+    ---
+    
+    # Top Badge
+    
+    Place a small rounded badge above the heading.
+    
+    Style
+    
+    * Height: 34px
+    * Horizontal padding: 14px
+    * Background: #111111
+    * Border: 1px solid #232323
+    * Border radius: 999px
+    
+    Content
+    
+    Small sparkle icon
+    
+    Text:
+    
+    **How It Works**
+    
+    Typography
+    
+    * Inter
+    * 13px
+    * Medium
+    * White
+    
+    ---
+    
+    # Heading
+    
+    Large premium heading.
+    
+    Line One
+    
+    **Our Proven Shopify**
+    
+    Line Two
+    
+    **Growth Process**
+    
+    Typography
+    
+    * Font: Inter
+    * Weight: 700
+    * Size: 56px
+    * Line height: 110%
+    * Letter spacing: -1px
+    
+    Color
+    
+    White
+    
+    Highlight only
+    
+    **Growth Process**
+    
+    using
+    
+    **#FF7A1A**
+    
+    ---
+    
+    # Timeline
+    
+    Below the heading create four timeline items.
+    
+    Use a vertical connector line joining each icon.
+    
+    Timeline spacing
+    
+    * 34px between items
+    
+    ---
+    
+    ## Timeline Icon
+    
+    Circle
+    
+    * 38px × 38px
+    * Border: 1px solid #355DFF
+    * Background transparent
+    * Icon color: #355DFF
+    
+    Icons
+    
+    Discovery → Target
+    
+    Planning → Clipboard
+    
+    Development → Code
+    
+    Launch → Headset
+    
+    ---
+    
+    ## Item Typography
+    
+    Title
+    
+    * 24px
+    * SemiBold
+    * White
+    
+    Body
+    
+    * 15px
+    * Regular
+    * #A7A7A7
+    * Line height 170%
+    
+    ---
+    
+    ### Content
+    
+    #### Discovery & Strategy
+    
+    We analyze your business goals, target audience, competitors, and current store performance to create a growth-focused roadmap.
+    
+    ---
+    
+    #### UX & Store Planning
+    
+    Our team designs a conversion-focused user experience, wireframes key pages, and plans the ideal customer journey.
+    
+    ---
+    
+    #### Development & Migration
+    
+    We build, customize, or migrate your Shopify store with clean development practices and minimal disruption to your business.
+    
+    ---
+    
+    #### Launch & Growth Optimization
+    
+    After testing and launch, we continuously optimize speed, user experience, and conversions through ongoing data-driven improvements.
+    
+    ---
+    
+    # Right Side Dynamic Image Card
+    
+    Replace the Shopify logo illustration with a **merchant-uploaded image**.
+    
+    This image must be editable through the Shopify Theme Editor.
+    
+    The merchant should be able to upload:
+    
+    * PNG
+    * JPG
+    * SVG
+    * WebP
+    
+    without editing the code.
+    
+    ---
+    
+    ## Card Style
+    
+    Width
+    
+    Approximately **520px**
+    
+    Height
+    
+    Approximately **540px**
+    
+    Background
+    
+    #EEF2F3
+    
+    Border Radius
+    
+    28px
+    
+    Overflow
+    
+    Hidden
+    
+    Box Shadow
+    
+    0 20px 60px rgba(0,0,0,.25)
+    
+    ---
+    
+    ## Image Container
+    
+    The uploaded image should be displayed inside the card.
+    
+    Requirements
+    
+    * Width: 100%
+    * Height: 100%
+    * Display: Flex
+    * Align Items: Center
+    * Justify Content: Center
+    * Padding: 24px
+    
+    ---
+    
+    ## Image Behaviour
+    
+    This is extremely important.
+    
+    The uploaded image should always remain completely visible.
+    
+    Never crop it.
+    
+    Never zoom into it.
+    
+    Never stretch it.
+    
+    Maintain the original aspect ratio.
+    
+    Use
+    
+    ```
+    object-fit: contain;
+    object-position: center;
+    ```
+    
+    The image should automatically scale to fit within the card regardless of whether it is portrait, landscape, square, logo, mockup, or screenshot.
+    
+    If no image is uploaded, show a centered placeholder illustration.
+    
+    ---
+    
+    # Theme Editor Settings
+    
+    Create editable settings for:
+    
+    ✔ Image Picker
+    
+    ✔ Alt Text
+    
+    ✔ Card Background Color
+    
+    ✔ Card Border Radius
+    
+    ✔ Image Padding
+    
+    ✔ Image Scale
+    
+    ✔ Vertical Alignment
+    
+    ✔ Quote Text
+    
+    ✔ Badge Text
+    
+    ✔ Heading
+    
+    ✔ Timeline Items
+    
+    Everything should be editable through the Theme Editor.
+    
+    ---
+    
+    # Quote
+    
+    Centered underneath the image card.
+    
+    Font
+    
+    15px
+    
+    Italic
+    
+    Color
+    
+    #CFCFCF
+    
+    Text
+    
+    "Our agile process ensures rapid deployment while maintaining the highest standards of reliability and security."
+    
+    ---
+    
+    # Hover Effects
+    
+    Timeline Item
+    
+    * Translate Y: -4px
+    * Transition: 0.3s ease
+    * Title changes to #FF7A1A
+    * Icon border glows slightly
+    
+    Image Card
+    
+    * Scale: 1.02
+    * Soft shadow increases
+    * Smooth transition
+    
+    ---
+    
+    # Mobile Layout
+    
+    Stack vertically.
+    
+    Heading first.
+    
+    Timeline second.
+    
+    Image card last.
+    
+    Card width
+    
+    100%
+    
+    Heading
+    
+    36px
+    
+    Timeline Icons
+    
+    32px
+    
+    Maintain generous spacing.
+    
+    ---
+    
+    # Development Requirements
+    
+    * Fully compatible with the latest **Shopify Horizon Theme**.
+    * Use Shopify's native section architecture.
+    * Do not hardcode any images.
+    * The right-side visual must come from an **Image Picker** in the Theme Editor.
+    * The uploaded image must always remain ful
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-growth-process-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-growth-process-container-{{ ai_gen_id }} {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding_desktop }}px {{ block.settings.horizontal_padding }}px;
+    position: relative;
+  }
+
+  .ai-growth-process-accent-line-left-{{ ai_gen_id }},
+  .ai-growth-process-accent-line-right-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: {{ block.settings.accent_line_color }};
+    opacity: {{ block.settings.accent_line_opacity | divided_by: 100.0 }};
+  }
+
+  .ai-growth-process-accent-line-left-{{ ai_gen_id }} {
+    left: 40px;
+  }
+
+  .ai-growth-process-accent-line-right-{{ ai_gen_id }} {
+    right: 40px;
+  }
+
+  .ai-growth-process-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 46% 54%;
+    gap: 70px;
+    align-items: center;
+  }
+
+  .ai-growth-process-left-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ai-growth-process-badge-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 34px;
+    padding: 0 14px;
+    background-color: {{ block.settings.badge_background }};
+    border: 1px solid {{ block.settings.badge_border }};
+    border-radius: 999px;
+    width: fit-content;
+  }
+
+  .ai-growth-process-badge-icon-{{ ai_gen_id }} {
+    width: 14px;
+    height: 14px;
+    color: {{ block.settings.badge_text_color }};
+  }
+
+  .ai-growth-process-badge-text-{{ ai_gen_id }} {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: {{ block.settings.badge_text_color }};
+    line-height: 1;
+  }
+
+  .ai-growth-process-heading-{{ ai_gen_id }} {
+    font-family: Inter, sans-serif;
+    font-size: {{ block.settings.heading_size_desktop }}px;
+    font-weight: 700;
+    line-height: 110%;
+    letter-spacing: -1px;
+    color: {{ block.settings.heading_color }};
+    margin: 0;
+  }
+
+  .ai-growth-process-heading-highlight-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_highlight_color }};
+  }
+
+  .ai-growth-process-timeline-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  .ai-growth-process-timeline-item-{{ ai_gen_id }} {
+    display: flex;
+    gap: 16px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-growth-process-timeline-item-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+  }
+
+  .ai-growth-process-timeline-item-{{ ai_gen_id }}:hover .ai-growth-process-timeline-title-{{ ai_gen_id }} {
+    color: {{ block.settings.timeline_title_hover_color }};
+  }
+
+  .ai-growth-process-timeline-item-{{ ai_gen_id }}:hover .ai-growth-process-timeline-icon-{{ ai_gen_id }} {
+    border-color: {{ block.settings.timeline_icon_hover_color }};
+    box-shadow: 0 0 12px {{ block.settings.timeline_icon_hover_color }}40;
+  }
+
+  .ai-growth-process-timeline-icon-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .ai-growth-process-timeline-connector-{{ ai_gen_id }} {
+    position: absolute;
+    left: 50%;
+    top: 38px;
+    width: 1px;
+    height: calc(100% + 34px);
+    background-color: {{ block.settings.timeline_connector_color }};
+    transform: translateX(-50%);
+  }
+
+  .ai-growth-process-timeline-item-{{ ai_gen_id }}:last-child .ai-growth-process-timeline-connector-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-growth-process-timeline-icon-{{ ai_gen_id }} {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid {{ block.settings.timeline_icon_color }};
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .ai-growth-process-timeline-icon-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+    color: {{ block.settings.timeline_icon_color }};
+  }
+
+  .ai-growth-process-timeline-content-{{ ai_gen_id }} {
+    flex: 1;
+    padding-top: 4px;
+  }
+
+  .ai-growth-process-timeline-title-{{ ai_gen_id }} {
+    font-family: Inter, sans-serif;
+    font-size: {{ block.settings.timeline_title_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.timeline_title_color }};
+    margin: 0 0 8px 0;
+    transition: color 0.3s ease;
+  }
+
+  .ai-growth-process-timeline-body-{{ ai_gen_id }} {
+    font-family: Inter, sans-serif;
+    font-size: {{ block.settings.timeline_body_size }}px;
+    font-weight: 400;
+    line-height: 170%;
+    color: {{ block.settings.timeline_body_color }};
+    margin: 0;
+  }
+
+  .ai-growth-process-right-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ai-growth-process-card-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 520px;
+    height: 540px;
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+  }
+
+  .ai-growth-process-card-{{ ai_gen_id }}:hover {
+    transform: scale(1.02);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  }
+
+  .ai-growth-process-image-container-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: {{ block.settings.image_vertical_alignment }};
+    justify-content: center;
+    padding: {{ block.settings.image_padding }}px;
+  }
+
+  .ai-growth-process-image-{{ ai_gen_id }} {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    transform: scale({{ block.settings.image_scale | divided_by: 100.0 }});
+  }
+
+  .ai-growth-process-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ block.settings.card_background }};
+  }
+
+  .ai-growth-process-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-growth-process-quote-{{ ai_gen_id }} {
+    font-family: Inter, sans-serif;
+    font-size: {{ block.settings.quote_size }}px;
+    font-style: italic;
+    color: {{ block.settings.quote_color }};
+    text-align: center;
+    max-width: 520px;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-growth-process-container-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding_mobile }}px 30px;
+    }
+
+    .ai-growth-process-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    .ai-growth-process-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size_mobile }}px;
+    }
+
+    .ai-growth-process-timeline-icon-{{ ai_gen_id }} {
+      width: 32px;
+      height: 32px;
+    }
+
+    .ai-growth-process-timeline-icon-{{ ai_gen_id }} svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .ai-growth-process-timeline-connector-{{ ai_gen_id }} {
+      top: 32px;
+    }
+
+    .ai-growth-process-card-{{ ai_gen_id }} {
+      max-width: 100%;
+      height: auto;
+      min-height: 400px;
+    }
+
+    .ai-growth-process-accent-line-left-{{ ai_gen_id }} {
+      left: 20px;
+    }
+
+    .ai-growth-process-accent-line-right-{{ ai_gen_id }} {
+      right: 20px;
+    }
+  }
+{% endstyle %}
+
+<ai-growth-process-{{ ai_gen_id }} class="ai-growth-process-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-growth-process-accent-line-left-{{ ai_gen_id }}"></div>
+  <div class="ai-growth-process-accent-line-right-{{ ai_gen_id }}"></div>
+  
+  <div class="ai-growth-process-container-{{ ai_gen_id }}">
+    <div class="ai-growth-process-grid-{{ ai_gen_id }}">
+      <div class="ai-growth-process-left-{{ ai_gen_id }}">
+        {% if block.settings.badge_text != blank %}
+          <div class="ai-growth-process-badge-{{ ai_gen_id }}">
+            <svg class="ai-growth-process-badge-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span class="ai-growth-process-badge-text-{{ ai_gen_id }}">{{ block.settings.badge_text }}</span>
+          </div>
+        {% endif %}
+
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-growth-process-heading-{{ ai_gen_id }}">
+            {{ block.settings.heading | replace: block.settings.heading_highlight_text, '<span class="ai-growth-process-heading-highlight-' | append: ai_gen_id | append: '">' | append: block.settings.heading_highlight_text | append: '</span>' }}
+          </h2>
+        {% endif %}
+
+        <div class="ai-growth-process-timeline-{{ ai_gen_id }}">
+          {% if block.settings.timeline_1_enabled %}
+            <div class="ai-growth-process-timeline-item-{{ ai_gen_id }}">
+              <div class="ai-growth-process-timeline-icon-wrapper-{{ ai_gen_id }}">
+                <div class="ai-growth-process-timeline-icon-{{ ai_gen_id }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="ai-growth-process-timeline-connector-{{ ai_gen_id }}"></div>
+              </div>
+              <div class="ai-growth-process-timeline-content-{{ ai_gen_id }}">
+                <h3 class="ai-growth-process-timeline-title-{{ ai_gen_id }}">{{ block.settings.timeline_1_title }}</h3>
+                <p class="ai-growth-process-timeline-body-{{ ai_gen_id }}">{{ block.settings.timeline_1_body }}</p>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.timeline_2_enabled %}
+            <div class="ai-growth-process-timeline-item-{{ ai_gen_id }}">
+              <div class="ai-growth-process-timeline-icon-wrapper-{{ ai_gen_id }}">
+                <div class="ai-growth-process-timeline-icon-{{ ai_gen_id }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="3" x2="9" y2="21"></line>
+                  </svg>
+                </div>
+                <div class="ai-growth-process-timeline-connector-{{ ai_gen_id }}"></div>
+              </div>
+              <div class="ai-growth-process-timeline-content-{{ ai_gen_id }}">
+                <h3 class="ai-growth-process-timeline-title-{{ ai_gen_id }}">{{ block.settings.timeline_2_title }}</h3>
+                <p class="ai-growth-process-timeline-body-{{ ai_gen_id }}">{{ block.settings.timeline_2_body }}</p>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.timeline_3_enabled %}
+            <div class="ai-growth-process-timeline-item-{{ ai_gen_id }}">
+              <div class="ai-growth-process-timeline-icon-wrapper-{{ ai_gen_id }}">
+                <div class="ai-growth-process-timeline-icon-{{ ai_gen_id }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <div class="ai-growth-process-timeline-connector-{{ ai_gen_id }}"></div>
+              </div>
+              <div class="ai-growth-process-timeline-content-{{ ai_gen_id }}">
+                <h3 class="ai-growth-process-timeline-title-{{ ai_gen_id }}">{{ block.settings.timeline_3_title }}</h3>
+                <p class="ai-growth-process-timeline-body-{{ ai_gen_id }}">{{ block.settings.timeline_3_body }}</p>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.timeline_4_enabled %}
+            <div class="ai-growth-process-timeline-item-{{ ai_gen_id }}">
+              <div class="ai-growth-process-timeline-icon-wrapper-{{ ai_gen_id }}">
+                <div class="ai-growth-process-timeline-icon-{{ ai_gen_id }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="22"></line>
+                  </svg>
+                </div>
+                <div class="ai-growth-process-timeline-connector-{{ ai_gen_id }}"></div>
+              </div>
+              <div class="ai-growth-process-timeline-content-{{ ai_gen_id }}">
+                <h3 class="ai-growth-process-timeline-title-{{ ai_gen_id }}">{{ block.settings.timeline_4_title }}</h3>
+                <p class="ai-growth-process-timeline-body-{{ ai_gen_id }}">{{ block.settings.timeline_4_body }}</p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="ai-growth-process-right-{{ ai_gen_id }}">
+        <div class="ai-growth-process-card-{{ ai_gen_id }}">
+          <div class="ai-growth-process-image-container-{{ ai_gen_id }}">
+            {% if block.settings.image %}
+              <img
+                src="{{ block.settings.image | image_url: width: 1040 }}"
+                alt="{{ block.settings.image_alt | escape }}"
+                class="ai-growth-process-image-{{ ai_gen_id }}"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            {% else %}
+              <div class="ai-growth-process-placeholder-{{ ai_gen_id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if block.settings.quote_text != blank %}
+          <p class="ai-growth-process-quote-{{ ai_gen_id }}">{{ block.settings.quote_text }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</ai-growth-process-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class AiGrowthProcess{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+      }
+    }
+
+    customElements.define('ai-growth-process-{{ ai_gen_id }}', AiGrowthProcess{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Growth process",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#050505"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_desktop",
+      "label": "Desktop padding",
+      "min": 50,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding_mobile",
+      "label": "Mobile padding",
+      "min": 30,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "horizontal_padding",
+      "label": "Horizontal padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Accent lines"
+    },
+    {
+      "type": "color",
+      "id": "accent_line_color",
+      "label": "Color",
+      "default": "#B85C1C"
+    },
+    {
+      "type": "range",
+      "id": "accent_line_opacity",
+      "label": "Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Text",
+      "default": "How It Works"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Background",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "badge_border",
+      "label": "Border",
+      "default": "#232323"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Proven Shopify Growth Process"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight_text",
+      "label": "Highlight text",
+      "default": "Growth Process"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_highlight_color",
+      "label": "Highlight color",
+      "default": "#FF7A1A"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Desktop size",
+      "min": 32,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile size",
+      "min": 24,
+      "max": 56,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Timeline style"
+    },
+    {
+      "type": "color",
+      "id": "timeline_icon_color",
+      "label": "Icon color",
+      "default": "#355DFF"
+    },
+    {
+      "type": "color",
+      "id": "timeline_icon_hover_color",
+      "label": "Icon hover color",
+      "default": "#355DFF"
+    },
+    {
+      "type": "color",
+      "id": "timeline_connector_color",
+      "label": "Connector color",
+      "default": "#355DFF"
+    },
+    {
+      "type": "color",
+      "id": "timeline_title_color",
+      "label": "Title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "timeline_title_hover_color",
+      "label": "Title hover color",
+      "default": "#FF7A1A"
+    },
+    {
+      "type": "color",
+      "id": "timeline_body_color",
+      "label": "Body color",
+      "default": "#A7A7A7"
+    },
+    {
+      "type": "range",
+      "id": "timeline_title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "timeline_body_size",
+      "label": "Body size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Timeline 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "timeline_1_enabled",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "timeline_1_title",
+      "label": "Title",
+      "default": "Discovery & Strategy"
+    },
+    {
+      "type": "textarea",
+      "id": "timeline_1_body",
+      "label": "Body",
+      "default": "We analyze your business goals, target audience, competitors, and current store performance to create a growth-focused roadmap."
+    },
+    {
+      "type": "header",
+      "content": "Timeline 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "timeline_2_enabled",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "timeline_2_title",
+      "label": "Title",
+      "default": "UX & Store Planning"
+    },
+    {
+      "type": "textarea",
+      "id": "timeline_2_body",
+      "label": "Body",
+      "default": "Our team designs a conversion-focused user experience, wireframes key pages, and plans the ideal customer journey."
+    },
+    {
+      "type": "header",
+      "content": "Timeline 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "timeline_3_enabled",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "timeline_3_title",
+      "label": "Title",
+      "default": "Development & Migration"
+    },
+    {
+      "type": "textarea",
+      "id": "timeline_3_body",
+      "label": "Body",
+      "default": "We build, customize, or migrate your Shopify store with clean development practices and minimal disruption to your business."
+    },
+    {
+      "type": "header",
+      "content": "Timeline 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "timeline_4_enabled",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "timeline_4_title",
+      "label": "Title",
+      "default": "Launch & Growth Optimization"
+    },
+    {
+      "type": "textarea",
+      "id": "timeline_4_body",
+      "label": "Body",
+      "default": "After testing and launch, we continuously optimize speed, user experience, and conversions through ongoing data-driven improvements."
+    },
+    {
+      "type": "header",
+      "content": "Image card"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background",
+      "default": "#EEF2F3"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "image_padding",
+      "label": "Image padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "image_scale",
+      "label": "Image scale",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "image_vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_text",
+      "label": "Text",
+      "default": "Our agile process ensures rapid deployment while maintaining the highest standards of reliability and security."
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Color",
+      "default": "#CFCFCF"
+    },
+    {
+      "type": "range",
+      "id": "quote_size",
+      "label": "Size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    }
+  ],
+  "presets": [
+    {
+      "name": "Growth process"
+    }
+  ]
+}
+{% endschema %}

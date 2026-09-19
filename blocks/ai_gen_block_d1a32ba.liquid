@@ -1,0 +1,2080 @@
+{% doc %}
+  @prompt
+    Create a new custom testimonial section for the Shopify Horizon theme that closely matches the supplied reference design.
+    
+    SECTION STRUCTURE
+    
+    Create a full-width dark section containing two equal-width cards in a two-column desktop layout.
+    
+    Use a centered container with:
+    
+    * Maximum width: 1600px
+    * Horizontal page padding: 16px on desktop and 12px on mobile
+    * Gap between cards: 24px
+    * Card corner radius: 32px
+    * Section background: #050505
+    
+    LEFT INTRODUCTION CARD
+    
+    Use a dark charcoal background: #121212.
+    
+    At the top, include:
+    
+    * A small outlined pill badge
+    * An editable star icon
+    * Editable badge text, default: “Technology”
+    * Large editable heading, default: “Building high-performance Shopify experiences with AI-driven innovation”
+    * Editable description below the heading
+    
+    At the bottom of the card, include two editable statistics displayed side by side:
+    
+    Statistic one:
+    
+    * Value: “3000+”
+    * Label: “Shopify Projects Delivered”
+    
+    Statistic two:
+    
+    * Value: “98%”
+    * Label: “Client Satisfaction Rate”
+    
+    Use white for the heading, light grey for the body content, muted grey for statistic labels, and orange #FF7417 for the statistic values.
+    
+    RIGHT TESTIMONIAL CARD
+    
+    Use a deep navy background: #08233F.
+    
+    Create a testimonial carousel with exactly 10 editable testimonial blocks. Each block must include:
+    
+    * Optional client image
+    * Circular fallback profile icon when no image is uploaded
+    * Client name
+    * Client role or company
+    * Testimonial text
+    * Large decorative quotation mark in the upper-right corner
+    
+    Display only one testimonial at a time.
+    
+    Add circular previous and next arrow buttons at the bottom center. The buttons must move through all 10 testimonials and loop continuously from the last testimonial back to the first.
+    
+    Add these optional section settings:
+    
+    * Enable or disable autoplay
+    * Autoplay speed from 3 to 10 seconds
+    * Show or hide testimonial counter
+    * Show or hide client images
+    
+    Pause autoplay when the user hovers over the card, focuses on a control, or interacts with the carousel. Support horizontal swipe gestures on mobile. Disable autoplay when the visitor has reduced-motion enabled.
+    
+    THEME EDITOR SETTINGS
+    
+    Make the following editable in the Shopify theme editor:
+    
+    * Badge text
+    * Heading
+    * Description
+    * Both statistic values and labels
+    * All 10 testimonials
+    * Client images
+    * Client names
+    * Roles or companies
+    * Testimonial quotes
+    * Section background color
+    * Introduction card color
+    * Testimonial card color
+    * Heading color
+    * Body color
+    * Muted text color
+    * Accent color
+    * Testimonial text colors
+    * Maximum content width
+    * Card gap
+    * Card radius
+    * Top and bottom spacing
+    * Autoplay
+    * Autoplay speed
+    * Testimonial counter
+    * Client images
+    
+    RESPONSIVE BEHAVIOUR
+    
+    On desktop, show both cards next to each other at equal widths and equal heights.
+    
+    On tablets and mobile devices, stack the introduction card above the testimonial card. Keep comfortable spacing, readable typography, and touch-friendly arrow buttons.
+    
+    Use fluid typography with clamp() so the heading and testimonial text resize smoothly. Prevent horizontal overflow on smaller screens.
+    
+    TECHNICAL REQUIREMENTS
+    
+    Build this as a self-contained Shopify Liquid section compatible with the Horizon theme.
+    
+    Use:
+    
+    * Shopify section schema
+    * A maximum of 10 testimonial blocks
+    * Vanilla JavaScript only
+    * Scoped CSS using section.id
+    * Semantic HTML
+    * Accessible button labels
+    * aria-live for changing testimonials
+    * block.shopify_attributes for theme-editor block selection
+    * No external libraries or dependencies
+    
+    Include 10 editable sample testimonial blocks in the section preset so the section is populated immediately when added through the theme editor.
+    , Update the existing testimonial section in my Shopify Horizon theme. Do not create a new section and do not change the left introduction card. Only fix the right testimonial card.
+    
+    1. FIX THE CLIENT IMAGE/LOGO
+    
+    The uploaded client images or company logos are currently not appearing. The section is displaying the generic profile icon instead.
+    
+    For every testimonial block:
+    
+    * Keep an editable Shopify image-picker setting named “Client image or logo.”
+    * Render the selected image using Shopify’s image_url and image_tag filters.
+    * Display the fallback profile icon only when no image has been uploaded.
+    * Ensure the uploaded image is not hidden by CSS, opacity, positioning, overflow, or incorrect conditional Liquid logic.
+    * Give the image container a fixed size of approximately 56–64px.
+    * Use object-fit: contain so transparent logos are completely visible and not cropped.
+    * Add 6–8px internal padding for company logos.
+    * Use a subtle translucent background behind transparent logos.
+    * Keep the image sharp by requesting an image width of at least 200px.
+    * Add a setting that lets the merchant choose between “Logo” and “Profile image.”
+    * For “Logo,” use object-fit: contain with a softly rounded container.
+    * For “Profile image,” use object-fit: cover with a circular container.
+    
+    Use this Liquid rendering logic:
+    
+    {% if block.settings.client_image != blank %}
+    {{
+    block.settings.client_image
+    | image_url: width: 240
+    | image_tag:
+    loading: 'lazy',
+    widths: '80, 120, 160, 240',
+    alt: block.settings.name
+    }}
+    {% else %}
+    Display the fallback profile SVG icon
+    {% endif %}
+    
+    2. REMOVE THE EMPTY UPPER SPACE
+    
+    The top-left area of the navy testimonial card currently looks empty. Reorganize the testimonial content to use this space properly.
+    
+    Use this content order:
+    
+    * Client image or company logo at the top-left
+    * Client name and role beside the image
+    * Decorative quotation-mark icon at the top-right
+    * Testimonial quote immediately below the client information
+    * Navigation arrows and slide counter at the bottom center
+    
+    Place the complete author row near the top of the card with approximately 40–48px top padding. Do not vertically center the testimonial content and do not leave a large empty gap above it.
+    
+    The spacing should be:
+    
+    * 16px between the client image and client information
+    * 28–36px between the author row and testimonial quote
+    * Controls positioned at the bottom using margin-top: auto
+    * No artificial min-height or large top margin on the quote
+    * No justify-content: space-around or space-evenly
+    
+    Use this layout approach:
+    
+    * Testimonial card: display flex, flex-direction column
+    * Testimonial content stays aligned to flex-start
+    * Author row appears at the top
+    * Quote follows directly after the author row
+    * Navigation controls use margin-top: auto
+    * Keep enough bottom padding around the controls
+    
+    3. VISUAL RESULT
+    
+    The right card should feel balanced and intentional:
+    
+    * Uploaded client logo/image clearly visible at the top-left
+    * Name and company details beside it
+    * Quote icon aligned at the top-right
+    * Testimonial content starts higher inside the card
+    * No empty area where indicated in the reference screenshot
+    * Navigation remains centered at the bottom
+    * Maintain the existing deep navy background, typography, rounded corners, 10 testimonial blocks, autoplay, swipe interaction, counter, and arrow navigation
+    
+    4. RESPONSIVE BEHAVIOUR
+    
+    On mobile:
+    
+    * Keep the image/logo, name, and role aligned in one compact author row
+    * Reduce the logo/image size to approximately 50–54px
+    * Keep the quote icon visible without overlapping the author information
+    * Reduce internal card padding to approximately 24px
+    * Keep the quote directly below the author row
+    * Ensure uploaded logos remain completely visible and are not cropped
+    
+    Do not remove any existing testimonial blocks or theme-editor settings. Preserve all 10 testimonials and only correct the image rendering, content order, and spacing.
+    , Update the existing testimonial section in my Shopify Horizon theme. Do not create a new section and do not change the left introduction card. Improve only the right testimonial slider.
+    
+    Each of the 10 testimonial blocks must have these editable fields:
+    
+    1. Client image or company logo
+    2. Reviewer or company name
+    3. Optional job title or company details
+    4. Review date
+    5. Quality of work rating from 1 to 5
+    6. Communication rating from 1 to 5
+    7. Full testimonial text
+    8. Service reviewed
+    
+    RIGHT TESTIMONIAL CARD LAYOUT
+    
+    Use the following content order to remove the empty space:
+    
+    Top row:
+    
+    * Display the uploaded client image or company logo on the left.
+    * Show the reviewer or company name beside the image.
+    * Show optional job title or company information below the name.
+    * Display the review date on the top-right.
+    * Keep a large, subtle decorative quotation mark in the upper-right background without overlapping the date.
+    
+    Ratings area:
+    
+    Directly below the top row, show two separate rating rows:
+    
+    * “Quality of work” followed by five star icons and the numeric rating
+    * “Communication” followed by five star icons and the numeric rating
+    
+    Use filled gold stars for the selected rating and muted outlined stars for the remaining rating. Use gold #F5B942 for active stars.
+    
+    Review content:
+    
+    * Display the full testimonial beneath the ratings.
+    * Use readable white or very light grey text.
+    * Do not make the testimonial overly italic.
+    * Use approximately 20–24px desktop text with comfortable line height.
+    * Keep the review aligned to the left.
+    
+    Service information:
+    
+    At the bottom of the testimonial content, display:
+    
+    “Service reviewed: [service name]”
+    
+    Make “Service reviewed:” slightly muted or semibold and make the service name clearly readable.
+    
+    EXAMPLE FIRST TESTIMONIAL
+    
+    Populate the first testimonial block with:
+    
+    Client/company name: Champ Water
+    
+    Review date: Jun 25, 2026
+    
+    Quality of work: 5 out of 5
+    
+    Communication: 5 out of 5
+    
+    Testimonial:
+    
+    “The Root Syntax Team was phenomenal with their quick communication and attention to detail by working with us to ensure that we were happy with the finished product. I highly recommend them to any business who needs a website built.”
+    
+    Service reviewed: Store build or redesign
+    
+    IMAGE AND LOGO FIX
+    
+    The uploaded client image or logo must display correctly.
+    
+    * Add an image-picker setting to every testimonial block.
+    * Render the selected image using Shopify image_url and image_tag filters.
+    * Display the fallback profile icon only when no image has been uploaded.
+    * Do not allow CSS, opacity, positioning, or incorrect Liquid conditions to hide the image.
+    * Add a “Logo” or “Profile image” display option.
+    * For a company logo, use object-fit: contain with 6–8px padding.
+    * For a profile image, use object-fit: cover and a circular shape.
+    * Use a 56–64px image container on desktop and 50–54px on mobile.
+    * Use a subtle translucent background behind transparent logos.
+    * Request an image width of at least 200px so it remains sharp.
+    
+    Use this Liquid logic:
+    
+    {% if block.settings.client_image != blank %}
+    {{
+    block.settings.client_image
+    | image_url: width: 240
+    | image_tag:
+    loading: 'lazy',
+    widths: '80, 120, 160, 240',
+    alt: block.settings.reviewer_name
+    }}
+    {% else %}
+    Display the fallback profile SVG icon
+    {% endif %}
+    
+    SPACING AND ALIGNMENT
+    
+    Do not vertically center the testimonial information.
+    
+    * Keep all review content aligned near the top of the navy card.
+    * Use 40–48px internal padding on desktop.
+    * Use 20–24px between the top identity row and ratings.
+    * Use 24–30px between the ratings and review text.
+    * Use 20–24px between the review and service information.
+    * Position navigation controls at the bottom using margin-top: auto.
+    * Do not use large top margins, space-around, or space-evenly.
+    * Remove the large empty area previously visible above the testimonial.
+    
+    SLIDER REQUIREMENTS
+    
+    Preserve all 10 editable testimonial blocks.
+    
+    Keep:
+    
+    * Previous and next circular arrows
+    * Slide counter such as “3 / 10”
+    * Autoplay option
+    * Editable autoplay speed
+    * Continuous looping
+    * Mobile swipe gestures
+    * Pause on hover
+    * Reduced-motion accessibility
+    * block.shopify_attributes support
+    
+    THEME-EDITOR SETTINGS FOR EACH TESTIMONIAL
+    
+    Add these block settings:
+    
+    * image_picker: Client image or logo
+    * select: Image type — Logo or Profile image
+    * text: Reviewer or company name
+    * text: Role or company details
+    * text: Review date
+    * range: Quality of work rating, minimum 1 and maximum 5
+    * range: Communication rating, minimum 1 and maximum 5
+    * textarea: Testimonial
+    * text: Service reviewed
+    
+    RESPONSIVE BEHAVIOUR
+    
+    On mobile:
+    
+    * Stack the identity information and date cleanly if there is not enough width.
+    * Keep the client logo or image visible.
+    * Keep both rating rows readable and aligned.
+    * Reduce the testimonial text size appropriately.
+    * Keep the service information above the navigation controls.
+    * Use approximately 24px card padding.
+    * Prevent text, stars, date, or logo from overlapping.
+    
+    Maintain the existing navy background, roun
+{% enddoc %}
+{% liquid
+  assign ai_gen_id = block.id | replace: '_', '' | downcase
+%}
+
+{% style %}
+  .testimonial-section-{{ ai_gen_id }} {
+    background-color: {{ block.settings.section_bg_color }};
+    padding: {{ block.settings.spacing_top }}px 0 {{ block.settings.spacing_bottom }}px;
+    width: 100%;
+    display: block;
+  }
+
+  .testimonial-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .testimonial-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ block.settings.card_gap }}px;
+  }
+
+  .testimonial-card-{{ ai_gen_id }} {
+    border-radius: {{ block.settings.card_radius }}px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+  }
+
+  .intro-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.intro_card_bg }};
+    justify-content: space-between;
+  }
+
+  .testimonial-carousel-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.testimonial_card_bg }};
+    position: relative;
+    overflow: hidden;
+  }
+
+  .badge-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid {{ block.settings.body_color }};
+    border-radius: 100px;
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+
+  .badge-icon-{{ ai_gen_id }} {
+    width: 16px;
+    height: 16px;
+    color: {{ block.settings.accent_color }};
+  }
+
+  .badge-text-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.body_color }};
+  }
+
+  .intro-heading-{{ ai_gen_id }} {
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.2;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 16px;
+  }
+
+  .intro-description-{{ ai_gen_id }} {
+    font-size: 16px;
+    line-height: 1.6;
+    color: {{ block.settings.body_color }};
+    margin-bottom: 40px;
+  }
+
+  .stats-container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: auto;
+  }
+
+  .stat-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stat-value-{{ ai_gen_id }} {
+    font-size: clamp(36px, 5vw, 48px);
+    font-weight: 700;
+    color: {{ block.settings.accent_color }};
+    line-height: 1;
+  }
+
+  .stat-label-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.muted_color }};
+    line-height: 1.4;
+  }
+
+  .carousel-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-track-{{ ai_gen_id }} {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .testimonial-slide-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-slide-{{ ai_gen_id }}.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .quote-mark-{{ ai_gen_id }} {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 72px;
+    height: 72px;
+    opacity: 0.15;
+    color: {{ block.settings.testimonial_text_color }};
+    z-index: 1;
+  }
+
+  .author-row-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .client-image-wrapper-{{ ai_gen_id }} {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .client-image-wrapper-{{ ai_gen_id }}.is-logo {
+    border-radius: 12px;
+    padding: 8px;
+  }
+
+  .client-image-wrapper-{{ ai_gen_id }}.is-profile {
+    border-radius: 50%;
+    padding: 0;
+  }
+
+  .client-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .client-image-{{ ai_gen_id }}.is-logo {
+    object-fit: contain;
+  }
+
+  .client-image-{{ ai_gen_id }}.is-profile {
+    object-fit: cover;
+  }
+
+  .client-fallback-{{ ai_gen_id }} {
+    width: 28px;
+    height: 28px;
+    color: {{ block.settings.testimonial_text_color }};
+    opacity: 0.5;
+  }
+
+  .client-info-wrapper-{{ ai_gen_id }} {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .client-details-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .client-name-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ block.settings.testimonial_text_color }};
+    line-height: 1.3;
+  }
+
+  .client-role-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.testimonial_text_color }};
+    opacity: 0.7;
+    line-height: 1.4;
+  }
+
+  .review-date-{{ ai_gen_id }} {
+    font-size: 13px;
+    color: {{ block.settings.testimonial_text_color }};
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+
+  .ratings-container-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .rating-row-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .rating-label-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.testimonial_text_color }};
+    opacity: 0.8;
+    min-width: 130px;
+  }
+
+  .stars-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .star-{{ ai_gen_id }} {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .star-{{ ai_gen_id }}.filled {
+    color: #F5B942;
+  }
+
+  .star-{{ ai_gen_id }}.empty {
+    color: {{ block.settings.testimonial_text_color }};
+    opacity: 0.25;
+  }
+
+  .rating-value-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 600;
+    color: #F5B942;
+    margin-left: 4px;
+  }
+
+  .testimonial-text-{{ ai_gen_id }} {
+    font-size: clamp(18px, 2.5vw, 22px);
+    line-height: 1.6;
+    color: {{ block.settings.testimonial_text_color }};
+    margin-bottom: 24px;
+  }
+
+  .service-info-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.testimonial_text_color }};
+    opacity: 0.7;
+    margin-bottom: 0;
+  }
+
+  .service-label-{{ ai_gen_id }} {
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  .carousel-controls-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 32px;
+  }
+
+  .carousel-button-{{ ai_gen_id }} {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: {{ block.settings.testimonial_text_color }};
+  }
+
+  .carousel-button-{{ ai_gen_id }}:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .carousel-button-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .carousel-counter-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.testimonial_text_color }};
+    opacity: 0.7;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 989px) {
+    .testimonial-container-{{ ai_gen_id }} {
+      padding: 0 12px;
+    }
+
+    .testimonial-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .testimonial-card-{{ ai_gen_id }} {
+      padding: 32px 24px;
+      min-height: auto;
+    }
+
+    .intro-card-{{ ai_gen_id }} {
+      min-height: 400px;
+    }
+
+    .testimonial-carousel-card-{{ ai_gen_id }} {
+      min-height: 550px;
+    }
+
+    .stats-container-{{ ai_gen_id }} {
+      gap: 24px;
+    }
+
+    .client-image-wrapper-{{ ai_gen_id }} {
+      width: 54px;
+      height: 54px;
+    }
+
+    .client-image-wrapper-{{ ai_gen_id }}.is-logo {
+      padding: 6px;
+    }
+
+    .rating-label-{{ ai_gen_id }} {
+      min-width: 110px;
+      font-size: 13px;
+    }
+
+    .star-{{ ai_gen_id }} {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .testimonial-card-{{ ai_gen_id }} {
+      padding: 24px 20px;
+    }
+
+    .quote-mark-{{ ai_gen_id }} {
+      width: 56px;
+      height: 56px;
+      top: 16px;
+      right: 16px;
+    }
+
+    .client-image-wrapper-{{ ai_gen_id }} {
+      width: 50px;
+      height: 50px;
+    }
+
+    .author-row-{{ ai_gen_id }} {
+      margin-bottom: 20px;
+    }
+
+    .client-info-wrapper-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .review-date-{{ ai_gen_id }} {
+      align-self: flex-start;
+    }
+
+    .rating-label-{{ ai_gen_id }} {
+      min-width: 100px;
+      font-size: 12px;
+    }
+
+    .star-{{ ai_gen_id }} {
+      width: 15px;
+      height: 15px;
+    }
+
+    .ratings-container-{{ ai_gen_id }} {
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonial-slide-{{ ai_gen_id }} {
+      transition: none;
+    }
+  }
+{% endstyle %}
+
+<testimonial-carousel-{{ ai_gen_id }}
+  class="testimonial-section-{{ ai_gen_id }}"
+  data-autoplay="{{ block.settings.enable_autoplay }}"
+  data-autoplay-speed="{{ block.settings.autoplay_speed }}"
+  data-show-counter="{{ block.settings.show_counter }}"
+  data-show-images="{{ block.settings.show_client_images }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="testimonial-container-{{ ai_gen_id }}">
+    <div class="testimonial-grid-{{ ai_gen_id }}">
+      <div class="testimonial-card-{{ ai_gen_id }} intro-card-{{ ai_gen_id }}">
+        <div>
+          <div class="badge-{{ ai_gen_id }}">
+            <svg class="badge-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+            <span class="badge-text-{{ ai_gen_id }}">{{ block.settings.badge_text }}</span>
+          </div>
+
+          <h2 class="intro-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+
+          {% if block.settings.description != blank %}
+            <div class="intro-description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+          {% endif %}
+        </div>
+
+        <div class="stats-container-{{ ai_gen_id }}">
+          <div class="stat-{{ ai_gen_id }}">
+            <div class="stat-value-{{ ai_gen_id }}">{{ block.settings.stat_1_value }}</div>
+            <div class="stat-label-{{ ai_gen_id }}">{{ block.settings.stat_1_label }}</div>
+          </div>
+          <div class="stat-{{ ai_gen_id }}">
+            <div class="stat-value-{{ ai_gen_id }}">{{ block.settings.stat_2_value }}</div>
+            <div class="stat-label-{{ ai_gen_id }}">{{ block.settings.stat_2_label }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card-{{ ai_gen_id }} testimonial-carousel-card-{{ ai_gen_id }}">
+        <svg class="quote-mark-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+        </svg>
+
+        <div class="carousel-wrapper-{{ ai_gen_id }}">
+          <div class="testimonial-track-{{ ai_gen_id }}" role="region" aria-live="polite" aria-atomic="true">
+            {% for i in (1..10) %}
+              {% liquid
+                assign image_key = 'testimonial_' | append: i | append: '_image'
+                assign image_type_key = 'testimonial_' | append: i | append: '_image_type'
+                assign name_key = 'testimonial_' | append: i | append: '_name'
+                assign role_key = 'testimonial_' | append: i | append: '_role'
+                assign date_key = 'testimonial_' | append: i | append: '_date'
+                assign quality_key = 'testimonial_' | append: i | append: '_quality_rating'
+                assign communication_key = 'testimonial_' | append: i | append: '_communication_rating'
+                assign text_key = 'testimonial_' | append: i | append: '_text'
+                assign service_key = 'testimonial_' | append: i | append: '_service'
+
+                assign client_image = block.settings[image_key]
+                assign image_type = block.settings[image_type_key]
+                assign client_name = block.settings[name_key]
+                assign client_role = block.settings[role_key]
+                assign review_date = block.settings[date_key]
+                assign quality_rating = block.settings[quality_key]
+                assign communication_rating = block.settings[communication_key]
+                assign testimonial_text = block.settings[text_key]
+                assign service_reviewed = block.settings[service_key]
+              %}
+
+              <div
+                class="testimonial-slide-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+                data-slide-index="{{ forloop.index0 }}"
+              >
+                <div class="author-row-{{ ai_gen_id }}">
+                  {% if block.settings.show_client_images %}
+                    <div class="client-image-wrapper-{{ ai_gen_id }} {% if image_type == 'logo' %}is-logo{% else %}is-profile{% endif %}">
+                      {% if client_image != blank %}
+                        {{
+                          client_image
+                          | image_url: width: 240
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '80, 120, 160, 240',
+                            alt: client_name,
+                            class: 'client-image-' | append: ai_gen_id | append: ' is-' | append: image_type
+                        }}
+                      {% else %}
+                        <svg class="client-fallback-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                  <div class="client-info-wrapper-{{ ai_gen_id }}">
+                    <div class="client-details-{{ ai_gen_id }}">
+                      <div class="client-name-{{ ai_gen_id }}">{{ client_name }}</div>
+                      {% if client_role != blank %}
+                        <div class="client-role-{{ ai_gen_id }}">{{ client_role }}</div>
+                      {% endif %}
+                    </div>
+                    {% if review_date != blank %}
+                      <div class="review-date-{{ ai_gen_id }}">{{ review_date }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+
+                <div class="ratings-container-{{ ai_gen_id }}">
+                  <div class="rating-row-{{ ai_gen_id }}">
+                    <span class="rating-label-{{ ai_gen_id }}">Quality of work</span>
+                    <div class="stars-{{ ai_gen_id }}">
+                      {% for star in (1..5) %}
+                        {% if star <= quality_rating %}
+                          <svg class="star-{{ ai_gen_id }} filled" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                          </svg>
+                        {% else %}
+                          <svg class="star-{{ ai_gen_id }} empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                          </svg>
+                        {% endif %}
+                      {% endfor %}
+                      <span class="rating-value-{{ ai_gen_id }}">{{ quality_rating }}/5</span>
+                    </div>
+                  </div>
+
+                  <div class="rating-row-{{ ai_gen_id }}">
+                    <span class="rating-label-{{ ai_gen_id }}">Communication</span>
+                    <div class="stars-{{ ai_gen_id }}">
+                      {% for star in (1..5) %}
+                        {% if star <= communication_rating %}
+                          <svg class="star-{{ ai_gen_id }} filled" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                          </svg>
+                        {% else %}
+                          <svg class="star-{{ ai_gen_id }} empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                          </svg>
+                        {% endif %}
+                      {% endfor %}
+                      <span class="rating-value-{{ ai_gen_id }}">{{ communication_rating }}/5</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="testimonial-text-{{ ai_gen_id }}">{{ testimonial_text }}</div>
+
+                {% if service_reviewed != blank %}
+                  <div class="service-info-{{ ai_gen_id }}">
+                    <span class="service-label-{{ ai_gen_id }}">Service reviewed:</span> {{ service_reviewed }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="carousel-controls-{{ ai_gen_id }}">
+            <button
+              class="carousel-button-{{ ai_gen_id }} carousel-prev-{{ ai_gen_id }}"
+              aria-label="Previous testimonial"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            {% if block.settings.show_counter %}
+              <div class="carousel-counter-{{ ai_gen_id }}">
+                <span class="current-slide-{{ ai_gen_id }}">1</span> / <span class="total-slides-{{ ai_gen_id }}">10</span>
+              </div>
+            {% endif %}
+
+            <button
+              class="carousel-button-{{ ai_gen_id }} carousel-next-{{ ai_gen_id }}"
+              aria-label="Next testimonial"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</testimonial-carousel-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TestimonialCarousel{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.autoplayTimer = null;
+        this.isPaused = false;
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+      }
+
+      connectedCallback() {
+        this.slides = this.querySelectorAll('.testimonial-slide-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('.carousel-prev-{{ ai_gen_id }}');
+        this.nextButton = this.querySelector('.carousel-next-{{ ai_gen_id }}');
+        this.counter = this.querySelector('.current-slide-{{ ai_gen_id }}');
+        this.track = this.querySelector('.testimonial-track-{{ ai_gen_id }}');
+        this.card = this.querySelector('.testimonial-carousel-card-{{ ai_gen_id }}');
+
+        this.autoplayEnabled = this.dataset.autoplay === 'true';
+        this.autoplaySpeed = parseInt(this.dataset.autoplaySpeed) * 1000;
+        this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (this.slides.length === 0) return;
+
+        this.setupEventListeners();
+        
+        if (this.autoplayEnabled && !this.prefersReducedMotion) {
+          this.startAutoplay();
+        }
+      }
+
+      setupEventListeners() {
+        this.prevButton.addEventListener('click', () => {
+          this.goToPrevSlide();
+          this.resetAutoplay();
+        });
+
+        this.nextButton.addEventListener('click', () => {
+          this.goToNextSlide();
+          this.resetAutoplay();
+        });
+
+        this.card.addEventListener('mouseenter', () => {
+          this.pauseAutoplay();
+        });
+
+        this.card.addEventListener('mouseleave', () => {
+          this.resumeAutoplay();
+        });
+
+        this.prevButton.addEventListener('focus', () => {
+          this.pauseAutoplay();
+        });
+
+        this.nextButton.addEventListener('focus', () => {
+          this.pauseAutoplay();
+        });
+
+        this.prevButton.addEventListener('blur', () => {
+          this.resumeAutoplay();
+        });
+
+        this.nextButton.addEventListener('blur', () => {
+          this.resumeAutoplay();
+        });
+
+        this.track.addEventListener('touchstart', (e) => {
+          this.touchStartX = e.changedTouches[0].screenX;
+          this.pauseAutoplay();
+        }, { passive: true });
+
+        this.track.addEventListener('touchend', (e) => {
+          this.touchEndX = e.changedTouches[0].screenX;
+          this.handleSwipe();
+          this.resumeAutoplay();
+        }, { passive: true });
+      }
+
+      handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = this.touchStartX - this.touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+          if (diff > 0) {
+            this.goToNextSlide();
+          } else {
+            this.goToPrevSlide();
+          }
+          this.resetAutoplay();
+        }
+      }
+
+      goToSlide(index) {
+        this.slides[this.currentSlide].classList.remove('active');
+        this.currentSlide = index;
+        this.slides[this.currentSlide].classList.add('active');
+        
+        if (this.counter) {
+          this.counter.textContent = this.currentSlide + 1;
+        }
+      }
+
+      goToNextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.slides.length;
+        this.goToSlide(nextIndex);
+      }
+
+      goToPrevSlide() {
+        const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        this.goToSlide(prevIndex);
+      }
+
+      startAutoplay() {
+        if (!this.autoplayEnabled || this.prefersReducedMotion) return;
+        
+        this.autoplayTimer = setInterval(() => {
+          if (!this.isPaused) {
+            this.goToNextSlide();
+          }
+        }, this.autoplaySpeed);
+      }
+
+      pauseAutoplay() {
+        this.isPaused = true;
+      }
+
+      resumeAutoplay() {
+        this.isPaused = false;
+      }
+
+      resetAutoplay() {
+        if (!this.autoplayEnabled || this.prefersReducedMotion) return;
+        
+        clearInterval(this.autoplayTimer);
+        this.startAutoplay();
+      }
+
+      disconnectedCallback() {
+        if (this.autoplayTimer) {
+          clearInterval(this.autoplayTimer);
+        }
+      }
+    }
+
+    customElements.define('testimonial-carousel-{{ ai_gen_id }}', TestimonialCarousel{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Testimonial showcase",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Introduction card"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Technology"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Building high-performance Shopify experiences with AI-driven innovation"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We combine cutting-edge technology with deep Shopify expertise to deliver exceptional results for our clients."
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Statistic 1 value",
+      "default": "3000+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Statistic 1 label",
+      "default": "Shopify Projects Delivered"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Statistic 2 value",
+      "default": "98%"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Statistic 2 label",
+      "default": "Client Satisfaction Rate"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_1_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_1_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "logo"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_name",
+      "label": "Reviewer or company name",
+      "default": "Champ Water"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_role",
+      "label": "Role or company details"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_date",
+      "label": "Review date",
+      "default": "Jun 25, 2026"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_1_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "testimonial_1_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_1_text",
+      "label": "Testimonial",
+      "default": "The Root Syntax Team was phenomenal with their quick communication and attention to detail by working with us to ensure that we were happy with the finished product. I highly recommend them to any business who needs a website built."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_service",
+      "label": "Service reviewed",
+      "default": "Store build or redesign"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_2_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_2_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "profile"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_name",
+      "label": "Reviewer or company name",
+      "default": "Sarah Johnson"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_role",
+      "label": "Role or company details",
+      "default": "CEO, TechStart Inc."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_date",
+      "label": "Review date",
+      "default": "May 12, 2026"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_2_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "testimonial_2_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_2_text",
+      "label": "Testimonial",
+      "default": "Working with this team transformed our Shopify store completely. The attention to detail and technical expertise exceeded all our expectations."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_service",
+      "label": "Service reviewed",
+      "default": "Custom development"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_3_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_3_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "profile"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_name",
+      "label": "Reviewer or company name",
+      "default": "Michael Chen"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_role",
+      "label": "Role or company details",
+      "default": "Founder, StyleHub"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_date",
+      "label": "Review date",
+      "default": "Apr 8, 2026"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_3_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "testimonial_3_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_3_text",
+      "label": "Testimonial",
+      "default": "The AI-driven solutions they implemented increased our conversion rate by 45%. Absolutely phenomenal results that speak for themselves."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_service",
+      "label": "Service reviewed",
+      "default": "Performance optimization"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_4_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_4_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "profile"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_4_name",
+      "label": "Reviewer or company name",
+      "default": "Emily Rodriguez"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_4_role",
+      "label": "Role or company details",
+      "default": "Marketing Director, FreshGoods"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_4_date",
+      "label": "Review date",
+      "default": "Mar 22, 2026"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_4_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "testimonial_4_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_4_text",
+      "label": "Testimonial",
+      "default": "From concept to launch, the entire process was seamless. Their innovative approach to e-commerce is truly industry-leading."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_4_service",
+      "label": "Service reviewed",
+      "default": "Theme customization"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_5_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_5_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "profile"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_5_name",
+      "label": "Reviewer or company name",
+      "default": "David Thompson"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_5_role",
+      "label": "Role or company details",
+      "default": "Owner, Artisan Collective"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_5_date",
+      "label": "Review date",
+      "default": "Feb 15, 2026"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_5_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "testimonial_5_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_5_text",
+      "label": "Testimonial",
+      "default": "The custom features they built for our store have given us a competitive edge. Our customers love the enhanced shopping experience."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_5_service",
+      "label": "Service reviewed",
+      "default": "App integration"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_6_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_6_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "profile"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_6_name",
+      "label": "Reviewer or company name",
+      "default": "Lisa Park"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_6_role",
+      "label": "Role or company details",
+      "default": "VP of Operations, GlobalRetail"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_6_date",
+      "label": "Review date",
+      "default": "Jan 30, 2026"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_6_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "testimonial_6_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_6_text",
+      "label": "Testimonial",
+      "default": "Their deep understanding of Shopify's ecosystem helped us scale efficiently. We've seen 3x growth since partnering with them."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_6_service",
+      "label": "Service reviewed",
+      "default": "Migration services"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_7_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_7_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "profile"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_7_name",
+      "label": "Reviewer or company name",
+      "default": "James Wilson"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_7_role",
+      "label": "Role or company details",
+      "default": "Co-founder, EcoMarket"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_7_date",
+      "label": "Review date",
+      "default": "Dec 18, 2025"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_7_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "testimonial_7_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_7_text",
+      "label": "Testimonial",
+      "default": "The performance optimizations they implemented reduced our page load time by 60%. Our bounce rate dropped significantly."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_7_service",
+      "label": "Service reviewed",
+      "default": "Speed optimization"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_8_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_8_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "profile"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_8_name",
+      "label": "Reviewer or company name",
+      "default": "Amanda Foster"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_8_role",
+      "label": "Role or company details",
+      "default": "Brand Manager, LuxeStyle"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_8_date",
+      "label": "Review date",
+      "default": "Nov 5, 2025"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_8_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "testimonial_8_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_8_text",
+      "label": "Testimonial",
+      "default": "They didn't just build a store, they created a brand experience. The design is stunning and the functionality is flawless."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_8_service",
+      "label": "Service reviewed",
+      "default": "UX/UI design"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 9"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_9_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_9_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "profile"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_9_name",
+      "label": "Reviewer or company name",
+      "default": "Robert Martinez"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_9_role",
+      "label": "Role or company details",
+      "default": "Director, SportGear Pro"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_9_date",
+      "label": "Review date",
+      "default": "Oct 20, 2025"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_9_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "testimonial_9_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_9_text",
+      "label": "Testimonial",
+      "default": "The integration work they did with our inventory system was complex, but they made it look easy. Everything works perfectly."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_9_service",
+      "label": "Service reviewed",
+      "default": "System integration"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 10"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_10_image",
+      "label": "Client image or logo"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_10_image_type",
+      "label": "Image type",
+      "options": [
+        {
+          "value": "logo",
+          "label": "Logo"
+        },
+        {
+          "value": "profile",
+          "label": "Profile image"
+        }
+      ],
+      "default": "profile"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_10_name",
+      "label": "Reviewer or company name",
+      "default": "Jennifer Lee"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_10_role",
+      "label": "Role or company details",
+      "default": "Founder, BeautyBox"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_10_date",
+      "label": "Review date",
+      "default": "Sep 12, 2025"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_10_quality_rating",
+      "label": "Quality of work rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "testimonial_10_communication_rating",
+      "label": "Communication rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_10_text",
+      "label": "Testimonial",
+      "default": "Their ongoing support and maintenance have been invaluable. They're always available and incredibly responsive to our needs."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_10_service",
+      "label": "Service reviewed",
+      "default": "Ongoing support"
+    },
+    {
+      "type": "header",
+      "content": "Carousel settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_counter",
+      "label": "Show testimonial counter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_client_images",
+      "label": "Show client images",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section background",
+      "default": "#050505"
+    },
+    {
+      "type": "color",
+      "id": "intro_card_bg",
+      "label": "Introduction card background",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "testimonial_card_bg",
+      "label": "Testimonial card background",
+      "default": "#08233F"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#B8B8B8"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text color",
+      "default": "#808080"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#FF7417"
+    },
+    {
+      "type": "color",
+      "id": "testimonial_text_color",
+      "label": "Testimonial text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum content width",
+      "min": 1200,
+      "max": 1800,
+      "step": 100,
+      "unit": "px",
+      "default": 1600
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Card gap",
+      "min": 12,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius",
+      "min": 0,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial showcase"
+    }
+  ]
+}
+{% endschema %}

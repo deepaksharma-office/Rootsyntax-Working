@@ -1,0 +1,1431 @@
+{% doc %}
+  @prompt
+    You can use this prompt directly with **Shopify AI (Horizon/AI Section Generator)**. It is written to recreate your hero section as closely as possible while adding the animations and background media functionality you requested.
+    
+    ---
+    
+    # Shopify AI Prompt
+    
+    Create a premium, full-width hero banner section that exactly matches the uploaded design. The section should be 100% responsive across desktop, tablet, and mobile while maintaining the same spacing, typography, and visual hierarchy.
+    
+    ## Layout
+    
+    * Full viewport height (90-100vh)
+    * Maximum content width: 1400px
+    * Center the content horizontally and vertically
+    * Text aligned center
+    * Objects positioned around the content exactly like the reference
+    
+    ## Background
+    
+    Create a custom background media picker.
+    
+    Merchant can choose between:
+    
+    * Background Image
+    * Background Video (MP4)
+    * YouTube Video
+    * Vimeo Video
+    
+    If video is selected:
+    
+    * autoplay
+    * muted
+    * loop
+    * playsinline
+    * no controls
+    * cover entire section
+    * dark overlay 55-70%
+    
+    If image is selected:
+    
+    * object-fit cover
+    * full width
+    * overlay opacity slider
+    
+    Background settings:
+    
+    * Background type selector
+    * Image picker
+    * Video picker
+    * YouTube URL
+    * Vimeo URL
+    * Overlay color
+    * Overlay opacity
+    * Blur amount
+    * Gradient overlay toggle
+    
+    ---
+    
+    ## Floating 3D Icons
+    
+    Create four independent floating objects.
+    
+    Merchant can upload custom PNG/WebP images.
+    
+    Icons:
+    
+    Top Left
+    
+    Top Right
+    
+    Bottom Left
+    
+    Bottom Right
+    
+    Each icon should animate independently.
+    
+    Animation:
+    
+    Floating up and down
+    
+    Rotate slowly
+    
+    Small side movement
+    
+    Scale 100% → 104% →100%
+    
+    Duration:
+    6-10 seconds
+    
+    Random delay
+    
+    Infinite
+    
+    Ease-in-out
+    
+    Hover:
+    
+    Scale to 110%
+    
+    Slight glow
+    
+    Smooth transition
+    
+    Merchant settings:
+    
+    Image picker
+    
+    Width desktop
+    
+    Width mobile
+    
+    X position
+    
+    Y position
+    
+    Rotation
+    
+    Animation speed
+    
+    Animation toggle
+    
+    ---
+    
+    ## Animated Network Background
+    
+    Behind everything create animated glowing particles connected by thin lines.
+    
+    Style:
+    
+    Orange glow
+    
+    Tiny dots
+    
+    Moving particles
+    
+    Connecting lines
+    
+    Very subtle
+    
+    Low opacity
+    
+    No performance issues
+    
+    CSS animation only.
+    
+    ---
+    
+    ## Main Heading
+    
+    Large bold white heading.
+    
+    Font:
+    
+    Inter
+    
+    Poppins
+    
+    SF Pro Display
+    
+    Weight:
+    700-800
+    
+    Desktop:
+    
+    72px
+    
+    Tablet:
+    
+    54px
+    
+    Mobile:
+    
+    38px
+    
+    Heading animation:
+    
+    Fade Up
+    
+    Move upward
+    
+    Opacity 0 →100%
+    
+    Duration:
+    1 second
+    
+    Delay:
+    0.2s
+    
+    ---
+    
+    ## Paragraph
+    
+    Centered below heading.
+    
+    Maximum width:
+    
+    650px
+    
+    White
+    
+    Opacity 85%
+    
+    Size:
+    
+    22px desktop
+    
+    18px tablet
+    
+    16px mobile
+    
+    Animation:
+    
+    Fade Up
+    
+    0.4s delay
+    
+    ---
+    
+    ## Buttons
+    
+    Two CTA buttons.
+    
+    Primary Button
+    
+    Blue to Orange gradient
+    
+    Rounded pill
+    
+    Height 58px
+    
+    Padding 34px
+    
+    White text
+    
+    Arrow icon
+    
+    Hover:
+    
+    Gradient moves
+    
+    Lift 3px
+    
+    Shadow
+    
+    Secondary Button
+    
+    Dark transparent
+    
+    White border
+    
+    Play icon
+    
+    White text
+    
+    Hover:
+    
+    Background becomes white
+    
+    Text black
+    
+    Lift animation
+    
+    Buttons animate:
+    
+    Fade Up
+    
+    0.6 second delay
+    
+    ---
+    
+    ## Entrance Animations
+    
+    When section loads:
+    
+    Background fades in
+    
+    Icons float into place
+    
+    Heading fades up
+    
+    Paragraph fades up
+    
+    Buttons fade up
+    
+    Entire animation lasts under 2 seconds.
+    
+    ---
+    
+    ## Mouse Interaction
+    
+    Desktop only.
+    
+    Icons slightly move following mouse.
+    
+    Maximum movement:
+    
+    20px
+    
+    Smooth easing
+    
+    No lag
+    
+    ---
+    
+    ## Scroll Animation
+    
+    When user scrolls:
+    
+    Background moves slower
+    
+    Icons move at different speeds
+    
+    Parallax effect
+    
+    Text remains readable
+    
+    ---
+    
+    ## Section Settings
+    
+    Merchant should be able to change:
+    
+    Heading
+    
+    Description
+    
+    Primary button text
+    
+    Primary button URL
+    
+    Secondary button text
+    
+    Secondary button URL
+    
+    Heading color
+    
+    Paragraph color
+    
+    Gradient colors
+    
+    Button radius
+    
+    Content max width
+    
+    Section height
+    
+    Overlay opacity
+    
+    Animation enable/disable
+    
+    Animation speed
+    
+    Particle enable/disable
+    
+    Floating icons enable/disable
+    
+    Background image
+    
+    Background video
+    
+    ---
+    
+    ## Performance
+    
+    * Lazy load images
+    * Responsive images
+    * Video preload metadata only
+    * Hardware accelerated transforms
+    * CSS animations only where possible
+    * No layout shift
+    * Optimized for Core Web Vitals
+    * Mobile optimized
+    
+    ---
+    
+    ## Accessibility
+    
+    * Proper semantic HTML
+    * Keyboard accessible buttons
+    * Alt text for uploaded icons
+    * Reduced motion support
+    * WCAG AA contrast
+    
+    ---
+    
+    ## Overall Design Style
+    
+    Recreate the reference exactly with:
+    
+    * Premium SaaS aesthetic
+    * Luxury ecommerce agency look
+    * Dark cinematic background
+    * Bright orange glowing particle network
+    * Large centered white typography
+    * Floating glass 3D icons
+    * Soft glows
+    * Smooth premium animations similar to Apple, Stripe, Linear, and Framer websites.
+    
+    This prompt gives Shopify AI enough detail to generate a highly polished, customizable hero section with animated floating icons, animated text, and support for both background images and videos.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-hero-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    min-height: {{ block.settings.section_height }}vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  .ai-hero-background-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    animation: ai-hero-fade-in-{{ ai_gen_id }} 1s ease-out forwards;
+  }
+
+  .ai-hero-background-media-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-hero-background-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ block.settings.overlay_color }};
+    opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+    z-index: 2;
+  }
+
+  .ai-hero-particles-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .ai-hero-particle-{{ ai_gen_id }} {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: {{ block.settings.particle_color }};
+    border-radius: 50%;
+    box-shadow: 0 0 10px {{ block.settings.particle_color }};
+  }
+
+  .ai-hero-particle-line-{{ ai_gen_id }} {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, {{ block.settings.particle_color }}, transparent);
+    opacity: 0.3;
+  }
+
+  .ai-hero-content-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 10;
+    max-width: {{ block.settings.content_max_width }}px;
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .ai-hero-floating-icon-{{ ai_gen_id }} {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    will-change: transform;
+  }
+
+  .ai-hero-floating-icon-{{ ai_gen_id }} img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.1));
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .ai-hero-floating-icon-{{ ai_gen_id }}:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 15px 40px rgba(255, 255, 255, 0.2));
+  }
+
+  .ai-hero-heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 24px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: ai-hero-fade-up-{{ ai_gen_id }} 1s ease-out 0.2s forwards;
+  }
+
+  .ai-hero-description-{{ ai_gen_id }} {
+    color: {{ block.settings.paragraph_color }};
+    font-size: 22px;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: ai-hero-fade-up-{{ ai_gen_id }} 1s ease-out 0.4s forwards;
+  }
+
+  .ai-hero-buttons-{{ ai_gen_id }} {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: ai-hero-fade-up-{{ ai_gen_id }} 1s ease-out 0.6s forwards;
+  }
+
+  .ai-hero-button-primary-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 34px;
+    height: 58px;
+    background: linear-gradient(135deg, {{ block.settings.gradient_color_1 }}, {{ block.settings.gradient_color_2 }});
+    background-size: 200% 200%;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: {{ block.settings.button_radius }}px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .ai-hero-button-primary-{{ ai_gen_id }}:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 120, 0, 0.3);
+  }
+
+  .ai-hero-button-secondary-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 34px;
+    height: 58px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: {{ block.settings.button_radius }}px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+  }
+
+  .ai-hero-button-secondary-{{ ai_gen_id }}:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+  }
+
+  .ai-hero-icon-arrow-{{ ai_gen_id }} {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ai-hero-icon-play-{{ ai_gen_id }} {
+    width: 18px;
+    height: 18px;
+  }
+
+  @keyframes ai-hero-fade-in-{{ ai_gen_id }} {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ai-hero-fade-up-{{ ai_gen_id }} {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ai-hero-float-1-{{ ai_gen_id }} {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translate(10px, -15px) rotate(5deg) scale(1.04);
+    }
+    50% {
+      transform: translate(-5px, -25px) rotate(-3deg) scale(1.02);
+    }
+    75% {
+      transform: translate(-10px, -15px) rotate(3deg) scale(1.04);
+    }
+  }
+
+  @keyframes ai-hero-float-2-{{ ai_gen_id }} {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translate(-12px, -20px) rotate(-4deg) scale(1.03);
+    }
+    50% {
+      transform: translate(8px, -30px) rotate(4deg) scale(1.04);
+    }
+    75% {
+      transform: translate(12px, -18px) rotate(-5deg) scale(1.02);
+    }
+  }
+
+  @keyframes ai-hero-float-3-{{ ai_gen_id }} {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translate(8px, -18px) rotate(3deg) scale(1.02);
+    }
+    50% {
+      transform: translate(-10px, -28px) rotate(-4deg) scale(1.04);
+    }
+    75% {
+      transform: translate(10px, -20px) rotate(5deg) scale(1.03);
+    }
+  }
+
+  @keyframes ai-hero-float-4-{{ ai_gen_id }} {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translate(-8px, -22px) rotate(-5deg) scale(1.04);
+    }
+    50% {
+      transform: translate(12px, -32px) rotate(3deg) scale(1.02);
+    }
+    75% {
+      transform: translate(-12px, -20px) rotate(4deg) scale(1.03);
+    }
+  }
+
+  @keyframes ai-hero-particle-move-{{ ai_gen_id }} {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(var(--ai-particle-x), var(--ai-particle-y));
+    }
+  }
+
+  @media (max-width: 989px) {
+    .ai-hero-heading-{{ ai_gen_id }} {
+      font-size: 54px;
+    }
+
+    .ai-hero-description-{{ ai_gen_id }} {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .ai-hero-{{ ai_gen_id }} {
+      min-height: {{ block.settings.section_height | times: 0.8 }}vh;
+    }
+
+    .ai-hero-heading-{{ ai_gen_id }} {
+      font-size: 38px;
+    }
+
+    .ai-hero-description-{{ ai_gen_id }} {
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    .ai-hero-buttons-{{ ai_gen_id }} {
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .ai-hero-button-primary-{{ ai_gen_id }},
+    .ai-hero-button-secondary-{{ ai_gen_id }} {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-hero-{{ ai_gen_id }} *,
+    .ai-hero-{{ ai_gen_id }} *::before,
+    .ai-hero-{{ ai_gen_id }} *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+{% endstyle %}
+
+<premium-hero-{{ ai_gen_id }} class="ai-hero-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-hero-background-{{ ai_gen_id }}">
+    {% if block.settings.background_type == 'image' and block.settings.background_image %}
+      <img
+        src="{{ block.settings.background_image | image_url: width: 2400 }}"
+        alt="{{ block.settings.background_image.alt | escape }}"
+        class="ai-hero-background-media-{{ ai_gen_id }}"
+        loading="eager"
+        width="{{ block.settings.background_image.width }}"
+        height="{{ block.settings.background_image.height }}"
+      >
+    {% elsif block.settings.background_type == 'video' and block.settings.background_video %}
+      <video
+        class="ai-hero-background-media-{{ ai_gen_id }}"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="{{ block.settings.background_video }}" type="video/mp4">
+      </video>
+    {% elsif block.settings.background_type == 'youtube' and block.settings.youtube_url != blank %}
+      <iframe
+        class="ai-hero-background-media-{{ ai_gen_id }}"
+        src="https://www.youtube.com/embed/{{ block.settings.youtube_url | split: 'v=' | last | split: '&' | first }}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&playlist={{ block.settings.youtube_url | split: 'v=' | last | split: '&' | first }}"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+      ></iframe>
+    {% elsif block.settings.background_type == 'vimeo' and block.settings.vimeo_url != blank %}
+      <iframe
+        class="ai-hero-background-media-{{ ai_gen_id }}"
+        src="https://player.vimeo.com/video/{{ block.settings.vimeo_url | split: '/' | last }}?autoplay=1&muted=1&loop=1&background=1&controls=0"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+      ></iframe>
+    {% endif %}
+    <div class="ai-hero-background-overlay-{{ ai_gen_id }}"></div>
+  </div>
+
+  {% if block.settings.particles_enabled %}
+    <canvas class="ai-hero-particles-{{ ai_gen_id }}" data-particle-color="{{ block.settings.particle_color }}"></canvas>
+  {% endif %}
+
+  {% if block.settings.floating_icons_enabled %}
+    {% if block.settings.icon_top_left %}
+      <div
+        class="ai-hero-floating-icon-{{ ai_gen_id }} ai-hero-icon-tl-{{ ai_gen_id }}"
+        style="
+          top: {{ block.settings.icon_top_left_y }}%;
+          left: {{ block.settings.icon_top_left_x }}%;
+          width: {{ block.settings.icon_top_left_width }}px;
+          animation: ai-hero-float-1-{{ ai_gen_id }} {{ block.settings.animation_speed }}s ease-in-out infinite;
+          animation-delay: 0s;
+          animation-fill-mode: forwards;
+          opacity: 1;
+        "
+        data-parallax-speed="0.3"
+      >
+        <img
+          src="{{ block.settings.icon_top_left | image_url: width: 400 }}"
+          alt="{{ block.settings.icon_top_left.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.icon_top_left_width }}"
+          height="auto"
+        >
+      </div>
+    {% endif %}
+
+    {% if block.settings.icon_top_right %}
+      <div
+        class="ai-hero-floating-icon-{{ ai_gen_id }} ai-hero-icon-tr-{{ ai_gen_id }}"
+        style="
+          top: {{ block.settings.icon_top_right_y }}%;
+          right: {{ block.settings.icon_top_right_x }}%;
+          width: {{ block.settings.icon_top_right_width }}px;
+          animation: ai-hero-float-2-{{ ai_gen_id }} {{ block.settings.animation_speed }}s ease-in-out infinite;
+          animation-delay: 0.5s;
+          animation-fill-mode: forwards;
+          opacity: 1;
+        "
+        data-parallax-speed="0.4"
+      >
+        <img
+          src="{{ block.settings.icon_top_right | image_url: width: 400 }}"
+          alt="{{ block.settings.icon_top_right.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.icon_top_right_width }}"
+          height="auto"
+        >
+      </div>
+    {% endif %}
+
+    {% if block.settings.icon_bottom_left %}
+      <div
+        class="ai-hero-floating-icon-{{ ai_gen_id }} ai-hero-icon-bl-{{ ai_gen_id }}"
+        style="
+          bottom: {{ block.settings.icon_bottom_left_y }}%;
+          left: {{ block.settings.icon_bottom_left_x }}%;
+          width: {{ block.settings.icon_bottom_left_width }}px;
+          animation: ai-hero-float-3-{{ ai_gen_id }} {{ block.settings.animation_speed }}s ease-in-out infinite;
+          animation-delay: 1s;
+          animation-fill-mode: forwards;
+          opacity: 1;
+        "
+        data-parallax-speed="0.5"
+      >
+        <img
+          src="{{ block.settings.icon_bottom_left | image_url: width: 400 }}"
+          alt="{{ block.settings.icon_bottom_left.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.icon_bottom_left_width }}"
+          height="auto"
+        >
+      </div>
+    {% endif %}
+
+    {% if block.settings.icon_bottom_right %}
+      <div
+        class="ai-hero-floating-icon-{{ ai_gen_id }} ai-hero-icon-br-{{ ai_gen_id }}"
+        style="
+          bottom: {{ block.settings.icon_bottom_right_y }}%;
+          right: {{ block.settings.icon_bottom_right_x }}%;
+          width: {{ block.settings.icon_bottom_right_width }}px;
+          animation: ai-hero-float-4-{{ ai_gen_id }} {{ block.settings.animation_speed }}s ease-in-out infinite;
+          animation-delay: 1.5s;
+          animation-fill-mode: forwards;
+          opacity: 1;
+        "
+        data-parallax-speed="0.6"
+      >
+        <img
+          src="{{ block.settings.icon_bottom_right | image_url: width: 400 }}"
+          alt="{{ block.settings.icon_bottom_right.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.icon_bottom_right_width }}"
+          height="auto"
+        >
+      </div>
+    {% endif %}
+  {% endif %}
+
+  <div class="ai-hero-content-wrapper-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h1 class="ai-hero-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h1>
+    {% endif %}
+
+    {% if block.settings.description != blank %}
+      <div class="ai-hero-description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+    {% endif %}
+
+    <div class="ai-hero-buttons-{{ ai_gen_id }}">
+      {% if block.settings.primary_button_text != blank %}
+        <a
+          href="{{ block.settings.primary_button_url }}"
+          class="ai-hero-button-primary-{{ ai_gen_id }}"
+        >
+          {{ block.settings.primary_button_text }}
+          <svg class="ai-hero-icon-arrow-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      {% endif %}
+
+      {% if block.settings.secondary_button_text != blank %}
+        <a
+          href="{{ block.settings.secondary_button_url }}"
+          class="ai-hero-button-secondary-{{ ai_gen_id }}"
+        >
+          <svg class="ai-hero-icon-play-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          {{ block.settings.secondary_button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</premium-hero-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class PremiumHero{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.particlesEnabled = {{ block.settings.particles_enabled | json }};
+        this.parallaxEnabled = window.innerWidth > 749;
+        this.mouseX = 0;
+        this.mouseY = 0;
+      }
+
+      connectedCallback() {
+        if (this.particlesEnabled) {
+          this.initParticles();
+        }
+
+        if (this.parallaxEnabled) {
+          this.initParallax();
+          this.initMouseFollow();
+        }
+
+        this.initScrollParallax();
+      }
+
+      initParticles() {
+        const canvas = this.querySelector('.ai-hero-particles-{{ ai_gen_id }}');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        canvas.width = this.offsetWidth;
+        canvas.height = this.offsetHeight;
+
+        const particles = [];
+        const particleCount = Math.min(50, Math.floor((canvas.width * canvas.height) / 15000));
+        const particleColor = canvas.dataset.particleColor || '#ff7800';
+
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            radius: Math.random() * 2 + 1
+          });
+        }
+
+        const animate = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          particles.forEach((p, i) => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = particleColor;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = particleColor;
+            ctx.fill();
+
+            particles.forEach((p2, j) => {
+              if (i === j) return;
+              const dx = p.x - p2.x;
+              const dy = p.y - p2.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < 150) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.strokeStyle = particleColor;
+                ctx.globalAlpha = (1 - distance / 150) * 0.3;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+              }
+            });
+          });
+
+          requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        window.addEventListener('resize', () => {
+          canvas.width = this.offsetWidth;
+          canvas.height = this.offsetHeight;
+        });
+      }
+
+      initParallax() {
+        const icons = this.querySelectorAll('.ai-hero-floating-icon-{{ ai_gen_id }}');
+        
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          
+          icons.forEach(icon => {
+            const speed = parseFloat(icon.dataset.parallaxSpeed) || 0.5;
+            const yPos = -(scrolled * speed);
+            icon.style.transform = `translateY(${yPos}px)`;
+          });
+        });
+      }
+
+      initMouseFollow() {
+        const icons = this.querySelectorAll('.ai-hero-floating-icon-{{ ai_gen_id }}');
+        
+        this.addEventListener('mousemove', (e) => {
+          const rect = this.getBoundingClientRect();
+          this.mouseX = (e.clientX - rect.left - rect.width / 2) / rect.width;
+          this.mouseY = (e.clientY - rect.top - rect.height / 2) / rect.height;
+
+          icons.forEach((icon, index) => {
+            const moveX = this.mouseX * 20 * (index + 1) * 0.5;
+            const moveY = this.mouseY * 20 * (index + 1) * 0.5;
+            
+            const currentTransform = icon.style.transform || '';
+            const translateYMatch = currentTransform.match(/translateY\(([^)]+)\)/);
+            const translateY = translateYMatch ? translateYMatch[1] : '0px';
+            
+            icon.style.transform = `translateY(${translateY}) translate(${moveX}px, ${moveY}px)`;
+          });
+        });
+      }
+
+      initScrollParallax() {
+        const background = this.querySelector('.ai-hero-background-{{ ai_gen_id }}');
+        
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          const rate = scrolled * 0.5;
+          
+          if (background) {
+            background.style.transform = `translateY(${rate}px)`;
+          }
+        });
+      }
+    }
+
+    customElements.define('premium-hero-{{ ai_gen_id }}', PremiumHero{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Premium hero banner",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Transform Your Digital Experience"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Create stunning, high-performance websites that captivate your audience and drive results with our premium solutions.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Text",
+      "default": "Get started"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Text",
+      "default": "Watch demo"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Background media"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background type",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video (MP4)"
+        },
+        {
+          "value": "youtube",
+          "label": "YouTube"
+        },
+        {
+          "value": "vimeo",
+          "label": "Vimeo"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "url",
+      "id": "background_video",
+      "label": "Video URL (MP4)"
+    },
+    {
+      "type": "text",
+      "id": "youtube_url",
+      "label": "YouTube URL"
+    },
+    {
+      "type": "text",
+      "id": "vimeo_url",
+      "label": "Vimeo URL"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Floating icon - Top left"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_top_left",
+      "label": "Icon image"
+    },
+    {
+      "type": "range",
+      "id": "icon_top_left_width",
+      "label": "Width (desktop)",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "icon_top_left_x",
+      "label": "Horizontal position",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "icon_top_left_y",
+      "label": "Vertical position",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Floating icon - Top right"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_top_right",
+      "label": "Icon image"
+    },
+    {
+      "type": "range",
+      "id": "icon_top_right_width",
+      "label": "Width (desktop)",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "icon_top_right_x",
+      "label": "Horizontal position",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "icon_top_right_y",
+      "label": "Vertical position",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Floating icon - Bottom left"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_bottom_left",
+      "label": "Icon image"
+    },
+    {
+      "type": "range",
+      "id": "icon_bottom_left_width",
+      "label": "Width (desktop)",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "icon_bottom_left_x",
+      "label": "Horizontal position",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "icon_bottom_left_y",
+      "label": "Vertical position",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Floating icon - Bottom right"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_bottom_right",
+      "label": "Icon image"
+    },
+    {
+      "type": "range",
+      "id": "icon_bottom_right_width",
+      "label": "Width (desktop)",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "icon_bottom_right_x",
+      "label": "Horizontal position",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "icon_bottom_right_y",
+      "label": "Vertical position",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "paragraph_color",
+      "label": "Description",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Button gradient start",
+      "default": "#0066ff"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Button gradient end",
+      "default": "#ff7800"
+    },
+    {
+      "type": "color",
+      "id": "particle_color",
+      "label": "Particle color",
+      "default": "#ff7800"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section height",
+      "min": 60,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "default": 95
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "floating_icons_enabled",
+      "label": "Enable floating icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "particles_enabled",
+      "label": "Enable particle network",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "label": "Animation speed",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Premium hero banner"
+    }
+  ]
+}
+{% endschema %}

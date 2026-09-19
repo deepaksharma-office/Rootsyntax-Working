@@ -1,0 +1,881 @@
+{% doc %}
+  @prompt
+    ### Shopify AI Prompt — Blog / Insights Section
+    
+    Create a premium dark-themed **"Blog / Insights"** section that closely matches the reference UI.
+    
+    ### Section Layout
+    
+    * Full-width section
+    * Background: **#000000**
+    * Max content width: **1320px**
+    * Center the content
+    * Top padding: **90px**
+    * Bottom padding: **100px**
+    * Horizontal padding:
+    
+      * Desktop: 24px
+      * Tablet: 20px
+      * Mobile: 16px
+    
+    ### Heading
+    
+    Center aligned.
+    
+    Title:
+    
+    **Insights for**
+    **Ecommerce Growth**
+    
+    Typography:
+    
+    * Font weight: 800
+    * Desktop: 64px
+    * Tablet: 48px
+    * Mobile: 34px
+    * Line height: 1.05
+    * Letter spacing: -2px
+    
+    Colors:
+    
+    * "Insights for" → #FFFFFF
+    * "Ecommerce" → #9CCB2F
+    * "Growth" → #FFFFFF
+    
+    Spacing below heading: 50px
+    
+    ---
+    
+    ## Blog Posts — IMPORTANT
+    
+    The section must display **only 3 or 4 blog posts maximum**.
+    
+    Add a Shopify Theme Editor setting called:
+    
+    **Number of blog posts**
+    
+    Allow the merchant to choose:
+    
+    * 3 posts
+    * 4 posts
+    
+    Default: **3 posts**
+    
+    Do NOT automatically display more than 4 posts.
+    
+    Connect the section dynamically to the Shopify Blog/Articles system.
+    
+    The merchant should be able to select which **Blog** is displayed from the Theme Editor.
+    
+    ---
+    
+    ## Blog Layout Setting
+    
+    Add another Theme Editor setting called:
+    
+    **Blog layout**
+    
+    Options:
+    
+    * 3 columns
+    * 4 columns
+    * Horizontal row
+    
+    Default: **3 columns**
+    
+    ### 3 Columns
+    
+    Display 3 blog cards in one row on desktop.
+    
+    ### 4 Columns
+    
+    Display 4 blog cards in one row on desktop.
+    
+    ### Horizontal Row
+    
+    Display the selected 3 or 4 posts in a single horizontal row with horizontal scrolling if necessary.
+    
+    On mobile, automatically switch to a **single-column layout** or horizontal swipe layout for better usability.
+    
+    ---
+    
+    ## Blog Cards
+    
+    Each card should have:
+    
+    * Background: #121212
+    * Border: 1px solid rgba(255,255,255,.08)
+    * Border radius: 18px
+    * Overflow: hidden
+    * Smooth 0.3s ease transition
+    
+    Hover:
+    
+    * Card moves upward by 6px
+    * Border becomes slightly brighter
+    * Image zooms to 1.05
+    
+    ---
+    
+    ## Featured Image
+    
+    Use the Shopify blog/article featured image.
+    
+    * Width: 100%
+    * Desktop height: 230px
+    * Mobile height: 220px
+    * Object-fit: cover
+    * Rounded top corners
+    
+    Use a clean placeholder if the article does not have an image.
+    
+    ---
+    
+    ## Category Badge
+    
+    Position on the top-left of the image.
+    
+    * Background: #ECECEC
+    * Text: #8DB62E
+    * Padding: 8px 16px
+    * Border radius: 999px
+    * Font size: 13px
+    * Font weight: 600
+    
+    Use the article's first available tag as the category.
+    
+    ---
+    
+    ## Card Content
+    
+    Padding: 24px
+    
+    ### Date
+    
+    * Color: #7B7B7B
+    * Font size: 14px
+    * Font weight: 400
+    * Margin bottom: 20px
+    
+    Use the Shopify article published date.
+    
+    ### Blog Title
+    
+    * Color: #FFFFFF
+    * Font size: 38px
+    * Font weight: 700
+    * Line height: 1.25
+    * Maximum 3 lines
+    
+    ### Description
+    
+    * Color: #A7A7A7
+    * Font size: 18px
+    * Line height: 1.7
+    * Maximum 3 lines
+    * Margin bottom: 30px
+    
+    Use the Shopify article excerpt if available. Otherwise generate the excerpt from the article content.
+    
+    ### Read More
+    
+    Display:
+    
+    **Read More →**
+    
+    * Color: #9CCB2F
+    * Font size: 17px
+    * Font weight: 600
+    
+    The entire card should be clickable and link to the corresponding Shopify article.
+    
+    On hover, animate the arrow slightly to the right.
+    
+    ---
+    
+    ## Dynamic Shopify Content
+    
+    Pull content dynamically from Shopify Articles.
+    
+    Each card should display:
+    
+    1. Featured image
+    2. Article tag/category
+    3. Published date
+    4. Article title
+    5. Article excerpt
+    6. Read More link
+    
+    Only render the number of articles selected in the **Number of blog posts** setting.
+    
+    Maximum allowed: **4 articles**.
+    
+    ---
+    
+    ## Theme Editor Controls
+    
+    Make the following settings available in the Shopify Theme Editor:
+    
+    ### Content
+    
+    * Blog selector
+    * Number of blog posts: 3 / 4
+    
+    ### Layout
+    
+    * Layout: 3 columns / 4 columns / Horizontal row
+    
+    ### Styling
+    
+    * Section background color
+    * Accent color
+    * Card border radius
+    * Card spacing
+    
+    Do not hard-code these values if they can reasonably be exposed as Theme Editor settings.
+    
+    ---
+    
+    ## Responsive Behavior
+    
+    ### Desktop
+    
+    For **3 columns**:
+    3 cards in one row.
+    
+    For **4 columns**:
+    4 cards in one row.
+    
+    For **Horizontal row**:
+    All selected posts remain in one horizontal row and can horizontally scroll if the viewport is too narrow.
+    
+    ### Tablet
+    
+    Automatically adapt the card width while maintaining a clean layout.
+    
+    ### Mobile
+    
+    Use one card per row OR horizontal swipe depending on the selected layout.
+    
+    Do not create a large vertical list of blog posts.
+    
+    ---
+    
+    ## Animations
+    
+    When the section enters the viewport:
+    
+    * Fade-up animation
+    * Duration: 700ms
+    * Cards stagger by 120ms
+    
+    Hover:
+    
+    * Card lifts slightly
+    * Image zooms to 1.05
+    * Arrow moves right
+    * Border becomes brighter
+    
+    Keep animations subtle and premium.
+    
+    ---
+    
+    ## Overall Design
+    
+    Maintain the premium editorial aesthetic:
+    
+    * Pure black background: #000000
+    * Dark charcoal cards: #121212
+    * White typography
+    * Lime green accent: #9CCB2F
+    * Rounded 18px cards
+    * Generous whitespace
+    * Editorial/magazine-inspired design
+    * Minimal UI
+    * No heavy shadows
+    * Subtle borders
+    * Smooth interactions
+    * Fully responsive
+    
+    ### IMPORTANT IMPLEMENT
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% liquid
+  assign selected_blog = block.settings.blog
+  assign posts_count = block.settings.posts_count
+  assign layout_type = block.settings.layout_type
+%}
+
+{% style %}
+  .ai-blog-insights-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.section_background }};
+    padding-top: {{ block.settings.padding_top }}px;
+    padding-bottom: {{ block.settings.padding_bottom }}px;
+  }
+
+  .ai-blog-insights-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .ai-blog-insights-heading-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: {{ block.settings.heading_spacing }}px;
+  }
+
+  .ai-blog-insights-title-{{ ai_gen_id }} {
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin: 0;
+  }
+
+  .ai-blog-insights-title-line1-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+  }
+
+  .ai-blog-insights-title-accent-{{ ai_gen_id }} {
+    color: {{ block.settings.accent_color }};
+  }
+
+  .ai-blog-insights-title-line2-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+  }
+
+  .ai-blog-insights-grid-{{ ai_gen_id }} {
+    display: grid;
+    gap: {{ block.settings.card_spacing }}px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .ai-blog-insights-grid-{{ ai_gen_id }}.ai-blog-visible-{{ ai_gen_id }} {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ai-blog-insights-grid-3col-{{ ai_gen_id }} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ai-blog-insights-grid-4col-{{ ai_gen_id }} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .ai-blog-insights-grid-horizontal-{{ ai_gen_id }} {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ai-blog-insights-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    scroll-snap-align: start;
+  }
+
+  .ai-blog-insights-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .ai-blog-insights-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+  }
+
+  .ai-blog-insights-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-blog-insights-card-{{ ai_gen_id }}:hover .ai-blog-insights-image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-blog-insights-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-blog-insights-placeholder-{{ ai_gen_id }} svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+
+  .ai-blog-insights-badge-{{ ai_gen_id }} {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: {{ block.settings.badge_background }};
+    color: {{ block.settings.badge_text_color }};
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .ai-blog-insights-content-{{ ai_gen_id }} {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-blog-insights-date-{{ ai_gen_id }} {
+    color: {{ block.settings.date_color }};
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .ai-blog-insights-card-title-{{ ai_gen_id }} {
+    color: {{ block.settings.title_color }};
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 16px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ai-blog-insights-description-{{ ai_gen_id }} {
+    color: {{ block.settings.description_color }};
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+  }
+
+  .ai-blog-insights-read-more-{{ ai_gen_id }} {
+    color: {{ block.settings.accent_color }};
+    font-size: 17px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-blog-insights-arrow-{{ ai_gen_id }} {
+    transition: transform 0.3s ease;
+  }
+
+  .ai-blog-insights-card-{{ ai_gen_id }}:hover .ai-blog-insights-arrow-{{ ai_gen_id }} {
+    transform: translateX(4px);
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-blog-insights-container-{{ ai_gen_id }} {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .ai-blog-insights-title-{{ ai_gen_id }} {
+      font-size: 48px;
+    }
+
+    .ai-blog-insights-grid-3col-{{ ai_gen_id }},
+    .ai-blog-insights-grid-4col-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-blog-insights-card-title-{{ ai_gen_id }} {
+      font-size: 28px;
+    }
+
+    .ai-blog-insights-description-{{ ai_gen_id }} {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-blog-insights-container-{{ ai_gen_id }} {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .ai-blog-insights-title-{{ ai_gen_id }} {
+      font-size: 34px;
+    }
+
+    .ai-blog-insights-grid-3col-{{ ai_gen_id }},
+    .ai-blog-insights-grid-4col-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-blog-insights-grid-horizontal-{{ ai_gen_id }} {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .ai-blog-insights-image-wrapper-{{ ai_gen_id }} {
+      height: 220px;
+    }
+
+    .ai-blog-insights-card-title-{{ ai_gen_id }} {
+      font-size: 24px;
+    }
+
+    .ai-blog-insights-description-{{ ai_gen_id }} {
+      font-size: 15px;
+    }
+  }
+{% endstyle %}
+
+<blog-insights-{{ ai_gen_id }} class="ai-blog-insights-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-blog-insights-container-{{ ai_gen_id }}">
+    <div class="ai-blog-insights-heading-{{ ai_gen_id }}">
+      <h2 class="ai-blog-insights-title-{{ ai_gen_id }}">
+        <span class="ai-blog-insights-title-line1-{{ ai_gen_id }}">{{ block.settings.heading_line1 }}</span><br>
+        <span class="ai-blog-insights-title-accent-{{ ai_gen_id }}">{{ block.settings.heading_accent }}</span>
+        <span class="ai-blog-insights-title-line2-{{ ai_gen_id }}">{{ block.settings.heading_line2 }}</span>
+      </h2>
+    </div>
+
+    {% if selected_blog != blank %}
+      {% liquid
+        assign grid_class = 'ai-blog-insights-grid-3col-' | append: ai_gen_id
+        if layout_type == '4col'
+          assign grid_class = 'ai-blog-insights-grid-4col-' | append: ai_gen_id
+        elsif layout_type == 'horizontal'
+          assign grid_class = 'ai-blog-insights-grid-horizontal-' | append: ai_gen_id
+        endif
+      %}
+
+      <div class="ai-blog-insights-grid-{{ ai_gen_id }} {{ grid_class }}" data-blog-grid>
+        {% for article in selected_blog.articles limit: posts_count %}
+          <a href="{{ article.url }}" class="ai-blog-insights-card-{{ ai_gen_id }}" style="animation-delay: {{ forloop.index | times: 120 }}ms;">
+            <div class="ai-blog-insights-image-wrapper-{{ ai_gen_id }}">
+              {% if article.image %}
+                <img
+                  src="{{ article.image | image_url: width: 600 }}"
+                  alt="{{ article.image.alt | escape }}"
+                  class="ai-blog-insights-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                >
+              {% else %}
+                <div class="ai-blog-insights-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+
+              {% if article.tags.size > 0 %}
+                <div class="ai-blog-insights-badge-{{ ai_gen_id }}">
+                  {{ article.tags.first }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="ai-blog-insights-content-{{ ai_gen_id }}">
+              <div class="ai-blog-insights-date-{{ ai_gen_id }}">
+                {{ article.published_at | date: '%B %d, %Y' }}
+              </div>
+
+              <h3 class="ai-blog-insights-card-title-{{ ai_gen_id }}">
+                {{ article.title }}
+              </h3>
+
+              <div class="ai-blog-insights-description-{{ ai_gen_id }}">
+                {% if article.excerpt != blank %}
+                  {{ article.excerpt | strip_html }}
+                {% else %}
+                  {{ article.content | strip_html | truncate: 150 }}
+                {% endif %}
+              </div>
+
+              <div class="ai-blog-insights-read-more-{{ ai_gen_id }}">
+                Read More
+                <span class="ai-blog-insights-arrow-{{ ai_gen_id }}">→</span>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="text-align: center; padding: 60px 20px; color: #7B7B7B;">
+        <p style="font-size: 16px; margin: 0;">Select a blog from the Theme Editor to display articles</p>
+      </div>
+    {% endif %}
+  </div>
+</blog-insights-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class BlogInsights{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupIntersectionObserver();
+      }
+
+      setupIntersectionObserver() {
+        const grid = this.querySelector('[data-blog-grid]');
+        if (!grid) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('ai-blog-visible-{{ ai_gen_id }}');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+          }
+        );
+
+        observer.observe(grid);
+      }
+    }
+
+    customElements.define('blog-insights-{{ ai_gen_id }}', BlogInsights{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Blog insights",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "select",
+      "id": "posts_count",
+      "label": "Number of blog posts",
+      "options": [
+        {
+          "value": "3",
+          "label": "3 posts"
+        },
+        {
+          "value": "4",
+          "label": "4 posts"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading line 1",
+      "default": "Insights for"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading accent word",
+      "default": "Ecommerce"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Heading line 2",
+      "default": "Growth"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Spacing below heading",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout_type",
+      "label": "Blog layout",
+      "options": [
+        {
+          "value": "3col",
+          "label": "3 columns"
+        },
+        {
+          "value": "4col",
+          "label": "4 columns"
+        },
+        {
+          "value": "horizontal",
+          "label": "Horizontal row"
+        }
+      ],
+      "default": "3col"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1320
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Card styling"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_spacing",
+      "label": "Card spacing",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#9CCB2F"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "rgba(255, 255, 255, 0.08)"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Badge background",
+      "default": "#ECECEC"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#8DB62E"
+    },
+    {
+      "type": "color",
+      "id": "date_color",
+      "label": "Date color",
+      "default": "#7B7B7B"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#A7A7A7"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog insights"
+    }
+  ]
+}
+{% endschema %}

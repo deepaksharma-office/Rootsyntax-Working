@@ -1,0 +1,1163 @@
+{% doc %}
+  @prompt
+    ### Updated Shopify AI Prompt
+    
+    Update the existing **RootSyntax Contact Us section** with a premium dark, modern UI. Keep the existing content and functionality, but refine the layout and styling.
+    
+    **Design**
+    
+    * Background: `#050505`
+    * Two-column desktop layout: 65% form / 35% contact info
+    * Max-width: 1400px
+    * Card background: `#0F0F12`
+    * Border: `rgba(255,255,255,0.08)`
+    * Border radius: 20–24px
+    * Accent colors: Orange `#FF7A00` and Purple `#6C4CFF`
+    * White headings and light-gray body text
+    * Responsive on mobile
+    
+    **Contact Form**
+    
+    * Heading: **GET IN TOUCH**
+    * Name, Email, Phone Number and Message fields
+    * Project Timeline options: ⚡ ASAP, 📅 1–2 Months, 🚀 3–6 Months
+    * Selected timeline gets an orange border/glow
+    * Book A Time Slot: Date, Time and AM/PM
+    * Full-width **SEND** button using an orange-to-purple gradient
+    * Keep the existing consent/privacy text
+    
+    **Contact Information**
+    Heading: **WE'D LOVE TO HEAR FROM YOU.**
+    
+    Create clean cards for:
+    
+    **WORKING HOURS**
+    Monday to Friday – 9:30 am to 4 pm EST
+    
+    **EMAIL US**
+    [info@rootsyntax.com](mailto:info@rootsyntax.com)
+    
+    **CONTACT NUMBER:**
+    +1 352-218-5661
+    
+    Use consistent orange gradient circular icons with white icons.
+    
+    **Office Locations**
+    
+    Create two clean stacked cards:
+    
+    **USA, FLORIDA**
+    6160 SW Highway 200
+    Ste. 110 PMB508
+    Ocala, FL 34486
+    7901 4TH ST N STE 300,
+    Saint Petersburg, FL 33702
+    
+    **INDIA, BANGALORE**
+    91 Springboard Business Hub Private Ltd.,512/10,
+    Service Lane,
+    Outer Ring Road,
+    Mahadevapura,
+    Bangalore 560048
+    
+    For both location cards:
+    
+    * Use a location-pin icon inside an orange circular background
+    * Keep the icon on the left and address on the right
+    * **REMOVE the orange arrow/chevron completely**
+    * **Do not add any arrow, chevron, link icon, or directional icon**
+    * Cards should be informational, not clickable
+    * Add only a subtle hover lift/glow
+    
+    **Trust Card**
+    Add:
+    ★★★★★
+    **146+ Shopify Projects Delivered**
+    98% Client Satisfaction
+    
+    Include a subtle orange-to-purple gradient progress bar.
+    
+    **Customization**
+    Make headings, labels, contact information, addresses, button text, colors, spacing, card radius, gradients, and trust card visibility editable through the Shopify Theme Editor.
+    
+    **Important:** Keep the design minimal and premium. Do not introduce unnecessary icons or decorative elements. **The USA and India address cards must have NO arrows on the right side.**
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .rs-contact-{{ ai_gen_id }} {
+    display: block;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding_top }}px 20px {{ block.settings.section_padding_bottom }}px;
+    width: 100%;
+  }
+
+  .rs-contact-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    gap: 40px;
+  }
+
+  .rs-contact-form-wrapper-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 48px;
+  }
+
+  .rs-contact-form-heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.form_heading_size }}px;
+    font-weight: 700;
+    margin: 0 0 32px 0;
+    letter-spacing: 2px;
+  }
+
+  .rs-contact-form-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .rs-contact-form-row-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .rs-contact-form-group-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rs-contact-form-label-{{ ai_gen_id }} {
+    color: {{ block.settings.label_color }};
+    font-size: {{ block.settings.label_size }}px;
+    font-weight: 500;
+  }
+
+  .rs-contact-form-input-{{ ai_gen_id }},
+  .rs-contact-form-textarea-{{ ai_gen_id }} {
+    background: {{ block.settings.input_background }};
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    padding: 14px 16px;
+    color: {{ block.settings.input_text_color }};
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+
+  .rs-contact-form-input-{{ ai_gen_id }}:focus,
+  .rs-contact-form-textarea-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.accent_orange }};
+  }
+
+  .rs-contact-form-textarea-{{ ai_gen_id }} {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .rs-contact-timeline-label-{{ ai_gen_id }} {
+    color: {{ block.settings.label_color }};
+    font-size: {{ block.settings.label_size }}px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .rs-contact-timeline-options-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .rs-contact-timeline-option-{{ ai_gen_id }} {
+    position: relative;
+  }
+
+  .rs-contact-timeline-input-{{ ai_gen_id }} {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .rs-contact-timeline-button-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 14px 16px;
+    background: {{ block.settings.input_background }};
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    color: {{ block.settings.input_text_color }};
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .rs-contact-timeline-input-{{ ai_gen_id }}:checked + .rs-contact-timeline-button-{{ ai_gen_id }} {
+    border-color: {{ block.settings.accent_orange }};
+    box-shadow: 0 0 12px {{ block.settings.accent_orange }}40;
+    background: {{ block.settings.accent_orange }}10;
+  }
+
+  .rs-contact-booking-row-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  .rs-contact-submit-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, {{ block.settings.accent_orange }} 0%, {{ block.settings.accent_purple }} 100%);
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    color: {{ block.settings.button_text_color }};
+    font-size: {{ block.settings.button_text_size }}px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    letter-spacing: 1px;
+  }
+
+  .rs-contact-submit-{{ ai_gen_id }}:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px {{ block.settings.accent_orange }}40;
+  }
+
+  .rs-contact-consent-{{ ai_gen_id }} {
+    color: {{ block.settings.body_text_color }};
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+
+  .rs-contact-consent-{{ ai_gen_id }} a {
+    color: {{ block.settings.accent_orange }};
+    text-decoration: none;
+  }
+
+  .rs-contact-info-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .rs-contact-info-heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.info_heading_size }}px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 24px 0;
+  }
+
+  .rs-contact-info-card-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .rs-contact-info-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px {{ block.settings.accent_orange }}20;
+  }
+
+  .rs-contact-info-item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .rs-contact-info-icon-{{ ai_gen_id }} {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, {{ block.settings.accent_orange }} 0%, {{ block.settings.accent_purple }} 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rs-contact-info-icon-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    fill: none;
+  }
+
+  .rs-contact-info-content-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .rs-contact-info-title-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    letter-spacing: 1px;
+  }
+
+  .rs-contact-info-text-{{ ai_gen_id }} {
+    color: {{ block.settings.body_text_color }};
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .rs-contact-info-text-{{ ai_gen_id }} a {
+    color: {{ block.settings.body_text_color }};
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .rs-contact-info-text-{{ ai_gen_id }} a:hover {
+    color: {{ block.settings.accent_orange }};
+  }
+
+  .rs-contact-location-card-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .rs-contact-location-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px {{ block.settings.accent_orange }}20;
+  }
+
+  .rs-contact-location-item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .rs-contact-location-icon-{{ ai_gen_id }} {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: {{ block.settings.accent_orange }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rs-contact-location-icon-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    fill: none;
+  }
+
+  .rs-contact-location-content-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .rs-contact-location-title-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    letter-spacing: 1px;
+  }
+
+  .rs-contact-location-address-{{ ai_gen_id }} {
+    color: {{ block.settings.body_text_color }};
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .rs-contact-trust-card-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .rs-contact-trust-stars-{{ ai_gen_id }} {
+    color: {{ block.settings.accent_orange }};
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .rs-contact-trust-text-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+  }
+
+  .rs-contact-trust-subtext-{{ ai_gen_id }} {
+    color: {{ block.settings.body_text_color }};
+    font-size: 14px;
+    margin: 0 0 16px 0;
+  }
+
+  .rs-contact-trust-progress-{{ ai_gen_id }} {
+    width: 100%;
+    height: 6px;
+    background: {{ block.settings.input_background }};
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .rs-contact-trust-progress-bar-{{ ai_gen_id }} {
+    height: 100%;
+    width: 98%;
+    background: linear-gradient(90deg, {{ block.settings.accent_orange }} 0%, {{ block.settings.accent_purple }} 100%);
+    border-radius: 3px;
+  }
+
+  .rs-contact-success-{{ ai_gen_id }} {
+    background: #10b98140;
+    border: 1px solid #10b981;
+    border-radius: {{ block.settings.input_border_radius }}px;
+    padding: 16px;
+    color: #10b981;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .rs-contact-error-{{ ai_gen_id }} {
+    background: #ef444440;
+    border: 1px solid #ef4444;
+    border-radius: {{ block.settings.input_border_radius }}px;
+    padding: 16px;
+    color: #ef4444;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .rs-contact-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .rs-contact-form-wrapper-{{ ai_gen_id }} {
+      padding: 32px 24px;
+    }
+
+    .rs-contact-form-row-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .rs-contact-timeline-options-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .rs-contact-booking-row-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<rs-contact-{{ ai_gen_id }} class="rs-contact-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="rs-contact-container-{{ ai_gen_id }}">
+    <div class="rs-contact-form-wrapper-{{ ai_gen_id }}">
+      <h2 class="rs-contact-form-heading-{{ ai_gen_id }}">{{ block.settings.form_heading }}</h2>
+
+      {%- form 'contact' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="rs-contact-success-{{ ai_gen_id }}">
+            {{ block.settings.success_message }}
+          </div>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="rs-contact-error-{{ ai_gen_id }}">
+            {{ form.errors.messages | first }}
+          </div>
+        {%- endif -%}
+
+        <div class="rs-contact-form-{{ ai_gen_id }}">
+          <div class="rs-contact-form-row-{{ ai_gen_id }}">
+            <div class="rs-contact-form-group-{{ ai_gen_id }}">
+              <label class="rs-contact-form-label-{{ ai_gen_id }}" for="contact-name-{{ ai_gen_id }}">
+                {{ block.settings.name_label }}
+              </label>
+              <input
+                type="text"
+                id="contact-name-{{ ai_gen_id }}"
+                name="contact[name]"
+                class="rs-contact-form-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.name_placeholder }}"
+                required
+              >
+            </div>
+
+            <div class="rs-contact-form-group-{{ ai_gen_id }}">
+              <label class="rs-contact-form-label-{{ ai_gen_id }}" for="contact-email-{{ ai_gen_id }}">
+                {{ block.settings.email_label }}
+              </label>
+              <input
+                type="email"
+                id="contact-email-{{ ai_gen_id }}"
+                name="contact[email]"
+                class="rs-contact-form-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.email_placeholder }}"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="rs-contact-form-group-{{ ai_gen_id }}">
+            <label class="rs-contact-form-label-{{ ai_gen_id }}" for="contact-phone-{{ ai_gen_id }}">
+              {{ block.settings.phone_label }}
+            </label>
+            <input
+              type="tel"
+              id="contact-phone-{{ ai_gen_id }}"
+              name="contact[phone]"
+              class="rs-contact-form-input-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.phone_placeholder }}"
+            >
+          </div>
+
+          <div class="rs-contact-form-group-{{ ai_gen_id }}">
+            <label class="rs-contact-form-label-{{ ai_gen_id }}" for="contact-message-{{ ai_gen_id }}">
+              {{ block.settings.message_label }}
+            </label>
+            <textarea
+              id="contact-message-{{ ai_gen_id }}"
+              name="contact[body]"
+              class="rs-contact-form-textarea-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.message_placeholder }}"
+              required
+            ></textarea>
+          </div>
+
+          <div class="rs-contact-form-group-{{ ai_gen_id }}">
+            <div class="rs-contact-timeline-label-{{ ai_gen_id }}">{{ block.settings.timeline_label }}</div>
+            <div class="rs-contact-timeline-options-{{ ai_gen_id }}">
+              <div class="rs-contact-timeline-option-{{ ai_gen_id }}">
+                <input
+                  type="radio"
+                  id="timeline-asap-{{ ai_gen_id }}"
+                  name="contact[timeline]"
+                  value="ASAP"
+                  class="rs-contact-timeline-input-{{ ai_gen_id }}"
+                >
+                <label for="timeline-asap-{{ ai_gen_id }}" class="rs-contact-timeline-button-{{ ai_gen_id }}">
+                  {{ block.settings.timeline_option_1 }}
+                </label>
+              </div>
+
+              <div class="rs-contact-timeline-option-{{ ai_gen_id }}">
+                <input
+                  type="radio"
+                  id="timeline-1-2-{{ ai_gen_id }}"
+                  name="contact[timeline]"
+                  value="1-2 Months"
+                  class="rs-contact-timeline-input-{{ ai_gen_id }}"
+                >
+                <label for="timeline-1-2-{{ ai_gen_id }}" class="rs-contact-timeline-button-{{ ai_gen_id }}">
+                  {{ block.settings.timeline_option_2 }}
+                </label>
+              </div>
+
+              <div class="rs-contact-timeline-option-{{ ai_gen_id }}">
+                <input
+                  type="radio"
+                  id="timeline-3-6-{{ ai_gen_id }}"
+                  name="contact[timeline]"
+                  value="3-6 Months"
+                  class="rs-contact-timeline-input-{{ ai_gen_id }}"
+                >
+                <label for="timeline-3-6-{{ ai_gen_id }}" class="rs-contact-timeline-button-{{ ai_gen_id }}">
+                  {{ block.settings.timeline_option_3 }}
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="rs-contact-form-group-{{ ai_gen_id }}">
+            <label class="rs-contact-form-label-{{ ai_gen_id }}">{{ block.settings.booking_label }}</label>
+            <div class="rs-contact-booking-row-{{ ai_gen_id }}">
+              <input
+                type="text"
+                name="contact[booking_date]"
+                class="rs-contact-form-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.date_placeholder }}"
+              >
+              <input
+                type="text"
+                name="contact[booking_time]"
+                class="rs-contact-form-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.time_placeholder }}"
+              >
+              <select name="contact[booking_period]" class="rs-contact-form-input-{{ ai_gen_id }}">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="rs-contact-submit-{{ ai_gen_id }}">
+            {{ block.settings.submit_button_text }}
+          </button>
+
+          <div class="rs-contact-consent-{{ ai_gen_id }}">
+            {{ block.settings.consent_text }}
+          </div>
+        </div>
+      {%- endform -%}
+    </div>
+
+    <div class="rs-contact-info-wrapper-{{ ai_gen_id }}">
+      <h2 class="rs-contact-info-heading-{{ ai_gen_id }}">{{ block.settings.info_heading }}</h2>
+
+      <div class="rs-contact-info-card-{{ ai_gen_id }}">
+        <div class="rs-contact-info-item-{{ ai_gen_id }}">
+          <div class="rs-contact-info-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div class="rs-contact-info-content-{{ ai_gen_id }}">
+            <h3 class="rs-contact-info-title-{{ ai_gen_id }}">{{ block.settings.hours_title }}</h3>
+            <p class="rs-contact-info-text-{{ ai_gen_id }}">{{ block.settings.hours_text }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rs-contact-info-card-{{ ai_gen_id }}">
+        <div class="rs-contact-info-item-{{ ai_gen_id }}">
+          <div class="rs-contact-info-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="rs-contact-info-content-{{ ai_gen_id }}">
+            <h3 class="rs-contact-info-title-{{ ai_gen_id }}">{{ block.settings.email_title }}</h3>
+            <p class="rs-contact-info-text-{{ ai_gen_id }}">
+              <a href="mailto:{{ block.settings.email_address }}">{{ block.settings.email_address }}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rs-contact-info-card-{{ ai_gen_id }}">
+        <div class="rs-contact-info-item-{{ ai_gen_id }}">
+          <div class="rs-contact-info-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="rs-contact-info-content-{{ ai_gen_id }}">
+            <h3 class="rs-contact-info-title-{{ ai_gen_id }}">{{ block.settings.phone_title }}</h3>
+            <p class="rs-contact-info-text-{{ ai_gen_id }}">
+              <a href="tel:{{ block.settings.phone_number }}">{{ block.settings.phone_number }}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rs-contact-location-card-{{ ai_gen_id }}">
+        <div class="rs-contact-location-item-{{ ai_gen_id }}">
+          <div class="rs-contact-location-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="rs-contact-location-content-{{ ai_gen_id }}">
+            <h3 class="rs-contact-location-title-{{ ai_gen_id }}">{{ block.settings.usa_location_title }}</h3>
+            <p class="rs-contact-location-address-{{ ai_gen_id }}">{{ block.settings.usa_address }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rs-contact-location-card-{{ ai_gen_id }}">
+        <div class="rs-contact-location-item-{{ ai_gen_id }}">
+          <div class="rs-contact-location-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="rs-contact-location-content-{{ ai_gen_id }}">
+            <h3 class="rs-contact-location-title-{{ ai_gen_id }}">{{ block.settings.india_location_title }}</h3>
+            <p class="rs-contact-location-address-{{ ai_gen_id }}">{{ block.settings.india_address }}</p>
+          </div>
+        </div>
+      </div>
+
+      {% if block.settings.show_trust_card %}
+        <div class="rs-contact-trust-card-{{ ai_gen_id }}">
+          <div class="rs-contact-trust-stars-{{ ai_gen_id }}">{{ block.settings.trust_stars }}</div>
+          <p class="rs-contact-trust-text-{{ ai_gen_id }}">{{ block.settings.trust_text }}</p>
+          <p class="rs-contact-trust-subtext-{{ ai_gen_id }}">{{ block.settings.trust_subtext }}</p>
+          <div class="rs-contact-trust-progress-{{ ai_gen_id }}">
+            <div class="rs-contact-trust-progress-bar-{{ ai_gen_id }}"></div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</rs-contact-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class RsContact{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupTimelineButtons();
+      }
+
+      setupTimelineButtons() {
+        const timelineInputs = this.querySelectorAll('.rs-contact-timeline-input-{{ ai_gen_id }}');
+        
+        timelineInputs.forEach(input => {
+          const label = input.nextElementSibling;
+          
+          label.addEventListener('click', () => {
+            input.checked = true;
+          });
+        });
+      }
+    }
+
+    customElements.define('rs-contact-{{ ai_gen_id }}', RsContact{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "RootSyntax contact",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#050505"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#0F0F12"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "rgba(255,255,255,0.08)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "body_text_color",
+      "label": "Body text",
+      "default": "#A0A0A0"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Labels",
+      "default": "#E0E0E0"
+    },
+    {
+      "type": "color",
+      "id": "accent_orange",
+      "label": "Accent orange",
+      "default": "#FF7A00"
+    },
+    {
+      "type": "color",
+      "id": "accent_purple",
+      "label": "Accent purple",
+      "default": "#6C4CFF"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Form section"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Heading",
+      "default": "GET IN TOUCH"
+    },
+    {
+      "type": "range",
+      "id": "form_heading_size",
+      "label": "Heading size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name label",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "Your name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Phone placeholder",
+      "default": "+1 (555) 000-0000"
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Message label",
+      "default": "Message"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "Tell us about your project..."
+    },
+    {
+      "type": "text",
+      "id": "timeline_label",
+      "label": "Timeline label",
+      "default": "Project Timeline"
+    },
+    {
+      "type": "text",
+      "id": "timeline_option_1",
+      "label": "Timeline option 1",
+      "default": "⚡ ASAP"
+    },
+    {
+      "type": "text",
+      "id": "timeline_option_2",
+      "label": "Timeline option 2",
+      "default": "📅 1–2 Months"
+    },
+    {
+      "type": "text",
+      "id": "timeline_option_3",
+      "label": "Timeline option 3",
+      "default": "🚀 3–6 Months"
+    },
+    {
+      "type": "text",
+      "id": "booking_label",
+      "label": "Booking label",
+      "default": "Book A Time Slot"
+    },
+    {
+      "type": "text",
+      "id": "date_placeholder",
+      "label": "Date placeholder",
+      "default": "MM/DD/YYYY"
+    },
+    {
+      "type": "text",
+      "id": "time_placeholder",
+      "label": "Time placeholder",
+      "default": "00:00"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit button text",
+      "default": "SEND"
+    },
+    {
+      "type": "richtext",
+      "id": "consent_text",
+      "label": "Consent text",
+      "default": "<p>By submitting this form, you agree to our <a href=\"/pages/privacy-policy\">Privacy Policy</a> and consent to be contacted by our team.</p>"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! We'll get back to you soon."
+    },
+    {
+      "type": "header",
+      "content": "Input style"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "#1A1A1D"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border",
+      "default": "rgba(255,255,255,0.1)"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "label": "Input border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Label size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "label": "Button text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Contact information"
+    },
+    {
+      "type": "text",
+      "id": "info_heading",
+      "label": "Heading",
+      "default": "WE'D LOVE TO HEAR FROM YOU."
+    },
+    {
+      "type": "range",
+      "id": "info_heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "text",
+      "id": "hours_title",
+      "label": "Working hours title",
+      "default": "WORKING HOURS"
+    },
+    {
+      "type": "text",
+      "id": "hours_text",
+      "label": "Working hours text",
+      "default": "Monday to Friday – 9:30 am to 4 pm EST"
+    },
+    {
+      "type": "text",
+      "id": "email_title",
+      "label": "Email title",
+      "default": "EMAIL US"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email address",
+      "default": "info@rootsyntax.com"
+    },
+    {
+      "type": "text",
+      "id": "phone_title",
+      "label": "Phone title",
+      "default": "CONTACT NUMBER"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number",
+      "default": "+1 352-218-5661"
+    },
+    {
+      "type": "header",
+      "content": "Office locations"
+    },
+    {
+      "type": "text",
+      "id": "usa_location_title",
+      "label": "USA location title",
+      "default": "USA, FLORIDA"
+    },
+    {
+      "type": "textarea",
+      "id": "usa_address",
+      "label": "USA address",
+      "default": "6160 SW Highway 200\nSte. 110 PMB508\nOcala, FL 34486\n7901 4TH ST N STE 300,\nSaint Petersburg, FL 33702"
+    },
+    {
+      "type": "text",
+      "id": "india_location_title",
+      "label": "India location title",
+      "default": "INDIA, BANGALORE"
+    },
+    {
+      "type": "textarea",
+      "id": "india_address",
+      "label": "India address",
+      "default": "91 Springboard Business Hub Private Ltd.,512/10,\nService Lane,\nOuter Ring Road,\nMahadevapura,\nBangalore 560048"
+    },
+    {
+      "type": "header",
+      "content": "Trust card"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_card",
+      "label": "Show trust card",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_stars",
+      "label": "Stars",
+      "default": "★★★★★"
+    },
+    {
+      "type": "text",
+      "id": "trust_text",
+      "label": "Trust text",
+      "default": "146+ Shopify Projects Delivered"
+    },
+    {
+      "type": "text",
+      "id": "trust_subtext",
+      "label": "Trust subtext",
+      "default": "98% Client Satisfaction"
+    }
+  ],
+  "presets": [
+    {
+      "name": "RootSyntax contact"
+    }
+  ]
+}
+{% endschema %}

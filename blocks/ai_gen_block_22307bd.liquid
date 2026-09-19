@@ -1,0 +1,1550 @@
+{% doc %}
+  @prompt
+    Create a premium dark Contact / Free Consultation section for Shopify Horizon matching my reference image. Use a large rounded black container with a subtle orange-to-purple gradient border and 2 columns on desktop, stacked on mobile.
+    
+    Left column: editable consultation badge, large heading with separately editable orange highlighted text, description, repeatable benefit blocks with glowing purple SVG icons, and an editable CTA button.
+    
+    Right column: native Shopify {% form 'contact' %} with Name, Email, Phone, Service dropdown, Message, and full-width purple-to-orange gradient submit button. Below add repeatable statistic blocks with glowing icons, value and label.
+    
+    Make EVERYTHING editable in Theme Editor: text, colors, font sizes, spacing, widths, padding, borders, radius, background/decorative image, buttons, field labels/placeholders, show/hide fields, service options, benefits and statistics. Use section blocks where needed. Fully responsive, accessible, Horizon-compatible, scoped CSS, no external libraries.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-contact-section-{{ ai_gen_id }} {
+    width: 100%;
+    display: block;
+    padding: {{ block.settings.section_padding_top }}px {{ block.settings.section_padding_horizontal }}px {{ block.settings.section_padding_bottom }}px;
+    background-color: {{ block.settings.section_background }};
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-contact-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_max_width }}px;
+    margin: 0 auto;
+    background: {{ block.settings.container_background }};
+    border-radius: {{ block.settings.container_border_radius }}px;
+    padding: {{ block.settings.container_padding }}px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-contact-container-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: {{ block.settings.container_border_radius }}px;
+    padding: {{ block.settings.gradient_border_width }}px;
+    background: linear-gradient(
+      {{ block.settings.gradient_angle }}deg,
+      {{ block.settings.gradient_color_1 }},
+      {{ block.settings.gradient_color_2 }}
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  {% if block.settings.background_image %}
+    .ai-contact-container-{{ ai_gen_id }}::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('{{ block.settings.background_image | image_url: width: 2000 }}');
+      background-size: cover;
+      background-position: center;
+      opacity: {{ block.settings.background_image_opacity | divided_by: 100.0 }};
+      pointer-events: none;
+      border-radius: {{ block.settings.container_border_radius }}px;
+    }
+  {% endif %}
+
+  .ai-contact-content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: {{ block.settings.column_gap }}px;
+  }
+
+  @media (min-width: 750px) {
+    .ai-contact-content-{{ ai_gen_id }} {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .ai-contact-left-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.left_content_gap }}px;
+  }
+
+  .ai-contact-badge-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: {{ block.settings.badge_padding_vertical }}px {{ block.settings.badge_padding_horizontal }}px;
+    background: {{ block.settings.badge_background }};
+    color: {{ block.settings.badge_text_color }};
+    border-radius: {{ block.settings.badge_border_radius }}px;
+    font-size: {{ block.settings.badge_font_size }}px;
+    font-weight: 600;
+    width: fit-content;
+  }
+
+  .ai-contact-heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.2;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .ai-contact-heading-{{ ai_gen_id }} .highlight {
+    color: {{ block.settings.highlight_color }};
+  }
+
+  .ai-contact-description-{{ ai_gen_id }} {
+    color: {{ block.settings.description_color }};
+    font-size: {{ block.settings.description_size }}px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .ai-contact-benefits-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.benefits_gap }}px;
+  }
+
+  .ai-contact-benefit-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: {{ block.settings.benefit_icon_gap }}px;
+  }
+
+  .ai-contact-benefit-icon-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    width: {{ block.settings.benefit_icon_size }}px;
+    height: {{ block.settings.benefit_icon_size }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 {{ block.settings.icon_glow_intensity }}px {{ block.settings.benefit_icon_color }});
+  }
+
+  .ai-contact-benefit-icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: {{ block.settings.benefit_icon_color }};
+    stroke-width: 2;
+  }
+
+  .ai-contact-benefit-text-{{ ai_gen_id }} {
+    color: {{ block.settings.benefit_text_color }};
+    font-size: {{ block.settings.benefit_text_size }}px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ai-contact-cta-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: {{ block.settings.cta_padding_vertical }}px {{ block.settings.cta_padding_horizontal }}px;
+    background: {{ block.settings.cta_background }};
+    color: {{ block.settings.cta_text_color }};
+    border: none;
+    border-radius: {{ block.settings.cta_border_radius }}px;
+    font-size: {{ block.settings.cta_font_size }}px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+
+  .ai-contact-cta-{{ ai_gen_id }}:hover {
+    background: {{ block.settings.cta_hover_background }};
+    transform: translateY(-2px);
+  }
+
+  .ai-contact-right-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.right_content_gap }}px;
+  }
+
+  .ai-contact-form-wrapper-{{ ai_gen_id }} {
+    background: {{ block.settings.form_background }};
+    border-radius: {{ block.settings.form_border_radius }}px;
+    padding: {{ block.settings.form_padding }}px;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.form_field_gap }}px;
+  }
+
+  .ai-contact-form-field-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ai-contact-form-label-{{ ai_gen_id }} {
+    color: {{ block.settings.label_color }};
+    font-size: {{ block.settings.label_font_size }}px;
+    font-weight: 500;
+  }
+
+  .ai-contact-form-input-{{ ai_gen_id }},
+  .ai-contact-form-select-{{ ai_gen_id }},
+  .ai-contact-form-textarea-{{ ai_gen_id }} {
+    width: 100%;
+    padding: {{ block.settings.input_padding }}px;
+    background: {{ block.settings.input_background }};
+    color: {{ block.settings.input_text_color }};
+    border: {{ block.settings.input_border_width }}px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    font-size: {{ block.settings.input_font_size }}px;
+    font-family: inherit;
+  }
+
+  .ai-contact-form-input-{{ ai_gen_id }}::placeholder,
+  .ai-contact-form-textarea-{{ ai_gen_id }}::placeholder {
+    color: {{ block.settings.placeholder_color }};
+  }
+
+  .ai-contact-form-input-{{ ai_gen_id }}:focus,
+  .ai-contact-form-select-{{ ai_gen_id }}:focus,
+  .ai-contact-form-textarea-{{ ai_gen_id }}:focus {
+    outline: 2px solid {{ block.settings.input_focus_color }};
+    outline-offset: 2px;
+  }
+
+  .ai-contact-form-textarea-{{ ai_gen_id }} {
+    min-height: {{ block.settings.textarea_height }}px;
+    resize: vertical;
+  }
+
+  .ai-contact-form-submit-{{ ai_gen_id }} {
+    width: 100%;
+    padding: {{ block.settings.submit_padding_vertical }}px {{ block.settings.submit_padding_horizontal }}px;
+    background: linear-gradient(
+      {{ block.settings.submit_gradient_angle }}deg,
+      {{ block.settings.submit_gradient_color_1 }},
+      {{ block.settings.submit_gradient_color_2 }}
+    );
+    color: {{ block.settings.submit_text_color }};
+    border: none;
+    border-radius: {{ block.settings.submit_border_radius }}px;
+    font-size: {{ block.settings.submit_font_size }}px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ai-contact-form-submit-{{ ai_gen_id }}:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .ai-contact-stats-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: {{ block.settings.stats_gap }}px;
+  }
+
+  .ai-contact-stat-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: {{ block.settings.stat_content_gap }}px;
+    text-align: center;
+  }
+
+  .ai-contact-stat-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.stat_icon_size }}px;
+    height: {{ block.settings.stat_icon_size }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 {{ block.settings.stat_icon_glow }}px {{ block.settings.stat_icon_color }});
+  }
+
+  .ai-contact-stat-icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: {{ block.settings.stat_icon_color }};
+    stroke-width: 2;
+  }
+
+  .ai-contact-stat-value-{{ ai_gen_id }} {
+    color: {{ block.settings.stat_value_color }};
+    font-size: {{ block.settings.stat_value_size }}px;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .ai-contact-stat-label-{{ ai_gen_id }} {
+    color: {{ block.settings.stat_label_color }};
+    font-size: {{ block.settings.stat_label_size }}px;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .ai-contact-form-message-{{ ai_gen_id }} {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .ai-contact-form-message-{{ ai_gen_id }}.success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .ai-contact-form-message-{{ ai_gen_id }}.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  @media (max-width: 749px) {
+    .ai-contact-section-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding_top_mobile }}px {{ block.settings.section_padding_horizontal_mobile }}px {{ block.settings.section_padding_bottom_mobile }}px;
+    }
+
+    .ai-contact-container-{{ ai_gen_id }} {
+      padding: {{ block.settings.container_padding_mobile }}px;
+    }
+
+    .ai-contact-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size_mobile }}px;
+    }
+
+    .ai-contact-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<contact-section-{{ ai_gen_id }} class="ai-contact-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-contact-container-{{ ai_gen_id }}">
+    <div class="ai-contact-content-{{ ai_gen_id }}">
+      <div class="ai-contact-left-{{ ai_gen_id }}">
+        {% if block.settings.show_badge and block.settings.badge_text != blank %}
+          <div class="ai-contact-badge-{{ ai_gen_id }}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            {{ block.settings.badge_text }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-contact-heading-{{ ai_gen_id }}">
+            {{ block.settings.heading_before_highlight }}
+            {% if block.settings.heading_highlight != blank %}
+              <span class="highlight">{{ block.settings.heading_highlight }}</span>
+            {% endif %}
+            {{ block.settings.heading_after_highlight }}
+          </h2>
+        {% endif %}
+
+        {% if block.settings.description != blank %}
+          <div class="ai-contact-description-{{ ai_gen_id }}">
+            {{ block.settings.description }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.show_benefits %}
+          <div class="ai-contact-benefits-{{ ai_gen_id }}">
+            {% for benefit_block in block.settings.benefits %}
+              <div class="ai-contact-benefit-{{ ai_gen_id }}">
+                <div class="ai-contact-benefit-icon-{{ ai_gen_id }}">
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <p class="ai-contact-benefit-text-{{ ai_gen_id }}">{{ benefit_block }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if block.settings.show_cta and block.settings.cta_text != blank %}
+          <a href="{{ block.settings.cta_link }}" class="ai-contact-cta-{{ ai_gen_id }}">
+            {{ block.settings.cta_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="ai-contact-right-{{ ai_gen_id }}">
+        <div class="ai-contact-form-wrapper-{{ ai_gen_id }}">
+          {% form 'contact' %}
+            <div class="ai-contact-form-{{ ai_gen_id }}">
+              {% if form.posted_successfully? %}
+                <div class="ai-contact-form-message-{{ ai_gen_id }} success">
+                  {{ block.settings.success_message }}
+                </div>
+              {% endif %}
+
+              {% if form.errors %}
+                <div class="ai-contact-form-message-{{ ai_gen_id }} error">
+                  {{ form.errors.messages | first }}
+                </div>
+              {% endif %}
+
+              {% if block.settings.show_name_field %}
+                <div class="ai-contact-form-field-{{ ai_gen_id }}">
+                  <label class="ai-contact-form-label-{{ ai_gen_id }}" for="contact-name-{{ ai_gen_id }}">
+                    {{ block.settings.name_label }}
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name-{{ ai_gen_id }}"
+                    name="contact[name]"
+                    class="ai-contact-form-input-{{ ai_gen_id }}"
+                    placeholder="{{ block.settings.name_placeholder }}"
+                    {% if block.settings.name_required %}required{% endif %}
+                  >
+                </div>
+              {% endif %}
+
+              {% if block.settings.show_email_field %}
+                <div class="ai-contact-form-field-{{ ai_gen_id }}">
+                  <label class="ai-contact-form-label-{{ ai_gen_id }}" for="contact-email-{{ ai_gen_id }}">
+                    {{ block.settings.email_label }}
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email-{{ ai_gen_id }}"
+                    name="contact[email]"
+                    class="ai-contact-form-input-{{ ai_gen_id }}"
+                    placeholder="{{ block.settings.email_placeholder }}"
+                    autocomplete="email"
+                    {% if block.settings.email_required %}required{% endif %}
+                  >
+                </div>
+              {% endif %}
+
+              {% if block.settings.show_phone_field %}
+                <div class="ai-contact-form-field-{{ ai_gen_id }}">
+                  <label class="ai-contact-form-label-{{ ai_gen_id }}" for="contact-phone-{{ ai_gen_id }}">
+                    {{ block.settings.phone_label }}
+                  </label>
+                  <input
+                    type="tel"
+                    id="contact-phone-{{ ai_gen_id }}"
+                    name="contact[phone]"
+                    class="ai-contact-form-input-{{ ai_gen_id }}"
+                    placeholder="{{ block.settings.phone_placeholder }}"
+                    autocomplete="tel"
+                    {% if block.settings.phone_required %}required{% endif %}
+                  >
+                </div>
+              {% endif %}
+
+              {% if block.settings.show_service_field %}
+                <div class="ai-contact-form-field-{{ ai_gen_id }}">
+                  <label class="ai-contact-form-label-{{ ai_gen_id }}" for="contact-service-{{ ai_gen_id }}">
+                    {{ block.settings.service_label }}
+                  </label>
+                  <select
+                    id="contact-service-{{ ai_gen_id }}"
+                    name="contact[service]"
+                    class="ai-contact-form-select-{{ ai_gen_id }}"
+                    {% if block.settings.service_required %}required{% endif %}
+                  >
+                    <option value="">{{ block.settings.service_placeholder }}</option>
+                    {% assign service_options = block.settings.service_options | split: ',' %}
+                    {% for option in service_options %}
+                      <option value="{{ option | strip }}">{{ option | strip }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endif %}
+
+              {% if block.settings.show_message_field %}
+                <div class="ai-contact-form-field-{{ ai_gen_id }}">
+                  <label class="ai-contact-form-label-{{ ai_gen_id }}" for="contact-message-{{ ai_gen_id }}">
+                    {{ block.settings.message_label }}
+                  </label>
+                  <textarea
+                    id="contact-message-{{ ai_gen_id }}"
+                    name="contact[body]"
+                    class="ai-contact-form-textarea-{{ ai_gen_id }}"
+                    placeholder="{{ block.settings.message_placeholder }}"
+                    {% if block.settings.message_required %}required{% endif %}
+                  ></textarea>
+                </div>
+              {% endif %}
+
+              <button type="submit" class="ai-contact-form-submit-{{ ai_gen_id }}">
+                {{ block.settings.submit_button_text }}
+              </button>
+            </div>
+          {% endform %}
+        </div>
+
+        {% if block.settings.show_stats %}
+          <div class="ai-contact-stats-{{ ai_gen_id }}">
+            {% for stat_block in block.settings.stats %}
+              <div class="ai-contact-stat-{{ ai_gen_id }}">
+                <div class="ai-contact-stat-icon-{{ ai_gen_id }}">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                  </svg>
+                </div>
+                <p class="ai-contact-stat-value-{{ ai_gen_id }}">{{ stat_block.value }}</p>
+                <p class="ai-contact-stat-label-{{ ai_gen_id }}">{{ stat_block.label }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</contact-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ContactSection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.form = this.querySelector('form');
+        if (this.form) {
+          this.setupFormValidation();
+        }
+      }
+
+      setupFormValidation() {
+        this.form.addEventListener('submit', (e) => {
+          const requiredFields = this.form.querySelectorAll('[required]');
+          let isValid = true;
+
+          requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+              isValid = false;
+              field.style.borderColor = '#ef4444';
+            } else {
+              field.style.borderColor = '';
+            }
+          });
+
+          if (!isValid) {
+            e.preventDefault();
+          }
+        });
+
+        const inputs = this.form.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+          input.addEventListener('input', () => {
+            input.style.borderColor = '';
+          });
+        });
+      }
+    }
+
+    customElements.define('contact-section-{{ ai_gen_id }}', ContactSection{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Contact consultation",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top_mobile",
+      "label": "Top padding mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom_mobile",
+      "label": "Bottom padding mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal_mobile",
+      "label": "Horizontal padding mobile",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Container"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "label": "Max width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "color",
+      "id": "container_background",
+      "label": "Background",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "range",
+      "id": "container_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "container_padding",
+      "label": "Padding",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "container_padding_mobile",
+      "label": "Padding mobile",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "background_image_opacity",
+      "label": "Background image opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Gradient border"
+    },
+    {
+      "type": "range",
+      "id": "gradient_border_width",
+      "label": "Border width",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient color 1",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient color 2",
+      "default": "#9333EA"
+    },
+    {
+      "type": "range",
+      "id": "gradient_angle",
+      "label": "Gradient angle",
+      "min": 0,
+      "max": 360,
+      "step": 15,
+      "unit": "deg",
+      "default": 135
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "left_content_gap",
+      "label": "Left content gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "right_content_gap",
+      "label": "Right content gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Free Consultation"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Background",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_vertical",
+      "label": "Vertical padding",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_before_highlight",
+      "label": "Text before highlight",
+      "default": "Get Your"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Highlighted text",
+      "default": "Free Consultation"
+    },
+    {
+      "type": "text",
+      "id": "heading_after_highlight",
+      "label": "Text after highlight",
+      "default": "Today"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#F97316"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Font size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Font size mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Schedule a free consultation with our experts and discover how we can help transform your business."
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Text color",
+      "default": "#a3a3a3"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "label": "Font size mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Benefits"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_benefits",
+      "label": "Show benefits",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "benefits",
+      "label": "Benefits (one per line)",
+      "default": "Expert guidance tailored to your needs\nNo obligation or commitment required\n30-minute personalized session"
+    },
+    {
+      "type": "color",
+      "id": "benefit_icon_color",
+      "label": "Icon color",
+      "default": "#9333EA"
+    },
+    {
+      "type": "color",
+      "id": "benefit_text_color",
+      "label": "Text color",
+      "default": "#d4d4d4"
+    },
+    {
+      "type": "range",
+      "id": "benefit_icon_size",
+      "label": "Icon size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "benefit_text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "benefits_gap",
+      "label": "Gap between benefits",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "benefit_icon_gap",
+      "label": "Icon gap",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "icon_glow_intensity",
+      "label": "Icon glow intensity",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "cta_background",
+      "label": "Background",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "cta_hover_background",
+      "label": "Hover background",
+      "default": "#ea580c"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "cta_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "cta_padding_vertical",
+      "label": "Vertical padding",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "cta_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "cta_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Form container"
+    },
+    {
+      "type": "color",
+      "id": "form_background",
+      "label": "Background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "form_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "form_padding",
+      "label": "Padding",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "form_field_gap",
+      "label": "Field gap",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Form fields"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_name_field",
+      "label": "Show name field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name label",
+      "default": "Full Name"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "John Doe"
+    },
+    {
+      "type": "checkbox",
+      "id": "name_required",
+      "label": "Name required",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email_field",
+      "label": "Show email field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "you@example.com"
+    },
+    {
+      "type": "checkbox",
+      "id": "email_required",
+      "label": "Email required",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone_field",
+      "label": "Show phone field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Phone placeholder",
+      "default": "+1 (555) 000-0000"
+    },
+    {
+      "type": "checkbox",
+      "id": "phone_required",
+      "label": "Phone required",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_service_field",
+      "label": "Show service field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "service_label",
+      "label": "Service label",
+      "default": "Service Interested In"
+    },
+    {
+      "type": "text",
+      "id": "service_placeholder",
+      "label": "Service placeholder",
+      "default": "Select a service"
+    },
+    {
+      "type": "textarea",
+      "id": "service_options",
+      "label": "Service options (comma separated)",
+      "default": "Web Development, Mobile Apps, UI/UX Design, Consulting, Other"
+    },
+    {
+      "type": "checkbox",
+      "id": "service_required",
+      "label": "Service required",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_message_field",
+      "label": "Show message field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Message label",
+      "default": "Message"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "Tell us about your project..."
+    },
+    {
+      "type": "checkbox",
+      "id": "message_required",
+      "label": "Message required",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "textarea_height",
+      "label": "Message field height",
+      "min": 80,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "header",
+      "content": "Form styling"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "label_font_size",
+      "label": "Label font size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "input_focus_color",
+      "label": "Input focus color",
+      "default": "#9333EA"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "Placeholder color",
+      "default": "#737373"
+    },
+    {
+      "type": "range",
+      "id": "input_border_width",
+      "label": "Input border width",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "label": "Input border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "input_padding",
+      "label": "Input padding",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "input_font_size",
+      "label": "Input font size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Submit button"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Button text",
+      "default": "Book Free Consultation"
+    },
+    {
+      "type": "color",
+      "id": "submit_gradient_color_1",
+      "label": "Gradient color 1",
+      "default": "#9333EA"
+    },
+    {
+      "type": "color",
+      "id": "submit_gradient_color_2",
+      "label": "Gradient color 2",
+      "default": "#F97316"
+    },
+    {
+      "type": "range",
+      "id": "submit_gradient_angle",
+      "label": "Gradient angle",
+      "min": 0,
+      "max": 360,
+      "step": 15,
+      "unit": "deg",
+      "default": 90
+    },
+    {
+      "type": "color",
+      "id": "submit_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "submit_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "submit_padding_vertical",
+      "label": "Vertical padding",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "submit_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "submit_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Form messages"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! We'll be in touch soon."
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show statistics",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "stats",
+      "label": "Statistics (format: value|label, one per line)",
+      "default": "500+|Happy Clients\n98%|Success Rate\n24/7|Support"
+    },
+    {
+      "type": "color",
+      "id": "stat_icon_color",
+      "label": "Icon color",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "stat_value_color",
+      "label": "Value color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "stat_label_color",
+      "label": "Label color",
+      "default": "#a3a3a3"
+    },
+    {
+      "type": "range",
+      "id": "stat_icon_size",
+      "label": "Icon size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "stat_value_size",
+      "label": "Value size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "stat_label_size",
+      "label": "Label size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "stats_gap",
+      "label": "Gap between stats",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "stat_content_gap",
+      "label": "Content gap",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "stat_icon_glow",
+      "label": "Icon glow intensity",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact consultation"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1168 @@
+{% doc %}
+  @prompt
+    Update the existing RootSyntax Contact Us section while keeping the current layout, content, and functionality.
+    
+    **1. FIX INPUT PLACEHOLDER VISIBILITY — IMPORTANT**
+    The placeholder text inside all inputs and the message textarea is currently too dark and barely visible.
+    
+    Make ALL placeholder text clearly readable:
+    
+    * Placeholder color: `#8F939B`
+    * Placeholder opacity: `1`
+    * Typed/input text: `#FFFFFF`
+    * Input background: `#050609`
+    * Input border: `rgba(255,255,255,0.25)`
+    
+    Apply this directly to all input and textarea placeholder states so Shopify/Horizon default CSS cannot override it. Use `!important` if necessary.
+    
+    Fix these placeholders:
+    
+    * Your name
+    * [your@email.com](mailto:your@email.com)
+    * +1 (555) 000-0000
+    * Tell us about your project...
+    * MM/DD/YYYY
+    * 00:00
+    
+    Also make placeholder color editable in the Shopify Theme Editor.
+    
+    **2. LOCATION CARDS**
+    Keep the USA, Florida and India, Bangalore cards as static informational cards.
+    
+    * NOT clickable
+    * NO links
+    * NO cursor-pointer
+    * NO hover effect
+    * NO hover glow/lift
+    * NO arrow
+    * NO chevron
+    * NO directional icon
+    
+    Only show the location-pin icon on the left and address text on the right.
+    
+    **3. KEEP EXISTING DESIGN**
+    Do not redesign or remove existing content. Keep the current dark premium design, form fields, timeline options, booking fields, SEND button, contact information and responsive behavior.
+    
+    Make only the requested fixes above.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .rootsyntax-contact-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding_top }}px 20px {{ block.settings.section_padding_bottom }}px;
+  }
+
+  .rootsyntax-contact-container-{{ ai_gen_id }} {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .rootsyntax-contact-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .rootsyntax-contact-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 16px;
+    font-weight: 700;
+  }
+
+  .rootsyntax-contact-subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.subtitle_color }};
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .rootsyntax-contact-content-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .rootsyntax-contact-form-{{ ai_gen_id }} {
+    background: {{ block.settings.form_background }};
+    border: 1px solid {{ block.settings.form_border_color }};
+    border-radius: {{ block.settings.form_border_radius }}px;
+    padding: 40px;
+  }
+
+  .rootsyntax-contact-form-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.form_title_size }}px;
+    color: {{ block.settings.form_title_color }};
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+
+  .rootsyntax-contact-form-group-{{ ai_gen_id }} {
+    margin-bottom: 20px;
+  }
+
+  .rootsyntax-contact-label-{{ ai_gen_id }} {
+    display: block;
+    font-size: 14px;
+    color: {{ block.settings.label_color }};
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .rootsyntax-contact-input-{{ ai_gen_id }},
+  .rootsyntax-contact-textarea-{{ ai_gen_id }},
+  .rootsyntax-contact-select-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 12px 16px;
+    background: {{ block.settings.input_background }};
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    color: {{ block.settings.input_text_color }};
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+
+  .rootsyntax-contact-input-{{ ai_gen_id }}::placeholder,
+  .rootsyntax-contact-textarea-{{ ai_gen_id }}::placeholder,
+  .rootsyntax-contact-select-{{ ai_gen_id }}::placeholder {
+    color: {{ block.settings.placeholder_color }} !important;
+    opacity: 1 !important;
+  }
+
+  .rootsyntax-contact-input-{{ ai_gen_id }}::-webkit-input-placeholder,
+  .rootsyntax-contact-textarea-{{ ai_gen_id }}::-webkit-input-placeholder {
+    color: {{ block.settings.placeholder_color }} !important;
+    opacity: 1 !important;
+  }
+
+  .rootsyntax-contact-input-{{ ai_gen_id }}::-moz-placeholder,
+  .rootsyntax-contact-textarea-{{ ai_gen_id }}::-moz-placeholder {
+    color: {{ block.settings.placeholder_color }} !important;
+    opacity: 1 !important;
+  }
+
+  .rootsyntax-contact-input-{{ ai_gen_id }}:-ms-input-placeholder,
+  .rootsyntax-contact-textarea-{{ ai_gen_id }}:-ms-input-placeholder {
+    color: {{ block.settings.placeholder_color }} !important;
+    opacity: 1 !important;
+  }
+
+  .rootsyntax-contact-input-{{ ai_gen_id }}:focus,
+  .rootsyntax-contact-textarea-{{ ai_gen_id }}:focus,
+  .rootsyntax-contact-select-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.input_focus_border_color }};
+  }
+
+  .rootsyntax-contact-textarea-{{ ai_gen_id }} {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .rootsyntax-contact-row-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .rootsyntax-contact-timeline-{{ ai_gen_id }} {
+    margin-bottom: 20px;
+  }
+
+  .rootsyntax-contact-timeline-options-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .rootsyntax-contact-timeline-option-{{ ai_gen_id }} {
+    position: relative;
+  }
+
+  .rootsyntax-contact-timeline-input-{{ ai_gen_id }} {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .rootsyntax-contact-timeline-label-{{ ai_gen_id }} {
+    display: block;
+    padding: 12px 16px;
+    background: {{ block.settings.input_background }};
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    color: {{ block.settings.input_text_color }};
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+
+  .rootsyntax-contact-timeline-input-{{ ai_gen_id }}:checked + .rootsyntax-contact-timeline-label-{{ ai_gen_id }} {
+    background: {{ block.settings.timeline_selected_bg }};
+    border-color: {{ block.settings.timeline_selected_border }};
+    color: {{ block.settings.timeline_selected_text }};
+  }
+
+  .rootsyntax-contact-submit-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 16px 32px;
+    background: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .rootsyntax-contact-submit-{{ ai_gen_id }}:hover {
+    background: {{ block.settings.button_hover_background }};
+    transform: translateY(-2px);
+  }
+
+  .rootsyntax-contact-info-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .rootsyntax-contact-info-card-{{ ai_gen_id }} {
+    background: {{ block.settings.info_card_background }};
+    border: 1px solid {{ block.settings.info_card_border }};
+    border-radius: {{ block.settings.info_card_border_radius }}px;
+    padding: 24px;
+  }
+
+  .rootsyntax-contact-info-title-{{ ai_gen_id }} {
+    font-size: 18px;
+    color: {{ block.settings.info_title_color }};
+    margin: 0 0 16px;
+    font-weight: 600;
+  }
+
+  .rootsyntax-contact-info-item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .rootsyntax-contact-info-item-{{ ai_gen_id }}:last-child {
+    margin-bottom: 0;
+  }
+
+  .rootsyntax-contact-info-icon-{{ ai_gen_id }} {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: {{ block.settings.icon_color }};
+    margin-top: 2px;
+  }
+
+  .rootsyntax-contact-info-text-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.info_text_color }};
+    line-height: 1.6;
+  }
+
+  .rootsyntax-contact-info-link-{{ ai_gen_id }} {
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .rootsyntax-contact-info-link-{{ ai_gen_id }}:hover {
+    opacity: 0.8;
+  }
+
+  .rootsyntax-contact-locations-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .rootsyntax-contact-location-card-{{ ai_gen_id }} {
+    background: {{ block.settings.location_card_background }};
+    border: 1px solid {{ block.settings.location_card_border }};
+    border-radius: {{ block.settings.location_card_border_radius }}px;
+    padding: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .rootsyntax-contact-location-icon-{{ ai_gen_id }} {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: {{ block.settings.location_icon_color }};
+  }
+
+  .rootsyntax-contact-location-content-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .rootsyntax-contact-location-title-{{ ai_gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.location_title_color }};
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+
+  .rootsyntax-contact-location-address-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.location_text_color }};
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .rootsyntax-contact-success-{{ ai_gen_id }} {
+    background: {{ block.settings.success_background }};
+    border: 1px solid {{ block.settings.success_border }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    padding: 16px;
+    margin-bottom: 20px;
+    color: {{ block.settings.success_text_color }};
+    font-size: 14px;
+  }
+
+  .rootsyntax-contact-error-{{ ai_gen_id }} {
+    background: {{ block.settings.error_background }};
+    border: 1px solid {{ block.settings.error_border }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    padding: 16px;
+    margin-bottom: 20px;
+    color: {{ block.settings.error_text_color }};
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .rootsyntax-contact-content-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .rootsyntax-contact-locations-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .rootsyntax-contact-timeline-options-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .rootsyntax-contact-row-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<rootsyntax-contact-{{ ai_gen_id }} class="rootsyntax-contact-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="rootsyntax-contact-container-{{ ai_gen_id }}">
+    <div class="rootsyntax-contact-header-{{ ai_gen_id }}">
+      <h2 class="rootsyntax-contact-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+      <p class="rootsyntax-contact-subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
+    </div>
+
+    <div class="rootsyntax-contact-content-{{ ai_gen_id }}">
+      <div class="rootsyntax-contact-form-{{ ai_gen_id }}">
+        <h3 class="rootsyntax-contact-form-title-{{ ai_gen_id }}">{{ block.settings.form_title }}</h3>
+        
+        {%- form 'contact' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="rootsyntax-contact-success-{{ ai_gen_id }}">
+              {{ block.settings.success_message }}
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="rootsyntax-contact-error-{{ ai_gen_id }}">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+            <label class="rootsyntax-contact-label-{{ ai_gen_id }}" for="contact-name-{{ ai_gen_id }}">
+              {{ block.settings.name_label }}
+            </label>
+            <input
+              type="text"
+              id="contact-name-{{ ai_gen_id }}"
+              name="contact[name]"
+              class="rootsyntax-contact-input-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.name_placeholder }}"
+              required
+            >
+          </div>
+
+          <div class="rootsyntax-contact-row-{{ ai_gen_id }}">
+            <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+              <label class="rootsyntax-contact-label-{{ ai_gen_id }}" for="contact-email-{{ ai_gen_id }}">
+                {{ block.settings.email_label }}
+              </label>
+              <input
+                type="email"
+                id="contact-email-{{ ai_gen_id }}"
+                name="contact[email]"
+                class="rootsyntax-contact-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.email_placeholder }}"
+                required
+              >
+            </div>
+
+            <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+              <label class="rootsyntax-contact-label-{{ ai_gen_id }}" for="contact-phone-{{ ai_gen_id }}">
+                {{ block.settings.phone_label }}
+              </label>
+              <input
+                type="tel"
+                id="contact-phone-{{ ai_gen_id }}"
+                name="contact[phone]"
+                class="rootsyntax-contact-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.phone_placeholder }}"
+              >
+            </div>
+          </div>
+
+          <div class="rootsyntax-contact-timeline-{{ ai_gen_id }}">
+            <label class="rootsyntax-contact-label-{{ ai_gen_id }}">
+              {{ block.settings.timeline_label }}
+            </label>
+            <div class="rootsyntax-contact-timeline-options-{{ ai_gen_id }}">
+              <div class="rootsyntax-contact-timeline-option-{{ ai_gen_id }}">
+                <input
+                  type="radio"
+                  id="timeline-asap-{{ ai_gen_id }}"
+                  name="contact[timeline]"
+                  value="ASAP"
+                  class="rootsyntax-contact-timeline-input-{{ ai_gen_id }}"
+                >
+                <label for="timeline-asap-{{ ai_gen_id }}" class="rootsyntax-contact-timeline-label-{{ ai_gen_id }}">
+                  ASAP
+                </label>
+              </div>
+              <div class="rootsyntax-contact-timeline-option-{{ ai_gen_id }}">
+                <input
+                  type="radio"
+                  id="timeline-1-3-{{ ai_gen_id }}"
+                  name="contact[timeline]"
+                  value="1-3 months"
+                  class="rootsyntax-contact-timeline-input-{{ ai_gen_id }}"
+                >
+                <label for="timeline-1-3-{{ ai_gen_id }}" class="rootsyntax-contact-timeline-label-{{ ai_gen_id }}">
+                  1-3 months
+                </label>
+              </div>
+              <div class="rootsyntax-contact-timeline-option-{{ ai_gen_id }}">
+                <input
+                  type="radio"
+                  id="timeline-3-6-{{ ai_gen_id }}"
+                  name="contact[timeline]"
+                  value="3-6 months"
+                  class="rootsyntax-contact-timeline-input-{{ ai_gen_id }}"
+                >
+                <label for="timeline-3-6-{{ ai_gen_id }}" class="rootsyntax-contact-timeline-label-{{ ai_gen_id }}">
+                  3-6 months
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+            <label class="rootsyntax-contact-label-{{ ai_gen_id }}" for="contact-message-{{ ai_gen_id }}">
+              {{ block.settings.message_label }}
+            </label>
+            <textarea
+              id="contact-message-{{ ai_gen_id }}"
+              name="contact[body]"
+              class="rootsyntax-contact-textarea-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.message_placeholder }}"
+              required
+            ></textarea>
+          </div>
+
+          <div class="rootsyntax-contact-row-{{ ai_gen_id }}">
+            <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+              <label class="rootsyntax-contact-label-{{ ai_gen_id }}" for="contact-date-{{ ai_gen_id }}">
+                {{ block.settings.date_label }}
+              </label>
+              <input
+                type="text"
+                id="contact-date-{{ ai_gen_id }}"
+                name="contact[date]"
+                class="rootsyntax-contact-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.date_placeholder }}"
+              >
+            </div>
+
+            <div class="rootsyntax-contact-form-group-{{ ai_gen_id }}">
+              <label class="rootsyntax-contact-label-{{ ai_gen_id }}" for="contact-time-{{ ai_gen_id }}">
+                {{ block.settings.time_label }}
+              </label>
+              <input
+                type="text"
+                id="contact-time-{{ ai_gen_id }}"
+                name="contact[time]"
+                class="rootsyntax-contact-input-{{ ai_gen_id }}"
+                placeholder="{{ block.settings.time_placeholder }}"
+              >
+            </div>
+          </div>
+
+          <button type="submit" class="rootsyntax-contact-submit-{{ ai_gen_id }}">
+            {{ block.settings.button_text }}
+          </button>
+        {%- endform -%}
+      </div>
+
+      <div class="rootsyntax-contact-info-{{ ai_gen_id }}">
+        <div class="rootsyntax-contact-info-card-{{ ai_gen_id }}">
+          <h3 class="rootsyntax-contact-info-title-{{ ai_gen_id }}">{{ block.settings.contact_info_title }}</h3>
+          
+          {% if block.settings.show_email %}
+            <div class="rootsyntax-contact-info-item-{{ ai_gen_id }}">
+              <svg class="rootsyntax-contact-info-icon-{{ ai_gen_id }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <div class="rootsyntax-contact-info-text-{{ ai_gen_id }}">
+                <a href="mailto:{{ block.settings.email_address }}" class="rootsyntax-contact-info-link-{{ ai_gen_id }}">
+                  {{ block.settings.email_address }}
+                </a>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.show_phone %}
+            <div class="rootsyntax-contact-info-item-{{ ai_gen_id }}">
+              <svg class="rootsyntax-contact-info-icon-{{ ai_gen_id }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <div class="rootsyntax-contact-info-text-{{ ai_gen_id }}">
+                <a href="tel:{{ block.settings.phone_number }}" class="rootsyntax-contact-info-link-{{ ai_gen_id }}">
+                  {{ block.settings.phone_number }}
+                </a>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.show_address %}
+            <div class="rootsyntax-contact-info-item-{{ ai_gen_id }}">
+              <svg class="rootsyntax-contact-info-icon-{{ ai_gen_id }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <div class="rootsyntax-contact-info-text-{{ ai_gen_id }}">
+                {{ block.settings.address }}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="rootsyntax-contact-locations-{{ ai_gen_id }}">
+      <div class="rootsyntax-contact-location-card-{{ ai_gen_id }}">
+        <svg class="rootsyntax-contact-location-icon-{{ ai_gen_id }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        <div class="rootsyntax-contact-location-content-{{ ai_gen_id }}">
+          <h4 class="rootsyntax-contact-location-title-{{ ai_gen_id }}">{{ block.settings.location_1_title }}</h4>
+          <p class="rootsyntax-contact-location-address-{{ ai_gen_id }}">{{ block.settings.location_1_address }}</p>
+        </div>
+      </div>
+
+      <div class="rootsyntax-contact-location-card-{{ ai_gen_id }}">
+        <svg class="rootsyntax-contact-location-icon-{{ ai_gen_id }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        <div class="rootsyntax-contact-location-content-{{ ai_gen_id }}">
+          <h4 class="rootsyntax-contact-location-title-{{ ai_gen_id }}">{{ block.settings.location_2_title }}</h4>
+          <p class="rootsyntax-contact-location-address-{{ ai_gen_id }}">{{ block.settings.location_2_address }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</rootsyntax-contact-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class RootSyntaxContact{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupFormValidation();
+      }
+
+      setupFormValidation() {
+        const form = this.querySelector('form');
+        if (!form) return;
+
+        form.addEventListener('submit', (e) => {
+          const requiredFields = form.querySelectorAll('[required]');
+          let isValid = true;
+
+          requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+              isValid = false;
+              field.style.borderColor = '#ef4444';
+            } else {
+              field.style.borderColor = '';
+            }
+          });
+
+          if (!isValid) {
+            e.preventDefault();
+          }
+        });
+      }
+    }
+
+    customElements.define('rootsyntax-contact-{{ ai_gen_id }}', RootSyntaxContact{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "RootSyntax contact us",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Book a Call - Contact Us"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Let's discuss your project and bring your vision to life"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Form settings"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form title",
+      "default": "Send us a message"
+    },
+    {
+      "type": "range",
+      "id": "form_title_size",
+      "label": "Form title size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "form_title_color",
+      "label": "Form title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "form_background",
+      "label": "Form background",
+      "default": "#0A0B0E"
+    },
+    {
+      "type": "color",
+      "id": "form_border_color",
+      "label": "Form border color",
+      "default": "rgba(255,255,255,0.1)"
+    },
+    {
+      "type": "range",
+      "id": "form_border_radius",
+      "label": "Form border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Form fields"
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name label",
+      "default": "Your name"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "Your name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Phone placeholder",
+      "default": "+1 (555) 000-0000"
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Message label",
+      "default": "Project details"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "Tell us about your project..."
+    },
+    {
+      "type": "text",
+      "id": "date_label",
+      "label": "Date label",
+      "default": "Preferred date"
+    },
+    {
+      "type": "text",
+      "id": "date_placeholder",
+      "label": "Date placeholder",
+      "default": "MM/DD/YYYY"
+    },
+    {
+      "type": "text",
+      "id": "time_label",
+      "label": "Time label",
+      "default": "Preferred time"
+    },
+    {
+      "type": "text",
+      "id": "time_placeholder",
+      "label": "Time placeholder",
+      "default": "00:00"
+    },
+    {
+      "type": "text",
+      "id": "timeline_label",
+      "label": "Timeline label",
+      "default": "Project timeline"
+    },
+    {
+      "type": "header",
+      "content": "Input styling"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "#050609"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "Placeholder color",
+      "default": "#8F939B"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border color",
+      "default": "rgba(255,255,255,0.25)"
+    },
+    {
+      "type": "color",
+      "id": "input_focus_border_color",
+      "label": "Input focus border",
+      "default": "#F97316"
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "label": "Input border radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Timeline options"
+    },
+    {
+      "type": "color",
+      "id": "timeline_selected_bg",
+      "label": "Selected background",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "timeline_selected_border",
+      "label": "Selected border",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "timeline_selected_text",
+      "label": "Selected text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Submit button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "SEND"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#EA580C"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Contact information"
+    },
+    {
+      "type": "text",
+      "id": "contact_info_title",
+      "label": "Contact info title",
+      "default": "Contact Information"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email",
+      "label": "Show email",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email address",
+      "default": "hello@rootsyntax.com"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show phone",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number",
+      "default": "+1 (555) 123-4567"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_address",
+      "label": "Show address",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "123 Business Street, Suite 100, City, State 12345"
+    },
+    {
+      "type": "color",
+      "id": "info_card_background",
+      "label": "Info card background",
+      "default": "#0A0B0E"
+    },
+    {
+      "type": "color",
+      "id": "info_card_border",
+      "label": "Info card border",
+      "default": "rgba(255,255,255,0.1)"
+    },
+    {
+      "type": "range",
+      "id": "info_card_border_radius",
+      "label": "Info card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "info_title_color",
+      "label": "Info title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "info_text_color",
+      "label": "Info text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#F97316"
+    },
+    {
+      "type": "header",
+      "content": "Location cards"
+    },
+    {
+      "type": "text",
+      "id": "location_1_title",
+      "label": "Location 1 title",
+      "default": "USA, Florida"
+    },
+    {
+      "type": "textarea",
+      "id": "location_1_address",
+      "label": "Location 1 address",
+      "default": "123 Main Street, Miami, FL 33101"
+    },
+    {
+      "type": "text",
+      "id": "location_2_title",
+      "label": "Location 2 title",
+      "default": "India, Bangalore"
+    },
+    {
+      "type": "textarea",
+      "id": "location_2_address",
+      "label": "Location 2 address",
+      "default": "456 Tech Park, Bangalore, Karnataka 560001"
+    },
+    {
+      "type": "color",
+      "id": "location_card_background",
+      "label": "Location card background",
+      "default": "#0A0B0E"
+    },
+    {
+      "type": "color",
+      "id": "location_card_border",
+      "label": "Location card border",
+      "default": "rgba(255,255,255,0.1)"
+    },
+    {
+      "type": "range",
+      "id": "location_card_border_radius",
+      "label": "Location card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "location_icon_color",
+      "label": "Location icon color",
+      "default": "#F97316"
+    },
+    {
+      "type": "color",
+      "id": "location_title_color",
+      "label": "Location title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "location_text_color",
+      "label": "Location text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Messages"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! Your message has been sent successfully."
+    },
+    {
+      "type": "color",
+      "id": "success_background",
+      "label": "Success background",
+      "default": "rgba(34,197,94,0.1)"
+    },
+    {
+      "type": "color",
+      "id": "success_border",
+      "label": "Success border",
+      "default": "#22C55E"
+    },
+    {
+      "type": "color",
+      "id": "success_text_color",
+      "label": "Success text color",
+      "default": "#22C55E"
+    },
+    {
+      "type": "color",
+      "id": "error_background",
+      "label": "Error background",
+      "default": "rgba(239,68,68,0.1)"
+    },
+    {
+      "type": "color",
+      "id": "error_border",
+      "label": "Error border",
+      "default": "#EF4444"
+    },
+    {
+      "type": "color",
+      "id": "error_text_color",
+      "label": "Error text color",
+      "default": "#EF4444"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "RootSyntax contact us"
+    }
+  ]
+}
+{% endschema %}

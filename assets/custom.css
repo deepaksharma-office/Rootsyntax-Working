@@ -1,0 +1,36 @@
+
+.menu-list:not(:has(.menu-list__list-item:hover)) .menu-list__link--active{
+	color:#f97316!important;
+}
+strong{
+	font-weight:400;
+	color:#f97316!important;
+}
+.rootsyntax-video-partner-badge-wrapper {
+    border-radius: 15px;
+    background: #d4d4d41a;
+    -webkit-backdrop-filter: blur(17.5px);
+    backdrop-filter: blur(17.5px);
+    padding: 10px 20px;
+    max-width: 399px;
+}
+.rootsyntax-badge-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rootsyntax-video-partner-label {
+    font-size: 14px;
+    font-weight: 100;
+}
+@media (max-width:750px){
+	.header__row  .header__columns{
+		display: flex;
+		justify-content: space-between;
+	}
+	.header-atc-buttons .button-custom,
+	.header-atc-buttons .button{
+		font-size: 12px;
+	}
+}

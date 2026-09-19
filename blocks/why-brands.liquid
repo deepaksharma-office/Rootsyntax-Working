@@ -1,0 +1,702 @@
+
+{% assign block_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .rootsyntax-growth-focused-{{ block_id }} {
+    display: block;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_top_desktop }}px 20px {{ block.settings.padding_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .rootsyntax-growth-focused-{{ block_id }} {
+      padding: {{ block.settings.padding_top_tablet }}px 20px {{ block.settings.padding_bottom_tablet }}px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .rootsyntax-growth-focused-{{ block_id }} {
+      padding: {{ block.settings.padding_top_mobile }}px 16px {{ block.settings.padding_bottom_mobile }}px;
+    }
+  }
+
+  .rootsyntax-growth-focused-container-{{ block_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .rootsyntax-growth-focused-header-{{ block_id }} {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .rootsyntax-growth-focused-header-{{ block_id }} {
+      margin-bottom: 48px;
+    }
+  }
+
+  .rootsyntax-growth-focused-label-{{ block_id }} {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: {{ block.settings.accent_color }};
+    margin-bottom: 16px;
+  }
+
+  .rootsyntax-growth-focused-heading-{{ block_id }} {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: {{ block.settings.primary_text_color }};
+    margin: 0 0 20px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .rootsyntax-growth-focused-heading-{{ block_id }} {
+      font-size: 40px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .rootsyntax-growth-focused-heading-{{ block_id }} {
+      font-size: 32px;
+    }
+  }
+
+  .rootsyntax-growth-focused-description-{{ block_id }} {
+    font-size: 16px;
+    line-height: 1.8;
+    color: {{ block.settings.secondary_text_color }};
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .rootsyntax-growth-focused-grid-{{ block_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.card_gap }}px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .rootsyntax-growth-focused-grid-{{ block_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_tablet }}, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .rootsyntax-growth-focused-grid-{{ block_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .rootsyntax-growth-focused-card-{{ block_id }} {
+    background-color: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rootsyntax-growth-focused-card-{{ block_id }}:hover {
+    transform: translateY(-10px);
+    border-color: {{ block.settings.accent_color }};
+    box-shadow: 0 20px 40px rgba(79, 140, 255, 0.15);
+  }
+
+  .rootsyntax-growth-focused-card-{{ block_id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(79, 140, 255, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+
+  .rootsyntax-growth-focused-card-{{ block_id }}:hover::before {
+    opacity: 1;
+  }
+
+  .rootsyntax-growth-focused-icon-wrapper-{{ block_id }} {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(79, 140, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .rootsyntax-growth-focused-card-{{ block_id }}:hover .rootsyntax-growth-focused-icon-wrapper-{{ block_id }} {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(79, 140, 255, 0.2);
+  }
+
+  .rootsyntax-growth-focused-icon-{{ block_id }} {
+    width: 70px;
+    height: 70px;
+    transition: transform 0.3s ease;
+  }
+
+  .rootsyntax-growth-focused-icon-{{ block_id }} svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .rootsyntax-growth-focused-card-title-{{ block_id }} {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: {{ block.settings.secondary_text_color }};
+    margin: 0 0 16px;
+    transition: color 0.3s ease;
+  }
+
+  .rootsyntax-growth-focused-card-{{ block_id }}:hover .rootsyntax-growth-focused-card-title-{{ block_id }} {
+    color: {{ block.settings.primary_text_color }};
+  }
+
+  .rootsyntax-growth-focused-card-description-{{ block_id }} {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #B8B8B8;
+    margin: 0 0 auto;
+  }
+
+  .rootsyntax-growth-focused-card-arrow-{{ block_id }} {
+    margin-top: 20px;
+    width: 24px;
+    height: 24px;
+    color: {{ block.settings.accent_color }};
+    transition: transform 0.3s ease;
+  }
+
+  .rootsyntax-growth-focused-card-{{ block_id }}:hover .rootsyntax-growth-focused-card-arrow-{{ block_id }} {
+    transform: translateY(-4px);
+  }
+
+  {% if block.settings.enable_animations %}
+    @keyframes rootsyntax-growth-focused-fade-in-{{ block_id }} {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .rootsyntax-growth-focused-{{ block_id }}.rootsyntax-animated {
+      animation: rootsyntax-growth-focused-fade-in-{{ block_id }} 0.5s ease forwards;
+    }
+
+    .rootsyntax-growth-focused-card-{{ block_id }} {
+      opacity: 0;
+      animation: rootsyntax-growth-focused-fade-in-{{ block_id }} 0.5s ease forwards;
+    }
+
+    {% for i in (1..12) %}
+      .rootsyntax-growth-focused-card-{{ block_id }}:nth-child({{ i }}) {
+        animation-delay: {{ i | times: 80 | divided_by: 1000.0 }}s;
+      }
+    {% endfor %}
+  {% endif %}
+{% endstyle %}
+
+
+
+<growth-focused-{{ block_id }} class="rootsyntax-growth-focused-{{ block_id }}" {{ block.shopify_attributes }}>
+  <div class="rootsyntax-growth-focused-container-{{ block_id }}">
+    <div class="rootsyntax-growth-focused-header-{{ block_id }}">
+      {% if block.settings.label != blank %}
+        <div class="rootsyntax-growth-focused-label-{{ block_id }}">{{ block.settings.label }}</div>
+      {% endif %}
+      
+      {% if block.settings.heading != blank %}
+        <h2 class="rootsyntax-growth-focused-heading-{{ block_id }}">{{ block.settings.heading }}</h2>
+      {% endif %}
+      
+      {% if block.settings.description != blank %}
+        <div class="rootsyntax-growth-focused-description-{{ block_id }}">{{ block.settings.description }}</div>
+      {% endif %}
+    </div>
+
+    <div class="rootsyntax-growth-focused-grid-{{ block_id }}">
+      <div class="rootsyntax-growth-focused-card-{{ block_id }}">
+        <div class="rootsyntax-growth-focused-icon-wrapper-{{ block_id }}">
+          <div class="rootsyntax-growth-focused-icon-{{ block_id }}">
+            {{ block.settings.card_1_icon }}
+          </div>
+        </div>
+        <h3 class="rootsyntax-growth-focused-card-title-{{ block_id }}">{{ block.settings.card_1_title }}</h3>
+        <div class="rootsyntax-growth-focused-card-description-{{ block_id }}">{{ block.settings.card_1_description }}</div>
+        <svg class="rootsyntax-growth-focused-card-arrow-{{ block_id }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+
+      <div class="rootsyntax-growth-focused-card-{{ block_id }}">
+        <div class="rootsyntax-growth-focused-icon-wrapper-{{ block_id }}">
+          <div class="rootsyntax-growth-focused-icon-{{ block_id }}">
+            {{ block.settings.card_2_icon }}
+          </div>
+        </div>
+        <h3 class="rootsyntax-growth-focused-card-title-{{ block_id }}">{{ block.settings.card_2_title }}</h3>
+        <div class="rootsyntax-growth-focused-card-description-{{ block_id }}">{{ block.settings.card_2_description }}</div>
+        <svg class="rootsyntax-growth-focused-card-arrow-{{ block_id }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+
+      <div class="rootsyntax-growth-focused-card-{{ block_id }}">
+        <div class="rootsyntax-growth-focused-icon-wrapper-{{ block_id }}">
+          <div class="rootsyntax-growth-focused-icon-{{ block_id }}">
+            {{ block.settings.card_3_icon }}
+          </div>
+        </div>
+        <h3 class="rootsyntax-growth-focused-card-title-{{ block_id }}">{{ block.settings.card_3_title }}</h3>
+        <div class="rootsyntax-growth-focused-card-description-{{ block_id }}">{{ block.settings.card_3_description }}</div>
+        <svg class="rootsyntax-growth-focused-card-arrow-{{ block_id }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+
+      <div class="rootsyntax-growth-focused-card-{{ block_id }}">
+        <div class="rootsyntax-growth-focused-icon-wrapper-{{ block_id }}">
+          <div class="rootsyntax-growth-focused-icon-{{ block_id }}">
+            {{ block.settings.card_4_icon }}
+          </div>
+        </div>
+        <h3 class="rootsyntax-growth-focused-card-title-{{ block_id }}">{{ block.settings.card_4_title }}</h3>
+        <div class="rootsyntax-growth-focused-card-description-{{ block_id }}">{{ block.settings.card_4_description }}</div>
+        <svg class="rootsyntax-growth-focused-card-arrow-{{ block_id }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+
+      <div class="rootsyntax-growth-focused-card-{{ block_id }}">
+        <div class="rootsyntax-growth-focused-icon-wrapper-{{ block_id }}">
+          <div class="rootsyntax-growth-focused-icon-{{ block_id }}">
+            {{ block.settings.card_5_icon }}
+          </div>
+        </div>
+        <h3 class="rootsyntax-growth-focused-card-title-{{ block_id }}">{{ block.settings.card_5_title }}</h3>
+        <div class="rootsyntax-growth-focused-card-description-{{ block_id }}">{{ block.settings.card_5_description }}</div>
+        <svg class="rootsyntax-growth-focused-card-arrow-{{ block_id }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+
+      <div class="rootsyntax-growth-focused-card-{{ block_id }}">
+        <div class="rootsyntax-growth-focused-icon-wrapper-{{ block_id }}">
+          <div class="rootsyntax-growth-focused-icon-{{ block_id }}">
+            {{ block.settings.card_6_icon }}
+          </div>
+        </div>
+        <h3 class="rootsyntax-growth-focused-card-title-{{ block_id }}">{{ block.settings.card_6_title }}</h3>
+        <div class="rootsyntax-growth-focused-card-description-{{ block_id }}">{{ block.settings.card_6_description }}</div>
+        <svg class="rootsyntax-growth-focused-card-arrow-{{ block_id }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </div>
+
+    {% content_for 'block', type: 'group', id: "block_id-whybrands"  %}
+  </div>
+</growth-focused-{{ block_id }}>
+
+<script>
+  (function() {
+    class GrowthFocused{{ block_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        {% if block.settings.enable_animations %}
+          this.setupScrollAnimation();
+        {% endif %}
+      }
+
+      setupScrollAnimation() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('rootsyntax-animated');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        observer.observe(this);
+      }
+    }
+
+    customElements.define('growth-focused-{{ block_id }}', GrowthFocused{{ block_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Growth focused",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "GROWTH FOCUSED"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Brands Choose RootSyntax"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "From strategy to development, every project is built with performance, scalability, and long-term growth in mind."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 800,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns on tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards",
+      "min": 16,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "label": "Tablet top padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "label": "Tablet bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#050505"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "Primary text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "secondary_text_color",
+      "label": "Secondary text",
+      "default": "#A3A3A3"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#4F8CFF"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#0F0F10"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "rgba(255,255,255,0.08)"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animations",
+      "label": "Enable animations",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Card 1 - Organized Code"
+    },
+    {
+      "type": "html",
+      "id": "card_1_icon",
+      "label": "Icon SVG",
+      "default": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='#4F8CFF' stroke-width='1.5'><path stroke-linecap='round' stroke-linejoin='round' d='M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5' /></svg>"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Title",
+      "default": "Organized Code"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_description",
+      "label": "Description",
+      "default": "We write clean, scalable, and maintainable Shopify code following best practices, making future updates faster and easier."
+    },
+    {
+      "type": "header",
+      "content": "Card 2 - Growth Focused"
+    },
+    {
+      "type": "html",
+      "id": "card_2_icon",
+      "label": "Icon SVG",
+      "default": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='#4F8CFF' stroke-width='1.5'><path stroke-linecap='round' stroke-linejoin='round' d='M15 10.5a3 3 0 11-6 0 3 3 0 016 0z' /><path stroke-linecap='round' stroke-linejoin='round' d='M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z' /></svg>"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Title",
+      "default": "Growth Focused"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_description",
+      "label": "Description",
+      "default": "Every Shopify store is designed with conversion optimization, performance, and long-term business growth in mind."
+    },
+    {
+      "type": "header",
+      "content": "Card 3 - Fast Response Time"
+    },
+    {
+      "type": "html",
+      "id": "card_3_icon",
+      "label": "Icon SVG",
+      "default": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='#4F8CFF' stroke-width='1.5'><path stroke-linecap='round' stroke-linejoin='round' d='M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Title",
+      "default": "Fast Response Time"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_description",
+      "label": "Description",
+      "default": "Our team responds quickly to project updates, feedback, and support requests to keep your business moving without delays."
+    },
+    {
+      "type": "header",
+      "content": "Card 4 - On-Time Delivery"
+    },
+    {
+      "type": "html",
+      "id": "card_4_icon",
+      "label": "Icon SVG",
+      "default": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='#4F8CFF' stroke-width='1.5'><path stroke-linecap='round' stroke-linejoin='round' d='M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>"
+    },
+    {
+      "type": "text",
+      "id": "card_4_title",
+      "label": "Title",
+      "default": "On-Time Delivery"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_description",
+      "label": "Description",
+      "default": "Projects are delivered according to milestones with transparent communication and quality assurance throughout the process."
+    },
+    {
+      "type": "header",
+      "content": "Card 5 - SEO Optimized"
+    },
+    {
+      "type": "html",
+      "id": "card_5_icon",
+      "label": "Icon SVG",
+      "default": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='#4F8CFF' stroke-width='1.5'><path stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /></svg>"
+    },
+    {
+      "type": "text",
+      "id": "card_5_title",
+      "label": "Title",
+      "default": "SEO Optimized"
+    },
+    {
+      "type": "textarea",
+      "id": "card_5_description",
+      "label": "Description",
+      "default": "Every Shopify build follows technical SEO best practices, helping your store achieve better visibility and faster indexing."
+    },
+    {
+      "type": "header",
+      "content": "Card 6 - Ongoing Support"
+    },
+    {
+      "type": "html",
+      "id": "card_6_icon",
+      "label": "Icon SVG",
+      "default": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='#4F8CFF' stroke-width='1.5'><path stroke-linecap='round' stroke-linejoin='round' d='M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z' /></svg>"
+    },
+    {
+      "type": "text",
+      "id": "card_6_title",
+      "label": "Title",
+      "default": "Ongoing Support"
+    },
+    {
+      "type": "textarea",
+      "id": "card_6_description",
+      "label": "Description",
+      "default": "We continue supporting your Shopify store after launch with updates, optimization, maintenance, and technical assistance."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Growth focused"
+    }
+  ]
+}
+{% endschema %}

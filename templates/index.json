@@ -147,7 +147,7 @@
         "heading_size": 28,
         "speed": 30,
         "direction": "left",
-        "pause_on_hover": false,
+        "pause_on_hover": true,
         "gap": 12,
         "image_width": 150,
         "image_height": 50,

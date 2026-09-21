@@ -75,46 +75,138 @@
     },
     "custom-marquee": {
       "type": "custom-marquee",
-      "settings": {},
       "blocks": {
         "custom_marquee_01": {
           "type": "marquee_item",
-          "settings": {}
+          "settings": {
+            "icon": "shopify://shop_images/Container.png",
+            "text": "",
+            "link": ""
+          }
         },
         "custom_marquee_02": {
           "type": "marquee_item",
-          "settings": {}
+          "settings": {
+            "icon": "shopify://shop_images/Container_f5d74208-7d5b-4213-a633-ac867f380500.png",
+            "text": "",
+            "link": ""
+          }
         },
         "custom_marquee_03": {
           "type": "marquee_item",
-          "settings": {}
+          "settings": {
+            "icon": "shopify://shop_images/Container_b7083eea-dd9e-4760-84da-541d7ff3aa4c.png",
+            "text": "",
+            "link": ""
+          }
+        },
+        "marquee_item_97BmCf": {
+          "type": "marquee_item",
+          "settings": {
+            "icon": "shopify://shop_images/Container_87dd8370-2664-4fc8-8ace-5d24b15199ea.png",
+            "text": "",
+            "link": ""
+          }
+        },
+        "marquee_item_aAmGwe": {
+          "type": "marquee_item",
+          "settings": {
+            "icon": "shopify://shop_images/Container_ea14e84b-7a12-46f7-8924-2078335838cc.png",
+            "text": "",
+            "link": ""
+          }
+        },
+        "marquee_item_HhxF83": {
+          "type": "marquee_item",
+          "settings": {
+            "icon": "shopify://shop_images/Container_ec53f7fb-5ae8-4ff3-85e5-1a4498600bd0.png",
+            "text": "",
+            "link": ""
+          }
+        },
+        "marquee_item_NUEpwz": {
+          "type": "marquee_item",
+          "settings": {
+            "icon": "shopify://shop_images/Container_f7225b98-08cd-4510-93fe-5e1290b5385e.png",
+            "text": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "custom_marquee_01",
         "custom_marquee_02",
-        "custom_marquee_03"
-      ]
+        "custom_marquee_03",
+        "marquee_item_97BmCf",
+        "marquee_item_aAmGwe",
+        "marquee_item_HhxF83",
+        "marquee_item_NUEpwz"
+      ],
+      "settings": {
+        "heading": "Our Clients",
+        "heading_size": 28,
+        "speed": 30,
+        "direction": "left",
+        "pause_on_hover": true,
+        "gap": 12,
+        "image_width": 100,
+        "image_height": 50,
+        "card_padding": 8,
+        "card_radius": 4,
+        "show_shadow": true,
+        "card_background": "#ffffff",
+        "font_size_desktop": 20,
+        "font_size_mobile": 16,
+        "font_weight": "600",
+        "text_transform": "none",
+        "letter_spacing": 0,
+        "background_color": "#ffffff",
+        "text_color": "#021227",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     },
     "custom-richtext": {
       "type": "custom-richtext",
-      "settings": {},
       "blocks": {
         "custom_richtext_01": {
           "type": "pill",
-          "settings": {}
+          "settings": {
+            "text": "About Us",
+            "font_size": 12,
+            "background_color": "#ffffff",
+            "text_color": "#1e3978",
+            "border_color": "#e5e8ee",
+            "radius": 20
+          }
         },
         "custom_richtext_02": {
           "type": "title",
-          "settings": {}
+          "settings": {
+            "text": "Your title",
+            "font_size": 40,
+            "text_color": "#1e3978"
+          }
         },
         "custom_richtext_03": {
           "type": "richtext",
-          "settings": {}
+          "settings": {
+            "content": "<p>Add your text here. Select words and make them bold to highlight them.</p>",
+            "highlight_color": "#1e3978",
+            "font_size": 24
+          }
         },
         "custom_richtext_04": {
           "type": "button",
-          "settings": {}
+          "settings": {
+            "label": "Learn more",
+            "link": "",
+            "open_new_tab": false,
+            "background_color": "#1e3978",
+            "text_color": "#ffffff",
+            "radius": 6,
+            "font_size": 16
+          }
         }
       },
       "block_order": [
@@ -122,18 +214,42 @@
         "custom_richtext_02",
         "custom_richtext_03",
         "custom_richtext_04"
-      ]
+      ],
+      "settings": {
+        "alignment": "center",
+        "content_width": 800,
+        "block_spacing": 20,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_sides": 20,
+        "background_color": "#ffffff",
+        "text_color": "#5d687a"
+      }
     },
     "custom-statistics": {
       "type": "custom-statistics",
-      "settings": {},
       "blocks": {
         "custom_statistics_01": {
           "type": "stat",
           "settings": {
             "label": "Successful Projects Delivered",
             "value": "146+",
-            "visual_type": "vertical_bars"
+            "supporting_text": "",
+            "card_link": "",
+            "open_new_tab": false,
+            "clickable_card": false,
+            "show_icon": true,
+            "icon_type": "arrow",
+            "custom_icon": "↗",
+            "icon_background": "#f2f4f8",
+            "icon_color": "#8f99a9",
+            "icon_size": 26,
+            "show_visual": true,
+            "visual_type": "vertical_bars",
+            "visual_color": "#8743ff",
+            "visual_secondary_color": "#dac9ff",
+            "visual_opacity": 100,
+            "visual_height": 80
           }
         },
         "custom_statistics_02": {
@@ -141,7 +257,22 @@
           "settings": {
             "label": "Average Revenue Growth",
             "value": "18%",
-            "visual_type": "line"
+            "supporting_text": "",
+            "card_link": "",
+            "open_new_tab": false,
+            "clickable_card": false,
+            "show_icon": true,
+            "icon_type": "arrow",
+            "custom_icon": "↗",
+            "icon_background": "#f2f4f8",
+            "icon_color": "#8f99a9",
+            "icon_size": 26,
+            "show_visual": true,
+            "visual_type": "line",
+            "visual_color": "#8743ff",
+            "visual_secondary_color": "#dac9ff",
+            "visual_opacity": 100,
+            "visual_height": 80
           }
         },
         "custom_statistics_03": {
@@ -149,7 +280,22 @@
           "settings": {
             "label": "Shopify Tasks Completed",
             "value": "450+",
-            "visual_type": "area"
+            "supporting_text": "",
+            "card_link": "",
+            "open_new_tab": false,
+            "clickable_card": false,
+            "show_icon": true,
+            "icon_type": "arrow",
+            "custom_icon": "↗",
+            "icon_background": "#f2f4f8",
+            "icon_color": "#8f99a9",
+            "icon_size": 26,
+            "show_visual": true,
+            "visual_type": "area",
+            "visual_color": "#8743ff",
+            "visual_secondary_color": "#dac9ff",
+            "visual_opacity": 100,
+            "visual_height": 80
           }
         },
         "custom_statistics_04": {
@@ -157,7 +303,22 @@
           "settings": {
             "label": "Years of Shopify Experience",
             "value": "4+",
-            "visual_type": "step_bars"
+            "supporting_text": "",
+            "card_link": "",
+            "open_new_tab": false,
+            "clickable_card": false,
+            "show_icon": true,
+            "icon_type": "arrow",
+            "custom_icon": "↗",
+            "icon_background": "#f2f4f8",
+            "icon_color": "#8f99a9",
+            "icon_size": 26,
+            "show_visual": true,
+            "visual_type": "step_bars",
+            "visual_color": "#8743ff",
+            "visual_secondary_color": "#dac9ff",
+            "visual_opacity": 100,
+            "visual_height": 80
           }
         }
       },
@@ -166,52 +327,180 @@
         "custom_statistics_02",
         "custom_statistics_03",
         "custom_statistics_04"
-      ]
+      ],
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "desktop_columns": 4,
+        "card_gap": 18,
+        "max_width": 1360,
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "padding_sides": 24,
+        "background_color": "#203c90",
+        "use_gradient": false,
+        "gradient_color": "#172d72",
+        "gradient_direction": "to right",
+        "show_decorations": false,
+        "decoration_opacity": 20,
+        "heading_color": "#ffffff",
+        "description_color": "#e8ecff",
+        "card_background": "#fbfcff",
+        "card_border_color": "#e5e8f0",
+        "card_border_width": 1,
+        "card_radius": 12,
+        "card_shadow": "soft",
+        "card_padding": 22,
+        "card_min_height": 200,
+        "card_hover": true,
+        "hover_lift": 4,
+        "hover_shadow": "medium",
+        "label_color": "#596372",
+        "value_color": "#203c90",
+        "label_font_size": 13,
+        "value_font_size": 32,
+        "value_font_weight": "700",
+        "label_line_height": 135,
+        "value_line_height": 110,
+        "show_cta": true,
+        "cta_text": "Schedule A Call Today!",
+        "cta_link": "",
+        "cta_background": "#ff811e",
+        "cta_text_color": "#ffffff",
+        "cta_hover_background": "#eb6f0c",
+        "cta_hover_text_color": "#ffffff",
+        "cta_radius": 40,
+        "cta_padding_vertical": 12,
+        "cta_padding_horizontal": 30,
+        "cta_top_spacing": 28,
+        "cta_font_size": 13,
+        "cta_font_weight": "500",
+        "mobile_columns": "1",
+        "mobile_gap": 14,
+        "mobile_padding": 16,
+        "mobile_card_padding": 16,
+        "mobile_value_font_size": 28,
+        "animate_cards": false,
+        "animation_style": "fade_up",
+        "animation_duration": 500,
+        "animation_delay": 75
+      }
     },
     "custom-services": {
       "type": "custom-services",
-      "settings": {},
       "blocks": {
         "custom_services_01": {
           "type": "service",
           "settings": {
             "title": "Store Build Or Redesign",
-            "description": "Launch a conversion-focused Shopify store optimized for performance and growth."
+            "description": "Launch a conversion-focused Shopify store optimized for performance and growth.",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "show_icon": false,
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "custom_card_background": false,
+            "card_background": "#f8f9fb",
+            "custom_image_height": false,
+            "image_height": 190,
+            "custom_title_color": "",
+            "custom_description_color": ""
           }
         },
         "custom_services_02": {
           "type": "service",
           "settings": {
             "title": "Migration To Shopify",
-            "description": "Custom Shopify development tailored to your business goals."
+            "description": "Custom Shopify development tailored to your business goals.",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "show_icon": false,
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "custom_card_background": false,
+            "card_background": "#f8f9fb",
+            "custom_image_height": false,
+            "image_height": 190,
+            "custom_title_color": "",
+            "custom_description_color": ""
           }
         },
         "custom_services_03": {
           "type": "service",
           "settings": {
             "title": "Expert Guidance and Store Setup",
-            "description": "Move seamlessly from WooCommerce, Magento, Wix, or custom platforms."
+            "description": "Move seamlessly from WooCommerce, Magento, Wix, or custom platforms.",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "show_icon": false,
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "custom_card_background": false,
+            "card_background": "#f8f9fb",
+            "custom_image_height": false,
+            "image_height": 190,
+            "custom_title_color": "",
+            "custom_description_color": ""
           }
         },
         "custom_services_04": {
           "type": "service",
           "settings": {
             "title": "Digital Marketing and SEO",
-            "description": "Connect powerful apps and automations that improve efficiency."
+            "description": "Connect powerful apps and automations that improve efficiency.",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "show_icon": false,
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "custom_card_background": false,
+            "card_background": "#f8f9fb",
+            "custom_image_height": false,
+            "image_height": 190,
+            "custom_title_color": "",
+            "custom_description_color": ""
           }
         },
         "custom_services_05": {
           "type": "service",
           "settings": {
             "title": "Wholesale/B2B Solutions",
-            "description": "Increase conversions through UX improvements and data-driven testing."
+            "description": "Increase conversions through UX improvements and data-driven testing.",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "show_icon": false,
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "custom_card_background": false,
+            "card_background": "#f8f9fb",
+            "custom_image_height": false,
+            "image_height": 190,
+            "custom_title_color": "",
+            "custom_description_color": ""
           }
         },
         "custom_services_06": {
           "type": "service",
           "settings": {
             "title": "Conversion Rate Optimization",
-            "description": "Ongoing technical support and store improvements."
+            "description": "Ongoing technical support and store improvements.",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "show_icon": false,
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "custom_card_background": false,
+            "card_background": "#f8f9fb",
+            "custom_image_height": false,
+            "image_height": 190,
+            "custom_title_color": "",
+            "custom_description_color": ""
           }
         }
       },
@@ -222,18 +511,69 @@
         "custom_services_04",
         "custom_services_05",
         "custom_services_06"
-      ]
+      ],
+      "settings": {
+        "heading": "",
+        "description": "",
+        "text_alignment": "left",
+        "max_width": 1200,
+        "desktop_columns": "3",
+        "tablet_columns": "2",
+        "mobile_columns": "1",
+        "card_gap": 16,
+        "row_gap": 16,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_sides": 24,
+        "card_padding": 20,
+        "background_color": "#ffffff",
+        "use_gradient": false,
+        "gradient_color": "#f6f7fb",
+        "gradient_direction": "to bottom",
+        "card_background": "#f8f9fb",
+        "card_border_color": "#e7eaf0",
+        "card_border_width": 1,
+        "card_radius": 16,
+        "card_shadow": "subtle",
+        "card_min_height": 320,
+        "card_hover": true,
+        "hover_lift": 3,
+        "hover_border_color": "#cfd8ec",
+        "hover_shadow": "subtle",
+        "title_color": "#253040",
+        "description_color": "#6d7788",
+        "title_size": 18,
+        "description_size": 13,
+        "title_weight": "600",
+        "description_line_height": 145,
+        "image_width": 320,
+        "image_height": 190,
+        "image_fit": "contain",
+        "image_position": "center",
+        "image_opacity": 100,
+        "image_top_spacing": 18,
+        "image_bottom_spacing": 0,
+        "enable_animation": false,
+        "animation_style": "fade_up",
+        "animation_duration": 500,
+        "animation_stagger": 75
+      }
     },
     "custom-process": {
       "type": "custom-process",
-      "settings": {},
       "blocks": {
         "custom_process_01": {
           "type": "step",
           "settings": {
             "title": "Discovery & Strategy",
             "description": "We analyze your business goals, target audience, competitors, and current store performance to create a growth-focused roadmap.",
-            "icon_character": "✦"
+            "icon_type": "text",
+            "icon_character": "✦",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_step": false,
+            "title_color": "",
+            "description_color": ""
           }
         },
         "custom_process_02": {
@@ -241,7 +581,13 @@
           "settings": {
             "title": "UX & Store Planning",
             "description": "Our team designs a conversion-focused user experience, wireframes key pages, and plans the ideal customer journey.",
-            "icon_character": "▣"
+            "icon_type": "text",
+            "icon_character": "▣",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_step": false,
+            "title_color": "",
+            "description_color": ""
           }
         },
         "custom_process_03": {
@@ -249,7 +595,13 @@
           "settings": {
             "title": "Development & Migration",
             "description": "We build, customize, or migrate your Shopify store with clean development practices and minimal disruption to your business.",
-            "icon_character": "⌘"
+            "icon_type": "text",
+            "icon_character": "⌘",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_step": false,
+            "title_color": "",
+            "description_color": ""
           }
         },
         "custom_process_04": {
@@ -257,7 +609,13 @@
           "settings": {
             "title": "Launch & Growth Optimization",
             "description": "After thorough testing and launch, we continuously optimize performance, user experience, and conversions through data-driven improvements.",
-            "icon_character": "⌂"
+            "icon_type": "text",
+            "icon_character": "⌂",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_step": false,
+            "title_color": "",
+            "description_color": ""
           }
         }
       },
@@ -266,52 +624,216 @@
         "custom_process_02",
         "custom_process_03",
         "custom_process_04"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "How It Works",
+        "heading": "Our Proven Shopify",
+        "description": "",
+        "max_width": 1200,
+        "layout": "columns",
+        "column_gap": 64,
+        "left_width": 50,
+        "right_width": 50,
+        "background_color": "#203c90",
+        "enable_gradient": false,
+        "gradient_color": "#172c70",
+        "gradient_direction": "to right",
+        "decorate_background": false,
+        "decoration_opacity": 15,
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36,
+        "padding_sides": 24,
+        "show_eyebrow": true,
+        "eyebrow_icon": "✦",
+        "eyebrow_background": "#ffffff",
+        "eyebrow_text_color": "#203c90",
+        "eyebrow_border_color": "#ffffff",
+        "eyebrow_border_width": 0,
+        "eyebrow_radius": 30,
+        "eyebrow_font_size": 12,
+        "eyebrow_font_weight": "600",
+        "eyebrow_padding": 7,
+        "heading_color": "#ffffff",
+        "heading_font_size": 42,
+        "heading_font_weight": "500",
+        "heading_line_height": 115,
+        "heading_max_width": 520,
+        "timeline_color": "#a8bbe9",
+        "timeline_width": 1,
+        "timeline_style": "solid",
+        "timeline_spacing": 28,
+        "timeline_icon_size": 40,
+        "timeline_icon_background": "#ffffff",
+        "timeline_icon_color": "#203c90",
+        "timeline_icon_border_color": "#ffffff",
+        "timeline_icon_border_width": 0,
+        "timeline_icon_radius": 40,
+        "step_title_color": "#ffffff",
+        "step_title_size": 18,
+        "step_title_weight": "600",
+        "step_description_color": "#d9e2fa",
+        "step_description_size": 13,
+        "step_description_line_height": 145,
+        "step_hover": true,
+        "hover_icon_scale": 105,
+        "hover_icon_background": "#e8efff",
+        "hover_title_color": "#ffffff",
+        "image_position": "center",
+        "image_fit": "contain",
+        "image_width": 580,
+        "image_height": 560,
+        "image_radius": 20,
+        "image_border_width": 0,
+        "image_border_color": "#ffffff",
+        "image_placeholder_background": "#e7effa",
+        "image_shadow": "subtle",
+        "image_overlay": false,
+        "overlay_color": "#203c90",
+        "overlay_opacity": 15,
+        "image_opacity": 100,
+        "float_image": false,
+        "image_float_speed": 7,
+        "image_hover_scale": 103,
+        "show_caption": true,
+        "caption": "Our agile process ensures rapid deployment of intelligent systems while maintaining the highest standards of reliability and security.",
+        "caption_color": "#d9e2fa",
+        "caption_font_size": 12,
+        "caption_alignment": "center",
+        "show_badge": false,
+        "badge_text": "Featured",
+        "badge_position": "top-right",
+        "badge_background": "#ffffff",
+        "badge_text_color": "#203c90",
+        "badge_radius": 20,
+        "enable_animation": false,
+        "animation_type": "fade_up",
+        "animation_duration": 500,
+        "animation_stagger": 75
+      }
     },
     "custom-why-choose": {
       "type": "custom-why-choose",
-      "settings": {},
       "blocks": {
         "custom_why_choose_01": {
           "type": "benefit",
           "settings": {
             "title": "Guaranteed Quality Standards",
-            "description": "Every project follows industry best practices and quality assurance processes."
+            "description": "Every project follows industry best practices and quality assurance processes.",
+            "icon_type": "none",
+            "icon_character": "✦",
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "custom_card_background": false,
+            "card_background": "#f9fafc",
+            "custom_glow": false,
+            "glow_color": "#bbcdf5",
+            "title_color": "",
+            "description_color": ""
           }
         },
         "custom_why_choose_02": {
           "type": "benefit",
           "settings": {
             "title": "Dedicated Project Managers",
-            "description": "A single point of contact ensures smooth communication and project execution."
+            "description": "A single point of contact ensures smooth communication and project execution.",
+            "icon_type": "none",
+            "icon_character": "✦",
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "custom_card_background": false,
+            "card_background": "#f9fafc",
+            "custom_glow": false,
+            "glow_color": "#bbcdf5",
+            "title_color": "",
+            "description_color": ""
           }
         },
         "custom_why_choose_03": {
           "type": "benefit",
           "settings": {
             "title": "Shopify Expertise",
-            "description": "Specialized Shopify knowledge gained from delivering successful ecommerce projects."
+            "description": "Specialized Shopify knowledge gained from delivering successful ecommerce projects.",
+            "icon_type": "none",
+            "icon_character": "✦",
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "custom_card_background": false,
+            "card_background": "#f9fafc",
+            "custom_glow": false,
+            "glow_color": "#bbcdf5",
+            "title_color": "",
+            "description_color": ""
           }
         },
         "custom_why_choose_04": {
           "type": "benefit",
           "settings": {
             "title": "Transparency & Communication",
-            "description": "Clear timelines, updates, and collaboration throughout the project."
+            "description": "Clear timelines, updates, and collaboration throughout the project.",
+            "icon_type": "none",
+            "icon_character": "✦",
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "custom_card_background": false,
+            "card_background": "#f9fafc",
+            "custom_glow": false,
+            "glow_color": "#bbcdf5",
+            "title_color": "",
+            "description_color": ""
           }
         },
         "custom_why_choose_05": {
           "type": "benefit",
           "settings": {
             "title": "On-Time Delivery",
-            "description": "Projects delivered according to agreed milestones."
+            "description": "Projects delivered according to agreed milestones.",
+            "icon_type": "none",
+            "icon_character": "✦",
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "custom_card_background": false,
+            "card_background": "#f9fafc",
+            "custom_glow": false,
+            "glow_color": "#bbcdf5",
+            "title_color": "",
+            "description_color": ""
           }
         },
         "custom_why_choose_06": {
           "type": "benefit",
           "settings": {
             "title": "Client Success Focus",
-            "description": "Your business growth remains our primary objective."
+            "description": "Your business growth remains our primary objective.",
+            "icon_type": "none",
+            "icon_character": "✦",
+            "icon_size": 40,
+            "icon_background": "#ffffff",
+            "link": "",
+            "open_new_tab": false,
+            "clickable_card": true,
+            "custom_card_background": false,
+            "card_background": "#f9fafc",
+            "custom_glow": false,
+            "glow_color": "#bbcdf5",
+            "title_color": "",
+            "description_color": ""
           }
         }
       },
@@ -322,19 +844,106 @@
         "custom_why_choose_04",
         "custom_why_choose_05",
         "custom_why_choose_06"
-      ]
+      ],
+      "settings": {
+        "show_eyebrow": true,
+        "eyebrow": "Why Choose Us",
+        "eyebrow_icon": "✦",
+        "heading": "Why Ecommerce Brands Choose RootSyntax",
+        "description": "",
+        "max_width": 1200,
+        "desktop_columns": "3",
+        "tablet_columns": "2",
+        "mobile_columns": "1",
+        "card_gap": 16,
+        "row_gap": 16,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36,
+        "padding_sides": 24,
+        "background_color": "#ffffff",
+        "use_gradient": false,
+        "gradient_color": "#f4f7ff",
+        "gradient_opacity": 100,
+        "gradient_direction": "to bottom",
+        "eyebrow_background": "#f9fbfe",
+        "eyebrow_text_color": "#425b8e",
+        "eyebrow_border_color": "#e4e9f2",
+        "eyebrow_border_width": 1,
+        "eyebrow_radius": 30,
+        "eyebrow_font_size": 11,
+        "eyebrow_font_weight": "500",
+        "eyebrow_padding_horizontal": 12,
+        "eyebrow_padding_vertical": 4,
+        "eyebrow_bottom_spacing": 14,
+        "heading_color": "#263140",
+        "heading_font_size": 42,
+        "heading_mobile_font_size": 28,
+        "heading_weight": "700",
+        "heading_line_height": 115,
+        "heading_max_width": 700,
+        "heading_bottom_spacing": 28,
+        "card_background": "#f9fafc",
+        "card_border_color": "#e5e9f1",
+        "card_border_width": 1,
+        "card_radius": 16,
+        "card_shadow": "none",
+        "card_padding": 24,
+        "card_min_height": 230,
+        "card_hover": true,
+        "hover_lift": 3,
+        "hover_shadow": "subtle",
+        "hover_border_color": "#cbd6eb",
+        "enable_glow": true,
+        "glow_color": "#bbcdf5",
+        "glow_opacity": 20,
+        "glow_size": 140,
+        "glow_blur": 46,
+        "glow_position": "top-right",
+        "glow_hover_intensity": 35,
+        "card_title_color": "#203c78",
+        "card_title_size": 22,
+        "card_title_mobile_size": 20,
+        "card_title_weight": "700",
+        "card_title_line_height": 115,
+        "card_description_color": "#697588",
+        "card_description_size": 13,
+        "card_description_mobile_size": 13,
+        "card_description_line_height": 145,
+        "show_proof": true,
+        "proof_text": "Join 500+ innovative companies growing with RootSyntax",
+        "proof_background": "#f9fbfe",
+        "proof_text_color": "#536176",
+        "proof_border_color": "#e4e9f2",
+        "proof_border_width": 1,
+        "proof_radius": 40,
+        "proof_font_size": 12,
+        "proof_padding": 10,
+        "proof_top_margin": 28,
+        "show_proof_icon": true,
+        "proof_icon": "•••",
+        "proof_icon_color": "#5579bc",
+        "proof_icon_size": 18
+      }
     },
     "custom-featured-testimonials": {
       "type": "custom-featured-testimonials",
-      "settings": {},
       "blocks": {
         "custom_featured_testimonials_01": {
           "type": "testimonial",
           "settings": {
             "customer_name": "Sarah Jenkins",
             "customer_role": "CTO, TechFlow Solutions",
+            "customer_location": "",
             "testimonial": "<p>I had a wonderful experience working with RootSyntax. They were very professional from the beginning. The communication was great and immediate. Miss Aubrey assisted me throughout the way and accommodated any request of modification I sent to her. They are amazing and finished my web build and design on time just like they promised. I recommend them 100%.</p>",
-            "service_reviewed": "Store build or redesign"
+            "service_reviewed": "Store build or redesign",
+            "show_rating": true,
+            "quality_rating": 5,
+            "communication_rating": 5,
+            "additional_rating_label": "",
+            "additional_rating": 5,
+            "quote_color": ""
           }
         },
         "custom_featured_testimonials_02": {
@@ -342,8 +951,15 @@
           "settings": {
             "customer_name": "Alex Morgan",
             "customer_role": "Founder, Northstar Goods",
+            "customer_location": "",
             "testimonial": "<p>The team understood our goals quickly and gave us a store that feels clear, fast, and easy for our customers to use. Communication stayed consistent throughout the project.</p>",
-            "service_reviewed": "Shopify store redesign"
+            "service_reviewed": "Shopify store redesign",
+            "show_rating": true,
+            "quality_rating": 5,
+            "communication_rating": 5,
+            "additional_rating_label": "",
+            "additional_rating": 5,
+            "quote_color": ""
           }
         },
         "custom_featured_testimonials_03": {
@@ -351,8 +967,15 @@
           "settings": {
             "customer_name": "Priya Shah",
             "customer_role": "Operations Director, Field & Form",
+            "customer_location": "",
             "testimonial": "<p>RootSyntax helped us plan a careful migration and launch without disrupting day-to-day operations. The result is a more reliable storefront and a much simpler workflow for our team.</p>",
-            "service_reviewed": "Migration to Shopify"
+            "service_reviewed": "Migration to Shopify",
+            "show_rating": true,
+            "quality_rating": 5,
+            "communication_rating": 5,
+            "additional_rating_label": "",
+            "additional_rating": 5,
+            "quote_color": ""
           }
         }
       },
@@ -360,11 +983,77 @@
         "custom_featured_testimonials_01",
         "custom_featured_testimonials_02",
         "custom_featured_testimonials_03"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "Technology",
+        "eyebrow_icon": "✦",
+        "heading": "Building high-performance Shopify experiences with AI-driven innovation",
+        "heading_highlight": "AI-driven innovation",
+        "description": "<p>We combine cutting-edge technology with deep Shopify expertise to deliver exceptional results for our clients.</p>",
+        "heading_highlight_color": "#3156a0",
+        "heading_color": "#26313f",
+        "description_color": "#657184",
+        "heading_size": 38,
+        "heading_mobile_size": 28,
+        "heading_weight": "700",
+        "heading_line_height": 115,
+        "description_size": 15,
+        "description_line_height": 150,
+        "show_stats": true,
+        "stat_one_value": "150+",
+        "stat_one_label": "Shopify Projects Delivered",
+        "stat_two_value": "98%",
+        "stat_two_label": "Client Satisfaction Rate",
+        "stat_color": "#3156a0",
+        "stat_label_color": "#768293",
+        "stat_size": 34,
+        "stat_label_size": 12,
+        "stat_gap": 40,
+        "section_background": "#ffffff",
+        "left_background": "#f8faff",
+        "right_background": "#ffffff",
+        "card_border_color": "#e4e9f1",
+        "main_text_color": "#26313f",
+        "secondary_text_color": "#657184",
+        "accent_color": "#3156a0",
+        "quote_color": "#9bb5e5",
+        "star_color": "#ed9a30",
+        "eyebrow_background": "#ffffff",
+        "eyebrow_color": "#3156a0",
+        "eyebrow_border": "#dce5f2",
+        "card_radius": 18,
+        "card_border_width": 1,
+        "card_shadow": "subtle",
+        "card_padding": 36,
+        "card_min_height": 460,
+        "desktop_height": 500,
+        "mobile_height": 520,
+        "max_width": 1300,
+        "left_width": 48,
+        "right_width": 52,
+        "column_gap": 20,
+        "desktop_alignment": "center",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "mobile_padding": 16,
+        "avatar_size": 48,
+        "fade_duration": 400,
+        "show_navigation": true,
+        "nav_button_size": 40,
+        "nav_background": "#ffffff",
+        "nav_border": "#ccd6e5",
+        "nav_color": "#3156a0",
+        "nav_hover_background": "#3156a0",
+        "nav_hover_color": "#ffffff",
+        "nav_bottom_spacing": 4,
+        "autoplay": true,
+        "autoplay_interval": 5,
+        "pause_on_hover": true,
+        "pause_on_focus": true
+      }
     },
     "custom-case-studies": {
       "type": "custom-case-studies",
-      "settings": {},
       "blocks": {
         "custom_case_studies_01": {
           "type": "case_study",
@@ -372,10 +1061,25 @@
             "category": "FASHION & LIFESTYLE",
             "project_name": "Teveo",
             "description": "A premium Shopify experience designed to elevate brand awareness and drive efficient conversion across all devices.",
+            "link": "",
+            "link_label": "View Project",
+            "open_new_tab": false,
+            "clickable_card": false,
+            "image_position": "center",
+            "image_fit": "cover",
+            "image_aspect": "landscape",
+            "image_height": 240,
+            "image_radius": 16,
+            "image_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 15,
             "tag_1": "Higher Sales",
             "tag_2": "Faster Growth",
             "tag_3": "Better Conversions",
-            "tag_4": "Smooth Experience"
+            "tag_4": "Smooth Experience",
+            "tag_5": "",
+            "tag_6": "",
+            "tag_color": ""
           }
         },
         "custom_case_studies_02": {
@@ -384,10 +1088,25 @@
             "category": "LUXURY & FASHION",
             "project_name": "Mestiza New York",
             "description": "A luxury, conversion-focused Shopify store crafted to showcase success and transform the customer experience end-to-end.",
+            "link": "",
+            "link_label": "View Project",
+            "open_new_tab": false,
+            "clickable_card": false,
+            "image_position": "center",
+            "image_fit": "cover",
+            "image_aspect": "landscape",
+            "image_height": 240,
+            "image_radius": 16,
+            "image_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 15,
             "tag_1": "Luxury Publishing",
             "tag_2": "Fashion Oriented",
             "tag_3": "Higher Demand",
-            "tag_4": "Smooth Checkout"
+            "tag_4": "Smooth Checkout",
+            "tag_5": "",
+            "tag_6": "",
+            "tag_color": ""
           }
         },
         "custom_case_studies_03": {
@@ -396,9 +1115,25 @@
             "category": "FINANCE & NATURA",
             "project_name": "Eywa Nature",
             "description": "A modern, conversion-focused store built to highlight product benefits and build long-lasting customer trust.",
+            "link": "",
+            "link_label": "View Project",
+            "open_new_tab": false,
+            "clickable_card": false,
+            "image_position": "center",
+            "image_fit": "cover",
+            "image_aspect": "landscape",
+            "image_height": 240,
+            "image_radius": 16,
+            "image_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 15,
             "tag_1": "Better Discovery",
             "tag_2": "Smooth Conversions",
-            "tag_3": "Smart Convenience"
+            "tag_3": "Smart Convenience",
+            "tag_4": "",
+            "tag_5": "",
+            "tag_6": "",
+            "tag_color": ""
           }
         }
       },
@@ -406,40 +1141,144 @@
         "custom_case_studies_01",
         "custom_case_studies_02",
         "custom_case_studies_03"
-      ]
+      ],
+      "settings": {
+        "show_eyebrow": true,
+        "eyebrow": "OUR PORTFOLIO",
+        "eyebrow_icon": "•",
+        "heading": "Real Ecommerce Success Stories",
+        "heading_highlight": "Success Stories",
+        "highlight_color": "#ec6a43",
+        "description": "<p>We help brands build modern, high-performing Shopify stores that drive measurable engagement, and long-term success.</p>",
+        "max_width": 1200,
+        "desktop_columns": "3",
+        "tablet_columns": "2",
+        "mobile_columns": "1",
+        "card_gap": 24,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40,
+        "padding_sides": 24,
+        "header_bottom_spacing": 44,
+        "background_color": "#ffffff",
+        "use_gradient": false,
+        "gradient_color": "#f8f9fd",
+        "gradient_opacity": 100,
+        "gradient_direction": "to bottom",
+        "eyebrow_background": "#ffffff",
+        "eyebrow_text_color": "#61718b",
+        "eyebrow_border_color": "#e6eaf2",
+        "eyebrow_border_width": 1,
+        "eyebrow_radius": 30,
+        "eyebrow_font_size": 11,
+        "eyebrow_font_weight": "600",
+        "eyebrow_padding": 5,
+        "eyebrow_letter_spacing": 0.5,
+        "eyebrow_bottom_spacing": 16,
+        "heading_color": "#26313f",
+        "heading_size": 44,
+        "heading_tablet_size": 36,
+        "heading_mobile_size": 28,
+        "heading_weight": "700",
+        "heading_line_height": 115,
+        "heading_letter_spacing": -0.5,
+        "heading_max_width": 900,
+        "intro_color": "#697586",
+        "intro_size": 15,
+        "intro_mobile_size": 14,
+        "intro_line_height": 150,
+        "intro_max_width": 620,
+        "card_background": "#ffffff",
+        "card_border_color": "#e3e7ed",
+        "card_border_width": 1,
+        "card_radius": 16,
+        "card_shadow": "subtle",
+        "card_padding": 20,
+        "card_min_height": 430,
+        "card_hover": true,
+        "hover_lift": 3,
+        "hover_shadow": "subtle",
+        "hover_border_color": "#cbd5e3",
+        "tag_background": "#f6faf8",
+        "tag_text_color": "#52636a",
+        "tag_dot_color": "#39b878",
+        "tag_border_color": "#e5ece8",
+        "tag_border_width": 1,
+        "tag_radius": 20,
+        "tag_font_size": 11,
+        "tag_padding": 5,
+        "tag_gap": 6,
+        "category_color": "#e87345",
+        "category_size": 11,
+        "category_weight": "700",
+        "category_letter_spacing": 0.5,
+        "category_bottom_spacing": 5,
+        "title_color": "#26313f",
+        "title_size": 20,
+        "title_mobile_size": 19,
+        "title_weight": "700",
+        "title_line_height": 125,
+        "card_description_color": "#687687",
+        "card_description_size": 13,
+        "card_description_mobile_size": 13,
+        "card_description_line_height": 145,
+        "description_bottom_spacing": 16,
+        "show_card_arrow": true,
+        "arrow_size": 30,
+        "arrow_background": "#f4f6f9",
+        "arrow_icon_color": "#5d6b7e",
+        "arrow_border": "#e8ecf1",
+        "arrow_hover_background": "#e8effb",
+        "arrow_hover_icon_color": "#3156a0",
+        "link_color": "#506786",
+        "link_hover_color": "#3156a0",
+        "link_size": 13,
+        "link_weight": "500",
+        "link_spacing": 18,
+        "link_arrow_spacing": 6,
+        "enable_animation": false,
+        "animation_type": "fade_up",
+        "animation_duration": 500,
+        "animation_stagger": 75
+      }
     },
     "custom-consultation": {
       "type": "custom-consultation",
-      "settings": {},
       "blocks": {
         "custom_consultation_01": {
           "type": "benefit",
           "settings": {
-            "text": "Free Strategy Consultation"
+            "text": "Free Strategy Consultation",
+            "link": ""
           }
         },
         "custom_consultation_02": {
           "type": "benefit",
           "settings": {
-            "text": "Response within 24 Hours"
+            "text": "Response within 24 Hours",
+            "link": ""
           }
         },
         "custom_consultation_03": {
           "type": "benefit",
           "settings": {
-            "text": "Shopify Plus & CRO Experts"
+            "text": "Shopify Plus & CRO Experts",
+            "link": ""
           }
         },
         "custom_consultation_04": {
           "type": "benefit",
           "settings": {
-            "text": "No Obligation Quote"
+            "text": "No Obligation Quote",
+            "link": ""
           }
         },
         "custom_consultation_05": {
           "type": "benefit",
           "settings": {
-            "text": "Trusted by 150+ Ecommerce Brands"
+            "text": "Trusted by 150+ Ecommerce Brands",
+            "link": ""
           }
         },
         "custom_consultation_06": {
@@ -447,7 +1286,9 @@
           "settings": {
             "value": "3000+",
             "label": "Happy Clients",
-            "icon": "users"
+            "show_icon": true,
+            "icon": "users",
+            "custom_icon": "✦"
           }
         },
         "custom_consultation_07": {
@@ -455,7 +1296,9 @@
           "settings": {
             "value": "98%",
             "label": "Satisfaction Rate",
-            "icon": "star"
+            "show_icon": true,
+            "icon": "star",
+            "custom_icon": "✦"
           }
         },
         "custom_consultation_08": {
@@ -463,7 +1306,9 @@
           "settings": {
             "value": "Under 24",
             "label": "Hours Response",
-            "icon": "clock"
+            "show_icon": true,
+            "icon": "clock",
+            "custom_icon": "✦"
           }
         }
       },
@@ -476,16 +1321,123 @@
         "custom_consultation_06",
         "custom_consultation_07",
         "custom_consultation_08"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "Free Shopify Consultation",
+        "description": "<p>Whether you're launching a new Shopify store, migrating from another platform, or looking to improve conversions, our Shopify experts are ready to help. We'll review your requirements and recommend the best solution for your business.</p>",
+        "form_heading": "",
+        "form_description": "",
+        "success_message": "Thank you! We've received your request and will get back to you within 24 hours.",
+        "error_message": "Something went wrong while submitting your request. Please try again.",
+        "loading_text": "Sending your request...",
+        "show_name": true,
+        "name_label": "Name",
+        "name_placeholder": "Enter your name",
+        "name_required": true,
+        "name_error": "Enter your name.",
+        "show_email": true,
+        "email_label": "Email",
+        "email_placeholder": "Enter your email",
+        "email_required": true,
+        "email_error": "Enter a valid email address.",
+        "show_phone": true,
+        "phone_label": "Phone Number",
+        "phone_placeholder": "+1 555 123 4567",
+        "phone_required": true,
+        "phone_error": "Include a country code, for example +15551234567.",
+        "show_service": true,
+        "service_label": "Service Interested In",
+        "service_placeholder": "Select a service",
+        "service_required": true,
+        "service_option_1": "Store Build or Redesign",
+        "service_option_2": "Shopify Migration",
+        "service_option_3": "Shopify Theme Development",
+        "service_option_4": "Shopify Plus",
+        "service_option_5": "Conversion Rate Optimization",
+        "service_option_6": "Shopify SEO",
+        "service_option_7": "Custom Shopify Development",
+        "service_option_8": "Speed Optimization",
+        "service_option_9": "B2B / Wholesale",
+        "service_option_10": "Maintenance & Support",
+        "service_option_11": "Other",
+        "service_option_12": "",
+        "show_website": true,
+        "website_label": "Existing Website (Optional)",
+        "website_placeholder": "https://yourwebsite.com",
+        "website_required": false,
+        "website_helper": "Already have a website? Share the URL so we can review it and understand your current store.",
+        "show_message": true,
+        "message_label": "Message (Optional)",
+        "message_placeholder": "Tell us about your project...",
+        "message_required": false,
+        "message_limit": 5000,
+        "proxy_path": "",
+        "enable_spam_protection": true,
+        "enable_honeypot": true,
+        "include_timestamp": true,
+        "track_page_url": false,
+        "track_referrer": false,
+        "track_utm": false,
+        "enable_notification": false,
+        "notification_email": "",
+        "max_width": 1500,
+        "left_width": 45,
+        "right_width": 55,
+        "column_gap": 64,
+        "vertical_alignment": "center",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_sides": 24,
+        "mobile_padding": 16,
+        "background_color": "#ffffff",
+        "primary_color": "#263249",
+        "secondary_color": "#58657c",
+        "accent_color": "#f05b24",
+        "check_color": "#9749e8",
+        "divider_color": "#dbe3f1",
+        "stat_value_color": "#ee5b1d",
+        "stat_label_color": "#5c6980",
+        "form_background": "#ffffff",
+        "form_border": "#d8e1ef",
+        "input_background": "#ffffff",
+        "input_border": "#ccd7e8",
+        "input_focus_border": "#9749e8",
+        "placeholder_color": "#8793a7",
+        "form_radius": 20,
+        "form_padding": 44,
+        "input_radius": 8,
+        "input_height": 58,
+        "label_size": 16,
+        "description_size": 18,
+        "button_text": "Get Free Proposal",
+        "button_background": "#9749e8",
+        "button_gradient": true,
+        "button_gradient_start": "#9749e8",
+        "button_gradient_middle": "#db4f9a",
+        "button_gradient_end": "#ff801d",
+        "button_text_color": "#ffffff",
+        "button_radius": 10,
+        "button_height": 64,
+        "button_font_size": 18,
+        "button_font_weight": "700",
+        "button_hover_opacity": 90,
+        "button_shadow": true
+      }
     },
     "custom-insights": {
       "type": "custom-insights",
-      "settings": {},
       "blocks": {
         "custom_insights_01": {
           "type": "article",
           "settings": {
-            "link": "#"
+            "category": "AI TRENDS",
+            "date": "May 12, 2025",
+            "title": "Why AI Is Testing Your Shopify Store the Smartest Way",
+            "excerpt": "As AI systems become more integrated into daily life, ensuring they operate ethically is paramount.",
+            "link": "#",
+            "read_more": "Read More",
+            "new_tab": false,
+            "card_clickable": false
           }
         },
         "custom_insights_02": {
@@ -495,7 +1447,10 @@
             "date": "May 08, 2025",
             "title": "Why Your Shopify Store Needs a Branded Email Address",
             "excerpt": "Breaking down complex ML concepts into understandable principles for business leaders.",
-            "link": "#"
+            "link": "#",
+            "read_more": "Read More",
+            "new_tab": false,
+            "card_clickable": false
           }
         },
         "custom_insights_03": {
@@ -505,7 +1460,10 @@
             "date": "May 01, 2025",
             "title": "Why Shopify Payments Is the Smartest Choice for Ecommerce Brands",
             "excerpt": "Discover the tangible ways artificial intelligence is reshaping operations across industries.",
-            "link": "#"
+            "link": "#",
+            "read_more": "Read More",
+            "new_tab": false,
+            "card_clickable": false
           }
         }
       },
@@ -513,11 +1471,139 @@
         "custom_insights_01",
         "custom_insights_02",
         "custom_insights_03"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Insights for Ecommerce Growth",
+        "description": "",
+        "article_source": "manual",
+        "blog": "",
+        "article_count": 3,
+        "default_category": "Insights",
+        "blog_read_more": "Read More",
+        "max_width": 1200,
+        "desktop_columns": "3",
+        "tablet_columns": "2",
+        "mobile_columns": "1",
+        "card_gap": 24,
+        "row_gap": 24,
+        "background": "#203887",
+        "enable_gradient": false,
+        "gradient_color": "#142968",
+        "gradient_opacity": 60,
+        "gradient_direction": 180,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 44,
+        "mobile_padding_bottom": 44,
+        "padding_horizontal": 24,
+        "heading_color": "#ffffff",
+        "heading_size": 40,
+        "heading_tablet_size": 34,
+        "heading_mobile_size": 28,
+        "heading_weight": "700",
+        "heading_line_height": 110,
+        "heading_letter_spacing": 0,
+        "heading_max_width": 600,
+        "heading_alignment": "center",
+        "heading_bottom_spacing": 32,
+        "card_background": "#ffffff",
+        "card_border": "#e1e6ef",
+        "card_radius": 10,
+        "image_ratio": "16 / 9",
+        "enable_hover": true,
+        "badge_background": "#ffffff",
+        "badge_color": "#e75b25",
+        "badge_border": "#f0d9cd",
+        "badge_radius": 20,
+        "badge_size": 11,
+        "badge_padding": 5,
+        "badge_position": "left",
+        "date_color": "#8490a1",
+        "date_size": 12,
+        "date_weight": "400",
+        "date_spacing": 8,
+        "title_color": "#222e42",
+        "title_size": 20,
+        "title_mobile_size": 18,
+        "title_weight": "700",
+        "title_line_height": 130,
+        "excerpt_color": "#667184",
+        "excerpt_size": 14,
+        "excerpt_line_height": 150,
+        "excerpt_lines": 3,
+        "link_color": "#eb5d24",
+        "link_hover_color": "#b94719",
+        "link_size": 13,
+        "link_weight": "600",
+        "arrow_gap": 6
+      }
     },
     "custom-success-cta": {
       "type": "custom-success-cta",
-      "settings": {}
+      "settings": {
+        "heading": "Ready to Build the Next Success Story?",
+        "description": "From ambitious established brands to growing Shopify merchants, we drive measurable growth and long-term success.",
+        "section_background": "#ffffff",
+        "max_width": 1200,
+        "horizontal_alignment": "center",
+        "content_gap": 20,
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "mobile_padding": 16,
+        "container_background": "#fafbfe",
+        "border_color": "#dde4ef",
+        "border_width": 1,
+        "border_radius": 18,
+        "container_shadow": false,
+        "container_padding": 28,
+        "enable_hover": true,
+        "show_icon": true,
+        "icon_type": "svg",
+        "icon_emoji": "✨",
+        "icon_text": "✦",
+        "icon_size": 48,
+        "icon_background": "#ffffff",
+        "icon_color": "#273451",
+        "icon_border": "#e1e7ef",
+        "icon_radius": 50,
+        "heading_color": "#273247",
+        "heading_size": 22,
+        "heading_weight": "700",
+        "heading_line_height": 125,
+        "description_color": "#687489",
+        "description_size": 14,
+        "description_line_height": 150,
+        "show_secondary": true,
+        "secondary_text": "View All Projects",
+        "secondary_link": "",
+        "secondary_new_tab": false,
+        "secondary_background": "#ffffff",
+        "secondary_color": "#28344e",
+        "secondary_border": "#dce4ee",
+        "secondary_border_width": 1,
+        "secondary_radius": 30,
+        "secondary_size": 13,
+        "secondary_weight": "600",
+        "secondary_padding": 18,
+        "secondary_hover_background": "#eff3fa",
+        "secondary_hover_color": "#1d2c52",
+        "show_primary": true,
+        "primary_text": "Book a Strategy Call",
+        "primary_link": "",
+        "primary_new_tab": false,
+        "show_arrow": false,
+        "primary_background": "#f47722",
+        "primary_color": "#ffffff",
+        "primary_hover_background": "#db5b17",
+        "primary_hover_color": "#ffffff",
+        "primary_radius": 30,
+        "primary_size": 13,
+        "primary_weight": "600",
+        "primary_padding": 20,
+        "primary_shadow": false,
+        "primary_hover_shadow": true
+      }
     }
   },
   "order": [

@@ -219,6 +219,18 @@ class HeaderMenu extends Component {
       // Mark submenu as active for content-visibility optimization
       submenu.dataset.active = '';
 
+      // Keep a compact dropdown inside the viewport while anchoring it to its link.
+      if (isDefaultSlot && window.matchMedia('(min-width: 750px)').matches) {
+        submenu.style.removeProperty('left');
+        const bounds = submenu.getBoundingClientRect();
+        if (bounds.right > window.innerWidth - 16) {
+          submenu.style.left = `${Math.min(0, window.innerWidth - 16 - bounds.right)}px`;
+        }
+        if (submenu.getBoundingClientRect().left < 16) {
+          submenu.style.left = `${16 - item.getBoundingClientRect().left}px`;
+        }
+      }
+
       // Cleanup any existing mutation observer from previous menu activations
       this.#cleanupMutationObserver();
 

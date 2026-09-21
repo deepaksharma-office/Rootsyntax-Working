@@ -1,7 +1,4 @@
 
-.menu-list:not(:has(.menu-list__list-item:hover)) .menu-list__link--active{
-	color:#f97316!important;
-}
 strong{
 	font-weight:400;
 	color:#f97316!important;

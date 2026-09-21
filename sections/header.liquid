@@ -535,8 +535,7 @@
 
     z-index: var(--layer-overlay);
 
-    &[transparent='not-sticky'][data-sticky-state='active'],
-    &:has(.menu-list__link:not([aria-haspopup]):hover) {
+    &[transparent='not-sticky'][data-sticky-state='active'] {
       --header-logo-display: unset;
       --header-logo-inverse-display: unset;
       --color-foreground: inherit;
@@ -549,7 +548,7 @@
     }
 
     /** For transparent header, apply transparent text color to rows when menu is not hovered */
-    &:not([data-sticky-state='active']):not(:has(.menu-list__link:is(:hover, [aria-expanded='true']))) .header__row {
+    &:not([data-sticky-state='active']) .header__row {
       --color-foreground: var(--color-transparent-text);
       --color-foreground-rgb: var(--color-transparent-text-rgb);
       --color-border: var(--color-transparent-text);
@@ -560,17 +559,13 @@
 
     /* Swap the cart bubble in transparent state only when using the default
        style. Custom bubble colors apply unchanged across header states. */
-    &[data-bubble-style='default']:not([data-sticky-state='active']):not(
-        :has(.menu-list__link:is(:hover, [aria-expanded='true']))
-      )
+    &[data-bubble-style='default']:not([data-sticky-state='active'])
       .header__row {
       --cart-bubble-background: var(--color-transparent-text, var(--cart-bubble-background-fallback));
       --cart-bubble-text: var(--color-transparent-text-contrast, var(--cart-bubble-text-fallback));
     }
 
     /* Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
-    &:has(.mega-menu__list:hover),
-    &:has(.menu-list__link:is(:hover, [aria-expanded='true'])),
     &:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'])) {
       --header-logo-display: unset;
       --header-logo-inverse-display: unset;
@@ -682,6 +677,17 @@
     transition: height var(--submenu-animation-speed) var(--ease-out-cubic);
   }
 
+  @media screen and (min-width: 750px) {
+    .header:has(.menu-list__list-item:not([slot='overflow']) > .menu-list__submenu[data-active]) .header__underlay-open {
+      height: var(--header-height);
+      box-shadow: none;
+    }
+
+    .header:has(.menu-list__list-item:not([slot='overflow']) > .menu-list__submenu[data-active]) .header__underlay-open::after {
+      content: none;
+    }
+  }
+
   .header__underlay-open::after {
     content: '';
     position: absolute;
@@ -692,20 +698,20 @@
   }
 
   /* When top row has transparent background, swap underlay to merchant's chosen color at full opacity */
-  [data-transparent-background='top']:hover,
-  [data-transparent-background='top']:focus-within,
-  [data-transparent-background='both']:hover,
-  [data-transparent-background='both']:focus-within {
+  [data-transparent-background='top']:hover:not(:has(header-menu:hover)),
+  [data-transparent-background='top']:focus-within:not(:has(header-menu:focus-within)),
+  [data-transparent-background='both']:hover:not(:has(header-menu:hover)),
+  [data-transparent-background='both']:focus-within:not(:has(header-menu:focus-within)) {
     :is(.header__underlay-open, .header__underlay-closed) {
       --color-background-top-row: var(--color-background);
     }
   }
 
   /* When bottom row has transparent background, swap underlay to merchant's chosen color at full opacity */
-  [data-transparent-background='bottom']:hover,
-  [data-transparent-background='bottom']:focus-within,
-  [data-transparent-background='both']:hover,
-  [data-transparent-background='both']:focus-within {
+  [data-transparent-background='bottom']:hover:not(:has(header-menu:hover)),
+  [data-transparent-background='bottom']:focus-within:not(:has(header-menu:focus-within)),
+  [data-transparent-background='both']:hover:not(:has(header-menu:hover)),
+  [data-transparent-background='both']:focus-within:not(:has(header-menu:focus-within)) {
     :is(.header__underlay-open, .header__underlay-closed) {
       --color-background-bottom-row: var(--color-background);
     }

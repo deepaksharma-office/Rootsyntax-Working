@@ -104,7 +104,7 @@
           <a
             href="{{ link.url }}"
             data-skip-node-update="true"
-            class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}"
+            class="menu-list__link{% if link.active or link.child_active %} menu-list__link--active{% endif %}"
             {%- if link.links != blank -%}
               aria-controls="submenu-{{ forloop.index }}"
               aria-haspopup="true"
@@ -315,26 +315,13 @@
       display: block;
     }
 
-    /* Individual menu item hover color */
-    transition: color 0.25s ease;
-
-    &:hover,
-    &:focus {
-      color: #FF7A00 !important;
-    }
-
-    &:hover .menu-list__link-title,
-    &:focus .menu-list__link-title {
-      color: #FF7A00 !important;
-      transition: color 0.25s ease;
-    }
-
     @media screen and (min-width: 750px) {
       font-size: var(--menu-top-level-font-size-desktop);
     }
   }
 
   .menu-list__link-title {
+    position: relative;
     padding-inline: calc(var(--gap-xl) / 2);
   }
   [slot='overflow'] .menu-list__link-title {
@@ -355,23 +342,25 @@
     content: none;
   }
 
-  /*
-    High specificity selectors to subdue non-hovered links without javascript.
-    If the need for js-generated `hovered` and `focused` classes arises for another reason we can simplify these.
-  */
-  .menu-list:where(:has(.menu-list__list-item:hover)),
-  .menu-list:where(:has(.menu-list__list-item:focus-within)),
-  .menu-list:where(:has(.menu-list__list-item:not([aria-hidden='true']) .menu-list__link--active)) {
-    .menu-list__link {
-      color: rgb(var(--menu-top-level-font-color-rgb) / var(--opacity-subdued-text));
-    }
+  .menu-list__list-item:not([slot='overflow']) > .menu-list__link--active {
+    color: #f97316;
   }
 
-  /* stylelint-disable-next-line selector-max-specificity */
-  .menu-list:not(:has(.menu-list__list-item:hover)) .menu-list__link--active,
-  .menu-list .menu-list__list-item:where(:hover, :focus-within) .menu-list__link,
-  .menu-list .menu-list__list-item[slot='overflow'] .menu-list__link[aria-expanded='true'] {
-    color: var(--menu-top-level-font-color);
+  .menu-list__list-item:not([slot='overflow']) > .menu-list__link .menu-list__link-title::after {
+    content: '';
+    position: absolute;
+    inset-inline: calc(var(--gap-xl) / 2);
+    bottom: -6px;
+    height: 2px;
+    background: #f97316;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+    pointer-events: none;
+  }
+
+  .menu-list__list-item:not([slot='overflow']) > .menu-list__link:is(:hover, :focus-visible, .menu-list__link--active) .menu-list__link-title::after {
+    transform: scaleX(1);
   }
 
   .overflow-menu::part(list) {
@@ -703,6 +692,70 @@
   .mega-menu__submenu {
     /* preserves the inherited grid layout when this submenu wrapper is used */
     display: contents;
+  }
+
+  @media screen and (min-width: 750px) {
+    .menu-list__list-item:not([slot='overflow']) {
+      position: relative;
+    }
+
+    .menu-list__list-item:not([slot='overflow']) > .menu-list__submenu {
+      top: 100%;
+      left: 0;
+      width: max-content;
+      max-width: min(480px, calc(100vw - 32px));
+      padding: 0;
+      clip-path: none;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.88);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+      color: #111;
+      white-space: normal;
+    }
+
+    .menu-list__list-item:not([slot='overflow']) > .menu-list__submenu .menu-list__submenu-inner {
+      display: block;
+      width: max-content;
+      max-width: 100%;
+      padding: 16px 20px;
+      transform: none;
+    }
+
+    .menu-list__list-item:not([slot='overflow']) > .menu-list__submenu .mega-menu {
+      display: block;
+      width: auto;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-list__list-item:not([slot='overflow']) > .menu-list__submenu .mega-menu__grid,
+    .menu-list__list-item:not([slot='overflow']) > .menu-list__submenu .mega-menu__list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: auto;
+      gap: 8px;
+    }
+
+    .menu-list__list-item:not([slot='overflow']) > .menu-list__submenu .mega-menu__content {
+      width: 100%;
+    }
+
+    .menu-list__list-item:not([slot='overflow']) > .menu-list__submenu :is(.mega-menu__link, .mega-menu__link--parent) {
+      color: #111;
+      transition: color 0.2s ease;
+    }
+
+    .menu-list__list-item:not([slot='overflow']) > .menu-list__submenu :is(.mega-menu__link, .mega-menu__link--parent):hover {
+      color: #f97316;
+    }
+
+    .menu-list__list-item:not([slot='overflow']) > .menu-list__submenu :is(.mega-menu__link, .mega-menu__link--parent):focus-visible {
+      color: #f97316;
+    }
   }
 
   /* Hide product cards in collapsed submenus from the IntersectionObserver that fires product view events */

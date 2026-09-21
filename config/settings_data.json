@@ -9,14 +9,14 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Frame_54.png",
+    "logo": "shopify://shop_images/image_15_1.png",
     "logo_height": 60,
     "logo_height_mobile": 60,
     "page_text_color": "{{ settings.color_palette.foreground }}",
-    "type_body_font": "dm_sans_n2",
-    "type_subheading_font": "dm_sans_n4",
-    "type_heading_font": "dm_serif_display_n4",
-    "type_accent_font": "dm_sans_n4",
+    "type_body_font": "inter_n4",
+    "type_subheading_font": "inter_n4",
+    "type_heading_font": "inter_n4",
+    "type_accent_font": "inter_n4",
     "type_size_paragraph": "16",
     "type_line_height_paragraph": "body-normal",
     "type_font_h1": "heading",

@@ -24,8 +24,8 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-width: 100%;
-    min-height: var(--client-height);
+    min-width: var(--client-width);
+    min-height: 100%;
     padding: var(--client-padding);
     border-radius: var(--client-radius);
     background: var(--client-card-background);
@@ -35,8 +35,8 @@
   }
   .client-marquee .client-marquee__image {
     display: block;
-    width: 100%;
-    height: var(--client-height);
+    width: var(--client-width);
+    height: 100%;
     max-width: none;
     object-fit: contain;
   }

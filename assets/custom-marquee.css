@@ -51,7 +51,15 @@
     .client-marquee[data-pause-on-hover="true"] .client-marquee__viewport:hover .client-marquee__track,
     .client-marquee[data-pause-on-hover="true"] .client-marquee__viewport:focus-within .client-marquee__track { animation-play-state: paused; }
   
-  @keyframes client-marquee-scroll { to { transform: translateX(-50%); } }
+  @keyframes client-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
   @media (max-width: 749px) {
     .client-marquee .client-marquee__text { font-size: var(--client-font-size-mobile); }
   }

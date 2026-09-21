@@ -1,0 +1,305 @@
+{{ 'custom-process.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign image_shadow = 'none'
+  case section.settings.image_shadow
+    when 'subtle'
+      assign image_shadow = '0 8px 24px rgba(4, 15, 52, .12)'
+    when 'medium'
+      assign image_shadow = '0 14px 34px rgba(4, 15, 52, .2)'
+    when 'strong'
+      assign image_shadow = '0 20px 48px rgba(4, 15, 52, .3)'
+  endcase
+  assign image_alt = section.settings.main_image.alt | default: section.settings.heading
+%}
+
+<section
+  id="cust__process-{{ section.id }}"
+  class="cust__process{% if section.settings.enable_gradient %} cust__process--gradient{% endif %}{% if section.settings.decorate_background %} cust__process--decorated{% endif %}{% if section.settings.layout == 'stacked' %} cust__process--stacked{% endif %}{% if section.settings.enable_animation and section.settings.animation_type != 'none' %} cust__process--animated cust__process--{{ section.settings.animation_type }}{% endif %}"
+  style="
+    --cust-bg: {{ section.settings.background_color }};
+    --cust-gradient-color: {{ section.settings.gradient_color }};
+    --cust-gradient-direction: {{ section.settings.gradient_direction }};
+    --cust-decoration-opacity: {{ section.settings.decoration_opacity | divided_by: 100.0 }};
+    --cust-max-width: {{ section.settings.max_width }}px;
+    --cust-column-gap: {{ section.settings.column_gap }}px;
+    --cust-left-width: {{ section.settings.left_width }}fr;
+    --cust-right-width: {{ section.settings.right_width }}fr;
+    --cust-padding-top: {{ section.settings.padding_top }}px;
+    --cust-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --cust-mobile-padding-top: {{ section.settings.mobile_padding_top }}px;
+    --cust-mobile-padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    --cust-padding-sides: {{ section.settings.padding_sides }}px;
+    --cust-eyebrow-bg: {{ section.settings.eyebrow_background }};
+    --cust-eyebrow-color: {{ section.settings.eyebrow_text_color }};
+    --cust-eyebrow-border: {{ section.settings.eyebrow_border_color }};
+    --cust-eyebrow-border-width: {{ section.settings.eyebrow_border_width }}px;
+    --cust-eyebrow-radius: {{ section.settings.eyebrow_radius }}px;
+    --cust-eyebrow-size: {{ section.settings.eyebrow_font_size }}px;
+    --cust-eyebrow-weight: {{ section.settings.eyebrow_font_weight }};
+    --cust-eyebrow-padding: {{ section.settings.eyebrow_padding }}px;
+    --cust-heading-color: {{ section.settings.heading_color }};
+    --cust-heading-size: {{ section.settings.heading_font_size }}px;
+    --cust-heading-weight: {{ section.settings.heading_font_weight }};
+    --cust-heading-line-height: {{ section.settings.heading_line_height | divided_by: 100.0 }};
+    --cust-heading-max-width: {{ section.settings.heading_max_width }}px;
+    --cust-timeline-color: {{ section.settings.timeline_color }};
+    --cust-timeline-width: {{ section.settings.timeline_width }}px;
+    --cust-timeline-style: {{ section.settings.timeline_style }};
+    --cust-timeline-spacing: {{ section.settings.timeline_spacing }}px;
+    --cust-icon-size: {{ section.settings.timeline_icon_size }}px;
+    --cust-icon-bg: {{ section.settings.timeline_icon_background }};
+    --cust-icon-color: {{ section.settings.timeline_icon_color }};
+    --cust-icon-border: {{ section.settings.timeline_icon_border_color }};
+    --cust-icon-border-width: {{ section.settings.timeline_icon_border_width }}px;
+    --cust-icon-radius: {{ section.settings.timeline_icon_radius }}px;
+    --cust-step-title-color: {{ section.settings.step_title_color }};
+    --cust-step-title-size: {{ section.settings.step_title_size }}px;
+    --cust-step-title-weight: {{ section.settings.step_title_weight }};
+    --cust-step-description-color: {{ section.settings.step_description_color }};
+    --cust-step-description-size: {{ section.settings.step_description_size }}px;
+    --cust-step-description-line-height: {{ section.settings.step_description_line_height | divided_by: 100.0 }};
+    --cust-hover-icon-scale: {{ section.settings.hover_icon_scale | divided_by: 100.0 }};
+    --cust-hover-icon-bg: {{ section.settings.hover_icon_background }};
+    --cust-hover-title-color: {{ section.settings.hover_title_color }};
+    --cust-image-width: {{ section.settings.image_width }}px;
+    --cust-image-height: {{ section.settings.image_height }}px;
+    --cust-image-position: {{ section.settings.image_position }};
+    --cust-image-fit: {{ section.settings.image_fit }};
+    --cust-image-radius: {{ section.settings.image_radius }}px;
+    --cust-image-border-width: {{ section.settings.image_border_width }}px;
+    --cust-image-border: {{ section.settings.image_border_color }};
+    --cust-image-shadow: {{ image_shadow }};
+    --cust-image-placeholder-bg: {{ section.settings.image_placeholder_background }};
+    --cust-image-overlay: {{ section.settings.overlay_color }};
+    --cust-image-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --cust-image-opacity: {{ section.settings.image_opacity | divided_by: 100.0 }};
+    --cust-image-hover-scale: {{ section.settings.image_hover_scale | divided_by: 100.0 }};
+    --cust-image-float-speed: {{ section.settings.image_float_speed }}s;
+    --cust-caption-color: {{ section.settings.caption_color }};
+    --cust-caption-size: {{ section.settings.caption_font_size }}px;
+    --cust-caption-align: {{ section.settings.caption_alignment }};
+    --cust-badge-bg: {{ section.settings.badge_background }};
+    --cust-badge-color: {{ section.settings.badge_text_color }};
+    --cust-badge-radius: {{ section.settings.badge_radius }}px;
+    --cust-animation-duration: {{ section.settings.animation_duration }}ms;
+  "
+>
+  <div class="cust__process-inner">
+    <div class="cust__process-content">
+      {% if section.settings.show_eyebrow and section.settings.eyebrow != blank %}
+        <span class="cust__process-eyebrow">
+          {% if section.settings.eyebrow_icon != blank %}<span class="cust__process-eyebrow-icon" aria-hidden="true">{{ section.settings.eyebrow_icon | escape }}</span>{% endif %}
+          {{ section.settings.eyebrow | escape }}
+        </span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="cust__process-heading">{{ section.settings.heading | escape }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="cust__process-intro">{{ section.settings.description }}</div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <ol class="cust__process-timeline{% if section.settings.timeline_style == 'none' %} cust__process-timeline--no-line{% endif %}">
+          {% for block in section.blocks %}
+            {% liquid
+              assign linked_step = false
+              if block.settings.link != blank and block.settings.clickable_step
+                assign linked_step = true
+              endif
+              assign step_delay = forloop.index0 | times: section.settings.animation_stagger
+            %}
+            <li class="cust__process-item" style="
+              --cust-item-title-color: {{ block.settings.title_color | default: section.settings.step_title_color }};
+              --cust-item-description-color: {{ block.settings.description_color | default: section.settings.step_description_color }};
+              --cust-animation-delay: {{ step_delay }}ms;
+            " {{ block.shopify_attributes }}>
+              {% if linked_step %}
+                <a class="cust__process-step{% if section.settings.step_hover %} cust__process-step--hover{% endif %}" href="{{ block.settings.link }}"{% if block.settings.open_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>
+              {% else %}
+                <div class="cust__process-step{% if section.settings.step_hover %} cust__process-step--hover{% endif %}">
+              {% endif %}
+                <span class="cust__process-step-icon{% if block.settings.icon_type == 'none' %} cust__process-step-icon--empty{% endif %}" aria-hidden="true">
+                  {% case block.settings.icon_type %}
+                    {% when 'image' %}
+                      {% if block.settings.icon_image != blank %}
+                        {{ block.settings.icon_image | image_url: width: 100 | image_tag: loading: 'lazy', widths: '40, 80, 100', alt: '' }}
+                      {% endif %}
+                    {% when 'emoji' %}
+                      {{ block.settings.icon_character | escape }}
+                    {% when 'text' %}
+                      {{ block.settings.icon_character | escape }}
+                  {% endcase %}
+                </span>
+                <span class="cust__process-step-copy">
+                  {% if block.settings.title != blank %}<span class="cust__process-step-title">{{ block.settings.title | escape }}</span>{% endif %}
+                  {% if block.settings.description != blank %}<span class="cust__process-step-description">{{ block.settings.description | escape | newline_to_br }}</span>{% endif %}
+                </span>
+              {% if linked_step %}</a>{% else %}</div>{% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+    </div>
+
+    <div class="cust__process-visual-column">
+      <div class="cust__process-visual{% if section.settings.float_image %} cust__process-visual--floating{% endif %}">
+        <div class="cust__process-media{% if section.settings.main_image == blank %} cust__process-media--placeholder{% endif %}">
+          {% if section.settings.main_image != blank %}
+            {{
+              section.settings.main_image
+              | image_url: width: 1400
+              | image_tag: class: 'cust__process-image', loading: 'lazy', widths: '360, 540, 720, 960, 1200, 1400', sizes: '(min-width: 900px) 48vw, 100vw', alt: image_alt
+            }}
+          {% endif %}
+          {% if section.settings.image_overlay %}<span class="cust__process-overlay" aria-hidden="true"></span>{% endif %}
+          {% if section.settings.show_badge and section.settings.badge_text != blank %}
+            <span class="cust__process-badge cust__process-badge--{{ section.settings.badge_position }}">{{ section.settings.badge_text | escape }}</span>
+          {% endif %}
+        </div>
+      </div>
+      {% if section.settings.show_caption and section.settings.caption != blank %}
+        <p class="cust__process-caption">{{ section.settings.caption | escape }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom process",
+  "tag": "section",
+  "class": "section-custom-process",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "header", "content": "General" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "How It Works" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our Proven Shopify" },
+    { "type": "richtext", "id": "description", "label": "Description" },
+    { "type": "range", "id": "max_width", "label": "Content maximum width", "min": 600, "max": 1600, "step": 20, "default": 1200, "unit": "px" },
+    { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "columns", "label": "Two columns" }, { "value": "stacked", "label": "Stacked" }], "default": "columns" },
+    { "type": "range", "id": "column_gap", "label": "Column gap", "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" },
+    { "type": "range", "id": "left_width", "label": "Left column proportion", "min": 30, "max": 70, "step": 1, "default": 50, "unit": "%" },
+    { "type": "range", "id": "right_width", "label": "Right column proportion", "min": 30, "max": 70, "step": 1, "default": 50, "unit": "%" },
+    { "type": "header", "content": "Background" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#203c90" },
+    { "type": "checkbox", "id": "enable_gradient", "label": "Enable gradient", "default": false },
+    { "type": "color", "id": "gradient_color", "label": "Gradient color", "default": "#172c70" },
+    { "type": "select", "id": "gradient_direction", "label": "Gradient direction", "options": [{ "value": "to right", "label": "Left to right" }, { "value": "to left", "label": "Right to left" }, { "value": "to bottom", "label": "Top to bottom" }, { "value": "to top", "label": "Bottom to top" }], "default": "to right" },
+    { "type": "checkbox", "id": "decorate_background", "label": "Show decorative background", "default": false },
+    { "type": "range", "id": "decoration_opacity", "label": "Decoration opacity", "min": 0, "max": 100, "step": 5, "default": 15, "unit": "%" },
+    { "type": "header", "content": "Section spacing" },
+    { "type": "range", "id": "padding_top", "label": "Desktop top padding", "min": 0, "max": 160, "step": 4, "default": 48, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Desktop bottom padding", "min": 0, "max": 160, "step": 4, "default": 48, "unit": "px" },
+    { "type": "range", "id": "mobile_padding_top", "label": "Mobile top padding", "min": 0, "max": 120, "step": 4, "default": 36, "unit": "px" },
+    { "type": "range", "id": "mobile_padding_bottom", "label": "Mobile bottom padding", "min": 0, "max": 120, "step": 4, "default": 36, "unit": "px" },
+    { "type": "range", "id": "padding_sides", "label": "Horizontal padding", "min": 0, "max": 80, "step": 2, "default": 24, "unit": "px" },
+    { "type": "header", "content": "Eyebrow" },
+    { "type": "checkbox", "id": "show_eyebrow", "label": "Show eyebrow", "default": true },
+    { "type": "text", "id": "eyebrow_icon", "label": "Eyebrow icon or character", "default": "✦" },
+    { "type": "color", "id": "eyebrow_background", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_text_color", "label": "Text color", "default": "#203c90" },
+    { "type": "color", "id": "eyebrow_border_color", "label": "Border color", "default": "#ffffff" },
+    { "type": "range", "id": "eyebrow_border_width", "label": "Border width", "min": 0, "max": 5, "step": 1, "default": 0, "unit": "px" },
+    { "type": "range", "id": "eyebrow_radius", "label": "Corner radius", "min": 0, "max": 50, "step": 1, "default": 30, "unit": "px" },
+    { "type": "range", "id": "eyebrow_font_size", "label": "Font size", "min": 10, "max": 24, "step": 1, "default": 12, "unit": "px" },
+    { "type": "select", "id": "eyebrow_font_weight", "label": "Font weight", "options": [{ "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" }, { "value": "600", "label": "Semi bold" }, { "value": "700", "label": "Bold" }], "default": "600" },
+    { "type": "range", "id": "eyebrow_padding", "label": "Padding", "min": 2, "max": 20, "step": 1, "default": 7, "unit": "px" },
+    { "type": "header", "content": "Heading" },
+    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#ffffff" },
+    { "type": "range", "id": "heading_font_size", "label": "Heading font size", "min": 24, "max": 72, "step": 1, "default": 42, "unit": "px" },
+    { "type": "select", "id": "heading_font_weight", "label": "Heading font weight", "options": [{ "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" }, { "value": "600", "label": "Semi bold" }, { "value": "700", "label": "Bold" }], "default": "500" },
+    { "type": "range", "id": "heading_line_height", "label": "Heading line height", "min": 100, "max": 180, "step": 5, "default": 115, "unit": "%" },
+    { "type": "range", "id": "heading_max_width", "label": "Heading maximum width", "min": 200, "max": 900, "step": 10, "default": 520, "unit": "px" },
+    { "type": "header", "content": "Timeline" },
+    { "type": "color", "id": "timeline_color", "label": "Line color", "default": "#a8bbe9" },
+    { "type": "range", "id": "timeline_width", "label": "Line width", "min": 1, "max": 6, "step": 1, "default": 1, "unit": "px" },
+    { "type": "select", "id": "timeline_style", "label": "Line style", "options": [{ "value": "solid", "label": "Solid" }, { "value": "dashed", "label": "Dashed" }, { "value": "none", "label": "None" }], "default": "solid" },
+    { "type": "range", "id": "timeline_spacing", "label": "Space between steps", "min": 8, "max": 80, "step": 2, "default": 28, "unit": "px" },
+    { "type": "range", "id": "timeline_icon_size", "label": "Icon size", "min": 24, "max": 80, "step": 2, "default": 40, "unit": "px" },
+    { "type": "color", "id": "timeline_icon_background", "label": "Icon background", "default": "#ffffff" },
+    { "type": "color", "id": "timeline_icon_color", "label": "Icon color", "default": "#203c90" },
+    { "type": "color", "id": "timeline_icon_border_color", "label": "Icon border color", "default": "#ffffff" },
+    { "type": "range", "id": "timeline_icon_border_width", "label": "Icon border width", "min": 0, "max": 5, "step": 1, "default": 0, "unit": "px" },
+    { "type": "range", "id": "timeline_icon_radius", "label": "Icon corner radius", "min": 0, "max": 40, "step": 1, "default": 40, "unit": "px" },
+    { "type": "header", "content": "Step text" },
+    { "type": "color", "id": "step_title_color", "label": "Step title color", "default": "#ffffff" },
+    { "type": "range", "id": "step_title_size", "label": "Step title size", "min": 12, "max": 32, "step": 1, "default": 18, "unit": "px" },
+    { "type": "select", "id": "step_title_weight", "label": "Step title weight", "options": [{ "value": "500", "label": "Medium" }, { "value": "600", "label": "Semi bold" }, { "value": "700", "label": "Bold" }], "default": "600" },
+    { "type": "color", "id": "step_description_color", "label": "Step description color", "default": "#d9e2fa" },
+    { "type": "range", "id": "step_description_size", "label": "Step description size", "min": 10, "max": 24, "step": 1, "default": 13, "unit": "px" },
+    { "type": "range", "id": "step_description_line_height", "label": "Step description line height", "min": 100, "max": 200, "step": 5, "default": 145, "unit": "%" },
+    { "type": "header", "content": "Step interaction" },
+    { "type": "checkbox", "id": "step_hover", "label": "Enable step hover effect", "default": true },
+    { "type": "range", "id": "hover_icon_scale", "label": "Hover icon scale", "min": 100, "max": 120, "step": 1, "default": 105, "unit": "%" },
+    { "type": "color", "id": "hover_icon_background", "label": "Hover icon background", "default": "#e8efff" },
+    { "type": "color", "id": "hover_title_color", "label": "Hover title color", "default": "#ffffff" },
+    { "type": "header", "content": "Main image" },
+    { "type": "image_picker", "id": "main_image", "label": "Image" },
+    { "type": "select", "id": "image_position", "label": "Image position", "options": [{ "value": "center", "label": "Center" }, { "value": "top", "label": "Top" }, { "value": "bottom", "label": "Bottom" }, { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "center" },
+    { "type": "select", "id": "image_fit", "label": "Image fit", "options": [{ "value": "cover", "label": "Cover" }, { "value": "contain", "label": "Contain" }], "default": "contain" },
+    { "type": "range", "id": "image_width", "label": "Image width", "min": 200, "max": 900, "step": 10, "default": 580, "unit": "px" },
+    { "type": "range", "id": "image_height", "label": "Image height", "min": 200, "max": 800, "step": 10, "default": 560, "unit": "px" },
+    { "type": "range", "id": "image_radius", "label": "Image corner radius", "min": 0, "max": 50, "step": 1, "default": 20, "unit": "px" },
+    { "type": "range", "id": "image_border_width", "label": "Image border width", "min": 0, "max": 8, "step": 1, "default": 0, "unit": "px" },
+    { "type": "color", "id": "image_border_color", "label": "Image border color", "default": "#ffffff" },
+    { "type": "color", "id": "image_placeholder_background", "label": "Empty image background", "default": "#e7effa" },
+    { "type": "select", "id": "image_shadow", "label": "Image shadow", "options": [{ "value": "none", "label": "None" }, { "value": "subtle", "label": "Subtle" }, { "value": "medium", "label": "Medium" }, { "value": "strong", "label": "Strong" }], "default": "subtle" },
+    { "type": "checkbox", "id": "image_overlay", "label": "Show image overlay", "default": false },
+    { "type": "color", "id": "overlay_color", "label": "Overlay color", "default": "#203c90" },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 5, "default": 15, "unit": "%" },
+    { "type": "range", "id": "image_opacity", "label": "Image opacity", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%" },
+    { "type": "checkbox", "id": "float_image", "label": "Float image gently", "default": false },
+    { "type": "range", "id": "image_float_speed", "label": "Float speed", "min": 3, "max": 15, "step": 1, "default": 7, "unit": "s" },
+    { "type": "range", "id": "image_hover_scale", "label": "Image hover scale", "min": 100, "max": 110, "step": 1, "default": 103, "unit": "%" },
+    { "type": "header", "content": "Image caption" },
+    { "type": "checkbox", "id": "show_caption", "label": "Show caption", "default": true },
+    { "type": "textarea", "id": "caption", "label": "Caption", "default": "Our agile process ensures rapid deployment of intelligent systems while maintaining the highest standards of reliability and security." },
+    { "type": "color", "id": "caption_color", "label": "Caption color", "default": "#d9e2fa" },
+    { "type": "range", "id": "caption_font_size", "label": "Caption font size", "min": 10, "max": 22, "step": 1, "default": 12, "unit": "px" },
+    { "type": "select", "id": "caption_alignment", "label": "Caption alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "center" },
+    { "type": "header", "content": "Image badge" },
+    { "type": "checkbox", "id": "show_badge", "label": "Show badge", "default": false },
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Featured" },
+    { "type": "select", "id": "badge_position", "label": "Badge position", "options": [{ "value": "top-left", "label": "Top left" }, { "value": "top-right", "label": "Top right" }, { "value": "bottom-left", "label": "Bottom left" }, { "value": "bottom-right", "label": "Bottom right" }], "default": "top-right" },
+    { "type": "color", "id": "badge_background", "label": "Badge background", "default": "#ffffff" },
+    { "type": "color", "id": "badge_text_color", "label": "Badge text color", "default": "#203c90" },
+    { "type": "range", "id": "badge_radius", "label": "Badge corner radius", "min": 0, "max": 30, "step": 1, "default": 20, "unit": "px" },
+    { "type": "header", "content": "Entrance animation" },
+    { "type": "checkbox", "id": "enable_animation", "label": "Enable animation", "default": false },
+    { "type": "select", "id": "animation_type", "label": "Animation type", "options": [{ "value": "none", "label": "None" }, { "value": "fade", "label": "Fade" }, { "value": "fade_up", "label": "Fade up" }, { "value": "slide_left", "label": "Slide from left" }], "default": "fade_up" },
+    { "type": "range", "id": "animation_duration", "label": "Animation duration", "min": 200, "max": 1200, "step": 50, "default": 500, "unit": "ms" },
+    { "type": "range", "id": "animation_stagger", "label": "Delay between steps", "min": 0, "max": 400, "step": 25, "default": 75, "unit": "ms" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Process step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Step title", "default": "Process step" },
+        { "type": "textarea", "id": "description", "label": "Step description", "default": "Describe this step." },
+        { "type": "select", "id": "icon_type", "label": "Icon type", "options": [{ "value": "image", "label": "Custom image" }, { "value": "emoji", "label": "Emoji" }, { "value": "text", "label": "Text character" }, { "value": "none", "label": "None" }], "default": "text" },
+        { "type": "image_picker", "id": "icon_image", "label": "Icon image" },
+        { "type": "text", "id": "icon_character", "label": "Emoji or icon character", "default": "✦" },
+        { "type": "url", "id": "link", "label": "Step link" },
+        { "type": "checkbox", "id": "open_new_tab", "label": "Open link in new tab", "default": false },
+        { "type": "checkbox", "id": "clickable_step", "label": "Make step clickable", "default": false },
+        { "type": "color", "id": "title_color", "label": "Custom title color" },
+        { "type": "color", "id": "description_color", "label": "Custom description color" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom process",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Discovery & Strategy", "description": "We analyze your business goals, target audience, competitors, and current store performance to create a growth-focused roadmap.", "icon_character": "✦" } },
+        { "type": "step", "settings": { "title": "UX & Store Planning", "description": "Our team designs a conversion-focused user experience, wireframes key pages, and plans the ideal customer journey.", "icon_character": "▣" } },
+        { "type": "step", "settings": { "title": "Development & Migration", "description": "We build, customize, or migrate your Shopify store with clean development practices and minimal disruption to your business.", "icon_character": "⌘" } },
+        { "type": "step", "settings": { "title": "Launch & Growth Optimization", "description": "After thorough testing and launch, we continuously optimize performance, user experience, and conversions through data-driven improvements.", "icon_character": "⌂" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

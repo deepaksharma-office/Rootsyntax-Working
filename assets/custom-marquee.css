@@ -1,0 +1,61 @@
+.client-marquee { width: 100%; overflow: hidden; }
+  .client-marquee .client-marquee__heading {
+    margin: 0 0 24px;
+    text-align: center;
+    font-size: var(--client-heading-size);
+    line-height: 1.2;
+  }
+  .client-marquee .client-marquee__viewport { overflow: hidden; width: 100%; }
+  .client-marquee .client-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: client-marquee-scroll var(--client-duration) linear infinite var(--client-direction);
+  }
+  .client-marquee .client-marquee__group {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: var(--client-gap);
+    padding-right: var(--client-gap);
+  }
+  .client-marquee .client-marquee__card {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: var(--client-width);
+    min-height: var(--client-height);
+    padding: var(--client-padding);
+    border-radius: var(--client-radius);
+    background: var(--client-card-background);
+    box-shadow: var(--client-shadow);
+    color: inherit;
+    text-decoration: none;
+  }
+  .client-marquee .client-marquee__image {
+    display: block;
+    width: var(--client-width);
+    height: var(--client-height);
+    max-width: none;
+    object-fit: contain;
+  }
+  .client-marquee .client-marquee__text {
+    font-size: var(--client-font-size-desktop);
+    font-weight: var(--client-font-weight);
+    text-transform: var(--client-text-transform);
+    letter-spacing: var(--client-letter-spacing);
+    white-space: nowrap;
+  }
+  
+    .client-marquee[data-pause-on-hover="true"] .client-marquee__viewport:hover .client-marquee__track,
+    .client-marquee[data-pause-on-hover="true"] .client-marquee__viewport:focus-within .client-marquee__track { animation-play-state: paused; }
+  
+  @keyframes client-marquee-scroll { to { transform: translateX(-50%); } }
+  @media (max-width: 749px) {
+    .client-marquee .client-marquee__text { font-size: var(--client-font-size-mobile); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .client-marquee .client-marquee__track { animation: none; }
+    .client-marquee .client-marquee__viewport { overflow-x: auto; }
+  }

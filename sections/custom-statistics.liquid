@@ -1,0 +1,302 @@
+{{ 'custom-statistics.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign card_shadow = 'none'
+  case section.settings.card_shadow
+    when 'soft'
+      assign card_shadow = '0 6px 18px rgba(10, 25, 75, 0.08)'
+    when 'medium'
+      assign card_shadow = '0 12px 28px rgba(10, 25, 75, 0.14)'
+    when 'strong'
+      assign card_shadow = '0 18px 42px rgba(10, 25, 75, 0.22)'
+  endcase
+  assign hover_shadow = 'none'
+  case section.settings.hover_shadow
+    when 'soft'
+      assign hover_shadow = '0 8px 22px rgba(10, 25, 75, 0.12)'
+    when 'medium'
+      assign hover_shadow = '0 16px 34px rgba(10, 25, 75, 0.2)'
+    when 'strong'
+      assign hover_shadow = '0 22px 48px rgba(10, 25, 75, 0.28)'
+  endcase
+%}
+
+<section
+  id="cust__stats-{{ section.id }}"
+  class="cust__stats{% if section.settings.desktop_columns == 1 %} cust__stats--single-column{% endif %}{% if section.settings.use_gradient %} cust__stats--gradient{% endif %}{% if section.settings.show_decorations %} cust__stats--decorated{% endif %}{% if section.settings.animate_cards and section.settings.animation_style != 'none' %} cust__stats--animated cust__stats--{{ section.settings.animation_style }}{% endif %}"
+  style="
+    --cust-bg: {{ section.settings.background_color }};
+    --cust-gradient-color: {{ section.settings.gradient_color }};
+    --cust-gradient-direction: {{ section.settings.gradient_direction }};
+    --cust-decoration-opacity: {{ section.settings.decoration_opacity | divided_by: 100.0 }};
+    --cust-heading-color: {{ section.settings.heading_color }};
+    --cust-description-color: {{ section.settings.description_color }};
+    --cust-max-width: {{ section.settings.max_width }}px;
+    --cust-columns: {{ section.settings.desktop_columns }};
+    --cust-gap: {{ section.settings.card_gap }}px;
+    --cust-mobile-gap: {{ section.settings.mobile_gap }}px;
+    --cust-mobile-columns: {{ section.settings.mobile_columns }};
+    --cust-padding-top: {{ section.settings.padding_top }}px;
+    --cust-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --cust-padding-sides: {{ section.settings.padding_sides }}px;
+    --cust-mobile-padding: {{ section.settings.mobile_padding }}px;
+    --cust-card-bg: {{ section.settings.card_background }};
+    --cust-card-border: {{ section.settings.card_border_color }};
+    --cust-card-border-width: {{ section.settings.card_border_width }}px;
+    --cust-card-radius: {{ section.settings.card_radius }}px;
+    --cust-card-shadow: {{ card_shadow }};
+    --cust-card-padding: {{ section.settings.card_padding }}px;
+    --cust-mobile-card-padding: {{ section.settings.mobile_card_padding }}px;
+    --cust-card-min-height: {{ section.settings.card_min_height }}px;
+    --cust-hover-lift: {{ section.settings.hover_lift }}px;
+    --cust-hover-shadow: {{ hover_shadow }};
+    --cust-label-color: {{ section.settings.label_color }};
+    --cust-value-color: {{ section.settings.value_color }};
+    --cust-label-size: {{ section.settings.label_font_size }}px;
+    --cust-value-size: {{ section.settings.value_font_size }}px;
+    --cust-mobile-value-size: {{ section.settings.mobile_value_font_size }}px;
+    --cust-value-weight: {{ section.settings.value_font_weight }};
+    --cust-label-line-height: {{ section.settings.label_line_height | divided_by: 100.0 }};
+    --cust-value-line-height: {{ section.settings.value_line_height | divided_by: 100.0 }};
+    --cust-cta-bg: {{ section.settings.cta_background }};
+    --cust-cta-color: {{ section.settings.cta_text_color }};
+    --cust-cta-hover-bg: {{ section.settings.cta_hover_background }};
+    --cust-cta-hover-color: {{ section.settings.cta_hover_text_color }};
+    --cust-cta-radius: {{ section.settings.cta_radius }}px;
+    --cust-cta-padding-block: {{ section.settings.cta_padding_vertical }}px;
+    --cust-cta-padding-inline: {{ section.settings.cta_padding_horizontal }}px;
+    --cust-cta-gap: {{ section.settings.cta_top_spacing }}px;
+    --cust-cta-size: {{ section.settings.cta_font_size }}px;
+    --cust-cta-weight: {{ section.settings.cta_font_weight }};
+    --cust-animation-duration: {{ section.settings.animation_duration }}ms;
+  "
+>
+  <div class="cust__stats-inner">
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+      <header class="cust__stats-header">
+        {% if section.settings.heading != blank %}
+          <h2 class="cust__stats-heading">{{ section.settings.heading | escape }}</h2>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+          <div class="cust__stats-description">{{ section.settings.subheading }}</div>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="cust__stats-grid">
+        {% for block in section.blocks %}
+          {% liquid
+            assign entire_card_link = false
+            if block.settings.card_link != blank and block.settings.clickable_card
+              assign entire_card_link = true
+            endif
+            assign animation_delay = forloop.index0 | times: section.settings.animation_delay
+          %}
+          {% capture card_icon %}
+            {% case block.settings.icon_type %}
+              {% when 'plus' %}<span aria-hidden="true">+</span>
+              {% when 'star' %}<span aria-hidden="true">★</span>
+              {% when 'check' %}<span aria-hidden="true">✓</span>
+              {% when 'custom' %}<span aria-hidden="true">{{ block.settings.custom_icon | escape }}</span>
+              {% else %}
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {% endcase %}
+          {% endcapture %}
+
+          {% if entire_card_link %}
+            <a class="cust__stats-card{% if section.settings.card_hover %} cust__stats-card--hover{% endif %}" href="{{ block.settings.card_link }}"{% if block.settings.open_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %} style="
+              --cust-visual-color: {{ block.settings.visual_color }};
+              --cust-visual-secondary: {{ block.settings.visual_secondary_color }};
+              --cust-visual-opacity: {{ block.settings.visual_opacity | divided_by: 100.0 }};
+              --cust-visual-height: {{ block.settings.visual_height }}px;
+              --cust-icon-bg: {{ block.settings.icon_background }};
+              --cust-icon-color: {{ block.settings.icon_color }};
+              --cust-icon-size: {{ block.settings.icon_size }}px;
+              --cust-animation-delay: {{ animation_delay }}ms;
+            " {{ block.shopify_attributes }}>
+          {% else %}
+            <div class="cust__stats-card{% if section.settings.card_hover %} cust__stats-card--hover{% endif %}" style="
+              --cust-visual-color: {{ block.settings.visual_color }};
+              --cust-visual-secondary: {{ block.settings.visual_secondary_color }};
+              --cust-visual-opacity: {{ block.settings.visual_opacity | divided_by: 100.0 }};
+              --cust-visual-height: {{ block.settings.visual_height }}px;
+              --cust-icon-bg: {{ block.settings.icon_background }};
+              --cust-icon-color: {{ block.settings.icon_color }};
+              --cust-icon-size: {{ block.settings.icon_size }}px;
+              --cust-animation-delay: {{ animation_delay }}ms;
+            " {{ block.shopify_attributes }}>
+          {% endif %}
+            <div class="cust__stats-card-top">
+              {% if block.settings.label != blank %}
+                <h3 class="cust__stats-label">{{ block.settings.label | escape }}</h3>
+              {% endif %}
+              {% if block.settings.show_icon %}
+                {% if block.settings.card_link != blank and entire_card_link == false %}
+                  <a class="cust__stats-icon cust__stats-icon--link" href="{{ block.settings.card_link }}" aria-label="{{ block.settings.label | default: 'View details' | escape }}"{% if block.settings.open_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ card_icon }}</a>
+                {% else %}
+                  <span class="cust__stats-icon">{{ card_icon }}</span>
+                {% endif %}
+              {% endif %}
+            </div>
+            {% if block.settings.value != blank %}
+              <p class="cust__stats-value">{{ block.settings.value | escape }}</p>
+            {% endif %}
+            {% if block.settings.supporting_text != blank %}
+              <p class="cust__stats-supporting">{{ block.settings.supporting_text | escape }}</p>
+            {% endif %}
+
+            {% if block.settings.show_visual and block.settings.visual_type != 'none' %}
+              <div class="cust__stats-visual cust__stats-visual--{{ block.settings.visual_type }}" aria-hidden="true">
+                {% case block.settings.visual_type %}
+                  {% when 'vertical_bars' %}
+                    <span class="cust__stats-vertical-bar"></span><span class="cust__stats-vertical-bar"></span><span class="cust__stats-vertical-bar"></span><span class="cust__stats-vertical-bar"></span>
+                  {% when 'line' %}
+                    <svg viewBox="0 0 150 72" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                      <path class="cust__stats-graph-guide" d="M0 43 C12 43 12 61 25 61 S35 28 51 29 S66 48 78 44 S87 12 100 25 S121 60 136 36 S143 12 150 17" />
+                      <path class="cust__stats-graph-line" d="M0 46 C12 46 12 61 25 61 S35 28 51 29 S66 48 78 44 S87 12 100 25 S121 60 136 36 S143 12 150 17" />
+                      <circle cx="100" cy="25" r="3" class="cust__stats-graph-dot" />
+                    </svg>
+                  {% when 'area' %}
+                    <svg viewBox="0 0 150 72" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                      <defs><linearGradient id="cust__area-{{ section.id }}-{{ block.id }}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="{{ block.settings.visual_color }}" stop-opacity=".32"/><stop offset="100%" stop-color="{{ block.settings.visual_secondary_color }}" stop-opacity="0"/></linearGradient></defs>
+                      <path d="M0 20 30 9 56 33 85 24 116 27 145 7 150 7 150 72 0 72Z" fill="url(#cust__area-{{ section.id }}-{{ block.id }})" />
+                      <path class="cust__stats-graph-line" d="M0 20 30 9 56 33 85 24 116 27 145 7" />
+                      <circle cx="0" cy="20" r="2.5" class="cust__stats-graph-dot"/><circle cx="30" cy="9" r="2.5" class="cust__stats-graph-dot"/><circle cx="56" cy="33" r="2.5" class="cust__stats-graph-dot"/><circle cx="85" cy="24" r="2.5" class="cust__stats-graph-dot"/><circle cx="116" cy="27" r="2.5" class="cust__stats-graph-dot"/><circle cx="145" cy="7" r="2.5" class="cust__stats-graph-dot"/>
+                    </svg>
+                  {% when 'progress' %}
+                    <span class="cust__stats-progress"><span></span></span><span class="cust__stats-progress"><span></span></span><span class="cust__stats-progress"><span></span></span>
+                  {% when 'step_bars' %}
+                    <span class="cust__stats-step"></span><span class="cust__stats-step"></span><span class="cust__stats-step"></span><span class="cust__stats-step"></span><span class="cust__stats-step"></span><span class="cust__stats-step"></span>
+                {% endcase %}
+              </div>
+            {% endif %}
+          {% if entire_card_link %}</a>{% else %}</div>{% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.show_cta and section.settings.cta_text != blank %}
+      <div class="cust__stats-cta-wrap">
+        {% if section.settings.cta_link != blank %}
+          <a class="cust__stats-cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_text | escape }}</a>
+        {% else %}
+          <span class="cust__stats-cta cust__stats-cta--static">{{ section.settings.cta_text | escape }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom statistics",
+  "tag": "section",
+  "class": "section-custom-statistics",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "header", "content": "General" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "subheading", "label": "Description" },
+    { "type": "range", "id": "desktop_columns", "label": "Desktop columns", "min": 1, "max": 6, "step": 1, "default": 4 },
+    { "type": "range", "id": "card_gap", "label": "Desktop card gap", "min": 0, "max": 60, "step": 2, "default": 18, "unit": "px" },
+    { "type": "range", "id": "max_width", "label": "Content maximum width", "min": 800, "max": 1600, "step": 20, "default": 1360, "unit": "px" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "default": 32, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "default": 32, "unit": "px" },
+    { "type": "range", "id": "padding_sides", "label": "Side padding", "min": 0, "max": 80, "step": 2, "default": 24, "unit": "px" },
+    { "type": "header", "content": "Background" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#203c90" },
+    { "type": "checkbox", "id": "use_gradient", "label": "Use background gradient", "default": false },
+    { "type": "color", "id": "gradient_color", "label": "Gradient color", "default": "#172d72" },
+    { "type": "select", "id": "gradient_direction", "label": "Gradient direction", "options": [{ "value": "to right", "label": "Left to right" }, { "value": "to left", "label": "Right to left" }, { "value": "to bottom", "label": "Top to bottom" }, { "value": "to top", "label": "Bottom to top" }], "default": "to right" },
+    { "type": "checkbox", "id": "show_decorations", "label": "Show decorative background lines", "default": false },
+    { "type": "range", "id": "decoration_opacity", "label": "Decoration opacity", "min": 0, "max": 100, "step": 5, "default": 20, "unit": "%" },
+    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#ffffff" },
+    { "type": "color", "id": "description_color", "label": "Description color", "default": "#e8ecff" },
+    { "type": "header", "content": "Cards" },
+    { "type": "color", "id": "card_background", "label": "Card background", "default": "#fbfcff" },
+    { "type": "color", "id": "card_border_color", "label": "Card border color", "default": "#e5e8f0" },
+    { "type": "range", "id": "card_border_width", "label": "Card border width", "min": 0, "max": 5, "step": 1, "default": 1, "unit": "px" },
+    { "type": "range", "id": "card_radius", "label": "Card corner radius", "min": 0, "max": 36, "step": 1, "default": 12, "unit": "px" },
+    { "type": "select", "id": "card_shadow", "label": "Card shadow", "options": [{ "value": "none", "label": "None" }, { "value": "soft", "label": "Soft" }, { "value": "medium", "label": "Medium" }, { "value": "strong", "label": "Strong" }], "default": "soft" },
+    { "type": "range", "id": "card_padding", "label": "Card padding", "min": 8, "max": 48, "step": 2, "default": 22, "unit": "px" },
+    { "type": "range", "id": "card_min_height", "label": "Card minimum height", "min": 160, "max": 400, "step": 10, "default": 200, "unit": "px" },
+    { "type": "checkbox", "id": "card_hover", "label": "Enable card hover effect", "default": true },
+    { "type": "range", "id": "hover_lift", "label": "Hover lift", "min": 0, "max": 20, "step": 1, "default": 4, "unit": "px" },
+    { "type": "select", "id": "hover_shadow", "label": "Hover shadow", "options": [{ "value": "none", "label": "None" }, { "value": "soft", "label": "Soft" }, { "value": "medium", "label": "Medium" }, { "value": "strong", "label": "Strong" }], "default": "medium" },
+    { "type": "header", "content": "Card typography" },
+    { "type": "color", "id": "label_color", "label": "Label color", "default": "#596372" },
+    { "type": "color", "id": "value_color", "label": "Value color", "default": "#203c90" },
+    { "type": "range", "id": "label_font_size", "label": "Label font size", "min": 10, "max": 24, "step": 1, "default": 13, "unit": "px" },
+    { "type": "range", "id": "value_font_size", "label": "Value font size", "min": 20, "max": 72, "step": 1, "default": 32, "unit": "px" },
+    { "type": "select", "id": "value_font_weight", "label": "Value font weight", "options": [{ "value": "600", "label": "Semi bold" }, { "value": "700", "label": "Bold" }, { "value": "800", "label": "Extra bold" }], "default": "700" },
+    { "type": "range", "id": "label_line_height", "label": "Label line height", "min": 100, "max": 200, "step": 5, "default": 135, "unit": "%" },
+    { "type": "range", "id": "value_line_height", "label": "Value line height", "min": 100, "max": 160, "step": 5, "default": 110, "unit": "%" },
+    { "type": "header", "content": "Call to action" },
+    { "type": "checkbox", "id": "show_cta", "label": "Show CTA", "default": true },
+    { "type": "text", "id": "cta_text", "label": "CTA text", "default": "Schedule A Call Today!" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+    { "type": "color", "id": "cta_background", "label": "CTA background", "default": "#ff811e" },
+    { "type": "color", "id": "cta_text_color", "label": "CTA text color", "default": "#ffffff" },
+    { "type": "color", "id": "cta_hover_background", "label": "CTA hover background", "default": "#eb6f0c" },
+    { "type": "color", "id": "cta_hover_text_color", "label": "CTA hover text color", "default": "#ffffff" },
+    { "type": "range", "id": "cta_radius", "label": "CTA corner radius", "min": 0, "max": 50, "step": 1, "default": 40, "unit": "px" },
+    { "type": "range", "id": "cta_padding_vertical", "label": "CTA vertical padding", "min": 8, "max": 30, "step": 1, "default": 12, "unit": "px" },
+    { "type": "range", "id": "cta_padding_horizontal", "label": "CTA horizontal padding", "min": 12, "max": 60, "step": 2, "default": 30, "unit": "px" },
+    { "type": "range", "id": "cta_top_spacing", "label": "Space above CTA", "min": 0, "max": 100, "step": 2, "default": 28, "unit": "px" },
+    { "type": "range", "id": "cta_font_size", "label": "CTA font size", "min": 12, "max": 28, "step": 1, "default": 13, "unit": "px" },
+    { "type": "select", "id": "cta_font_weight", "label": "CTA font weight", "options": [{ "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" }, { "value": "600", "label": "Semi bold" }, { "value": "700", "label": "Bold" }], "default": "500" },
+    { "type": "header", "content": "Mobile layout" },
+    { "type": "select", "id": "mobile_columns", "label": "Mobile columns", "options": [{ "value": "1", "label": "1 column" }, { "value": "2", "label": "2 columns" }], "default": "1" },
+    { "type": "range", "id": "mobile_gap", "label": "Mobile card gap", "min": 0, "max": 40, "step": 2, "default": 14, "unit": "px" },
+    { "type": "range", "id": "mobile_padding", "label": "Mobile section side padding", "min": 0, "max": 40, "step": 2, "default": 16, "unit": "px" },
+    { "type": "range", "id": "mobile_card_padding", "label": "Mobile card padding", "min": 8, "max": 40, "step": 2, "default": 16, "unit": "px" },
+    { "type": "range", "id": "mobile_value_font_size", "label": "Mobile value font size", "min": 18, "max": 56, "step": 1, "default": 28, "unit": "px" },
+    { "type": "header", "content": "Entrance animation" },
+    { "type": "checkbox", "id": "animate_cards", "label": "Animate cards", "default": false },
+    { "type": "select", "id": "animation_style", "label": "Animation style", "options": [{ "value": "none", "label": "None" }, { "value": "fade_up", "label": "Fade up" }, { "value": "fade_in", "label": "Fade in" }], "default": "fade_up" },
+    { "type": "range", "id": "animation_duration", "label": "Animation duration", "min": 200, "max": 1200, "step": 50, "default": 500, "unit": "ms" },
+    { "type": "range", "id": "animation_delay", "label": "Delay between cards", "min": 0, "max": 400, "step": 25, "default": 75, "unit": "ms" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic card",
+      "settings": [
+        { "type": "header", "content": "Content" },
+        { "type": "text", "id": "label", "label": "Card label", "default": "Successful Projects Delivered" },
+        { "type": "text", "id": "value", "label": "Statistic value", "default": "146+" },
+        { "type": "text", "id": "supporting_text", "label": "Supporting text" },
+        { "type": "url", "id": "card_link", "label": "Card link" },
+        { "type": "checkbox", "id": "open_new_tab", "label": "Open link in new tab", "default": false },
+        { "type": "checkbox", "id": "clickable_card", "label": "Make entire card clickable", "default": false },
+        { "type": "header", "content": "Top-right icon" },
+        { "type": "checkbox", "id": "show_icon", "label": "Show icon", "default": true },
+        { "type": "select", "id": "icon_type", "label": "Icon type", "options": [{ "value": "arrow", "label": "Arrow" }, { "value": "plus", "label": "Plus" }, { "value": "star", "label": "Star" }, { "value": "check", "label": "Check" }, { "value": "custom", "label": "Custom character" }], "default": "arrow" },
+        { "type": "text", "id": "custom_icon", "label": "Custom character", "default": "↗" },
+        { "type": "color", "id": "icon_background", "label": "Icon background", "default": "#f2f4f8" },
+        { "type": "color", "id": "icon_color", "label": "Icon color", "default": "#8f99a9" },
+        { "type": "range", "id": "icon_size", "label": "Icon size", "min": 16, "max": 48, "step": 2, "default": 26, "unit": "px" },
+        { "type": "header", "content": "Decorative chart" },
+        { "type": "checkbox", "id": "show_visual", "label": "Show chart", "default": true },
+        { "type": "select", "id": "visual_type", "label": "Chart type", "options": [{ "value": "vertical_bars", "label": "Vertical bars" }, { "value": "line", "label": "Line graph" }, { "value": "area", "label": "Area graph" }, { "value": "progress", "label": "Progress bars" }, { "value": "step_bars", "label": "Step bars" }, { "value": "none", "label": "None" }], "default": "vertical_bars" },
+        { "type": "color", "id": "visual_color", "label": "Chart color", "default": "#8743ff" },
+        { "type": "color", "id": "visual_secondary_color", "label": "Chart secondary color", "default": "#dac9ff" },
+        { "type": "range", "id": "visual_opacity", "label": "Chart opacity", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%" },
+        { "type": "range", "id": "visual_height", "label": "Chart height", "min": 40, "max": 140, "step": 5, "default": 80, "unit": "px" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom statistics",
+      "blocks": [
+        { "type": "stat", "settings": { "label": "Successful Projects Delivered", "value": "146+", "visual_type": "vertical_bars" } },
+        { "type": "stat", "settings": { "label": "Average Revenue Growth", "value": "18%", "visual_type": "line" } },
+        { "type": "stat", "settings": { "label": "Shopify Tasks Completed", "value": "450+", "visual_type": "area" } },
+        { "type": "stat", "settings": { "label": "Years of Shopify Experience", "value": "4+", "visual_type": "step_bars" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

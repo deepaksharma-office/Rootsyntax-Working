@@ -1,0 +1,218 @@
+.cust__services {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--cust-padding-top) var(--cust-padding-sides) var(--cust-padding-bottom);
+  background: var(--cust-section-bg);
+}
+
+.cust__services *,
+.cust__services *::before,
+.cust__services *::after {
+  box-sizing: border-box;
+}
+
+.cust__services--gradient {
+  background: linear-gradient(var(--cust-gradient-direction), var(--cust-section-bg), var(--cust-gradient-color));
+}
+
+.cust__services .cust__services-inner {
+  width: 100%;
+  max-width: var(--cust-max-width);
+  margin-inline: auto;
+}
+
+.cust__services .cust__services-header {
+  margin-bottom: 28px;
+}
+
+.cust__services .cust__services-header--left { text-align: left; }
+.cust__services .cust__services-header--center { text-align: center; }
+.cust__services .cust__services-header--right { text-align: right; }
+
+.cust__services .cust__services-heading {
+  margin: 0;
+  color: var(--cust-title-color);
+  font-size: clamp(24px, 3vw, 42px);
+  line-height: 1.2;
+}
+
+.cust__services .cust__services-intro {
+  margin-top: 10px;
+  color: var(--cust-description-color);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.cust__services .cust__services-intro p { margin: 0; }
+
+.cust__services .cust__services-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cust-desktop-columns), minmax(0, 1fr));
+  column-gap: var(--cust-card-gap);
+  row-gap: var(--cust-row-gap);
+  align-items: stretch;
+}
+
+.cust__services .cust__service-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: var(--cust-card-min-height);
+  padding: var(--cust-card-padding);
+  border: var(--cust-card-border-width) solid var(--cust-card-border);
+  border-radius: var(--cust-card-radius);
+  background: var(--cust-block-bg);
+  box-shadow: var(--cust-card-shadow);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.cust__services .cust__service-card--text-only {
+  min-height: 0;
+}
+
+.cust__services .cust__service-card--hover:hover,
+.cust__services .cust__service-card--hover:focus-within {
+  transform: translateY(calc(-1 * var(--cust-hover-lift)));
+  border-color: var(--cust-hover-border);
+  box-shadow: var(--cust-hover-shadow);
+}
+
+.cust__services a.cust__service-card:focus-visible {
+  outline: 3px solid var(--cust-hover-border);
+  outline-offset: 3px;
+}
+
+.cust__services .cust__service-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--cust-icon-size);
+  height: var(--cust-icon-size);
+  margin-bottom: 14px;
+  border-radius: 10px;
+  background: var(--cust-icon-bg);
+}
+
+.cust__services .cust__service-icon img {
+  display: block;
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.cust__services .cust__service-title {
+  margin: 0;
+  color: var(--cust-block-title-color);
+  font-size: var(--cust-title-size);
+  font-weight: var(--cust-title-weight);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.cust__services .cust__service-description {
+  margin: 8px 0 0;
+  color: var(--cust-block-description-color);
+  font-size: var(--cust-description-size);
+  line-height: var(--cust-description-line-height);
+  overflow-wrap: anywhere;
+}
+
+.cust__services .cust__service-media {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  height: var(--cust-block-image-height);
+  margin-top: auto;
+  padding-top: var(--cust-image-top-spacing);
+  padding-bottom: var(--cust-image-bottom-spacing);
+}
+
+.cust__services .cust__service-image {
+  display: block;
+  width: min(100%, var(--cust-image-width));
+  height: 100%;
+  max-width: 100%;
+  object-fit: var(--cust-image-fit);
+  object-position: center var(--cust-image-position);
+  opacity: var(--cust-image-opacity);
+  transition: transform 220ms ease;
+}
+
+.cust__services .cust__service-card--hover:hover .cust__service-image,
+.cust__services .cust__service-card--hover:focus-within .cust__service-image {
+  transform: scale(1.025);
+}
+
+@media (min-width: 750px) and (max-width: 1099px) {
+  .cust__services .cust__services-grid {
+    grid-template-columns: repeat(var(--cust-tablet-columns), minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 749px) {
+  .cust__services {
+    padding-right: min(var(--cust-padding-sides), 20px);
+    padding-left: min(var(--cust-padding-sides), 20px);
+  }
+
+  .cust__services .cust__services-grid {
+    grid-template-columns: repeat(var(--cust-mobile-columns), minmax(0, 1fr));
+  }
+
+  .cust__services .cust__service-card {
+    padding: min(var(--cust-card-padding), 16px);
+  }
+
+  .cust__services .cust__service-media {
+    height: min(var(--cust-block-image-height), 190px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cust__services--animated .cust__service-card {
+    animation-duration: var(--cust-animation-duration);
+    animation-delay: var(--cust-animation-delay);
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+  }
+
+  .cust__services--fade .cust__service-card { animation-name: cust__services-fade; }
+  .cust__services--fade_up .cust__service-card { animation-name: cust__services-fade-up; }
+  .cust__services--scale .cust__service-card { animation-name: cust__services-scale; }
+}
+
+@keyframes cust__services-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cust__services-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cust__services-scale {
+  from { opacity: 0; transform: scale(.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cust__services .cust__service-card,
+  .cust__services .cust__service-image {
+    animation: none;
+    transition: none;
+  }
+
+  .cust__services .cust__service-card--hover:hover,
+  .cust__services .cust__service-card--hover:focus-within,
+  .cust__services .cust__service-card--hover:hover .cust__service-image,
+  .cust__services .cust__service-card--hover:focus-within .cust__service-image {
+    transform: none;
+  }
+}

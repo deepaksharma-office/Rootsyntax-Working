@@ -1,0 +1,332 @@
+{{ 'custom-consultation.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-consultation.js' | asset_url }}" defer></script>
+
+<section id="cust__consultation-{{ section.id }}" class="cust__consultation" style="
+  --cust-bg: {{ section.settings.background_color }};
+  --cust-primary: {{ section.settings.primary_color }};
+  --cust-secondary: {{ section.settings.secondary_color }};
+  --cust-accent: {{ section.settings.accent_color }};
+  --cust-check: {{ section.settings.check_color }};
+  --cust-divider: {{ section.settings.divider_color }};
+  --cust-stat-value: {{ section.settings.stat_value_color }};
+  --cust-stat-label: {{ section.settings.stat_label_color }};
+  --cust-form-bg: {{ section.settings.form_background }};
+  --cust-form-border: {{ section.settings.form_border }};
+  --cust-input-bg: {{ section.settings.input_background }};
+  --cust-input-border: {{ section.settings.input_border }};
+  --cust-input-focus: {{ section.settings.input_focus_border }};
+  --cust-placeholder: {{ section.settings.placeholder_color }};
+  --cust-button-bg: {{ section.settings.button_background }};
+  --cust-button-start: {{ section.settings.button_gradient_start }};
+  --cust-button-middle: {{ section.settings.button_gradient_middle }};
+  --cust-button-end: {{ section.settings.button_gradient_end }};
+  --cust-button-color: {{ section.settings.button_text_color }};
+  --cust-button-radius: {{ section.settings.button_radius }}px;
+  --cust-button-height: {{ section.settings.button_height }}px;
+  --cust-button-size: {{ section.settings.button_font_size }}px;
+  --cust-button-weight: {{ section.settings.button_font_weight }};
+  --cust-button-hover-opacity: {{ section.settings.button_hover_opacity | divided_by: 100.0 }};
+  --cust-max-width: {{ section.settings.max_width }}px;
+  --cust-left-width: {{ section.settings.left_width }}fr;
+  --cust-right-width: {{ section.settings.right_width }}fr;
+  --cust-column-gap: {{ section.settings.column_gap }}px;
+  --cust-alignment: {{ section.settings.vertical_alignment }};
+  --cust-padding-top: {{ section.settings.padding_top }}px;
+  --cust-padding-bottom: {{ section.settings.padding_bottom }}px;
+  --cust-padding-sides: {{ section.settings.padding_sides }}px;
+  --cust-mobile-padding: {{ section.settings.mobile_padding }}px;
+  --cust-form-radius: {{ section.settings.form_radius }}px;
+  --cust-form-padding: {{ section.settings.form_padding }}px;
+  --cust-input-radius: {{ section.settings.input_radius }}px;
+  --cust-input-height: {{ section.settings.input_height }}px;
+  --cust-label-size: {{ section.settings.label_size }}px;
+  --cust-description-size: {{ section.settings.description_size }}px;
+">
+  <div class="cust__consultation-grid">
+    <div class="cust__consultation-content">
+      {% if section.settings.eyebrow != blank %}
+        <span class="cust__consultation-eyebrow"><span aria-hidden="true">✦</span>{{ section.settings.eyebrow | escape }}</span>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="cust__consultation-description">{{ section.settings.description }}</div>
+      {% endif %}
+
+      {% assign benefit_count = 0 %}
+      {% for block in section.blocks %}{% if block.type == 'benefit' %}{% assign benefit_count = benefit_count | plus: 1 %}{% endif %}{% endfor %}
+      {% if benefit_count > 0 %}
+        <ul class="cust__consultation-benefits">
+          {% for block in section.blocks %}
+            {% if block.type == 'benefit' and block.settings.text != blank %}
+              <li class="cust__consultation-benefit" {{ block.shopify_attributes }}>
+                <span class="cust__consultation-check" aria-hidden="true">✓</span>
+                {% if block.settings.link != blank %}
+                  <a href="{{ block.settings.link }}">{{ block.settings.text | escape }}</a>
+                {% else %}
+                  <span>{{ block.settings.text | escape }}</span>
+                {% endif %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% assign stat_count = 0 %}
+      {% for block in section.blocks %}{% if block.type == 'statistic' %}{% assign stat_count = stat_count | plus: 1 %}{% endif %}{% endfor %}
+      {% if stat_count > 0 %}
+        <div class="cust__consultation-stats">
+          {% for block in section.blocks %}
+            {% if block.type == 'statistic' %}
+              <div class="cust__consultation-stat" {{ block.shopify_attributes }}>
+                {% if block.settings.show_icon %}
+                  <span class="cust__consultation-stat-icon" aria-hidden="true">
+                    {% case block.settings.icon %}
+                      {% when 'star' %}☆
+                      {% when 'clock' %}◷
+                      {% when 'custom' %}{{ block.settings.custom_icon | escape }}
+                      {% else %}♧
+                    {% endcase %}
+                  </span>
+                {% endif %}
+                {% if block.settings.value != blank %}<strong>{{ block.settings.value | escape }}</strong>{% endif %}
+                {% if block.settings.label != blank %}<span>{{ block.settings.label | escape }}</span>{% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="cust__consultation-form-card">
+      {% if section.settings.form_heading != blank %}<h2 class="cust__consultation-form-heading">{{ section.settings.form_heading | escape }}</h2>{% endif %}
+      {% if section.settings.form_description != blank %}<p class="cust__consultation-form-description">{{ section.settings.form_description | escape }}</p>{% endif %}
+      <cust-consultation-form>
+      <form class="cust__consultation-form" method="post"
+        {% if section.settings.proxy_path != blank %}action="{{ section.settings.proxy_path | escape }}"{% endif %}
+        data-proxy-path="{{ section.settings.proxy_path | escape }}"
+        data-success-message="{{ section.settings.success_message | escape }}"
+        data-error-message="{{ section.settings.error_message | escape }}"
+        data-loading-text="{{ section.settings.loading_text | escape }}"
+        data-track-page="{{ section.settings.track_page_url }}"
+        data-track-referrer="{{ section.settings.track_referrer }}"
+        data-track-utm="{{ section.settings.track_utm }}"
+        data-include-timestamp="{{ section.settings.include_timestamp }}"
+        data-notify="{{ section.settings.enable_notification }}"
+        data-notification-email="{{ section.settings.notification_email | escape }}"
+        data-name-error="{{ section.settings.name_error | escape }}"
+        data-email-error="{{ section.settings.email_error | escape }}"
+        data-phone-error="{{ section.settings.phone_error | escape }}"
+      >
+        {% if section.settings.show_name %}
+          <div class="cust__consultation-field">
+            <label for="cust__name-{{ section.id }}">{{ section.settings.name_label | escape }}{% if section.settings.name_required %} <span aria-hidden="true">*</span>{% endif %}</label>
+            <input id="cust__name-{{ section.id }}" name="name" type="text" autocomplete="name" maxlength="120" placeholder="{{ section.settings.name_placeholder | escape }}"{% if section.settings.name_required %} required{% endif %} aria-describedby="cust__name-error-{{ section.id }}">
+            <span class="cust__consultation-field-error" id="cust__name-error-{{ section.id }}" data-field-error="name"></span>
+          </div>
+        {% endif %}
+        {% if section.settings.show_email %}
+          <div class="cust__consultation-field">
+            <label for="cust__email-{{ section.id }}">{{ section.settings.email_label | escape }}{% if section.settings.email_required %} <span aria-hidden="true">*</span>{% endif %}</label>
+            <input id="cust__email-{{ section.id }}" name="email" type="email" autocomplete="email" maxlength="254" placeholder="{{ section.settings.email_placeholder | escape }}"{% if section.settings.email_required %} required{% endif %} aria-describedby="cust__email-error-{{ section.id }}">
+            <span class="cust__consultation-field-error" id="cust__email-error-{{ section.id }}" data-field-error="email"></span>
+          </div>
+        {% endif %}
+        {% if section.settings.show_phone %}
+          <div class="cust__consultation-field">
+            <label for="cust__phone-{{ section.id }}">{{ section.settings.phone_label | escape }}{% if section.settings.phone_required %} <span aria-hidden="true">*</span>{% endif %}</label>
+            <input id="cust__phone-{{ section.id }}" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" pattern="\+[1-9][0-9(). -]{7,29}" placeholder="{{ section.settings.phone_placeholder | escape }}"{% if section.settings.phone_required %} required{% endif %} aria-describedby="cust__phone-error-{{ section.id }}">
+            <span class="cust__consultation-field-error" id="cust__phone-error-{{ section.id }}" data-field-error="phone"></span>
+          </div>
+        {% endif %}
+        {% if section.settings.show_service %}
+          <div class="cust__consultation-field">
+            <label for="cust__service-{{ section.id }}">{{ section.settings.service_label | escape }}{% if section.settings.service_required %} <span aria-hidden="true">*</span>{% endif %}</label>
+            <select id="cust__service-{{ section.id }}" name="service"{% if section.settings.service_required %} required{% endif %} aria-describedby="cust__service-error-{{ section.id }}">
+              <option value="">{{ section.settings.service_placeholder | escape }}</option>
+              {% for i in (1..12) %}
+                {% assign option_key = 'service_option_' | append: i %}
+                {% assign service_option = section.settings[option_key] %}
+                {% if service_option != blank %}<option value="{{ service_option | escape }}">{{ service_option | escape }}</option>{% endif %}
+              {% endfor %}
+            </select>
+            <span class="cust__consultation-field-error" id="cust__service-error-{{ section.id }}" data-field-error="service"></span>
+          </div>
+        {% endif %}
+        {% if section.settings.show_website %}
+          <div class="cust__consultation-field">
+            <label for="cust__website-{{ section.id }}">{{ section.settings.website_label | escape }}{% if section.settings.website_required %} <span aria-hidden="true">*</span>{% endif %}</label>
+            <input id="cust__website-{{ section.id }}" name="website" type="url" autocomplete="url" maxlength="500" placeholder="{{ section.settings.website_placeholder | escape }}"{% if section.settings.website_required %} required{% endif %} aria-describedby="cust__website-help-{{ section.id }} cust__website-error-{{ section.id }}">
+            {% if section.settings.website_helper != blank %}<small class="cust__consultation-helper" id="cust__website-help-{{ section.id }}">{{ section.settings.website_helper | escape }}</small>{% endif %}
+            <span class="cust__consultation-field-error" id="cust__website-error-{{ section.id }}" data-field-error="website"></span>
+          </div>
+        {% endif %}
+        {% if section.settings.show_message %}
+          <div class="cust__consultation-field">
+            <label for="cust__message-{{ section.id }}">{{ section.settings.message_label | escape }}{% if section.settings.message_required %} <span aria-hidden="true">*</span>{% endif %}</label>
+            <textarea id="cust__message-{{ section.id }}" name="message" maxlength="{{ section.settings.message_limit }}" placeholder="{{ section.settings.message_placeholder | escape }}" autocomplete="off"{% if section.settings.message_required %} required{% endif %} aria-describedby="cust__message-error-{{ section.id }}"></textarea>
+            <span class="cust__consultation-field-error" id="cust__message-error-{{ section.id }}" data-field-error="message"></span>
+          </div>
+        {% endif %}
+        {% if section.settings.enable_spam_protection and section.settings.enable_honeypot %}
+          <div class="cust__consultation-honeypot" aria-hidden="true">
+            <label for="cust__website-confirm-{{ section.id }}">Leave this field empty</label>
+            <input id="cust__website-confirm-{{ section.id }}" name="website_confirm" type="text" tabindex="-1" autocomplete="off">
+          </div>
+        {% endif %}
+        <button class="cust__consultation-submit{% if section.settings.button_gradient %} cust__consultation-submit--gradient{% endif %}{% if section.settings.button_shadow %} cust__consultation-submit--shadow{% endif %}" type="submit"{% if section.settings.proxy_path == blank or section.settings.show_email == false %} disabled{% endif %}>
+          <span>{{ section.settings.button_text | escape }}</span>
+          <span aria-hidden="true">→</span>
+        </button>
+        <p class="cust__consultation-status" role="status" aria-live="polite"></p>
+      </form>
+      </cust-consultation-form>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom consultation",
+  "tag": "section",
+  "class": "section-custom-consultation",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Consultation badge", "default": "Free Shopify Consultation" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Whether you're launching a new Shopify store, migrating from another platform, or looking to improve conversions, our Shopify experts are ready to help. We'll review your requirements and recommend the best solution for your business.</p>" },
+    { "type": "header", "content": "Form messages" },
+    { "type": "text", "id": "form_heading", "label": "Form heading" },
+    { "type": "text", "id": "form_description", "label": "Form description" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thank you! We've received your request and will get back to you within 24 hours." },
+    { "type": "text", "id": "error_message", "label": "Error message", "default": "Something went wrong while submitting your request. Please try again." },
+    { "type": "text", "id": "loading_text", "label": "Loading text", "default": "Sending your request..." },
+    { "type": "header", "content": "Name field" },
+    { "type": "checkbox", "id": "show_name", "label": "Show name", "default": true },
+    { "type": "text", "id": "name_label", "label": "Label", "default": "Name" },
+    { "type": "text", "id": "name_placeholder", "label": "Placeholder", "default": "Enter your name" },
+    { "type": "checkbox", "id": "name_required", "label": "Required", "default": true },
+    { "type": "text", "id": "name_error", "label": "Validation message", "default": "Enter your name." },
+    { "type": "header", "content": "Email field" },
+    { "type": "checkbox", "id": "show_email", "label": "Show email", "default": true, "info": "Email is needed to create or locate a Shopify customer." },
+    { "type": "text", "id": "email_label", "label": "Label", "default": "Email" },
+    { "type": "text", "id": "email_placeholder", "label": "Placeholder", "default": "Enter your email" },
+    { "type": "checkbox", "id": "email_required", "label": "Required", "default": true },
+    { "type": "text", "id": "email_error", "label": "Validation message", "default": "Enter a valid email address." },
+    { "type": "header", "content": "Phone field" },
+    { "type": "checkbox", "id": "show_phone", "label": "Show phone", "default": true },
+    { "type": "text", "id": "phone_label", "label": "Label", "default": "Phone Number" },
+    { "type": "text", "id": "phone_placeholder", "label": "Placeholder", "default": "+1 555 123 4567" },
+    { "type": "checkbox", "id": "phone_required", "label": "Required", "default": true },
+    { "type": "text", "id": "phone_error", "label": "Validation message", "default": "Include a country code, for example +15551234567." },
+    { "type": "header", "content": "Service field" },
+    { "type": "checkbox", "id": "show_service", "label": "Show service", "default": true },
+    { "type": "text", "id": "service_label", "label": "Label", "default": "Service Interested In" },
+    { "type": "text", "id": "service_placeholder", "label": "Placeholder", "default": "Select a service" },
+    { "type": "checkbox", "id": "service_required", "label": "Required", "default": true },
+    { "type": "text", "id": "service_option_1", "label": "Service option 1", "default": "Store Build or Redesign" },
+    { "type": "text", "id": "service_option_2", "label": "Service option 2", "default": "Shopify Migration" },
+    { "type": "text", "id": "service_option_3", "label": "Service option 3", "default": "Shopify Theme Development" },
+    { "type": "text", "id": "service_option_4", "label": "Service option 4", "default": "Shopify Plus" },
+    { "type": "text", "id": "service_option_5", "label": "Service option 5", "default": "Conversion Rate Optimization" },
+    { "type": "text", "id": "service_option_6", "label": "Service option 6", "default": "Shopify SEO" },
+    { "type": "text", "id": "service_option_7", "label": "Service option 7", "default": "Custom Shopify Development" },
+    { "type": "text", "id": "service_option_8", "label": "Service option 8", "default": "Speed Optimization" },
+    { "type": "text", "id": "service_option_9", "label": "Service option 9", "default": "B2B / Wholesale" },
+    { "type": "text", "id": "service_option_10", "label": "Service option 10", "default": "Maintenance & Support" },
+    { "type": "text", "id": "service_option_11", "label": "Service option 11", "default": "Other" },
+    { "type": "text", "id": "service_option_12", "label": "Service option 12" },
+    { "type": "header", "content": "Website field" },
+    { "type": "checkbox", "id": "show_website", "label": "Show website", "default": true },
+    { "type": "text", "id": "website_label", "label": "Label", "default": "Existing Website (Optional)" },
+    { "type": "text", "id": "website_placeholder", "label": "Placeholder", "default": "https://yourwebsite.com" },
+    { "type": "checkbox", "id": "website_required", "label": "Required", "default": false },
+    { "type": "text", "id": "website_helper", "label": "Helper text", "default": "Already have a website? Share the URL so we can review it and understand your current store." },
+    { "type": "header", "content": "Message field" },
+    { "type": "checkbox", "id": "show_message", "label": "Show message", "default": true },
+    { "type": "text", "id": "message_label", "label": "Label", "default": "Message (Optional)" },
+    { "type": "text", "id": "message_placeholder", "label": "Placeholder", "default": "Tell us about your project..." },
+    { "type": "checkbox", "id": "message_required", "label": "Required", "default": false },
+    { "type": "range", "id": "message_limit", "label": "Character limit", "min": 500, "max": 9900, "step": 100, "default": 5000 },
+    { "type": "header", "content": "Backend and privacy" },
+    { "type": "text", "id": "proxy_path", "label": "Shopify app proxy path", "info": "Enter a configured same-store /apps/... path. Submitting stays disabled until configured." },
+    { "type": "checkbox", "id": "enable_spam_protection", "label": "Enable spam protection", "default": true },
+    { "type": "checkbox", "id": "enable_honeypot", "label": "Enable honeypot", "default": true },
+    { "type": "checkbox", "id": "include_timestamp", "label": "Store submission timestamp", "default": true },
+    { "type": "checkbox", "id": "track_page_url", "label": "Track page URL when permitted", "default": false },
+    { "type": "checkbox", "id": "track_referrer", "label": "Track referrer when permitted", "default": false },
+    { "type": "checkbox", "id": "track_utm", "label": "Track UTM values when permitted", "default": false },
+    { "type": "checkbox", "id": "enable_notification", "label": "Request admin notification", "default": false, "info": "The backend must be configured to send notifications." },
+    { "type": "text", "id": "notification_email", "label": "Notification email", "info": "The backend must independently authorize this destination." },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "max_width", "label": "Maximum width", "min": 700, "max": 1800, "step": 20, "default": 1500, "unit": "px" },
+    { "type": "range", "id": "left_width", "label": "Left column proportion", "min": 30, "max": 70, "step": 1, "default": 45, "unit": "%" },
+    { "type": "range", "id": "right_width", "label": "Right column proportion", "min": 30, "max": 70, "step": 1, "default": 55, "unit": "%" },
+    { "type": "range", "id": "column_gap", "label": "Column gap", "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" },
+    { "type": "select", "id": "vertical_alignment", "label": "Vertical alignment", "options": [{ "value": "start", "label": "Top" }, { "value": "center", "label": "Center" }, { "value": "end", "label": "Bottom" }], "default": "center" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "default": 64, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "default": 64, "unit": "px" },
+    { "type": "range", "id": "padding_sides", "label": "Side padding", "min": 0, "max": 80, "step": 2, "default": 24, "unit": "px" },
+    { "type": "range", "id": "mobile_padding", "label": "Mobile side padding", "min": 0, "max": 40, "step": 2, "default": 16, "unit": "px" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "primary_color", "label": "Primary text", "default": "#263249" },
+    { "type": "color", "id": "secondary_color", "label": "Secondary text", "default": "#58657c" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#f05b24" },
+    { "type": "color", "id": "check_color", "label": "Checklist icon", "default": "#9749e8" },
+    { "type": "color", "id": "divider_color", "label": "Checklist divider", "default": "#dbe3f1" },
+    { "type": "color", "id": "stat_value_color", "label": "Statistic value", "default": "#ee5b1d" },
+    { "type": "color", "id": "stat_label_color", "label": "Statistic label", "default": "#5c6980" },
+    { "type": "color", "id": "form_background", "label": "Form background", "default": "#ffffff" },
+    { "type": "color", "id": "form_border", "label": "Form border", "default": "#d8e1ef" },
+    { "type": "color", "id": "input_background", "label": "Input background", "default": "#ffffff" },
+    { "type": "color", "id": "input_border", "label": "Input border", "default": "#ccd7e8" },
+    { "type": "color", "id": "input_focus_border", "label": "Input focus border", "default": "#9749e8" },
+    { "type": "color", "id": "placeholder_color", "label": "Placeholder color", "default": "#8793a7" },
+    { "type": "header", "content": "Form appearance" },
+    { "type": "range", "id": "form_radius", "label": "Form corner radius", "min": 0, "max": 40, "step": 1, "default": 20, "unit": "px" },
+    { "type": "range", "id": "form_padding", "label": "Form padding", "min": 16, "max": 72, "step": 2, "default": 44, "unit": "px" },
+    { "type": "range", "id": "input_radius", "label": "Input corner radius", "min": 0, "max": 24, "step": 1, "default": 8, "unit": "px" },
+    { "type": "range", "id": "input_height", "label": "Input height", "min": 40, "max": 80, "step": 2, "default": 58, "unit": "px" },
+    { "type": "range", "id": "label_size", "label": "Label size", "min": 12, "max": 24, "step": 1, "default": 16, "unit": "px" },
+    { "type": "range", "id": "description_size", "label": "Left description size", "min": 14, "max": 28, "step": 1, "default": 18, "unit": "px" },
+    { "type": "header", "content": "Submit button" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Get Free Proposal" },
+    { "type": "color", "id": "button_background", "label": "Solid background", "default": "#9749e8" },
+    { "type": "checkbox", "id": "button_gradient", "label": "Use gradient", "default": true },
+    { "type": "color", "id": "button_gradient_start", "label": "Gradient start", "default": "#9749e8" },
+    { "type": "color", "id": "button_gradient_middle", "label": "Gradient middle", "default": "#db4f9a" },
+    { "type": "color", "id": "button_gradient_end", "label": "Gradient end", "default": "#ff801d" },
+    { "type": "color", "id": "button_text_color", "label": "Text color", "default": "#ffffff" },
+    { "type": "range", "id": "button_radius", "label": "Corner radius", "min": 0, "max": 30, "step": 1, "default": 10, "unit": "px" },
+    { "type": "range", "id": "button_height", "label": "Button height", "min": 44, "max": 90, "step": 2, "default": 64, "unit": "px" },
+    { "type": "range", "id": "button_font_size", "label": "Font size", "min": 12, "max": 28, "step": 1, "default": 18, "unit": "px" },
+    { "type": "select", "id": "button_font_weight", "label": "Font weight", "options": [{ "value": "500", "label": "Medium" }, { "value": "600", "label": "Semi bold" }, { "value": "700", "label": "Bold" }], "default": "700" },
+    { "type": "range", "id": "button_hover_opacity", "label": "Hover opacity", "min": 50, "max": 100, "step": 5, "default": 90, "unit": "%" },
+    { "type": "checkbox", "id": "button_shadow", "label": "Show button shadow", "default": true }
+  ],
+  "blocks": [
+    { "type": "benefit", "name": "Benefit", "limit": 8, "settings": [
+      { "type": "text", "id": "text", "label": "Benefit", "default": "Free Strategy Consultation" },
+      { "type": "url", "id": "link", "label": "Optional link" }
+    ] },
+    { "type": "statistic", "name": "Statistic", "limit": 4, "settings": [
+      { "type": "text", "id": "value", "label": "Value", "default": "3000+" },
+      { "type": "text", "id": "label", "label": "Label", "default": "Happy Clients" },
+      { "type": "checkbox", "id": "show_icon", "label": "Show icon", "default": true },
+      { "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "users", "label": "Users" }, { "value": "star", "label": "Star" }, { "value": "clock", "label": "Clock" }, { "value": "custom", "label": "Custom character" }], "default": "users" },
+      { "type": "text", "id": "custom_icon", "label": "Custom character", "default": "✦" }
+    ] }
+  ],
+  "presets": [
+    { "name": "Custom consultation", "blocks": [
+      { "type": "benefit", "settings": { "text": "Free Strategy Consultation" } },
+      { "type": "benefit", "settings": { "text": "Response within 24 Hours" } },
+      { "type": "benefit", "settings": { "text": "Shopify Plus & CRO Experts" } },
+      { "type": "benefit", "settings": { "text": "No Obligation Quote" } },
+      { "type": "benefit", "settings": { "text": "Trusted by 150+ Ecommerce Brands" } },
+      { "type": "statistic", "settings": { "value": "3000+", "label": "Happy Clients", "icon": "users" } },
+      { "type": "statistic", "settings": { "value": "98%", "label": "Satisfaction Rate", "icon": "star" } },
+      { "type": "statistic", "settings": { "value": "Under 24", "label": "Hours Response", "icon": "clock" } }
+    ] }
+  ]
+}
+{% endschema %}

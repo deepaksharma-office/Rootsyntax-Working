@@ -1,0 +1,278 @@
+{{ 'custom-featured-testimonials.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-featured-testimonials.js' | asset_url }}" defer></script>
+
+{% liquid
+  assign card_shadow = 'none'
+  case section.settings.card_shadow
+    when 'subtle'
+      assign card_shadow = '0 5px 18px rgba(24, 43, 80, .05)'
+    when 'medium'
+      assign card_shadow = '0 12px 30px rgba(24, 43, 80, .12)'
+  endcase
+  assign escaped_heading = section.settings.heading | escape
+  assign escaped_highlight = section.settings.heading_highlight | escape
+  if escaped_highlight != blank
+    capture highlighted_markup
+      echo '<span class="cust__featured-heading-highlight">'
+      echo escaped_highlight
+      echo '</span>'
+    endcapture
+    assign rendered_heading = escaped_heading | replace: escaped_highlight, highlighted_markup
+  else
+    assign rendered_heading = escaped_heading
+  endif
+%}
+
+<section id="cust__featured-{{ section.id }}" class="cust__featured" style="
+  --cust-section-bg: {{ section.settings.section_background }};
+  --cust-left-bg: {{ section.settings.left_background }};
+  --cust-right-bg: {{ section.settings.right_background }};
+  --cust-card-border: {{ section.settings.card_border_color }};
+  --cust-card-border-width: {{ section.settings.card_border_width }}px;
+  --cust-card-radius: {{ section.settings.card_radius }}px;
+  --cust-card-shadow: {{ card_shadow }};
+  --cust-card-padding: {{ section.settings.card_padding }}px;
+  --cust-card-min-height: {{ section.settings.card_min_height }}px;
+  --cust-desktop-height: {{ section.settings.desktop_height }}px;
+  --cust-mobile-height: {{ section.settings.mobile_height }}px;
+  --cust-max-width: {{ section.settings.max_width }}px;
+  --cust-left-width: {{ section.settings.left_width }}fr;
+  --cust-right-width: {{ section.settings.right_width }}fr;
+  --cust-column-gap: {{ section.settings.column_gap }}px;
+  --cust-alignment: {{ section.settings.desktop_alignment }};
+  --cust-padding-top: {{ section.settings.padding_top }}px;
+  --cust-padding-bottom: {{ section.settings.padding_bottom }}px;
+  --cust-mobile-padding: {{ section.settings.mobile_padding }}px;
+  --cust-text: {{ section.settings.main_text_color }};
+  --cust-secondary-text: {{ section.settings.secondary_text_color }};
+  --cust-accent: {{ section.settings.accent_color }};
+  --cust-heading-color: {{ section.settings.heading_color }};
+  --cust-heading-highlight: {{ section.settings.heading_highlight_color }};
+  --cust-heading-size: {{ section.settings.heading_size }}px;
+  --cust-heading-mobile-size: {{ section.settings.heading_mobile_size }}px;
+  --cust-heading-weight: {{ section.settings.heading_weight }};
+  --cust-heading-line-height: {{ section.settings.heading_line_height | divided_by: 100.0 }};
+  --cust-description-color: {{ section.settings.description_color }};
+  --cust-description-size: {{ section.settings.description_size }}px;
+  --cust-description-line-height: {{ section.settings.description_line_height | divided_by: 100.0 }};
+  --cust-stat-color: {{ section.settings.stat_color }};
+  --cust-stat-label-color: {{ section.settings.stat_label_color }};
+  --cust-stat-size: {{ section.settings.stat_size }}px;
+  --cust-stat-label-size: {{ section.settings.stat_label_size }}px;
+  --cust-stat-gap: {{ section.settings.stat_gap }}px;
+  --cust-quote-color: {{ section.settings.quote_color }};
+  --cust-nav-size: {{ section.settings.nav_button_size }}px;
+  --cust-nav-bg: {{ section.settings.nav_background }};
+  --cust-nav-border: {{ section.settings.nav_border }};
+  --cust-nav-color: {{ section.settings.nav_color }};
+  --cust-nav-hover-bg: {{ section.settings.nav_hover_background }};
+  --cust-nav-hover-color: {{ section.settings.nav_hover_color }};
+  --cust-nav-bottom-gap: {{ section.settings.nav_bottom_spacing }}px;
+  --cust-avatar-size: {{ section.settings.avatar_size }}px;
+  --cust-star-color: {{ section.settings.star_color }};
+  --cust-fade-duration: {{ section.settings.fade_duration }}ms;
+">
+  <div class="cust__featured-grid">
+    <div class="cust__featured-feature">
+      {% if section.settings.eyebrow != blank %}
+        <span class="cust__featured-eyebrow" style="--cust-eyebrow-bg: {{ section.settings.eyebrow_background }}; --cust-eyebrow-color: {{ section.settings.eyebrow_color }}; --cust-eyebrow-border: {{ section.settings.eyebrow_border }};">
+          {% if section.settings.eyebrow_icon != blank %}<span aria-hidden="true">{{ section.settings.eyebrow_icon | escape }}</span>{% endif %}
+          {{ section.settings.eyebrow | escape }}
+        </span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="cust__featured-heading">{{ rendered_heading }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="cust__featured-description">{{ section.settings.description }}</div>
+      {% endif %}
+      {% if section.settings.show_stats %}
+        <div class="cust__featured-stats">
+          {% if section.settings.stat_one_value != blank or section.settings.stat_one_label != blank %}
+            <div class="cust__featured-stat">
+              {% if section.settings.stat_one_value != blank %}<strong>{{ section.settings.stat_one_value | escape }}</strong>{% endif %}
+              {% if section.settings.stat_one_label != blank %}<span>{{ section.settings.stat_one_label | escape }}</span>{% endif %}
+            </div>
+          {% endif %}
+          {% if section.settings.stat_two_value != blank or section.settings.stat_two_label != blank %}
+            <div class="cust__featured-stat">
+              {% if section.settings.stat_two_value != blank %}<strong>{{ section.settings.stat_two_value | escape }}</strong>{% endif %}
+              {% if section.settings.stat_two_label != blank %}<span>{{ section.settings.stat_two_label | escape }}</span>{% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <cust-featured-testimonials
+      class="cust__featured-slider"
+      data-autoplay="{{ section.settings.autoplay }}"
+      data-interval="{{ section.settings.autoplay_interval | times: 1000 }}"
+      data-pause-hover="{{ section.settings.pause_on_hover }}"
+      data-pause-focus="{{ section.settings.pause_on_focus }}"
+    >
+      <span class="cust__featured-quote" aria-hidden="true">”</span>
+      <div class="cust__featured-stage" aria-label="Testimonials">
+        {% for block in section.blocks %}
+          {% assign avatar_alt = block.settings.customer_name | append: ' portrait' %}
+          <article class="cust__featured-slide{% if forloop.first %} cust__featured-slide--active{% endif %}"
+            {% unless forloop.first %}aria-hidden="true"{% endunless %}
+            {% if block.settings.quote_color != blank %}data-quote-color="{{ block.settings.quote_color }}"{% endif %}
+            {{ block.shopify_attributes }}>
+            <div class="cust__featured-customer">
+              {% if block.settings.customer_image != blank %}
+                {{ block.settings.customer_image | image_url: width: 200 | image_tag: class: 'cust__featured-avatar', loading: 'lazy', widths: '60, 100, 160, 200', alt: avatar_alt }}
+              {% else %}
+                <span class="cust__featured-avatar cust__featured-avatar--fallback" aria-hidden="true">{{ block.settings.customer_name | slice: 0, 1 | upcase | default: '•' }}</span>
+              {% endif %}
+              <div class="cust__featured-customer-copy">
+                {% if block.settings.customer_name != blank %}<h3>{{ block.settings.customer_name | escape }}</h3>{% endif %}
+                {% if block.settings.customer_role != blank %}<p>{{ block.settings.customer_role | escape }}</p>{% endif %}
+                {% if block.settings.customer_location != blank %}<p>{{ block.settings.customer_location | escape }}</p>{% endif %}
+              </div>
+            </div>
+            <div class="cust__featured-scroll" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
+              {% if block.settings.show_rating %}
+                <div class="cust__featured-ratings" aria-label="Customer ratings">
+                  <div class="cust__featured-rating"><span>Quality of work</span><span class="cust__featured-stars" aria-hidden="true">{% for n in (1..5) %}{% if n <= block.settings.quality_rating %}★{% else %}☆{% endif %}{% endfor %}</span><span>{{ block.settings.quality_rating }}/5</span></div>
+                  <div class="cust__featured-rating"><span>Communication</span><span class="cust__featured-stars" aria-hidden="true">{% for n in (1..5) %}{% if n <= block.settings.communication_rating %}★{% else %}☆{% endif %}{% endfor %}</span><span>{{ block.settings.communication_rating }}/5</span></div>
+                  {% if block.settings.additional_rating_label != blank %}
+                    <div class="cust__featured-rating"><span>{{ block.settings.additional_rating_label | escape }}</span><span class="cust__featured-stars" aria-hidden="true">{% for n in (1..5) %}{% if n <= block.settings.additional_rating %}★{% else %}☆{% endif %}{% endfor %}</span><span>{{ block.settings.additional_rating }}/5</span></div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if block.settings.testimonial != blank %}
+                <div class="cust__featured-testimonial">{{ block.settings.testimonial }}</div>
+              {% endif %}
+            </div>
+            {% if block.settings.service_reviewed != blank %}
+              <p class="cust__featured-service"><strong>Service reviewed:</strong> {{ block.settings.service_reviewed | escape }}</p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+      {% if section.settings.show_navigation and section.blocks.size > 1 %}
+        <div class="cust__featured-navigation">
+          <button class="cust__featured-nav-button cust__featured-nav-button--previous" type="button" aria-label="Previous testimonial">‹</button>
+          <span class="cust__featured-counter"><span class="cust__featured-current">1</span> / {{ section.blocks.size }}</span>
+          <button class="cust__featured-nav-button cust__featured-nav-button--next" type="button" aria-label="Next testimonial">›</button>
+        </div>
+      {% endif %}
+      <span class="cust__featured-live" role="status" aria-live="polite" aria-atomic="true"></span>
+    </cust-featured-testimonials>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured testimonials",
+  "tag": "section",
+  "class": "section-featured-testimonials",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "header", "content": "Left card content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "Technology" },
+    { "type": "text", "id": "eyebrow_icon", "label": "Eyebrow icon", "default": "✦" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Building high-performance Shopify experiences with AI-driven innovation" },
+    { "type": "text", "id": "heading_highlight", "label": "Heading text to highlight", "default": "AI-driven innovation" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>We combine cutting-edge technology with deep Shopify expertise to deliver exceptional results for our clients.</p>" },
+    { "type": "color", "id": "heading_highlight_color", "label": "Heading highlight color", "default": "#3156a0" },
+    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#26313f" },
+    { "type": "color", "id": "description_color", "label": "Description color", "default": "#657184" },
+    { "type": "range", "id": "heading_size", "label": "Desktop heading size", "min": 22, "max": 64, "step": 1, "default": 38, "unit": "px" },
+    { "type": "range", "id": "heading_mobile_size", "label": "Mobile heading size", "min": 20, "max": 44, "step": 1, "default": 28, "unit": "px" },
+    { "type": "select", "id": "heading_weight", "label": "Heading weight", "options": [{ "value": "500", "label": "Medium" }, { "value": "600", "label": "Semi bold" }, { "value": "700", "label": "Bold" }, { "value": "800", "label": "Extra bold" }], "default": "700" },
+    { "type": "range", "id": "heading_line_height", "label": "Heading line height", "min": 100, "max": 160, "step": 5, "default": 115, "unit": "%" },
+    { "type": "range", "id": "description_size", "label": "Description size", "min": 11, "max": 24, "step": 1, "default": 15, "unit": "px" },
+    { "type": "range", "id": "description_line_height", "label": "Description line height", "min": 100, "max": 200, "step": 5, "default": 150, "unit": "%" },
+    { "type": "header", "content": "Statistics" },
+    { "type": "checkbox", "id": "show_stats", "label": "Show statistics", "default": true },
+    { "type": "text", "id": "stat_one_value", "label": "Statistic 1 value", "default": "150+" },
+    { "type": "text", "id": "stat_one_label", "label": "Statistic 1 label", "default": "Shopify Projects Delivered" },
+    { "type": "text", "id": "stat_two_value", "label": "Statistic 2 value", "default": "98%" },
+    { "type": "text", "id": "stat_two_label", "label": "Statistic 2 label", "default": "Client Satisfaction Rate" },
+    { "type": "color", "id": "stat_color", "label": "Statistic value color", "default": "#3156a0" },
+    { "type": "color", "id": "stat_label_color", "label": "Statistic label color", "default": "#768293" },
+    { "type": "range", "id": "stat_size", "label": "Statistic value size", "min": 20, "max": 56, "step": 1, "default": 34, "unit": "px" },
+    { "type": "range", "id": "stat_label_size", "label": "Statistic label size", "min": 10, "max": 20, "step": 1, "default": 12, "unit": "px" },
+    { "type": "range", "id": "stat_gap", "label": "Space between statistics", "min": 8, "max": 100, "step": 2, "default": 40, "unit": "px" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "section_background", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "left_background", "label": "Left card background", "default": "#f8faff" },
+    { "type": "color", "id": "right_background", "label": "Testimonial card background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border_color", "label": "Card border color", "default": "#e4e9f1" },
+    { "type": "color", "id": "main_text_color", "label": "Main text color", "default": "#26313f" },
+    { "type": "color", "id": "secondary_text_color", "label": "Secondary text color", "default": "#657184" },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#3156a0" },
+    { "type": "color", "id": "quote_color", "label": "Quote mark color", "default": "#9bb5e5" },
+    { "type": "color", "id": "star_color", "label": "Rating star color", "default": "#ed9a30" },
+    { "type": "color", "id": "eyebrow_background", "label": "Eyebrow background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow text color", "default": "#3156a0" },
+    { "type": "color", "id": "eyebrow_border", "label": "Eyebrow border", "default": "#dce5f2" },
+    { "type": "header", "content": "Card appearance" },
+    { "type": "range", "id": "card_radius", "label": "Card corner radius", "min": 0, "max": 40, "step": 1, "default": 18, "unit": "px" },
+    { "type": "range", "id": "card_border_width", "label": "Card border width", "min": 0, "max": 5, "step": 1, "default": 1, "unit": "px" },
+    { "type": "select", "id": "card_shadow", "label": "Card shadow", "options": [{ "value": "none", "label": "None" }, { "value": "subtle", "label": "Subtle" }, { "value": "medium", "label": "Medium" }], "default": "subtle" },
+    { "type": "range", "id": "card_padding", "label": "Card padding", "min": 12, "max": 60, "step": 2, "default": 36, "unit": "px" },
+    { "type": "range", "id": "card_min_height", "label": "Card minimum height", "min": 320, "max": 700, "step": 10, "default": 460, "unit": "px" },
+    { "type": "range", "id": "desktop_height", "label": "Desktop card height", "min": 360, "max": 800, "step": 10, "default": 500, "unit": "px" },
+    { "type": "range", "id": "mobile_height", "label": "Mobile testimonial card height", "min": 360, "max": 800, "step": 10, "default": 520, "unit": "px" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "max_width", "label": "Maximum section width", "min": 700, "max": 1600, "step": 20, "default": 1300, "unit": "px" },
+    { "type": "range", "id": "left_width", "label": "Left column proportion", "min": 30, "max": 70, "step": 1, "default": 48, "unit": "%" },
+    { "type": "range", "id": "right_width", "label": "Right column proportion", "min": 30, "max": 70, "step": 1, "default": 52, "unit": "%" },
+    { "type": "range", "id": "column_gap", "label": "Column gap", "min": 0, "max": 80, "step": 2, "default": 20, "unit": "px" },
+    { "type": "select", "id": "desktop_alignment", "label": "Desktop card alignment", "options": [{ "value": "start", "label": "Top" }, { "value": "center", "label": "Center" }, { "value": "end", "label": "Bottom" }], "default": "center" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "default": 48, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "default": 48, "unit": "px" },
+    { "type": "range", "id": "mobile_padding", "label": "Mobile side padding", "min": 0, "max": 40, "step": 2, "default": 16, "unit": "px" },
+    { "type": "header", "content": "Testimonial content" },
+    { "type": "range", "id": "avatar_size", "label": "Customer avatar size", "min": 28, "max": 80, "step": 2, "default": 48, "unit": "px" },
+    { "type": "range", "id": "fade_duration", "label": "Fade duration", "min": 0, "max": 800, "step": 50, "default": 400, "unit": "ms" },
+    { "type": "header", "content": "Navigation" },
+    { "type": "checkbox", "id": "show_navigation", "label": "Show navigation", "default": true },
+    { "type": "range", "id": "nav_button_size", "label": "Button size", "min": 28, "max": 64, "step": 2, "default": 40, "unit": "px" },
+    { "type": "color", "id": "nav_background", "label": "Button background", "default": "#ffffff" },
+    { "type": "color", "id": "nav_border", "label": "Button border", "default": "#ccd6e5" },
+    { "type": "color", "id": "nav_color", "label": "Button icon color", "default": "#3156a0" },
+    { "type": "color", "id": "nav_hover_background", "label": "Hover background", "default": "#3156a0" },
+    { "type": "color", "id": "nav_hover_color", "label": "Hover icon color", "default": "#ffffff" },
+    { "type": "range", "id": "nav_bottom_spacing", "label": "Bottom spacing", "min": 0, "max": 60, "step": 2, "default": 4, "unit": "px" },
+    { "type": "header", "content": "Autoplay" },
+    { "type": "checkbox", "id": "autoplay", "label": "Enable autoplay", "default": true },
+    { "type": "range", "id": "autoplay_interval", "label": "Autoplay interval", "min": 3, "max": 10, "step": 1, "default": 5, "unit": "s" },
+    { "type": "checkbox", "id": "pause_on_hover", "label": "Pause on hover", "default": true },
+    { "type": "checkbox", "id": "pause_on_focus", "label": "Pause on focus", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "image_picker", "id": "customer_image", "label": "Customer image" },
+        { "type": "text", "id": "customer_name", "label": "Customer name", "default": "Customer name" },
+        { "type": "text", "id": "customer_role", "label": "Role or company", "default": "Company" },
+        { "type": "text", "id": "customer_location", "label": "Location" },
+        { "type": "richtext", "id": "testimonial", "label": "Testimonial", "default": "<p>Share a customer testimonial here.</p>" },
+        { "type": "text", "id": "service_reviewed", "label": "Service reviewed", "default": "Store build or redesign" },
+        { "type": "checkbox", "id": "show_rating", "label": "Show ratings", "default": true },
+        { "type": "range", "id": "quality_rating", "label": "Quality rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "range", "id": "communication_rating", "label": "Communication rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "text", "id": "additional_rating_label", "label": "Additional rating label" },
+        { "type": "range", "id": "additional_rating", "label": "Additional rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "color", "id": "quote_color", "label": "Custom quote mark color" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "customer_name": "Sarah Jenkins", "customer_role": "CTO, TechFlow Solutions", "testimonial": "<p>I had a wonderful experience working with RootSyntax. They were very professional from the beginning. The communication was great and immediate. Miss Aubrey assisted me throughout the way and accommodated any request of modification I sent to her. They are amazing and finished my web build and design on time just like they promised. I recommend them 100%.</p>", "service_reviewed": "Store build or redesign" } },
+        { "type": "testimonial", "settings": { "customer_name": "Alex Morgan", "customer_role": "Founder, Northstar Goods", "testimonial": "<p>The team understood our goals quickly and gave us a store that feels clear, fast, and easy for our customers to use. Communication stayed consistent throughout the project.</p>", "service_reviewed": "Shopify store redesign" } },
+        { "type": "testimonial", "settings": { "customer_name": "Priya Shah", "customer_role": "Operations Director, Field & Form", "testimonial": "<p>RootSyntax helped us plan a careful migration and launch without disrupting day-to-day operations. The result is a more reliable storefront and a much simpler workflow for our team.</p>", "service_reviewed": "Migration to Shopify" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

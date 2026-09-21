@@ -1,475 +1,105 @@
-<div
-  id="swiper-marquee-{{ section.id }}"
-  class="swiper-marquee"
-  style="
-    --marquee-bg: {{ section.settings.background_color }};
-    --marquee-color: {{ section.settings.text_color }};
-    --marquee-gap: {{ section.settings.gap }}px;
-    --marquee-font-size-desktop: {{ section.settings.font_size_desktop }}px;
-    --marquee-font-size-mobile: {{ section.settings.font_size_mobile }}px;
-    --marquee-padding-top: {{ section.settings.padding_top }}px;
-    --marquee-padding-bottom: {{ section.settings.padding_bottom }}px;
-  "
->
-  <div class="page-width-normal">
-    <div class="swiper swiper-marquee__slider">
-      <div class="swiper-wrapper">
-        {% for block in section.blocks %}
-          <div
-            class="swiper-slide swiper-marquee__slide"
-            {{ block.shopify_attributes }}
-          >
-            {% if block.settings.link != blank %}
-              <a href="{{ block.settings.link }}" class="swiper-marquee__item" target="_blank">
-            {% else %}
-              <div class="swiper-marquee__item">
-            {% endif %}
+{{ 'custom-marquee.css' | asset_url | stylesheet_tag }}
 
-            {% if block.settings.icon != blank %}
-              <div class="swiper-marquee__icon">
-                {{
-                  block.settings.icon
-                  | image_url: width: 200
-                  | image_tag: loading: 'lazy', widths: '30, 50, 70, 200'
-                }}
-              </div>
-            {% endif %}
+{% liquid
+  assign visible_count = 0
+  for block in section.blocks
+    unless block.settings.icon == blank and block.settings.text == blank
+      assign visible_count = visible_count | plus: 1
+    endunless
+  endfor
+%}
 
-            {% if block.settings.text != blank %}
-              <span class="swiper-marquee__text">
-                {{ block.settings.text }}
-              </span>
-            {% endif %}
-
-            {% if block.settings.link != blank %}
-              </a>
-            {% else %}
-              </div>
-            {% endif %}
-          </div>
-        {% endfor %}
-        {% for block in section.blocks %}
-          <div
-            class="swiper-slide swiper-marquee__slide"
-            {{ block.shopify_attributes }}
-          >
-            {% if block.settings.link != blank %}
-              <a href="{{ block.settings.link }}" class="swiper-marquee__item">
-            {% else %}
-              <div class="swiper-marquee__item">
-            {% endif %}
-
-            {% if block.settings.icon != blank %}
-              <div class="swiper-marquee__icon">
-                {{
-                  block.settings.icon
-                  | image_url: width: 200
-                  | image_tag: loading: 'lazy', widths: '30, 50, 70, 200'
-                }}
-              </div>
-            {% endif %}
-
-            {% if block.settings.text != blank %}
-              <span class="swiper-marquee__text">
-                {{ block.settings.text }}
-              </span>
-            {% endif %}
-
-            {% if block.settings.link != blank %}
-              </a>
-            {% else %}
-              </div>
-            {% endif %}
+<div id="client-marquee-{{ section.id }}" class="client-marquee" data-pause-on-hover="{{ section.settings.pause_on_hover }}" style="
+  --client-gap: {{ section.settings.gap }}px;
+  --client-width: {{ section.settings.image_width }}px;
+  --client-height: {{ section.settings.image_height }}px;
+  --client-padding: {{ section.settings.card_padding }}px;
+  --client-radius: {{ section.settings.card_radius }}px;
+  --client-duration: {{ section.settings.speed }}s;
+  --client-heading-size: {{ section.settings.heading_size }}px;
+  --client-card-background: {{ section.settings.card_background }};
+  --client-font-size-desktop: {{ section.settings.font_size_desktop }}px;
+  --client-font-size-mobile: {{ section.settings.font_size_mobile }}px;
+  --client-font-weight: {{ section.settings.font_weight }};
+  --client-text-transform: {{ section.settings.text_transform }};
+  --client-letter-spacing: {{ section.settings.letter_spacing }}px;
+  --client-direction: {% if section.settings.direction == 'right' %}reverse{% else %}normal{% endif %};
+  --client-shadow: {% if section.settings.show_shadow %}0 2px 10px rgba(0, 0, 0, .16){% else %}none{% endif %};
+  background: {{ section.settings.background_color }};
+  color: {{ section.settings.text_color }};
+  padding-block: {{ section.settings.padding_top }}px {{ section.settings.padding_bottom }}px;
+">
+  {% if section.settings.heading != blank %}
+    <h2 class="client-marquee__heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+  {% if visible_count > 0 %}
+    <div class="client-marquee__viewport">
+      <div class="client-marquee__track">
+        {% for copy in (1..2) %}
+          <div class="client-marquee__group"{% if copy == 2 %} aria-hidden="true" inert{% endif %}>
+            {% for block in section.blocks %}
+              {% unless block.settings.icon == blank and block.settings.text == blank %}
+                {% if block.settings.link != blank %}
+                  <a class="client-marquee__card" href="{{ block.settings.link }}" {% if copy == 1 %}{{ block.shopify_attributes }}{% endif %}>
+                {% else %}
+                  <div class="client-marquee__card" {% if copy == 1 %}{{ block.shopify_attributes }}{% endif %}>
+                {% endif %}
+                  {% if block.settings.icon != blank %}
+                    {{ block.settings.icon | image_url: width: 600 | image_tag: class: 'client-marquee__image', loading: 'lazy', widths: '100, 200, 300, 400, 600', alt: block.settings.icon.alt }}
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <span class="client-marquee__text">{{ block.settings.text | escape }}</span>
+                  {% endif %}
+                {% if block.settings.link != blank %}</a>{% else %}</div>{% endif %}
+              {% endunless %}
+            {% endfor %}
           </div>
         {% endfor %}
       </div>
     </div>
-  </div>
+  {% endif %}
 </div>
 
-<style>
-  #swiper-marquee-{{ section.id }} {
-    width: 100%;
-    overflow: hidden;
-    background: var(--marquee-bg);
-    color: var(--marquee-color);
-    padding-top: var(--marquee-padding-top);
-    padding-bottom: var(--marquee-padding-bottom);
-  }
 
-  #swiper-marquee-{{ section.id }} .swiper-marquee__slider {
-    width: 100%;
-    overflow: hidden;
-  }
-
-  #swiper-marquee-{{ section.id }} .swiper-wrapper {
-    align-items: center;
-
-    /* Important for smooth Swiper marquee */
-    transition-timing-function: linear !important;
-  }
-
-  #swiper-marquee-{{ section.id }} .swiper-marquee__slide {
-    width: auto !important;
-    flex-shrink: 0;
-  }
-
-  #swiper-marquee-{{ section.id }} .swiper-marquee__item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    padding-inline: var(--marquee-gap);
-
-    color: inherit;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  #swiper-marquee-{{ section.id }} .swiper-marquee__text {
-    font-size: var(--marquee-font-size-desktop);
-    line-height: 1.2;
-    font-weight: {{ section.settings.font_weight }};
-    text-transform: {{ section.settings.text_transform }};
-    letter-spacing: {{ section.settings.letter_spacing }}px;
-  }
-
-  #swiper-marquee-{{ section.id }} .swiper-marquee__icon {
-    max-width: {{ section.settings.icon_size }}px;
-    height:auto;
-    flex-shrink: 0;
-    border: 2px solid  #021227;
-    border-radius:5px;
-    padding:10px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  }
-
-  #swiper-marquee-{{ section.id }} .swiper-marquee__icon img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
-  }
-
-  @media screen and (max-width: 749px) {
-    #swiper-marquee-{{ section.id }} .swiper-marquee__text {
-      font-size: var(--marquee-font-size-mobile);
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    initMarquee{{ section.id | replace: '-', '_' }}();
-  });
-
-  document.addEventListener('shopify:section:load', function (event) {
-    if (event.detail.sectionId === '{{ section.id }}') {
-      initMarquee{{ section.id | replace: '-', '_' }}();
-    }
-  });
-
-  function initMarquee{{ section.id | replace: '-', '_' }}() {
-    const section = document.querySelector(
-      '#swiper-marquee-{{ section.id }}'
-    );
-
-    if (!section) return;
-
-    const slider = section.querySelector('.swiper-marquee__slider');
-
-    if (!slider) return;
-
-    if (typeof Swiper === 'undefined') {
-      console.warn('Swiper is not loaded.');
-      return;
-    }
-
-    if (slider.swiper) {
-      slider.swiper.destroy(true, true);
-    }
-
-    new Swiper(slider, {
-      slidesPerView: 'auto',
-      spaceBetween: 0,
-      loop: true,
-      allowTouchMove: {{ section.settings.allow_drag }},
-      freeMode: true,
-
-      speed: {{ section.settings.speed }},
-
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: {{ section.settings.pause_on_hover }},
-        reverseDirection: {% if section.settings.direction == 'right' %}true{% else %}false{% endif %}
-      },
-
-      observer: true,
-      observeParents: true
-    });
-  }
-</script>
 
 {% schema %}
 {
-  "name": "Swiper Marquee",
+  "name": "Client logo marquee",
   "tag": "section",
-  "class": "section-swiper-marquee",
+  "class": "section-client-marquee",
   "settings": [
-    {
-      "type": "header",
-      "content": "Marquee settings"
-    },
-    {
-      "type": "range",
-      "id": "speed",
-      "label": "Marquee speed",
-      "min": 1000,
-      "max": 9500,
-      "step": 500,
-      "default": 6000,
-      "info": "Higher value = slower movement"
-    },
-    {
-      "type": "select",
-      "id": "direction",
-      "label": "Direction",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "checkbox",
-      "id": "pause_on_hover",
-      "label": "Pause on hover",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "allow_drag",
-      "label": "Allow dragging",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "gap",
-      "label": "Space between items",
-      "min": 10,
-      "max": 100,
-      "step": 2,
-      "default": 40,
-      "unit": "px"
-    },
-    {
-      "type": "header",
-      "content": "Typography"
-    },
-    {
-      "type": "range",
-      "id": "font_size_desktop",
-      "label": "Desktop font size",
-      "min": 10,
-      "max": 80,
-      "step": 1,
-      "default": 20,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "font_size_mobile",
-      "label": "Mobile font size",
-      "min": 10,
-      "max": 40,
-      "step": 1,
-      "default": 16,
-      "unit": "px"
-    },
-    {
-      "type": "select",
-      "id": "font_weight",
-      "label": "Font weight",
-      "options": [
-        {
-          "value": "400",
-          "label": "Regular"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi Bold"
-        },
-        {
-          "value": "700",
-          "label": "Bold"
-        }
-      ],
-      "default": "600"
-    },
-    {
-      "type": "select",
-      "id": "text_transform",
-      "label": "Text transform",
-      "options": [
-        {
-          "value": "none",
-          "label": "Normal"
-        },
-        {
-          "value": "uppercase",
-          "label": "Uppercase"
-        },
-        {
-          "value": "lowercase",
-          "label": "Lowercase"
-        },
-        {
-          "value": "capitalize",
-          "label": "Capitalize"
-        }
-      ],
-      "default": "none"
-    },
-    {
-      "type": "range",
-      "id": "letter_spacing",
-      "label": "Letter spacing",
-      "min": 0,
-      "max": 5,
-      "step": 0.1,
-      "default": 0,
-      "unit": "px"
-    },
-    {
-      "type": "header",
-      "content": "Colors"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "header",
-      "content": "Spacing"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding top",
-      "min": 0,
-      "max": 60,
-      "step": 2,
-      "default": 16,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding bottom",
-      "min": 0,
-      "max": 60,
-      "step": 2,
-      "default": 16,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "icon_size",
-      "label": "Icon size",
-      "min": 10,
-      "max": 200,
-      "step": 2,
-      "default": 24,
-      "unit": "px"
-    }
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our Clients" },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 16, "max": 48, "step": 1, "default": 28, "unit": "px" },
+    { "type": "range", "id": "speed", "label": "Time for one loop", "min": 5, "max": 500, "step": 5, "default": 30, "unit": "s", "info": "Lower values scroll faster" },
+    { "type": "select", "id": "direction", "label": "Direction", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "left" },
+    { "type": "checkbox", "id": "pause_on_hover", "label": "Pause on hover", "default": true },
+    { "type": "range", "id": "gap", "label": "Space between cards", "min": 0, "max": 100, "step": 2, "default": 12, "unit": "px" },
+    { "type": "header", "content": "Images and cards" },
+    { "type": "range", "id": "image_width", "label": "Image width", "min": 40, "max": 300, "step": 5, "default": 100, "unit": "px" },
+    { "type": "range", "id": "image_height", "label": "Image height", "min": 30, "max": 200, "step": 5, "default": 50, "unit": "px" },
+    { "type": "range", "id": "card_padding", "label": "Card padding", "min": 0, "max": 40, "step": 1, "default": 8, "unit": "px" },
+    { "type": "range", "id": "card_radius", "label": "Card corner radius", "min": 0, "max": 30, "step": 1, "default": 4, "unit": "px" },
+    { "type": "checkbox", "id": "show_shadow", "label": "Show card shadow", "default": true },
+    { "type": "color", "id": "card_background", "label": "Card background", "default": "#ffffff" },
+    { "type": "header", "content": "Text" },
+    { "type": "range", "id": "font_size_desktop", "label": "Desktop text size", "min": 10, "max": 80, "step": 1, "default": 20, "unit": "px" },
+    { "type": "range", "id": "font_size_mobile", "label": "Mobile text size", "min": 10, "max": 40, "step": 1, "default": 16, "unit": "px" },
+    { "type": "select", "id": "font_weight", "label": "Font weight", "options": [{ "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" }, { "value": "600", "label": "Semi bold" }, { "value": "700", "label": "Bold" }], "default": "600" },
+    { "type": "select", "id": "text_transform", "label": "Text transform", "options": [{ "value": "none", "label": "Normal" }, { "value": "uppercase", "label": "Uppercase" }, { "value": "lowercase", "label": "Lowercase" }, { "value": "capitalize", "label": "Capitalize" }], "default": "none" },
+    { "type": "range", "id": "letter_spacing", "label": "Letter spacing", "min": 0, "max": 5, "step": 0.1, "default": 0, "unit": "px" },
+    { "type": "header", "content": "Section" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#021227" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 2, "default": 40, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 2, "default": 40, "unit": "px" }
   ],
   "blocks": [
-    {
-      "type": "marquee_item",
-      "name": "Marquee item",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Free shipping on orders over $100"
-        },
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        }
-      ]
-    }
+    { "type": "marquee_item", "name": "Logo or text", "settings": [
+      { "type": "image_picker", "id": "icon", "label": "Image" },
+      { "type": "text", "id": "text", "label": "Text" },
+      { "type": "url", "id": "link", "label": "Link" }
+    ] }
   ],
-  "presets": [
-    {
-      "name": "Swiper Marquee",
-      "category": "Dhanesh Section",
-      "blocks": [
-        {
-          "type": "marquee_item",
-          "settings": {
-            "text": "FREE SHIPPING"
-          }
-        },
-        {
-          "type": "marquee_item",
-          "settings": {
-            "text": "NEW ARRIVALS"
-          }
-        },
-        {
-          "type": "marquee_item",
-          "settings": {
-            "text": "SHOP THE LATEST"
-          }
-        },
-        {
-          "type": "marquee_item",
-          "settings": {
-            "text": "PREMIUM QUALITY"
-          }
-        },
-        {
-          "type": "marquee_item",
-          "settings": {
-            "text": "FREE SHIPPING"
-          }
-        },
-        {
-          "type": "marquee_item",
-          "settings": {
-            "text": "NEW ARRIVALS"
-          }
-        }
-      ]
-    }
-  ]
+  "presets": [{ "name": "Client logo marquee", "blocks": [{ "type": "marquee_item" }, { "type": "marquee_item" }, { "type": "marquee_item" }] }]
 }
 {% endschema %}

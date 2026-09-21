@@ -1,0 +1,166 @@
+{{ 'custom-insights.css' | asset_url | stylesheet_tag }}
+
+<section id="cust__insights-{{ section.id }}" class="cust__insights" style="
+  --cust-bg: {{ section.settings.background }}; --cust-gradient: {{ section.settings.gradient_color }}; --cust-gradient-opacity: {{ section.settings.gradient_opacity }}%; --cust-gradient-direction: {{ section.settings.gradient_direction }}deg;
+  --cust-width: {{ section.settings.max_width }}px; --cust-cols: {{ section.settings.desktop_columns }}; --cust-tablet-cols: {{ section.settings.tablet_columns }}; --cust-mobile-cols: {{ section.settings.mobile_columns }}; --cust-gap: {{ section.settings.card_gap }}px; --cust-row-gap: {{ section.settings.row_gap }}px;
+  --cust-top: {{ section.settings.padding_top }}px; --cust-bottom: {{ section.settings.padding_bottom }}px; --cust-mobile-top: {{ section.settings.mobile_padding_top }}px; --cust-mobile-bottom: {{ section.settings.mobile_padding_bottom }}px; --cust-side: {{ section.settings.padding_horizontal }}px;
+  --cust-heading-color: {{ section.settings.heading_color }}; --cust-heading-size: {{ section.settings.heading_size }}px; --cust-heading-tablet-size: {{ section.settings.heading_tablet_size }}px; --cust-heading-mobile-size: {{ section.settings.heading_mobile_size }}px; --cust-heading-weight: {{ section.settings.heading_weight }}; --cust-heading-line: {{ section.settings.heading_line_height | divided_by: 100.0 }}; --cust-heading-spacing: {{ section.settings.heading_letter_spacing }}px; --cust-heading-width: {{ section.settings.heading_max_width }}px; --cust-heading-align: {{ section.settings.heading_alignment }}; --cust-heading-bottom: {{ section.settings.heading_bottom_spacing }}px;
+  --cust-card-bg: {{ section.settings.card_background }}; --cust-card-border: {{ section.settings.card_border }}; --cust-card-radius: {{ section.settings.card_radius }}px; --cust-image-ratio: {{ section.settings.image_ratio }};
+  --cust-badge-bg: {{ section.settings.badge_background }}; --cust-badge-color: {{ section.settings.badge_color }}; --cust-badge-border: {{ section.settings.badge_border }}; --cust-badge-radius: {{ section.settings.badge_radius }}px; --cust-badge-size: {{ section.settings.badge_size }}px; --cust-badge-padding: {{ section.settings.badge_padding }}px;
+  --cust-date-color: {{ section.settings.date_color }}; --cust-date-size: {{ section.settings.date_size }}px; --cust-date-weight: {{ section.settings.date_weight }}; --cust-date-spacing: {{ section.settings.date_spacing }}px;
+  --cust-title-color: {{ section.settings.title_color }}; --cust-title-size: {{ section.settings.title_size }}px; --cust-title-mobile-size: {{ section.settings.title_mobile_size }}px; --cust-title-weight: {{ section.settings.title_weight }}; --cust-title-line: {{ section.settings.title_line_height | divided_by: 100.0 }};
+  --cust-excerpt-color: {{ section.settings.excerpt_color }}; --cust-excerpt-size: {{ section.settings.excerpt_size }}px; --cust-excerpt-line: {{ section.settings.excerpt_line_height | divided_by: 100.0 }}; --cust-excerpt-lines: {{ section.settings.excerpt_lines }};
+  --cust-link-color: {{ section.settings.link_color }}; --cust-link-hover: {{ section.settings.link_hover_color }}; --cust-link-size: {{ section.settings.link_size }}px; --cust-link-weight: {{ section.settings.link_weight }}; --cust-arrow-gap: {{ section.settings.arrow_gap }}px;
+"{% if section.settings.enable_gradient %} data-gradient{% endif %}{% if section.settings.enable_hover %} data-hover{% endif %}>
+  <div class="cust__insights-inner">
+    <div class="cust__insights-header" data-align="{{ section.settings.heading_alignment }}">
+      {% if section.settings.eyebrow != blank %}<p class="cust__insights-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h2 class="cust__insights-heading">{{ section.settings.heading | escape }}</h2>{% endif %}
+      {% if section.settings.description != blank %}<div class="cust__insights-description">{{ section.settings.description }}</div>{% endif %}
+    </div>
+    <div class="cust__insights-grid">
+      {% if section.settings.article_source == 'blog' and section.settings.blog != blank %}
+        {% for article in section.settings.blog.articles limit: section.settings.article_count %}
+          {% assign article_category = article.tags.first | default: section.settings.default_category %}
+          <article class="cust__insights-card">
+            <div class="cust__insights-media">
+              {% if article.image != blank %}
+                {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw', alt: article.image.alt | default: article.title }}
+              {% else %}{{ 'image' | placeholder_svg_tag: 'cust__insights-placeholder' }}{% endif %}
+              {% if article_category != blank %}<span class="cust__insights-category cust__insights-category--{{ section.settings.badge_position }}">{{ article_category | escape }}</span>{% endif %}
+            </div>
+            <div class="cust__insights-body">
+              {% if article.published_at != blank %}<time class="cust__insights-date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>{% endif %}
+              <h3 class="cust__insights-title">{{ article.title | escape }}</h3>
+              {% assign article_summary = article.excerpt | default: article.content | strip_html %}
+              {% if article_summary != blank %}<p class="cust__insights-excerpt">{{ article_summary | strip_html | escape }}</p>{% endif %}
+              <a class="cust__insights-link" href="{{ article.url }}"><span>{{ section.settings.blog_read_more | escape }}</span><span aria-hidden="true">→</span><span class="cust__insights-sr">: {{ article.title | escape }}</span></a>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        {% for block in section.blocks %}
+          {% if block.type == 'article' %}
+            <article class="cust__insights-card" {{ block.shopify_attributes }}>
+              <div class="cust__insights-media">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw', alt: block.settings.image.alt | default: block.settings.title }}
+                {% else %}{{ 'image' | placeholder_svg_tag: 'cust__insights-placeholder' }}{% endif %}
+                {% if block.settings.category != blank %}<span class="cust__insights-category cust__insights-category--{{ section.settings.badge_position }}">{{ block.settings.category | escape }}</span>{% endif %}
+              </div>
+              <div class="cust__insights-body">
+                {% if block.settings.date != blank %}<p class="cust__insights-date">{{ block.settings.date | escape }}</p>{% endif %}
+                {% if block.settings.title != blank %}<h3 class="cust__insights-title">{{ block.settings.title | escape }}</h3>{% endif %}
+                {% if block.settings.excerpt != blank %}<p class="cust__insights-excerpt">{{ block.settings.excerpt | escape | newline_to_br }}</p>{% endif %}
+                {% if block.settings.link != blank %}
+                  <a class="cust__insights-link{% if block.settings.card_clickable %} cust__insights-link--stretched{% endif %}" href="{{ block.settings.link }}"{% if block.settings.new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                    <span>{{ block.settings.read_more | escape }}</span><span aria-hidden="true">→</span><span class="cust__insights-sr">: {{ block.settings.title | escape }}</span>
+                  </a>
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom insights",
+  "tag": "section",
+  "class": "section-custom-insights",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "header", "content": "Content and source" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Insights for Ecommerce Growth" },
+    { "type": "richtext", "id": "description", "label": "Description" },
+    { "type": "select", "id": "article_source", "label": "Article source", "options": [{ "value": "manual", "label": "Manual blocks" }, { "value": "blog", "label": "Shopify blog" }], "default": "manual" },
+    { "type": "blog", "id": "blog", "label": "Blog" },
+    { "type": "range", "id": "article_count", "label": "Blog articles", "min": 1, "max": 12, "step": 1, "default": 3 },
+    { "type": "text", "id": "default_category", "label": "Fallback category", "default": "Insights" },
+    { "type": "text", "id": "blog_read_more", "label": "Blog link label", "default": "Read More" },
+    { "type": "header", "content": "Grid" },
+    { "type": "range", "id": "max_width", "label": "Maximum width", "min": 700, "max": 1600, "step": 20, "default": 1200, "unit": "px" },
+    { "type": "select", "id": "desktop_columns", "label": "Desktop columns", "options": [{ "value": "2", "label": "2" }, { "value": "3", "label": "3" }, { "value": "4", "label": "4" }], "default": "3" },
+    { "type": "select", "id": "tablet_columns", "label": "Tablet columns", "options": [{ "value": "1", "label": "1" }, { "value": "2", "label": "2" }], "default": "2" },
+    { "type": "select", "id": "mobile_columns", "label": "Mobile columns", "options": [{ "value": "1", "label": "1" }, { "value": "2", "label": "2" }], "default": "1" },
+    { "type": "range", "id": "card_gap", "label": "Card gap", "min": 0, "max": 64, "step": 2, "default": 24, "unit": "px" },
+    { "type": "range", "id": "row_gap", "label": "Row gap", "min": 0, "max": 64, "step": 2, "default": 24, "unit": "px" },
+    { "type": "header", "content": "Background and spacing" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#203887" },
+    { "type": "checkbox", "id": "enable_gradient", "label": "Enable gradient", "default": false },
+    { "type": "color", "id": "gradient_color", "label": "Gradient color", "default": "#142968" },
+    { "type": "range", "id": "gradient_opacity", "label": "Gradient opacity", "min": 0, "max": 100, "step": 5, "default": 60, "unit": "%" },
+    { "type": "range", "id": "gradient_direction", "label": "Gradient direction", "min": 0, "max": 360, "step": 15, "default": 180, "unit": "°" },
+    { "type": "range", "id": "padding_top", "label": "Desktop top padding", "min": 0, "max": 160, "step": 4, "default": 64, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Desktop bottom padding", "min": 0, "max": 160, "step": 4, "default": 64, "unit": "px" },
+    { "type": "range", "id": "mobile_padding_top", "label": "Mobile top padding", "min": 0, "max": 120, "step": 4, "default": 44, "unit": "px" },
+    { "type": "range", "id": "mobile_padding_bottom", "label": "Mobile bottom padding", "min": 0, "max": 120, "step": 4, "default": 44, "unit": "px" },
+    { "type": "range", "id": "padding_horizontal", "label": "Horizontal padding", "min": 12, "max": 80, "step": 2, "default": 24, "unit": "px" },
+    { "type": "header", "content": "Heading" },
+    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#ffffff" },
+    { "type": "range", "id": "heading_size", "label": "Desktop size", "min": 24, "max": 72, "step": 1, "default": 40, "unit": "px" },
+    { "type": "range", "id": "heading_tablet_size", "label": "Tablet size", "min": 22, "max": 64, "step": 1, "default": 34, "unit": "px" },
+    { "type": "range", "id": "heading_mobile_size", "label": "Mobile size", "min": 20, "max": 52, "step": 1, "default": 28, "unit": "px" },
+    { "type": "select", "id": "heading_weight", "label": "Weight", "options": [{ "value": "500", "label": "Medium" }, { "value": "600", "label": "Semibold" }, { "value": "700", "label": "Bold" }, { "value": "800", "label": "Extra bold" }], "default": "700" },
+    { "type": "range", "id": "heading_line_height", "label": "Line height", "min": 100, "max": 160, "step": 5, "default": 110, "unit": "%" },
+    { "type": "range", "id": "heading_letter_spacing", "label": "Letter spacing", "min": -3, "max": 3, "step": 1, "default": 0, "unit": "px" },
+    { "type": "range", "id": "heading_max_width", "label": "Maximum heading width", "min": 280, "max": 900, "step": 20, "default": 600, "unit": "px" },
+    { "type": "select", "id": "heading_alignment", "label": "Alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "center" },
+    { "type": "range", "id": "heading_bottom_spacing", "label": "Spacing below heading", "min": 0, "max": 80, "step": 2, "default": 32, "unit": "px" },
+    { "type": "header", "content": "Cards and images" },
+    { "type": "color", "id": "card_background", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Card border", "default": "#e1e6ef" },
+    { "type": "range", "id": "card_radius", "label": "Card radius", "min": 0, "max": 32, "step": 1, "default": 10, "unit": "px" },
+    { "type": "select", "id": "image_ratio", "label": "Image ratio", "options": [{ "value": "16 / 9", "label": "Wide" }, { "value": "3 / 2", "label": "Landscape" }, { "value": "1 / 1", "label": "Square" }], "default": "16 / 9" },
+    { "type": "checkbox", "id": "enable_hover", "label": "Enable card hover", "default": true },
+    { "type": "header", "content": "Category badge" },
+    { "type": "color", "id": "badge_background", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "badge_color", "label": "Text", "default": "#e75b25" },
+    { "type": "color", "id": "badge_border", "label": "Border", "default": "#f0d9cd" },
+    { "type": "range", "id": "badge_radius", "label": "Radius", "min": 0, "max": 30, "step": 1, "default": 20, "unit": "px" },
+    { "type": "range", "id": "badge_size", "label": "Font size", "min": 10, "max": 18, "step": 1, "default": 11, "unit": "px" },
+    { "type": "range", "id": "badge_padding", "label": "Padding", "min": 2, "max": 14, "step": 1, "default": 5, "unit": "px" },
+    { "type": "select", "id": "badge_position", "label": "Position", "options": [{ "value": "left", "label": "Top left" }, { "value": "right", "label": "Top right" }], "default": "left" },
+    { "type": "header", "content": "Date and title" },
+    { "type": "color", "id": "date_color", "label": "Date color", "default": "#8490a1" },
+    { "type": "range", "id": "date_size", "label": "Date size", "min": 10, "max": 18, "step": 1, "default": 12, "unit": "px" },
+    { "type": "select", "id": "date_weight", "label": "Date weight", "options": [{ "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" }, { "value": "600", "label": "Semibold" }], "default": "400" },
+    { "type": "range", "id": "date_spacing", "label": "Space after date", "min": 0, "max": 32, "step": 1, "default": 8, "unit": "px" },
+    { "type": "color", "id": "title_color", "label": "Title color", "default": "#222e42" },
+    { "type": "range", "id": "title_size", "label": "Title size", "min": 14, "max": 32, "step": 1, "default": 20, "unit": "px" },
+    { "type": "range", "id": "title_mobile_size", "label": "Mobile title size", "min": 14, "max": 28, "step": 1, "default": 18, "unit": "px" },
+    { "type": "select", "id": "title_weight", "label": "Title weight", "options": [{ "value": "500", "label": "Medium" }, { "value": "600", "label": "Semibold" }, { "value": "700", "label": "Bold" }, { "value": "800", "label": "Extra bold" }], "default": "700" },
+    { "type": "range", "id": "title_line_height", "label": "Title line height", "min": 100, "max": 180, "step": 5, "default": 130, "unit": "%" },
+    { "type": "header", "content": "Excerpt and link" },
+    { "type": "color", "id": "excerpt_color", "label": "Excerpt color", "default": "#667184" },
+    { "type": "range", "id": "excerpt_size", "label": "Excerpt size", "min": 11, "max": 20, "step": 1, "default": 14, "unit": "px" },
+    { "type": "range", "id": "excerpt_line_height", "label": "Excerpt line height", "min": 110, "max": 200, "step": 5, "default": 150, "unit": "%" },
+    { "type": "range", "id": "excerpt_lines", "label": "Maximum visible lines", "min": 2, "max": 8, "step": 1, "default": 3 },
+    { "type": "color", "id": "link_color", "label": "Link color", "default": "#eb5d24" },
+    { "type": "color", "id": "link_hover_color", "label": "Link hover color", "default": "#b94719" },
+    { "type": "range", "id": "link_size", "label": "Link size", "min": 11, "max": 20, "step": 1, "default": 13, "unit": "px" },
+    { "type": "select", "id": "link_weight", "label": "Link weight", "options": [{ "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" }, { "value": "600", "label": "Semibold" }, { "value": "700", "label": "Bold" }], "default": "600" },
+    { "type": "range", "id": "arrow_gap", "label": "Arrow spacing", "min": 2, "max": 20, "step": 1, "default": 6, "unit": "px" }
+  ],
+  "blocks": [{ "type": "article", "name": "Article", "limit": 12, "settings": [
+    { "type": "image_picker", "id": "image", "label": "Article image" },
+    { "type": "text", "id": "category", "label": "Category", "default": "AI TRENDS" },
+    { "type": "text", "id": "date", "label": "Publication date", "default": "May 12, 2025" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Why AI Is Testing Your Shopify Store the Smartest Way" },
+    { "type": "textarea", "id": "excerpt", "label": "Excerpt", "default": "As AI systems become more integrated into daily life, ensuring they operate ethically is paramount." },
+    { "type": "url", "id": "link", "label": "Article link" },
+    { "type": "text", "id": "read_more", "label": "Read more label", "default": "Read More" },
+    { "type": "checkbox", "id": "new_tab", "label": "Open in new tab", "default": false },
+    { "type": "checkbox", "id": "card_clickable", "label": "Make entire card clickable", "default": false }
+  ] }],
+  "presets": [{ "name": "Custom insights", "blocks": [
+    { "type": "article", "settings": { "link": "#" } },
+    { "type": "article", "settings": { "category": "MARKETING & GROWTH", "date": "May 08, 2025", "title": "Why Your Shopify Store Needs a Branded Email Address", "excerpt": "Breaking down complex ML concepts into understandable principles for business leaders.", "link": "#" } },
+    { "type": "article", "settings": { "category": "TIPS & TRICKS", "date": "May 01, 2025", "title": "Why Shopify Payments Is the Smartest Choice for Ecommerce Brands", "excerpt": "Discover the tangible ways artificial intelligence is reshaping operations across industries.", "link": "#" } }
+  ] }]
+}
+{% endschema %}

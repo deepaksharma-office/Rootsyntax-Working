@@ -35,7 +35,7 @@
   {% if visible_count > 0 %}
     <div class="client-marquee__viewport">
       <div class="client-marquee__track">
-        {% for copy in (1..2) %}
+        {% for copy in (1..6) %}
           <div class="client-marquee__group"{% if copy == 2 %} aria-hidden="true" inert{% endif %}>
             {% for block in section.blocks %}
               {% unless block.settings.icon == blank and block.settings.text == blank %}

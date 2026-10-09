@@ -150,7 +150,6 @@
         "pause_on_hover": true,
         "gap": 12,
         "image_width": 150,
-        "image_height": 50,
         "card_padding": 0,
         "card_radius": 4,
         "show_shadow": false,
@@ -180,18 +179,10 @@
             "radius": 20
           }
         },
-        "custom_richtext_02": {
-          "type": "title",
-          "settings": {
-            "text": "Your title",
-            "font_size": 40,
-            "text_color": "#1e3978"
-          }
-        },
         "custom_richtext_03": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Add your text here. Select words and make them bold to highlight them.</p>",
+            "content": "<p><strong>RootSyntax</strong> helps ecommerce brands launch, migrate, optimize, and scale on <strong>Shopify</strong> through conversion-focused design, development, and <strong>growth strategies.</strong></p>",
             "highlight_color": "#1e3978",
             "font_size": 24
           }
@@ -211,7 +202,6 @@
       },
       "block_order": [
         "custom_richtext_01",
-        "custom_richtext_02",
         "custom_richtext_03",
         "custom_richtext_04"
       ],

@@ -288,7 +288,7 @@
         "card_padding": 28,
         "title_size": 13,
         "number_size": 38,
-        "background_color": "#233E9B",
+        "background_color": "#1C3390",
         "card_background": "#FFFFFF",
         "title_color": "#6B7280",
         "number_color": "#233E9B",
@@ -296,7 +296,7 @@
         "arrow_color": "#A7ADBB",
         "button_label": "Schedule A Call Today!",
         "button_link": "shopify://pages/book-a-call-now",
-        "button_background": "#FF7A18",
+        "button_background": "#F97316",
         "button_text_color": "#FFFFFF",
         "button_radius": 30
       }

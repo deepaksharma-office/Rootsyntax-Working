@@ -361,10 +361,11 @@
         "service_6CXTCU",
         "service_bh4Q3K"
       ],
+      "disabled": true,
       "name": "Services Growth",
       "settings": {
         "eyebrow": "Our Services",
-        "heading": "<p>Shopify Services Built<br>for <strong>Growth</strong></p>",
+        "heading": "<p>Shopify Services Built<br/>for <strong>Growth</strong></p>",
         "max_width": 1400,
         "grid_gap": 18,
         "padding_top": 40,
@@ -375,13 +376,13 @@
         "heading_size": 36,
         "card_title_size": 18,
         "card_text_size": 14,
-        "background_color": "#FFFFFF",
-        "card_background": "#F8F9FB",
+        "background_color": "#ffffff",
+        "card_background": "#f8f9fb",
         "heading_color": "#222222",
         "card_title_color": "#252525",
-        "card_text_color": "#7A7A7A",
-        "eyebrow_color": "#4B4B4B",
-        "eyebrow_background": "#F7F7F7"
+        "card_text_color": "#7a7a7a",
+        "eyebrow_color": "#4b4b4b",
+        "eyebrow_background": "#f7f7f7"
       }
     },
     "custom-services": {

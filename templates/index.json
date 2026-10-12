@@ -285,7 +285,7 @@
         "padding_top": 50,
         "padding_bottom": 50,
         "card_radius": 20,
-        "card_padding": 28,
+        "card_padding": 18,
         "title_size": 13,
         "number_size": 38,
         "background_color": "#1C3390",

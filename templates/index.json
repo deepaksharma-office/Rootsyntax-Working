@@ -226,7 +226,7 @@
             "number": "146+",
             "show_arrow": true,
             "visual_image": "shopify://shop_images/image_20_4.png",
-            "chart_color": "#8B4DFF",
+            "chart_color": "#8b4dff",
             "custom_card_background": "",
             "custom_title_color": "",
             "custom_number_color": ""
@@ -239,7 +239,7 @@
             "number": "18%",
             "show_arrow": true,
             "visual_image": "shopify://shop_images/image_20_5.png",
-            "chart_color": "#8B4DFF",
+            "chart_color": "#8b4dff",
             "custom_card_background": "",
             "custom_title_color": "",
             "custom_number_color": ""
@@ -252,7 +252,7 @@
             "number": "450+",
             "show_arrow": true,
             "visual_image": "shopify://shop_images/image_20_6.png",
-            "chart_color": "#8B4DFF",
+            "chart_color": "#8b4dff",
             "custom_card_background": "",
             "custom_title_color": "",
             "custom_number_color": ""
@@ -265,7 +265,7 @@
             "number": "4+",
             "show_arrow": true,
             "visual_image": "shopify://shop_images/image_20_7.png",
-            "chart_color": "#8B4DFF",
+            "chart_color": "#8b4dff",
             "custom_card_background": "",
             "custom_title_color": "",
             "custom_number_color": ""
@@ -288,17 +288,100 @@
         "card_padding": 18,
         "title_size": 13,
         "number_size": 38,
-        "background_color": "#1C3390",
-        "card_background": "#F9FAFB",
-        "title_color": "#6B7280",
-        "number_color": "#1C3390",
-        "arrow_background": "#F5F6FA",
-        "arrow_color": "#A7ADBB",
+        "background_color": "#1c3390",
+        "card_background": "#f9fafb",
+        "title_color": "#6b7280",
+        "number_color": "#1c3390",
+        "arrow_background": "#f5f6fa",
+        "arrow_color": "#a7adbb",
         "button_label": "Schedule A Call Today!",
         "button_link": "shopify://pages/book-a-call-now",
-        "button_background": "#F97316",
-        "button_text_color": "#FFFFFF",
+        "button_background": "#f97316",
+        "button_text_color": "#ffffff",
         "button_radius": 30
+      }
+    },
+    "services_growth_zLLeYb": {
+      "type": "services-growth",
+      "blocks": {
+        "service_QH6kht": {
+          "type": "service",
+          "settings": {
+            "title": "Store Build Or Redesign",
+            "description": "<p>Launch a conversion-focused Shopify store optimized for performance and scalability.</p>",
+            "background_color": ""
+          }
+        },
+        "service_pUpx4m": {
+          "type": "service",
+          "settings": {
+            "title": "Migration To Shopify",
+            "description": "<p>Custom Shopify development tailored to your business goals.</p>",
+            "background_color": ""
+          }
+        },
+        "service_W7h7N7": {
+          "type": "service",
+          "settings": {
+            "title": "Expert Guidance and Store Setup",
+            "description": "<p>Move seamlessly from WooCommerce, Magento, Wix, or custom platforms.</p>",
+            "background_color": ""
+          }
+        },
+        "service_qpEa7x": {
+          "type": "service",
+          "settings": {
+            "title": "Digital Marketing and SEO",
+            "description": "<p>Connect powerful apps and automations that improve efficiency.</p>",
+            "background_color": ""
+          }
+        },
+        "service_6CXTCU": {
+          "type": "service",
+          "settings": {
+            "title": "Wholesale/B2B Solutions",
+            "description": "<p>Increase conversions through UX improvements and data-driven testing.</p>",
+            "background_color": ""
+          }
+        },
+        "service_bh4Q3K": {
+          "type": "service",
+          "settings": {
+            "title": "Conversion Rate Optimization",
+            "description": "<p>Ongoing technical support and store improvements.</p>",
+            "background_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "service_QH6kht",
+        "service_pUpx4m",
+        "service_W7h7N7",
+        "service_qpEa7x",
+        "service_6CXTCU",
+        "service_bh4Q3K"
+      ],
+      "name": "Services Growth",
+      "settings": {
+        "eyebrow": "Our Services",
+        "heading": "<p>Shopify Services Built<br>for <strong>Growth</strong></p>",
+        "max_width": 1400,
+        "grid_gap": 18,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "card_radius": 18,
+        "card_padding": 24,
+        "image_height": 210,
+        "heading_size": 36,
+        "card_title_size": 18,
+        "card_text_size": 14,
+        "background_color": "#FFFFFF",
+        "card_background": "#F8F9FB",
+        "heading_color": "#222222",
+        "card_title_color": "#252525",
+        "card_text_color": "#7A7A7A",
+        "eyebrow_color": "#4B4B4B",
+        "eyebrow_background": "#F7F7F7"
       }
     },
     "custom-services": {
@@ -1526,6 +1609,7 @@
     "custom-marquee",
     "custom-richtext",
     "stats_EPmrgP",
+    "services_growth_zLLeYb",
     "custom-services",
     "custom-process",
     "custom-why-choose",

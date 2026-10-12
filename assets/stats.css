@@ -267,7 +267,7 @@
   }
 
   .stats-card__number {
-    margin-top: 24px;
+    margin-top: 16px;
 
     font-size: clamp(
       25px,

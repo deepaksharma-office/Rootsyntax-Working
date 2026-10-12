@@ -1,479 +1,307 @@
-{{ 'stats.css' | asset_url | stylesheet_tag }}
-
-<section
-  id="Stats-{{ section.id }}"
-  class="stats-section"
-  style="
-    --stats-bg: {{ section.settings.background_color }};
-    --stats-card-bg: {{ section.settings.card_background }};
-    --stats-title-color: {{ section.settings.title_color }};
-    --stats-number-color: {{ section.settings.number_color }};
-    --stats-arrow-bg: {{ section.settings.arrow_background }};
-    --stats-arrow-color: {{ section.settings.arrow_color }};
-    --stats-button-bg: {{ section.settings.button_background }};
-    --stats-button-color: {{ section.settings.button_text_color }};
-
-    --stats-max-width: {{ section.settings.max_width }}px;
-    --stats-gap: {{ section.settings.grid_gap }}px;
-    --stats-card-radius: {{ section.settings.card_radius }}px;
-    --stats-card-padding: {{ section.settings.card_padding }}px;
-
-    --stats-title-size: {{ section.settings.title_size }}px;
-    --stats-number-size: {{ section.settings.number_size }}px;
-
-    --stats-pt: {{ section.settings.padding_top }}px;
-    --stats-pb: {{ section.settings.padding_bottom }}px;
-
-    --stats-button-radius: {{ section.settings.button_radius }}px;
-  "
->
-  <div class="stats-section__container">
-
-    {% if section.blocks.size > 0 %}
-      <div class="stats-section__grid">
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'stat' %}
-
-              <div
-                class="stats-card"
-                {{ block.shopify_attributes }}
-                style="
-                  {% if block.settings.custom_card_background != blank %}
-                    --individual-card-bg: {{ block.settings.custom_card_background }};
-                  {% endif %}
-
-                  {% if block.settings.custom_title_color != blank %}
-                    --individual-title-color: {{ block.settings.custom_title_color }};
-                  {% endif %}
-
-                  {% if block.settings.custom_number_color != blank %}
-                    --individual-number-color: {{ block.settings.custom_number_color }};
-                  {% endif %}
-                "
-              >
-
-                <div class="stats-card__top">
-                  {% if block.settings.title != blank %}
-                    <div class="stats-card__title">
-                      {{ block.settings.title }}
-                    </div>
-                  {% endif %}
-
-                  {% if block.settings.show_arrow %}
-                    <div class="stats-card__arrow" aria-hidden="true">
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="14"
-                        height="14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M7 17L17 7M9 7H17V15"
-                          stroke="currentColor"
-                          stroke-width="1.8"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </div>
-                  {% endif %}
-                </div>
-
-                {% if block.settings.number != blank %}
-                  <div class="stats-card__number">
-                    {{ block.settings.number }}
-                  </div>
-                {% endif %}
-
-                <div class="stats-card__visual">
-
-                  {% if block.settings.visual_image != blank %}
-
-                    {{
-                      block.settings.visual_image
-                      | image_url: width: 1000
-                      | image_tag:
-                        loading: 'lazy',
-                        widths: '200, 300, 400, 500, 700, 1000',
-                        sizes: '(max-width: 749px) 50vw, 25vw',
-                        class: 'stats-card__image',
-                        alt: block.settings.visual_image.alt
-                    }}
-
-                  {% else %}
-
-                    <div class="stats-card__placeholder">
-                      <svg
-                        viewBox="0 0 280 90"
-                        preserveAspectRatio="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <defs>
-                          <linearGradient
-                            id="stats-gradient-{{ block.id }}"
-                            x1="0"
-                            y1="0"
-                            x2="0"
-                            y2="1"
-                          >
-                            <stop
-                              offset="0%"
-                              stop-color="{{ block.settings.chart_color }}"
-                              stop-opacity="0.28"
-                            />
-                            <stop
-                              offset="100%"
-                              stop-color="{{ block.settings.chart_color }}"
-                              stop-opacity="0"
-                            />
-                          </linearGradient>
-                        </defs>
-
-                        <path
-                          d="M0 54
-                             C25 52 22 76 48 76
-                             C75 76 70 39 100 39
-                             C130 39 124 59 153 59
-                             C180 59 177 26 207 26
-                             C236 26 233 47 280 18
-                             L280 90
-                             L0 90 Z"
-                          fill="url(#stats-gradient-{{ block.id }})"
-                        />
-
-                        <path
-                          d="M0 54
-                             C25 52 22 76 48 76
-                             C75 76 70 39 100 39
-                             C130 39 124 59 153 59
-                             C180 59 177 26 207 26
-                             C236 26 233 47 280 18"
-                          fill="none"
-                          stroke="{{ block.settings.chart_color }}"
-                          stroke-width="3"
-                          stroke-linecap="round"
-                        />
-
-                        <circle
-                          cx="280"
-                          cy="18"
-                          r="5"
-                          fill="#ffffff"
-                          stroke="{{ block.settings.chart_color }}"
-                          stroke-width="3"
-                        />
-                      </svg>
-                    </div>
-
-                  {% endif %}
-
-                </div>
-
-              </div>
-
-          {% endcase %}
-        {% endfor %}
-      </div>
-    {% endif %}
-
-
-    {% if section.settings.button_label != blank %}
-      <div class="stats-section__button-wrapper">
-
-        {% if section.settings.button_link != blank %}
-          <a
-            href="{{ section.settings.button_link }}"
-            class="stats-section__button"
-          >
-            {{ section.settings.button_label }}
-          </a>
-        {% else %}
-          <span class="stats-section__button">
-            {{ section.settings.button_label }}
-          </span>
-        {% endif %}
-
-      </div>
-    {% endif %}
-
-  </div>
-</section>
-
-{% schema %}
-{
-  "name": "Stats",
-  "tag": "section",
-  "class": "section-stats",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Section layout"
-    },
-    {
-      "type": "range",
-      "id": "max_width",
-      "label": "Maximum width",
-      "min": 800,
-      "max": 1800,
-      "step": 20,
-      "unit": "px",
-      "default": 1440
-    },
-    {
-      "type": "range",
-      "id": "grid_gap",
-      "label": "Card gap",
-      "min": 4,
-      "max": 50,
-      "step": 2,
-      "unit": "px",
-      "default": 24
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding top",
-      "min": 0,
-      "max": 150,
-      "step": 5,
-      "unit": "px",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding bottom",
-      "min": 0,
-      "max": 150,
-      "step": 5,
-      "unit": "px",
-      "default": 50
-    },
-
-    {
-      "type": "header",
-      "content": "Card settings"
-    },
-    {
-      "type": "range",
-      "id": "card_radius",
-      "label": "Card border radius",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "card_padding",
-      "label": "Card padding",
-      "min": 10,
-      "max": 60,
-      "step": 2,
-      "unit": "px",
-      "default": 28
-    },
-
-    {
-      "type": "header",
-      "content": "Typography"
-    },
-    {
-      "type": "range",
-      "id": "title_size",
-      "label": "Card title size",
-      "min": 10,
-      "max": 28,
-      "step": 1,
-      "unit": "px",
-      "default": 13
-    },
-    {
-      "type": "range",
-      "id": "number_size",
-      "label": "Number size",
-      "min": 20,
-      "max": 60,
-      "step": 1,
-      "unit": "px",
-      "default": 38
-    },
-
-    {
-      "type": "header",
-      "content": "Colors"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Section background",
-      "default": "#233E9B"
-    },
-    {
-      "type": "color",
-      "id": "card_background",
-      "label": "Card background",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Card title",
-      "default": "#6B7280"
-    },
-    {
-      "type": "color",
-      "id": "number_color",
-      "label": "Card number",
-      "default": "#233E9B"
-    },
-    {
-      "type": "color",
-      "id": "arrow_background",
-      "label": "Arrow background",
-      "default": "#F5F6FA"
-    },
-    {
-      "type": "color",
-      "id": "arrow_color",
-      "label": "Arrow color",
-      "default": "#A7ADBB"
-    },
-
-    {
-      "type": "header",
-      "content": "Button"
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Button text",
-      "default": "Schedule A Call Today!"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button link"
-    },
-    {
-      "type": "color",
-      "id": "button_background",
-      "label": "Button background",
-      "default": "#FF7A18"
-    },
-    {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Button text color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "range",
-      "id": "button_radius",
-      "label": "Button radius",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "default": 30
-    }
-  ],
-
-  "blocks": [
-    {
-      "type": "stat",
-      "name": "Stat",
-      "settings": [
-        {
-          "type": "textarea",
-          "id": "title",
-          "label": "Title",
-          "default": "Successful\nProjects Delivered"
-        },
-        {
-          "type": "text",
-          "id": "number",
-          "label": "Number / value",
-          "default": "146+"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_arrow",
-          "label": "Show arrow",
-          "default": true
-        },
-        {
-          "type": "image_picker",
-          "id": "visual_image",
-          "label": "Chart / visual image",
-          "info": "Upload your own chart image. If empty, a default chart will display."
-        },
-        {
-          "type": "color",
-          "id": "chart_color",
-          "label": "Default chart color",
-          "default": "#8B4DFF"
-        },
-        {
-          "type": "header",
-          "content": "Individual colors"
-        },
-        {
-          "type": "color",
-          "id": "custom_card_background",
-          "label": "Card background"
-        },
-        {
-          "type": "color",
-          "id": "custom_title_color",
-          "label": "Title color"
-        },
-        {
-          "type": "color",
-          "id": "custom_number_color",
-          "label": "Number color"
-        }
-      ]
-    }
-  ],
-
-  "presets": [
-    {
-      "name": "Stats",
-      "blocks": [
-        {
-          "type": "stat",
-          "settings": {
-            "title": "Successful Projects Delivered",
-            "number": "146+"
-          }
-        },
-        {
-          "type": "stat",
-          "settings": {
-            "title": "Average Revenue Growth",
-            "number": "18%"
-          }
-        },
-        {
-          "type": "stat",
-          "settings": {
-            "title": "Shopify Tasks Completed",
-            "number": "450+"
-          }
-        },
-        {
-          "type": "stat",
-          "settings": {
-            "title": "Years of Shopify Experience",
-            "number": "4+"
-          }
-        }
-      ]
-    }
-  ]
+.stats-section {
+  width: 100%;
+  background: var(--stats-bg);
+  padding-top: var(--stats-pt);
+  padding-bottom: var(--stats-pb);
 }
-{% endschema %}
+
+.stats-section * {
+  box-sizing: border-box;
+}
+
+.stats-section__container {
+  width: min(
+    calc(100% - 40px),
+    var(--stats-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ================================
+   GRID
+================================ */
+
+.stats-section__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--stats-gap);
+}
+
+/* ================================
+   CARD
+================================ */
+
+.stats-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 300px;
+
+  overflow: hidden;
+
+  padding: var(--stats-card-padding);
+
+  background:
+    var(
+      --individual-card-bg,
+      var(--stats-card-bg)
+    );
+
+  border-radius: var(--stats-card-radius);
+
+  /* No hover effect */
+  transition: none;
+}
+
+.stats-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ================================
+   TOP
+================================ */
+
+.stats-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stats-card__title {
+  max-width: 150px;
+
+  color:
+    var(
+      --individual-title-color,
+      var(--stats-title-color)
+    );
+
+  font-size: var(--stats-title-size);
+  font-weight: 500;
+  line-height: 1.35;
+
+  white-space: pre-line;
+}
+
+.stats-card__arrow {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  background: var(--stats-arrow-bg);
+  color: var(--stats-arrow-color);
+}
+
+/* ================================
+   NUMBER
+================================ */
+
+.stats-card__number {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 34px;
+
+  color:
+    var(
+      --individual-number-color,
+      var(--stats-number-color)
+    );
+
+  font-size: var(--stats-number-size);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* ================================
+   VISUAL
+================================ */
+
+.stats-card__visual {
+  position: relative;
+
+  width: calc(
+    100% + (var(--stats-card-padding) * 2)
+  );
+
+  margin-left: calc(
+    var(--stats-card-padding) * -1
+  );
+
+  margin-top: auto;
+  margin-bottom: calc(
+    var(--stats-card-padding) * -1
+  );
+
+  min-height: 110px;
+}
+
+.stats-card__image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.stats-card__placeholder {
+  width: 100%;
+  height: 120px;
+}
+
+.stats-card__placeholder svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+}
+
+/* ================================
+   BUTTON
+================================ */
+
+.stats-section__button-wrapper {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 42px;
+}
+
+.stats-section__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+
+  padding: 14px 32px;
+
+  background: var(--stats-button-bg);
+  color: var(--stats-button-color);
+
+  border: 0;
+  border-radius: var(--stats-button-radius);
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: none;
+}
+
+.stats-section__button:hover {
+  background: var(--stats-button-bg);
+  color: var(--stats-button-color);
+
+  opacity: 1;
+  transform: none;
+
+  text-decoration: none;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media screen and (max-width: 989px) {
+  .stats-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media screen and (max-width: 749px) {
+  .stats-section__container {
+    width: min(
+      calc(100% - 28px),
+      var(--stats-max-width)
+    );
+  }
+
+  /*
+    User requested 2 blocks per view on mobile.
+  */
+  .stats-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .stats-card {
+    min-height: 220px;
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .stats-card__top {
+    gap: 8px;
+  }
+
+  .stats-card__title {
+    max-width: 105px;
+    font-size: 10px;
+  }
+
+  .stats-card__arrow {
+    width: 25px;
+    height: 25px;
+  }
+
+  .stats-card__arrow svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .stats-card__number {
+    margin-top: 24px;
+
+    font-size: clamp(
+      25px,
+      7vw,
+      var(--stats-number-size)
+    );
+  }
+
+  .stats-card__visual {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-bottom: -16px;
+  }
+
+  .stats-card__image,
+  .stats-card__placeholder {
+    height: 85px;
+  }
+
+  .stats-section__button-wrapper {
+    margin-top: 28px;
+  }
+
+  .stats-section__button {
+    min-height: 46px;
+    padding: 12px 26px;
+    font-size: 13px;
+  }
+}

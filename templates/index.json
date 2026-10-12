@@ -216,6 +216,88 @@
         "text_color": "#5d687a"
       }
     },
+    "stats_EPmrgP": {
+      "type": "stats",
+      "blocks": {
+        "stat_nChAtP": {
+          "type": "stat",
+          "settings": {
+            "title": "Successful Projects Delivered",
+            "number": "146+",
+            "show_arrow": true,
+            "visual_image": "shopify://shop_images/image_20_4.png",
+            "chart_color": "#8B4DFF",
+            "custom_card_background": "",
+            "custom_title_color": "",
+            "custom_number_color": ""
+          }
+        },
+        "stat_zw8itQ": {
+          "type": "stat",
+          "settings": {
+            "title": "Average Revenue Growth",
+            "number": "18%",
+            "show_arrow": true,
+            "chart_color": "#8B4DFF",
+            "custom_card_background": "",
+            "custom_title_color": "",
+            "custom_number_color": ""
+          }
+        },
+        "stat_Cnb6HH": {
+          "type": "stat",
+          "settings": {
+            "title": "Shopify Tasks Completed",
+            "number": "450+",
+            "show_arrow": true,
+            "chart_color": "#8B4DFF",
+            "custom_card_background": "",
+            "custom_title_color": "",
+            "custom_number_color": ""
+          }
+        },
+        "stat_DXNkak": {
+          "type": "stat",
+          "settings": {
+            "title": "Years of Shopify Experience",
+            "number": "4+",
+            "show_arrow": true,
+            "chart_color": "#8B4DFF",
+            "custom_card_background": "",
+            "custom_title_color": "",
+            "custom_number_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "stat_nChAtP",
+        "stat_zw8itQ",
+        "stat_Cnb6HH",
+        "stat_DXNkak"
+      ],
+      "name": "Stats",
+      "settings": {
+        "max_width": 1440,
+        "grid_gap": 24,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "card_radius": 20,
+        "card_padding": 28,
+        "title_size": 13,
+        "number_size": 38,
+        "background_color": "#233E9B",
+        "card_background": "#FFFFFF",
+        "title_color": "#6B7280",
+        "number_color": "#233E9B",
+        "arrow_background": "#F5F6FA",
+        "arrow_color": "#A7ADBB",
+        "button_label": "Schedule A Call Today!",
+        "button_link": "",
+        "button_background": "#FF7A18",
+        "button_text_color": "#FFFFFF",
+        "button_radius": 30
+      }
+    },
     "custom-statistics": {
       "type": "custom-statistics",
       "blocks": {
@@ -1600,6 +1682,7 @@
     "178610913371430790",
     "custom-marquee",
     "custom-richtext",
+    "stats_EPmrgP",
     "custom-statistics",
     "custom-services",
     "custom-process",

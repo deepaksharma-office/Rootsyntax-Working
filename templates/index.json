@@ -301,6 +301,242 @@
         "button_radius": 30
       }
     },
+    "custom_consultation_xn7yng": {
+      "type": "custom-consultation",
+      "blocks": {
+        "benefit_j8LBkV": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free Strategy Consultation",
+            "link": ""
+          }
+        },
+        "benefit_6QjMPr": {
+          "type": "benefit",
+          "settings": {
+            "text": "Response within 24 Hours",
+            "link": ""
+          }
+        },
+        "benefit_dfU4Rh": {
+          "type": "benefit",
+          "settings": {
+            "text": "Shopify Plus & CRO Experts",
+            "link": ""
+          }
+        },
+        "benefit_kRhyHr": {
+          "type": "benefit",
+          "settings": {
+            "text": "No Obligation Quote",
+            "link": ""
+          }
+        },
+        "benefit_MBfTmx": {
+          "type": "benefit",
+          "settings": {
+            "text": "Trusted by 150+ Ecommerce Brands",
+            "link": ""
+          }
+        },
+        "statistic_FCDqNM": {
+          "type": "statistic",
+          "settings": {
+            "value": "3000+",
+            "label": "Happy Clients",
+            "show_icon": true,
+            "icon": "users",
+            "custom_icon": "✦"
+          }
+        },
+        "statistic_zJq8Rj": {
+          "type": "statistic",
+          "settings": {
+            "value": "98%",
+            "label": "Satisfaction Rate",
+            "show_icon": true,
+            "icon": "star",
+            "custom_icon": "✦"
+          }
+        },
+        "statistic_7qhdDK": {
+          "type": "statistic",
+          "settings": {
+            "value": "Under 24",
+            "label": "Hours Response",
+            "show_icon": true,
+            "icon": "clock",
+            "custom_icon": "✦"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_j8LBkV",
+        "benefit_6QjMPr",
+        "benefit_dfU4Rh",
+        "benefit_kRhyHr",
+        "benefit_MBfTmx",
+        "statistic_FCDqNM",
+        "statistic_zJq8Rj",
+        "statistic_7qhdDK"
+      ],
+      "name": "Custom consultation",
+      "settings": {
+        "eyebrow": "Free Shopify Consultation",
+        "description": "<p>Whether you're launching a new Shopify store, migrating from another platform, or looking to improve conversions, our Shopify experts are ready to help. We'll review your requirements and recommend the best solution for your business.</p>",
+        "form_heading": "",
+        "form_description": "",
+        "success_message": "Thank you! We've received your request and will get back to you within 24 hours.",
+        "error_message": "Something went wrong while submitting your request. Please try again.",
+        "loading_text": "Sending your request...",
+        "show_name": true,
+        "name_label": "Name",
+        "name_placeholder": "Enter your name",
+        "name_required": true,
+        "name_error": "Enter your name.",
+        "show_email": true,
+        "email_label": "Email",
+        "email_placeholder": "Enter your email",
+        "email_required": true,
+        "email_error": "Enter a valid email address.",
+        "show_phone": true,
+        "phone_label": "Phone Number",
+        "phone_placeholder": "+1 555 123 4567",
+        "phone_required": true,
+        "phone_error": "Include a country code, for example +15551234567.",
+        "show_service": true,
+        "service_label": "Service Interested In",
+        "service_placeholder": "Select a service",
+        "service_required": true,
+        "service_option_1": "Store Build or Redesign",
+        "service_option_2": "Shopify Migration",
+        "service_option_3": "Shopify Theme Development",
+        "service_option_4": "Shopify Plus",
+        "service_option_5": "Conversion Rate Optimization",
+        "service_option_6": "Shopify SEO",
+        "service_option_7": "Custom Shopify Development",
+        "service_option_8": "Speed Optimization",
+        "service_option_9": "B2B / Wholesale",
+        "service_option_10": "Maintenance & Support",
+        "service_option_11": "Other",
+        "service_option_12": "",
+        "show_website": true,
+        "website_label": "Existing Website (Optional)",
+        "website_placeholder": "https://yourwebsite.com",
+        "website_required": false,
+        "website_helper": "Already have a website? Share the URL so we can review it and understand your current store.",
+        "show_message": true,
+        "message_label": "Message (Optional)",
+        "message_placeholder": "Tell us about your project...",
+        "message_required": false,
+        "message_limit": 5000,
+        "proxy_path": "",
+        "enable_spam_protection": true,
+        "enable_honeypot": true,
+        "include_timestamp": true,
+        "track_page_url": false,
+        "track_referrer": false,
+        "track_utm": false,
+        "enable_notification": false,
+        "notification_email": "",
+        "max_width": 1500,
+        "left_width": 45,
+        "right_width": 55,
+        "column_gap": 64,
+        "vertical_alignment": "center",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_sides": 24,
+        "mobile_padding": 16,
+        "background_color": "#ffffff",
+        "primary_color": "#263249",
+        "secondary_color": "#58657c",
+        "accent_color": "#f05b24",
+        "check_color": "#9749e8",
+        "divider_color": "#dbe3f1",
+        "stat_value_color": "#ee5b1d",
+        "stat_label_color": "#5c6980",
+        "form_background": "#ffffff",
+        "form_border": "#d8e1ef",
+        "input_background": "#ffffff",
+        "input_border": "#ccd7e8",
+        "input_focus_border": "#9749e8",
+        "placeholder_color": "#8793a7",
+        "form_radius": 20,
+        "form_padding": 44,
+        "input_radius": 8,
+        "input_height": 58,
+        "label_size": 16,
+        "description_size": 18,
+        "button_text": "Get Free Proposal",
+        "button_background": "#9749e8",
+        "button_gradient": true,
+        "button_gradient_start": "#9749e8",
+        "button_gradient_middle": "#db4f9a",
+        "button_gradient_end": "#ff801d",
+        "button_text_color": "#ffffff",
+        "button_radius": 10,
+        "button_height": 64,
+        "button_font_size": 18,
+        "button_font_weight": "700",
+        "button_hover_opacity": 90,
+        "button_shadow": true
+      }
+    },
+    "custom_marquee_dJwiPh": {
+      "type": "custom-marquee",
+      "blocks": {
+        "marquee_item_wArrTj": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "",
+            "link": ""
+          }
+        },
+        "marquee_item_EjYmYb": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "",
+            "link": ""
+          }
+        },
+        "marquee_item_Y8wjpk": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "marquee_item_wArrTj",
+        "marquee_item_EjYmYb",
+        "marquee_item_Y8wjpk"
+      ],
+      "name": "Client logo marquee",
+      "settings": {
+        "heading": "Our Clients",
+        "heading_size": 28,
+        "speed": 30,
+        "direction": "left",
+        "pause_on_hover": true,
+        "gap": 12,
+        "image_width": 100,
+        "card_padding": 8,
+        "card_radius": 4,
+        "show_shadow": true,
+        "card_background": "#ffffff",
+        "font_size_desktop": 20,
+        "font_size_mobile": 16,
+        "font_weight": "600",
+        "text_transform": "none",
+        "letter_spacing": 0,
+        "background_color": "#ffffff",
+        "text_color": "#021227",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "services_growth_fxC9Qh": {
       "type": "services-growth",
       "blocks": {
@@ -364,7 +600,7 @@
       "name": "Services Growth",
       "settings": {
         "eyebrow": "Our Services",
-        "heading": "<p>Shopify Services Built<br>for <strong>Growth</strong></p>",
+        "heading": "<p>Shopify Services Built<br/>for <strong>Growth</strong></p>",
         "max_width": 1400,
         "grid_gap": 18,
         "padding_top": 40,
@@ -1801,6 +2037,8 @@
     "custom-marquee",
     "custom-richtext",
     "stats_EPmrgP",
+    "custom_consultation_xn7yng",
+    "custom_marquee_dJwiPh",
     "services_growth_fxC9Qh",
     "custom_case_studies_yjec7N",
     "custom-services",

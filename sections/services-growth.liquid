@@ -1,0 +1,395 @@
+{{ 'services-growth.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="ServicesGrowth-{{ section.id }}"
+  class="services-growth"
+  style="
+    --sg-bg: {{ section.settings.background_color }};
+    --sg-card-bg: {{ section.settings.card_background }};
+    --sg-heading-color: {{ section.settings.heading_color }};
+    --sg-title-color: {{ section.settings.card_title_color }};
+    --sg-text-color: {{ section.settings.card_text_color }};
+    --sg-eyebrow-color: {{ section.settings.eyebrow_color }};
+    --sg-eyebrow-bg: {{ section.settings.eyebrow_background }};
+
+    --sg-max-width: {{ section.settings.max_width }}px;
+    --sg-grid-gap: {{ section.settings.grid_gap }}px;
+
+    --sg-card-radius: {{ section.settings.card_radius }}px;
+    --sg-card-padding: {{ section.settings.card_padding }}px;
+
+    --sg-heading-size: {{ section.settings.heading_size }}px;
+    --sg-card-title-size: {{ section.settings.card_title_size }}px;
+    --sg-card-text-size: {{ section.settings.card_text_size }}px;
+
+    --sg-image-height: {{ section.settings.image_height }}px;
+
+    --sg-padding-top: {{ section.settings.padding_top }}px;
+    --sg-padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="services-growth__container">
+
+    {% if section.settings.eyebrow != blank %}
+      <div class="services-growth__eyebrow">
+        {% if section.settings.eyebrow_icon != blank %}
+          <div class="services-growth__eyebrow-icon">
+            {{
+              section.settings.eyebrow_icon
+              | image_url: width: 60
+              | image_tag:
+                loading: 'lazy',
+                class: 'services-growth__eyebrow-icon-img'
+            }}
+          </div>
+        {% endif %}
+
+        <span>{{ section.settings.eyebrow }}</span>
+      </div>
+    {% endif %}
+
+
+    {% if section.settings.heading != blank %}
+      <div class="services-growth__heading">
+        {{ section.settings.heading }}
+      </div>
+    {% endif %}
+
+
+    {% if section.blocks.size > 0 %}
+      <div class="services-growth__grid">
+
+        {% for block in section.blocks %}
+          {% case block.type %}
+
+            {% when 'service' %}
+              <div
+                class="service-growth-card"
+                {{ block.shopify_attributes }}
+                style="
+                  {% if block.settings.background_color != blank %}
+                    --sg-block-bg: {{ block.settings.background_color }};
+                  {% endif %}
+                "
+              >
+
+                <div class="service-growth-card__content">
+
+                  {% if block.settings.title != blank %}
+                    <h3 class="service-growth-card__title">
+                      {{ block.settings.title }}
+                    </h3>
+                  {% endif %}
+
+                  {% if block.settings.description != blank %}
+                    <div class="service-growth-card__description">
+                      {{ block.settings.description }}
+                    </div>
+                  {% endif %}
+
+                </div>
+
+
+                {% if block.settings.image != blank %}
+                  <div class="service-growth-card__image-wrapper">
+
+                    {{
+                      block.settings.image
+                      | image_url: width: 1200
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '300, 500, 700, 900, 1200',
+                        sizes: '(max-width: 749px) 100vw, (max-width: 989px) 50vw, 33vw',
+                        class: 'service-growth-card__image',
+                        alt: block.settings.image.alt
+                    }}
+
+                  </div>
+                {% endif %}
+
+              </div>
+
+          {% endcase %}
+        {% endfor %}
+
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Services Growth",
+  "tag": "section",
+  "class": "section-services-growth",
+
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Our Services"
+    },
+    {
+      "type": "image_picker",
+      "id": "eyebrow_icon",
+      "label": "Eyebrow icon"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Shopify Services Built<br>for <strong>Growth</strong></p>"
+    },
+
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 800,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid gap",
+      "min": 4,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card inner padding",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image height",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 210
+    },
+
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 70,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "label": "Card title size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_text_size",
+      "label": "Card text size",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#F8F9FB"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title color",
+      "default": "#252525"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text color",
+      "default": "#7A7A7A"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow text color",
+      "default": "#4B4B4B"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_background",
+      "label": "Eyebrow background",
+      "default": "#F7F7F7"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Service title",
+          "default": "Store Build Or Redesign"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Launch a conversion-focused Shopify store optimized for performance and scalability.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Service image"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Custom card background"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Services Growth",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "title": "Store Build Or Redesign",
+            "description": "<p>Launch a conversion-focused Shopify store optimized for performance and scalability.</p>"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Migration To Shopify",
+            "description": "<p>Custom Shopify development tailored to your business goals.</p>"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Expert Guidance and Store Setup",
+            "description": "<p>Move seamlessly from WooCommerce, Magento, Wix, or custom platforms.</p>"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Digital Marketing and SEO",
+            "description": "<p>Connect powerful apps and automations that improve efficiency.</p>"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Wholesale/B2B Solutions",
+            "description": "<p>Increase conversions through UX improvements and data-driven testing.</p>"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Conversion Rate Optimization",
+            "description": "<p>Ongoing technical support and store improvements.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,256 @@
+.services-growth {
+  width: 100%;
+  background: var(--sg-bg);
+  padding-top: var(--sg-padding-top);
+  padding-bottom: var(--sg-padding-bottom);
+}
+
+.services-growth * {
+  box-sizing: border-box;
+}
+
+.services-growth__container {
+  width: min(
+    calc(100% - 40px),
+    var(--sg-max-width)
+  );
+  margin: 0 auto;
+}
+
+
+/* =========================
+   EYEBROW
+========================= */
+
+.services-growth__eyebrow {
+  width: fit-content;
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 6px 12px;
+
+  background: var(--sg-eyebrow-bg);
+  color: var(--sg-eyebrow-color);
+
+  border-radius: 50px;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.services-growth__eyebrow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+}
+
+.services-growth__eyebrow-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.services-growth__heading {
+  max-width: 650px;
+
+  margin: 0 auto 36px;
+
+  text-align: center;
+
+  color: var(--sg-heading-color);
+
+  font-size: var(--sg-heading-size);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.services-growth__heading p {
+  margin: 0;
+}
+
+.services-growth__heading strong {
+  font-weight: 700;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.services-growth__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sg-grid-gap);
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.service-growth-card {
+  --sg-block-bg: var(--sg-card-bg);
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  height: 100%;
+
+  background: var(--sg-block-bg);
+
+  border-radius: var(--sg-card-radius);
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   CARD CONTENT
+========================= */
+
+.service-growth-card__content {
+  width: 100%;
+
+  padding:
+    var(--sg-card-padding)
+    var(--sg-card-padding)
+    10px;
+}
+
+.service-growth-card__title {
+  margin: 0 0 9px;
+
+  color: var(--sg-title-color);
+
+  font-size: var(--sg-card-title-size);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.service-growth-card__description {
+  max-width: 95%;
+
+  color: var(--sg-text-color);
+
+  font-size: var(--sg-card-text-size);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.service-growth-card__description p {
+  margin: 0;
+}
+
+
+/* =========================
+   IMAGE
+
+   Image has EXACTLY the same
+   left/right width as content.
+========================= */
+
+.service-growth-card__image-wrapper {
+  width: calc(
+    100% - (var(--sg-card-padding) * 2)
+  );
+
+  height: var(--sg-image-height);
+
+  margin-left: var(--sg-card-padding);
+  margin-right: var(--sg-card-padding);
+  margin-top: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+
+/*
+  Important:
+  contain means the uploaded image
+  will NEVER be cropped.
+*/
+
+.service-growth-card__image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: 100%;
+
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 989px) {
+
+  .services-growth__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .services-growth__heading {
+    margin-bottom: 28px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 749px) {
+
+  .services-growth__container {
+    width: calc(100% - 28px);
+  }
+
+  .services-growth__grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .services-growth__heading {
+    margin-bottom: 24px;
+
+    font-size: clamp(
+      28px,
+      8vw,
+      var(--sg-heading-size)
+    );
+  }
+
+  .service-growth-card {
+    --sg-card-padding: 18px;
+
+    border-radius: 14px;
+  }
+
+  .service-growth-card__image-wrapper {
+    height: 190px;
+  }
+}

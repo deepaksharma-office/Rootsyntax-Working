@@ -894,6 +894,7 @@
             "category": "FASHION & LIFESTYLE",
             "project_name": "Teveo",
             "description": "A premium Shopify experience designed to elevate brand awareness and drive efficient conversion across all devices.",
+            "image": "shopify://shop_images/Container_4.png",
             "link": "",
             "link_label": "View Project",
             "open_new_tab": false,
@@ -921,6 +922,7 @@
             "category": "LUXURY & FASHION",
             "project_name": "Mestiza New York",
             "description": "A luxury, conversion-focused Shopify store crafted to showcase success and transform the customer experience end-to-end.",
+            "image": "shopify://shop_images/Image_Mestiza_New_York.png",
             "link": "",
             "link_label": "View Project",
             "open_new_tab": false,
@@ -945,9 +947,10 @@
         "custom_case_studies_03": {
           "type": "case_study",
           "settings": {
-            "category": "FINANCE & NATURA",
+            "category": "Beauty",
             "project_name": "Eywa Nature",
             "description": "A modern, conversion-focused store built to highlight product benefits and build long-lasting customer trust.",
+            "image": "shopify://shop_images/Image_Eywa_Nature.png",
             "link": "",
             "link_label": "View Project",
             "open_new_tab": false,

@@ -1267,6 +1267,7 @@
         "custom_insights_01": {
           "type": "article",
           "settings": {
+            "image": "shopify://shop_images/Image_5.png",
             "category": "AI TRENDS",
             "date": "May 12, 2025",
             "title": "Why AI Is Testing Your Shopify Store the Smartest Way",
@@ -1280,11 +1281,12 @@
         "custom_insights_02": {
           "type": "article",
           "settings": {
+            "image": "shopify://shop_images/Image_6_2bd30118-c0d0-40f4-b07c-be8361368c68.png",
             "category": "MARKETING & GROWTH",
             "date": "May 08, 2025",
             "title": "Why Your Shopify Store Needs a Branded Email Address",
             "excerpt": "Breaking down complex ML concepts into understandable principles for business leaders.",
-            "link": "#",
+            "link": "shopify://blogs/resources/why-your-shopify-store-needs-a-branded-email-address-and-how-to-set-one-up",
             "read_more": "Read More",
             "new_tab": false,
             "card_clickable": false
@@ -1293,11 +1295,12 @@
         "custom_insights_03": {
           "type": "article",
           "settings": {
+            "image": "shopify://shop_images/Image_7_de902ac2-3980-41c4-bcee-4d3b55818e98.png",
             "category": "TIPS & TRICKS",
             "date": "May 01, 2025",
             "title": "Why Shopify Payments Is the Smartest Choice for Ecommerce Brands",
             "excerpt": "Discover the tangible ways artificial intelligence is reshaping operations across industries.",
-            "link": "#",
+            "link": "shopify://blogs/resources/why-shopify-payments-is-the-smartest-choice-for-your-shopify-store",
             "read_more": "Read More",
             "new_tab": false,
             "card_clickable": false

@@ -133,7 +133,7 @@
 
 .cust__consultation .cust__consultation-stat strong {
   color: var(--cust-stat-value);
-  font-size: clamp(24px, 3vw, 38px);
+  font-size: clamp(24px, 1vw, 38px);
   font-weight: 700;
   line-height: 1.1;
   overflow-wrap: anywhere;

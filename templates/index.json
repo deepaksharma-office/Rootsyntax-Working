@@ -367,7 +367,6 @@
         "service_XTjWzc",
         "service_BhT69r"
       ],
-      "disabled": true,
       "name": "Services Growth",
       "settings": {
         "eyebrow": "Our Services",
@@ -1430,7 +1429,7 @@
         "secondary_hover_color": "#1d2c52",
         "show_primary": true,
         "primary_text": "Book a Strategy Call",
-        "primary_link": "",
+        "primary_link": "shopify://pages/book-a-call-now",
         "primary_new_tab": false,
         "show_arrow": false,
         "primary_background": "#f47722",

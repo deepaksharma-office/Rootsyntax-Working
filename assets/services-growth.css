@@ -170,7 +170,6 @@
     100% - (var(--sg-card-padding) * 2)
   );
 
-  height: var(--sg-image-height);
 
   margin: var(--sg-card-padding);
 
@@ -245,9 +244,5 @@
     --sg-card-padding: 18px;
 
     border-radius: 14px;
-  }
-
-  .service-growth-card__image-wrapper {
-    height: 190px;
   }
 }

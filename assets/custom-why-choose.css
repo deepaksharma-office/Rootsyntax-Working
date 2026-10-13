@@ -169,6 +169,7 @@
   font-weight: var(--cust-title-weight);
   line-height: var(--cust-title-line-height);
   overflow-wrap: anywhere;
+  padding: 1rem 0;
 }
 
 .cust__why-choose .cust__why-choose-card-description {
@@ -180,6 +181,8 @@
   font-size: var(--cust-description-size);
   line-height: var(--cust-description-line-height);
   overflow-wrap: anywhere;
+      border-top: 1px solid;
+    border-image: linear-gradient(90deg, transparent, #e5e7eb 50%, transparent) 1;
 }
 
 .cust__why-choose .cust__why-choose-proof {

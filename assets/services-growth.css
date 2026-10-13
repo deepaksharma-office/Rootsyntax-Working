@@ -172,9 +172,7 @@
 
   height: var(--sg-image-height);
 
-  margin-left: var(--sg-card-padding);
-  margin-right: var(--sg-card-padding);
-  margin-top: auto;
+  margin: var(--sg-card-padding);
 
   display: flex;
   align-items: center;

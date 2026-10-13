@@ -723,7 +723,7 @@
         "card_radius": 16,
         "card_shadow": "none",
         "card_padding": 24,
-        "card_min_height": 230,
+        "card_min_height": 140,
         "card_hover": true,
         "hover_lift": 3,
         "hover_shadow": "subtle",

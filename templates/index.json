@@ -736,7 +736,7 @@
         "glow_position": "top-right",
         "glow_hover_intensity": 35,
         "card_title_color": "#203c78",
-        "card_title_size": 22,
+        "card_title_size": 30,
         "card_title_mobile_size": 20,
         "card_title_weight": "700",
         "card_title_line_height": 115,

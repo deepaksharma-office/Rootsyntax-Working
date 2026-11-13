@@ -53,7 +53,7 @@
       "settings": {
         "content_direction": "column",
         "gap": 32,
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "{{ settings.color_palette.color2 }}",
         "padding-block-start": 40,
         "padding-block-end": 80
       }

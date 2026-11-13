@@ -789,7 +789,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 20,
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "#1C3390",
         "padding-block-start": 30,
         "padding-block-end": 30
       }

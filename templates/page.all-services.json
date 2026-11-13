@@ -50,10 +50,11 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
-        "background_color": "{{ settings.color_palette.color2 }}",
+        "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 40,
         "padding-block-end": 80
       }
@@ -250,10 +251,192 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "services_cards_CWmkaa": {
+      "type": "services-cards",
+      "blocks": {
+        "service_m97Ndr": {
+          "type": "service",
+          "settings": {
+            "title": "Store Build or Redesign",
+            "description": "<p>Launch a stunning, high-performing Shopify store built around your brand and customer experience.</p>",
+            "link": "/pages/store-build-or-redesign",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "store",
+            "custom_accent": "#A7B4FF"
+          }
+        },
+        "service_aGJzVE": {
+          "type": "service",
+          "settings": {
+            "title": "Theme Customization",
+            "description": "<p>Transform your Shopify theme with unique layouts, advanced features, and tailored functionality.</p>",
+            "link": "/pages/theme-customization-1",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "design",
+            "custom_accent": "#A7B4FF"
+          }
+        },
+        "service_drCQYz": {
+          "type": "service",
+          "settings": {
+            "title": "Migration to Shopify",
+            "description": "<p>Seamlessly move your existing store to Shopify while preserving essential data and functionality.</p>",
+            "link": "/pages/migration-to-shopify",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "migration",
+            "custom_accent": "#A7B4FF"
+          }
+        },
+        "service_MjQB83": {
+          "type": "service",
+          "settings": {
+            "title": "Expert Guidance and Store Setup",
+            "description": "<p>Get expert assistance with store configuration, optimization, and Shopify best practices.</p>",
+            "link": "/pages/expert-guidance-and-store-setup",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "settings",
+            "custom_accent": "#A7B4FF"
+          }
+        },
+        "service_dt6Qw6": {
+          "type": "service",
+          "settings": {
+            "title": "App Integration",
+            "description": "<p>Connect powerful Shopify apps and third-party tools to automate and enhance your operations.</p>",
+            "link": "/pages/app-integration",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "apps",
+            "custom_accent": "#A7B4FF"
+          }
+        },
+        "service_w73EQJ": {
+          "type": "service",
+          "settings": {
+            "title": "Digital Marketing and SEO",
+            "description": "<p>Increase visibility, attract qualified visitors, and drive sustainable growth through digital marketing.</p>",
+            "link": "/pages/digital-marketing-and-seo",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "marketing",
+            "custom_accent": "#A7B4FF"
+          }
+        },
+        "service_kQtYCL": {
+          "type": "service",
+          "settings": {
+            "title": "Email Marketing",
+            "description": "<p>Build customer relationships and boost repeat purchases with strategic Klaviyo email campaigns.</p>",
+            "link": "/pages/email-marketing-with-klaviyo",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "email",
+            "custom_accent": "#A7B4FF"
+          }
+        },
+        "service_PMCGha": {
+          "type": "service",
+          "settings": {
+            "title": "Wholesale/B2B Solutions",
+            "description": "<p>Streamline wholesale operations with custom B2B storefronts, pricing, and purchasing workflows.</p>",
+            "link": "/pages/wholesale-b2b-solutions",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "b2b",
+            "custom_accent": "#A7B4FF"
+          }
+        },
+        "service_WXTCbn": {
+          "type": "service",
+          "settings": {
+            "title": "Conversion Rate Optimization",
+            "description": "<p>Turn more visitors into customers through data-driven improvements and seamless shopping experiences.</p>",
+            "link": "/pages/conversion-rate-optimization-1",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "conversion",
+            "custom_accent": "#A7B4FF"
+          }
+        },
+        "service_x6fpAX": {
+          "type": "service",
+          "settings": {
+            "title": "Shopify POS",
+            "description": "<p>Unify your in-store and online sales with a connected Shopify Point of Sale experience.</p>",
+            "link": "/pages/shopify-pos",
+            "link_label": "Explore service",
+            "new_tab": false,
+            "icon": "pos",
+            "custom_accent": "#A7B4FF"
+          }
+        }
+      },
+      "block_order": [
+        "service_m97Ndr",
+        "service_aGJzVE",
+        "service_drCQYz",
+        "service_MjQB83",
+        "service_dt6Qw6",
+        "service_w73EQJ",
+        "service_kQtYCL",
+        "service_PMCGha",
+        "service_WXTCbn",
+        "service_x6fpAX"
+      ],
+      "name": "Service Cards Main Page",
+      "settings": {
+        "eyebrow": "WHAT WE DO",
+        "heading": "Solutions built for your growth.",
+        "subtitle": "<p>From store design to conversion optimization, we help ambitious brands build, scale, and succeed on Shopify.</p>",
+        "header_alignment": "center",
+        "heading_size": 48,
+        "mobile_heading_size": 32,
+        "container_width": 1500,
+        "desktop_columns": 4,
+        "mobile_columns": 1,
+        "card_gap": 20,
+        "mobile_gap": 14,
+        "card_min_height": 290,
+        "mobile_card_min_height": 240,
+        "card_padding": 26,
+        "mobile_card_padding": 22,
+        "card_radius": 16,
+        "card_title_size": 18,
+        "mobile_card_title_size": 16,
+        "description_size": 14,
+        "show_descriptions": true,
+        "show_numbers": true,
+        "show_links": true,
+        "default_link_label": "Explore service",
+        "icon_box_size": 54,
+        "icon_size": 26,
+        "icon_radius": 16,
+        "enable_hover": true,
+        "hover_lift": 6,
+        "bg_color": "#0C1320",
+        "card_bg": "#182233",
+        "text_color": "#FFFFFF",
+        "muted_color": "#A9B5C6",
+        "accent_color": "#A7B4FF",
+        "border_color": "#344052",
+        "icon_bg": "#283653",
+        "bottom_button_label": "",
+        "bottom_button_link": "",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
     }
   },
   "order": [
     "main",
-    "17852329203009c5fc"
+    "17852329203009c5fc",
+    "services_cards_CWmkaa"
   ]
 }

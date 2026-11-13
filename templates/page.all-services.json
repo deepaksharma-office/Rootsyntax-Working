@@ -264,7 +264,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "store",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         },
         "service_aGJzVE": {
@@ -276,7 +276,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "design",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         },
         "service_drCQYz": {
@@ -288,7 +288,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "migration",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         },
         "service_MjQB83": {
@@ -300,7 +300,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "settings",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         },
         "service_dt6Qw6": {
@@ -312,7 +312,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "apps",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         },
         "service_w73EQJ": {
@@ -324,7 +324,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "marketing",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         },
         "service_kQtYCL": {
@@ -336,7 +336,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "email",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         },
         "service_PMCGha": {
@@ -348,7 +348,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "b2b",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         },
         "service_WXTCbn": {
@@ -360,7 +360,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "conversion",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         },
         "service_x6fpAX": {
@@ -372,7 +372,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "pos",
-            "custom_accent": "#000000"
+            "custom_accent": "#a7b4ff"
           }
         }
       },
@@ -418,13 +418,13 @@
         "icon_radius": 16,
         "enable_hover": true,
         "hover_lift": 6,
-        "bg_color": "#0C1320",
-        "card_bg": "#182233",
-        "text_color": "#FFFFFF",
-        "muted_color": "#A9B5C6",
-        "accent_color": "#000000",
+        "bg_color": "{{ settings.color_palette.color2 }}",
+        "card_bg": "{{ settings.color_palette.color2 }}",
+        "text_color": "{{ settings.color_palette.background }}",
+        "muted_color": "{{ settings.color_palette.background }}",
+        "accent_color": "{{ settings.color_palette.background }}",
         "border_color": "#344052",
-        "icon_bg": "#283653",
+        "icon_bg": "#1C3390",
         "bottom_button_label": "",
         "bottom_button_link": "",
         "padding_top": 40,

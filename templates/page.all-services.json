@@ -424,7 +424,7 @@
         "muted_color": "{{ settings.color_palette.background }}",
         "accent_color": "{{ settings.color_palette.background }}",
         "border_color": "#344052",
-        "icon_bg": "#1C3390",
+        "icon_bg": "{{ settings.color_palette.foreground }}",
         "bottom_button_label": "",
         "bottom_button_link": "",
         "padding_top": 40,

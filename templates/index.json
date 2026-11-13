@@ -191,7 +191,7 @@
           "type": "button",
           "settings": {
             "label": "Learn more",
-            "link": "",
+            "link": "shopify://pages/about-us-1",
             "open_new_tab": false,
             "background_color": "#1e3978",
             "text_color": "#ffffff",

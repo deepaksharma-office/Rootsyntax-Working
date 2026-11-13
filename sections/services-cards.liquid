@@ -1,0 +1,1117 @@
+
+{% liquid
+  assign sid = section.id
+%}
+
+<section
+  id="rs-services-{{ sid }}"
+  class="rs-services"
+  style="
+    --rs-bg: {{ section.settings.bg_color }};
+    --rs-card: {{ section.settings.card_bg }};
+    --rs-text: {{ section.settings.text_color }};
+    --rs-muted: {{ section.settings.muted_color }};
+    --rs-accent: {{ section.settings.accent_color }};
+    --rs-border: {{ section.settings.border_color }};
+    --rs-icon-bg: {{ section.settings.icon_bg }};
+    --rs-heading-size: {{ section.settings.heading_size }}px;
+    --rs-card-title-size: {{ section.settings.card_title_size }}px;
+    --rs-description-size: {{ section.settings.description_size }}px;
+    --rs-radius: {{ section.settings.card_radius }}px;
+    --rs-gap: {{ section.settings.card_gap }}px;
+    --rs-columns: {{ section.settings.desktop_columns }};
+    --rs-mobile-columns: {{ section.settings.mobile_columns }};
+    --rs-padding-top: {{ section.settings.padding_top }}px;
+    --rs-padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="rs-services__container">
+
+    {% if section.settings.eyebrow != blank
+      or section.settings.heading != blank
+      or section.settings.subtitle != blank
+    %}
+      <div class="rs-services__header rs-services__header--{{ section.settings.header_alignment }}">
+
+        {% if section.settings.eyebrow != blank %}
+          <span class="rs-services__eyebrow">
+            {{ section.settings.eyebrow | escape }}
+          </span>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="rs-services__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <div class="rs-services__subtitle rte">
+            {{ section.settings.subtitle }}
+          </div>
+        {% endif %}
+
+      </div>
+    {% endif %}
+
+    <div class="rs-services__grid">
+      {% for block in section.blocks %}
+        {% liquid
+          assign s = block.settings
+          assign card_tag = 'div'
+          if s.link != blank
+            assign card_tag = 'a'
+          endif
+        %}
+
+        <{{ card_tag }}
+          class="rs-service-card"
+          {% if s.link != blank %}
+            href="{{ s.link }}"
+            {% if s.new_tab %}
+              target="_blank"
+              rel="noopener noreferrer"
+            {% endif %}
+          {% endif %}
+          style="
+            --rs-card-accent: {{ s.custom_accent | default: section.settings.accent_color }};
+          "
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="rs-service-card__top">
+
+            <div class="rs-service-card__icon">
+              {% if s.custom_image != blank %}
+                {{
+                  s.custom_image
+                  | image_url: width: 120
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'rs-service-card__image',
+                    alt: s.title
+                }}
+              {% else %}
+                <svg
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  {% case s.icon %}
+                    {% when 'store' %}
+                      <path d="M3 10V21H21V10"/>
+                      <path d="M2 10L4 3H20L22 10"/>
+                      <path d="M2 10C2 12 6 12 6 10C6 12 10 12 10 10C10 12 14 12 14 10C14 12 18 12 18 10C18 12 22 12 22 10"/>
+                      <path d="M9 21V15H15V21"/>
+
+                    {% when 'design' %}
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <path d="M3 9H21M9 9V21"/>
+                      <path d="M6 6H6.01"/>
+
+                    {% when 'migration' %}
+                      <rect x="2" y="4" width="8" height="12" rx="2"/>
+                      <rect x="14" y="8" width="8" height="12" rx="2"/>
+                      <path d="M10 10H17M14 7L17 10L14 13"/>
+
+                    {% when 'settings' %}
+                      <path d="M12 3V5M12 19V21M3 12H5M19 12H21M5.6 5.6L7 7M17 17L18.4 18.4M18.4 5.6L17 7M7 17L5.6 18.4"/>
+                      <circle cx="12" cy="12" r="5"/>
+                      <circle cx="12" cy="12" r="2"/>
+
+                    {% when 'apps' %}
+                      <rect x="3" y="3" width="7" height="7" rx="1"/>
+                      <rect x="14" y="3" width="7" height="7" rx="1"/>
+                      <rect x="3" y="14" width="7" height="7" rx="1"/>
+                      <path d="M17.5 14V21M14 17.5H21"/>
+
+                    {% when 'marketing' %}
+                      <path d="M3 17L9 11L13 15L21 5"/>
+                      <path d="M15 5H21V11"/>
+                      <path d="M3 21H21"/>
+
+                    {% when 'email' %}
+                      <rect x="2" y="5" width="20" height="14" rx="2"/>
+                      <path d="M3 7L12 13L21 7"/>
+
+                    {% when 'b2b' %}
+                      <rect x="3" y="9" width="7" height="12"/>
+                      <rect x="14" y="4" width="7" height="17"/>
+                      <path d="M6 12H7M6 16H7M17 8H18M17 12H18M17 16H18M2 21H22"/>
+
+                    {% when 'conversion' %}
+                      <circle cx="12" cy="12" r="9"/>
+                      <circle cx="12" cy="12" r="5"/>
+                      <circle cx="12" cy="12" r="1"/>
+                      <path d="M12 12L20 4"/>
+
+                    {% when 'pos' %}
+                      <rect x="3" y="3" width="18" height="13" rx="2"/>
+                      <path d="M8 21H16M12 16V21M7 7H17M7 11H13"/>
+
+                    {% when 'code' %}
+                      <path d="M8 7L3 12L8 17M16 7L21 12L16 17M14 4L10 20"/>
+
+                    {% when 'support' %}
+                      <path d="M4 12V10A8 8 0 0 1 20 10V12"/>
+                      <rect x="2" y="11" width="4" height="7" rx="2"/>
+                      <rect x="18" y="11" width="4" height="7" rx="2"/>
+                      <path d="M20 18C20 21 17 21 14 21"/>
+
+                    {% else %}
+                      <path d="M12 3L14.8 9.2L21 12L14.8 14.8L12 21L9.2 14.8L3 12L9.2 9.2Z"/>
+                  {% endcase %}
+                </svg>
+              {% endif %}
+            </div>
+
+            {% if section.settings.show_numbers %}
+              <span class="rs-service-card__number">
+                {{ forloop.index | prepend: '0' | slice: -2, 2 }}
+              </span>
+            {% endif %}
+
+          </div>
+
+          <div class="rs-service-card__body">
+            {% if s.title != blank %}
+              <h3 class="rs-service-card__title">
+                {{ s.title | escape }}
+              </h3>
+            {% endif %}
+
+            {% if section.settings.show_descriptions and s.description != blank %}
+              <div class="rs-service-card__description">
+                {{ s.description }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if section.settings.show_links %}
+            <div class="rs-service-card__footer">
+              <span class="rs-service-card__link">
+                {{ s.link_label | default: section.settings.default_link_label | escape }}
+              </span>
+              <span class="rs-service-card__arrow">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 19L19 5M8 5H19V16"/>
+                </svg>
+              </span>
+            </div>
+          {% endif %}
+
+        </{{ card_tag }}>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.bottom_button_label != blank and section.settings.bottom_button_link != blank %}
+      <div class="rs-services__bottom">
+        <a
+          class="rs-services__button"
+          href="{{ section.settings.bottom_button_link }}"
+        >
+          {{ section.settings.bottom_button_label | escape }}
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12H19M13 6L19 12L13 18"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  #rs-services-{{ sid }} {
+    background: var(--rs-bg);
+    color: var(--rs-text);
+    padding: var(--rs-padding-top) 0 var(--rs-padding-bottom);
+    font-family: inherit;
+  }
+
+  #rs-services-{{ sid }} *,
+  #rs-services-{{ sid }} *::before,
+  #rs-services-{{ sid }} *::after {
+    box-sizing: border-box;
+  }
+
+  #rs-services-{{ sid }} .rs-services__container {
+    width: calc(100% - 40px);
+    max-width: {{ section.settings.container_width }}px;
+    margin: 0 auto;
+  }
+
+  #rs-services-{{ sid }} .rs-services__header {
+    margin-bottom: 44px;
+  }
+
+  #rs-services-{{ sid }} .rs-services__header--left {
+    text-align: left;
+  }
+
+  #rs-services-{{ sid }} .rs-services__header--center {
+    text-align: center;
+  }
+
+  #rs-services-{{ sid }} .rs-services__header--right {
+    text-align: right;
+  }
+
+  #rs-services-{{ sid }} .rs-services__eyebrow {
+    display: inline-block;
+    color: var(--rs-accent);
+    font-size: 12px;
+    font-weight: 700;
+    
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  #rs-services-{{ sid }} .rs-services__heading {
+    color: var(--rs-text);
+    font-size: var(--rs-heading-size);
+    font-weight: 750;
+    line-height: 1.12;
+ 
+    margin: 0;
+  }
+
+  #rs-services-{{ sid }} .rs-services__subtitle {
+    max-width: 650px;
+    color: var(--rs-muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-top: 18px;
+  }
+
+  #rs-services-{{ sid }} .rs-services__subtitle p {
+    margin: 0;
+  }
+
+  #rs-services-{{ sid }} .rs-services__header--center .rs-services__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #rs-services-{{ sid }} .rs-services__header--right .rs-services__subtitle {
+    margin-left: auto;
+  }
+
+  #rs-services-{{ sid }} .rs-services__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--rs-columns), minmax(0, 1fr));
+    gap: var(--rs-gap);
+    align-items: stretch;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: {{ section.settings.card_min_height }}px;
+    padding: {{ section.settings.card_padding }}px;
+    background: var(--rs-card);
+    color: var(--rs-text);
+    border: 1px solid var(--rs-border);
+    border-radius: var(--rs-radius);
+    overflow: hidden;
+    isolation: isolate;
+    text-align: left;
+    text-decoration: none;
+    transition:
+      transform 0.35s cubic-bezier(.2,.8,.2,1),
+      border-color 0.3s ease,
+      box-shadow 0.35s ease,
+      background-color 0.3s ease;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--rs-card-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__icon {
+    width: {{ section.settings.icon_box_size }}px;
+    height: {{ section.settings.icon_box_size }}px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: {{ section.settings.icon_radius }}px;
+    background: var(--rs-icon-bg);
+    color: var(--rs-card-accent);
+    transition: transform 0.35s ease;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__icon svg {
+    display: block;
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__image {
+    display: block;
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__number {
+    color: var(--rs-muted);
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.6;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__body {
+    flex: 1;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__title {
+    color: var(--rs-text);
+    font-size: var(--rs-card-title-size);
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 2px;
+    margin: 0 0 12px;
+    overflow-wrap: anywhere;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__description {
+    color: var(--rs-muted);
+    font-size: var(--rs-description-size);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__description p {
+    margin: 0 0 10px;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__description p:last-child {
+    margin-bottom: 0;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__link {
+    color: var(--rs-card-accent);
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card__arrow {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--rs-border);
+    border-radius: 50%;
+    color: var(--rs-card-accent);
+    transition:
+      color 0.3s ease,
+      background 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  #rs-services-{{ sid }} .rs-service-card:focus-visible {
+    outline: 2px solid var(--rs-card-accent);
+    outline-offset: 3px;
+  }
+
+  {% if section.settings.enable_hover %}
+    @media (hover: hover) {
+      #rs-services-{{ sid }} .rs-service-card:hover {
+        transform: translateY(-{{ section.settings.hover_lift }}px);
+        border-color: var(--rs-card-accent);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.10);
+      }
+
+      #rs-services-{{ sid }} .rs-service-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      #rs-services-{{ sid }} .rs-service-card:hover .rs-service-card__icon {
+        transform: scale(1.07);
+      }
+
+      #rs-services-{{ sid }} .rs-service-card:hover .rs-service-card__arrow {
+        background: var(--rs-card-accent);
+        color: var(--rs-card);
+        border-color: var(--rs-card-accent);
+        transform: translate(2px, -2px);
+      }
+    }
+  {% endif %}
+
+  #rs-services-{{ sid }} .rs-services__bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 44px;
+  }
+
+  #rs-services-{{ sid }} .rs-services__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 26px;
+    background: var(--rs-accent);
+    color: var(--rs-bg);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  #rs-services-{{ sid }} .rs-services__button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  @media screen and (max-width: 989px) {
+    #rs-services-{{ sid }} .rs-services__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #rs-services-{{ sid }} .rs-services__heading {
+      font-size: calc(var(--rs-heading-size) * .82);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #rs-services-{{ sid }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    #rs-services-{{ sid }} .rs-services__container {
+      width: calc(100% - 32px);
+    }
+
+    #rs-services-{{ sid }} .rs-services__header {
+      margin-bottom: 28px;
+    }
+
+    #rs-services-{{ sid }} .rs-services__heading {
+      font-size: {{ section.settings.mobile_heading_size }}px;
+    }
+
+    #rs-services-{{ sid }} .rs-services__subtitle {
+      font-size: 14px;
+    }
+
+    #rs-services-{{ sid }} .rs-services__grid {
+      grid-template-columns: repeat(var(--rs-mobile-columns), minmax(0, 1fr));
+      gap: {{ section.settings.mobile_gap }}px;
+    }
+
+    #rs-services-{{ sid }} .rs-service-card {
+      min-height: {{ section.settings.mobile_card_min_height }}px;
+      padding: {{ section.settings.mobile_card_padding }}px;
+    }
+
+    #rs-services-{{ sid }} .rs-service-card__top {
+      margin-bottom: 22px;
+    }
+
+    #rs-services-{{ sid }} .rs-service-card__title {
+      font-size: {{ section.settings.mobile_card_title_size }}px;
+    }
+
+    #rs-services-{{ sid }} .rs-service-card__footer {
+      margin-top: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #rs-services-{{ sid }} .rs-service-card,
+    #rs-services-{{ sid }} .rs-service-card::before,
+    #rs-services-{{ sid }} .rs-service-card__icon,
+    #rs-services-{{ sid }} .rs-service-card__arrow,
+    #rs-services-{{ sid }} .rs-services__button {
+      transition: none !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "RootSyntax Services",
+  "tag": "section",
+  "class": "section-rootsyntax-services",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "WHAT WE DO"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Solutions built for your growth."
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Description",
+      "default": "<p>From store design to conversion optimization, we help ambitious brands build, scale, and succeed on Shopify.</p>"
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Mobile heading size",
+      "min": 20,
+      "max": 44,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Layout settings"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Maximum width",
+      "min": 900,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1320
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "Desktop columns",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "mobile_columns",
+      "label": "Mobile columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Card gap",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "Mobile card gap",
+      "min": 6,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Card appearance"
+    },
+    {
+      "type": "range",
+      "id": "card_min_height",
+      "label": "Minimum card height",
+      "min": 180,
+      "max": 440,
+      "step": 10,
+      "unit": "px",
+      "default": 290
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_min_height",
+      "label": "Mobile minimum height",
+      "min": 140,
+      "max": 360,
+      "step": 10,
+      "unit": "px",
+      "default": 240
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_padding",
+      "label": "Mobile card padding",
+      "min": 10,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "label": "Card title size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_title_size",
+      "label": "Mobile card title size",
+      "min": 13,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "checkbox",
+      "id": "show_descriptions",
+      "label": "Show descriptions",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_numbers",
+      "label": "Show card numbers",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_links",
+      "label": "Show link labels and arrows",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "default_link_label",
+      "label": "Default link label",
+      "default": "Explore service"
+    },
+    {
+      "type": "header",
+      "content": "Icon styling"
+    },
+    {
+      "type": "range",
+      "id": "icon_box_size",
+      "label": "Icon container size",
+      "min": 36,
+      "max": 90,
+      "step": 2,
+      "unit": "px",
+      "default": 54
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "icon_radius",
+      "label": "Icon corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Hover animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover",
+      "label": "Enable hover animation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "hover_lift",
+      "label": "Hover lift distance",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#0C1320"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#182233"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Heading and title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Description color",
+      "default": "#A9B5C6"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#A7B4FF"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Card border color",
+      "default": "#344052"
+    },
+    {
+      "type": "color",
+      "id": "icon_bg",
+      "label": "Icon background",
+      "default": "#283653"
+    },
+    {
+      "type": "header",
+      "content": "Bottom button"
+    },
+    {
+      "type": "text",
+      "id": "bottom_button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "bottom_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Service title",
+          "default": "Service title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Service description",
+          "default": "<p>Describe how your service helps businesses achieve their goals.</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Service page link"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Custom link label",
+          "default": "Explore service"
+        },
+        {
+          "type": "checkbox",
+          "id": "new_tab",
+          "label": "Open in new tab",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Service icon",
+          "options": [
+            { "value": "store", "label": "Store" },
+            { "value": "design", "label": "Design" },
+            { "value": "migration", "label": "Migration" },
+            { "value": "settings", "label": "Settings" },
+            { "value": "apps", "label": "Apps" },
+            { "value": "marketing", "label": "Marketing" },
+            { "value": "email", "label": "Email" },
+            { "value": "b2b", "label": "B2B" },
+            { "value": "conversion", "label": "Conversion" },
+            { "value": "pos", "label": "POS" },
+            { "value": "code", "label": "Code" },
+            { "value": "support", "label": "Support" },
+            { "value": "sparkle", "label": "Sparkle" }
+          ],
+          "default": "store"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom icon image",
+          "info": "Overrides the selected SVG icon."
+        },
+        {
+          "type": "color",
+          "id": "custom_accent",
+          "label": "Individual card accent",
+          "default": "#A7B4FF"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "Service Cards Main Page",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "title": "Store Build or Redesign",
+            "icon": "store",
+            "description": "<p>Launch a stunning, high-performing Shopify store built around your brand and customer experience.</p>",
+            "link": "/pages/store-build-or-redesign"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Theme Customization",
+            "icon": "design",
+            "description": "<p>Transform your Shopify theme with unique layouts, advanced features, and tailored functionality.</p>",
+            "link": "/pages/theme-customization-1"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Migration to Shopify",
+            "icon": "migration",
+            "description": "<p>Seamlessly move your existing store to Shopify while preserving essential data and functionality.</p>",
+            "link": "/pages/migration-to-shopify"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Expert Guidance and Store Setup",
+            "icon": "settings",
+            "description": "<p>Get expert assistance with store configuration, optimization, and Shopify best practices.</p>",
+            "link": "/pages/expert-guidance-and-store-setup"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "App Integration",
+            "icon": "apps",
+            "description": "<p>Connect powerful Shopify apps and third-party tools to automate and enhance your operations.</p>",
+            "link": "/pages/app-integration"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Digital Marketing and SEO",
+            "icon": "marketing",
+            "description": "<p>Increase visibility, attract qualified visitors, and drive sustainable growth through digital marketing.</p>",
+            "link": "/pages/digital-marketing-and-seo"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Email Marketing",
+            "icon": "email",
+            "description": "<p>Build customer relationships and boost repeat purchases with strategic Klaviyo email campaigns.</p>",
+            "link": "/pages/email-marketing-with-klaviyo"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Wholesale/B2B Solutions",
+            "icon": "b2b",
+            "description": "<p>Streamline wholesale operations with custom B2B storefronts, pricing, and purchasing workflows.</p>",
+            "link": "/pages/wholesale-b2b-solutions"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Conversion Rate Optimization",
+            "icon": "conversion",
+            "description": "<p>Turn more visitors into customers through data-driven improvements and seamless shopping experiences.</p>",
+            "link": "/pages/conversion-rate-optimization-1"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Shopify POS",
+            "icon": "pos",
+            "description": "<p>Unify your in-store and online sales with a connected Shopify Point of Sale experience.</p>",
+            "link": "/pages/shopify-pos"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

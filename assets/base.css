@@ -383,9 +383,9 @@ p:empty {
 }
 
 /* Make the actual section background transparent, and instead apply it to a separate sibling element to enable stacking with hero shadow  */
-.shopify-section:not(.header-section) :is(.section, .cart-summary) {
+/* .shopify-section:not(.header-section) :is(.section, .cart-summary) {
   background: transparent;
-}
+} */
 
 .shopify-section:not(.header-section):has(.section) {
   position: relative;

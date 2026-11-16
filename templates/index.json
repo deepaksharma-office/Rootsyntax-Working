@@ -46,7 +46,7 @@
           "name": "t:names.image",
           "settings": {
             "image": "shopify://shop_images/image_41.png",
-            "link": "shopify://pages/book-a-call-contact-us",
+            "link": "",
             "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
@@ -200,7 +200,7 @@
             "text": "About Us",
             "font_size": 12,
             "background_color": "#ffffff",
-            "text_color": "#1e3978",
+            "text_color": "#121e4e",
             "border_color": "#e5e8ee",
             "radius": 20
           }
@@ -209,7 +209,7 @@
           "type": "richtext",
           "settings": {
             "content": "<p><strong>RootSyntax</strong> helps ecommerce brands launch, migrate, optimize, and scale on <strong>Shopify</strong> through conversion-focused design, development, and <strong>growth strategies.</strong></p>",
-            "highlight_color": "#1e3978",
+            "highlight_color": "#121e4e",
             "font_size": 24
           }
         },
@@ -219,7 +219,7 @@
             "label": "Learn more",
             "link": "shopify://pages/about-us-1",
             "open_new_tab": false,
-            "background_color": "#121E4E",
+            "background_color": "#121e4e",
             "text_color": "#ffffff",
             "radius": 6,
             "font_size": 16
@@ -314,7 +314,7 @@
         "card_padding": 18,
         "title_size": 13,
         "number_size": 38,
-        "background_color": "#121e4e",
+        "background_color": "#121E4E",
         "card_background": "#f9fafb",
         "title_color": "#6b7280",
         "number_color": "#1c3390",
@@ -492,7 +492,7 @@
         "column_gap": 64,
         "left_width": 50,
         "right_width": 50,
-        "background_color": "#121e4e",
+        "background_color": "#121E4E",
         "enable_gradient": false,
         "gradient_color": "#172c70",
         "gradient_direction": "to right",
@@ -1352,7 +1352,7 @@
         "mobile_columns": "1",
         "card_gap": 24,
         "row_gap": 24,
-        "background": "#121e4e",
+        "background": "#121E4E",
         "enable_gradient": false,
         "gradient_color": "#142968",
         "gradient_opacity": 60,

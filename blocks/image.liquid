@@ -1,8 +1,9 @@
-
-
 {% liquid
   assign block_settings = block.settings
+  assign mobile_image = block_settings.mobile_image
+  assign desktop_image = block_settings.image | default: mobile_image
   assign ratio = 1
+  assign mobile_ratio = 1
 
   case block_settings.image_ratio
     when 'landscape'
@@ -10,17 +11,38 @@
     when 'portrait'
       assign ratio = '4 / 5'
     when 'adapt'
-      assign ratio = block_settings.image.aspect_ratio
+      assign ratio = desktop_image.aspect_ratio | default: 1
   endcase
 
-  if ratio == 0 or ratio == null
+  if ratio == 0
     assign ratio = 1
+  endif
+
+  assign mobile_ratio = ratio
+  if block_settings.image_ratio == 'adapt' and mobile_image != blank
+    assign mobile_ratio = mobile_image.aspect_ratio | default: ratio
+    if mobile_ratio == 0
+      assign mobile_ratio = ratio
+    endif
+  endif
+
+  assign use_mobile_source = false
+  if block_settings.image != blank and mobile_image != blank
+    assign use_mobile_source = true
+  endif
+
+  assign sizes = 'auto, 100vw'
+  assign widths = '240, 352, 832, 1200, 1600, 1920, 2560, 3840'
+
+  if use_mobile_source
+    assign mobile_widths = '240,352,480,640,750,960,1200' | split: ','
+    assign mobile_max_width = mobile_image.width | at_most: 1600
   endif
 %}
 
-{% capture class %}
+{% capture class -%}
   image-block image-block--{{ block.id }} image-block--height-{{ block_settings.height }} spacing-style size-style
-{% endcapture %}
+{%- endcapture %}
 
 {% capture style %}
   --ratio: {{ ratio }};
@@ -30,29 +52,45 @@
 
 {% capture image_border_style %}
   --ratio: {{ ratio }};
+  --image-block-mobile-ratio: {{ mobile_ratio }};
   {% render 'border-override', settings: block_settings %}
 {% endcapture %}
 
-{% liquid
-  assign media_width_desktop = '100vw'
-  assign media_width_mobile = '100vw'
-  assign sizes = 'auto, (min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
-  assign widths = '240, 352, 832, 1200, 1600, 1920, 2560, 3840'
-%}
-
 {% capture image %}
-  {%- if block_settings.image -%}
+  {%- if desktop_image != blank -%}
+    {%- if use_mobile_source -%}
+      {%- capture mobile_srcset -%}
+        {%- for candidate in mobile_widths -%}
+          {%- assign candidate_width = candidate | plus: 0 -%}
+          {%- if candidate_width < mobile_max_width -%}
+            {{ mobile_image | image_url: width: candidate_width | escape }} {{ candidate_width }}w,
+          {%- endif -%}
+        {%- endfor -%}
+        {{ mobile_image | image_url: width: mobile_max_width | escape }} {{ mobile_max_width }}w
+      {%- endcapture -%}
+      <picture class="image-block__picture">
+        <source
+          media="(max-width: 749px)"
+          srcset="{{ mobile_srcset }}"
+          sizes="100vw"
+          width="{{ mobile_image.width }}"
+          height="{{ mobile_image.height }}"
+        >
+    {%- endif -%}
     {{
-      block_settings.image
+      desktop_image
       | image_url: width: 3840
       | image_tag:
-        width: block_settings.image.width,
+        width: desktop_image.width,
         widths: widths,
-        height: block_settings.image.height,
+        height: desktop_image.height,
         class: 'image-block__image border-style',
         style: image_border_style,
         sizes: sizes
     }}
+    {%- if use_mobile_source -%}
+      </picture>
+    {%- endif -%}
   {%- else -%}
     <div class="placeholder-image border-style size-style" style="{{ image_border_style }}">
       {{ 'detailed-apparel-1' | placeholder_svg_tag: 'image-block__placeholder' }}
@@ -70,7 +108,7 @@
   </div>
 {% else %}
   <a
-    href="{{ block_settings.link }}"
+    href="{{ block_settings.link | escape }}"
     class="{{ class }}"
     style="{{ style }}"
     {{ block.shopify_attributes }}
@@ -98,8 +136,12 @@
   .image-block {
     display: flex;
 
-    /* When the image is nested in a group, section, etc, respect the parent's horizontal alignment */
+    /* Respect the parent group's horizontal alignment. */
     justify-content: var(--horizontal-alignment, 'inline-start');
+  }
+
+  .image-block__picture {
+    display: contents;
   }
 
   .image-block--height-fill .image-block__image {
@@ -109,6 +151,12 @@
   .image-block__image {
     object-fit: cover;
     aspect-ratio: var(--ratio);
+  }
+
+  @media (max-width: 749px) {
+    .image-block__picture > .image-block__image {
+      aspect-ratio: var(--image-block-mobile-ratio, var(--ratio));
+    }
   }
 {% endstylesheet %}
 
@@ -121,6 +169,12 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:settings.image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "Optional. Shown below 750 px. When empty, the main image is used."
     },
     {
       "type": "url",
@@ -257,22 +311,22 @@
     {
       "type": "range",
       "id": "border_width",
+      "label": "t:settings.thickness",
       "min": 0,
       "max": 100,
       "step": 1,
       "unit": "px",
-      "label": "t:settings.thickness",
       "default": 1,
       "visible_if": "{{ block.settings.border != 'none' }}"
     },
     {
       "type": "range",
       "id": "border_opacity",
+      "label": "t:settings.opacity",
       "min": 0,
       "max": 100,
       "step": 1,
       "unit": "%",
-      "label": "t:settings.opacity",
       "default": 100,
       "visible_if": "{{ block.settings.border != 'none' }}"
     },

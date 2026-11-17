@@ -336,7 +336,7 @@
           "settings": {
             "title": "Store Build Or Redesign",
             "description": "<p>Launch a conversion-focused Shopify store optimized for performance and scalability.</p>",
-            "image": "shopify://shop_images/image_2_2.png",
+            "image": "shopify://shop_images/shopify_setup_rocket_flight_white_bg.gif",
             "background_color": ""
           }
         },
@@ -345,7 +345,7 @@
           "settings": {
             "title": "Migration To Shopify",
             "description": "<p>Custom Shopify development tailored to your business goals.</p>",
-            "image": "shopify://shop_images/image_3_1.png",
+            "image": "shopify://shop_images/shopify_development_product_motion_white_bg.gif",
             "background_color": ""
           }
         },
@@ -354,7 +354,7 @@
           "settings": {
             "title": "Expert Guidance and Store Setup",
             "description": "<p>Move seamlessly from WooCommerce, Magento, Wix, or custom platforms.</p>",
-            "image": "shopify://shop_images/image_7_b78bad5d-b9d1-4714-8357-32901463aca7.png",
+            "image": "shopify://shop_images/shopify_migration_micro_animation_white_bg.gif",
             "background_color": ""
           }
         },
@@ -363,7 +363,7 @@
           "settings": {
             "title": "Digital Marketing and SEO",
             "description": "<p>Connect powerful apps and automations that improve efficiency.</p>",
-            "image": "shopify://shop_images/image_8_d9874f6d-2553-4db4-a058-b6234b037180.png",
+            "image": "shopify://shop_images/shopify_integrations_micro_animated.gif",
             "background_color": ""
           }
         },
@@ -372,7 +372,7 @@
           "settings": {
             "title": "Wholesale/B2B Solutions",
             "description": "<p>Increase conversions through UX improvements and data-driven testing.</p>",
-            "image": "shopify://shop_images/image_6.png",
+            "image": "shopify://shop_images/conversion_optimization_micro_animated.gif",
             "background_color": ""
           }
         },
@@ -381,7 +381,7 @@
           "settings": {
             "title": "Conversion Rate Optimization",
             "description": "<p>Ongoing technical support and store improvements.</p>",
-            "image": "shopify://shop_images/image_7_1.png",
+            "image": "shopify://shop_images/shopify_storefront_product_micro_animated.gif",
             "background_color": ""
           }
         }

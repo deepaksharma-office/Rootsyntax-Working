@@ -1407,6 +1407,7 @@
     },
     "custom-success-cta": {
       "type": "custom-success-cta",
+      "disabled": true,
       "settings": {
         "heading": "Ready to Build the Next Success Story?",
         "description": "From ambitious established brands to growing Shopify merchants, we drive measurable growth and long-term success.",
@@ -1456,7 +1457,7 @@
         "secondary_hover_color": "#1d2c52",
         "show_primary": true,
         "primary_text": "Book a Strategy Call",
-        "primary_link": "shopify://pages/book-a-call-now",
+        "primary_link": "",
         "primary_new_tab": false,
         "show_arrow": false,
         "primary_background": "#f47722",

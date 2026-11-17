@@ -1,172 +1,529 @@
-{% doc %}
-  @prompt
-    Create a responsive Shopify package comparison section that closely matches the attached reference image. Match its clean layout, typography, colors, table proportions, and spacing.
-    
-    HEADER
-    - White section background.
-    - Centered container with an editable maximum width, default 1440px.
-    - Desktop padding: approximately 48px top and bottom, 40px side gutters.
-    - Small bold uppercase eyebrow at the top left: “THE DETAILS, MADE SIMPLE”.
-    - Below it, a large regular-weight heading: “Find your perfect fit.”
-    - Heading size: approximately 46px desktop and 32px mobile, dark charcoal.
-    - On the right, aligned near the heading baseline, show a muted gray link: “Have a question? Read the FAQs ↗”.
-    - Make the FAQ link text and destination editable.
-    - Leave approximately 30px between the heading and the comparison table.
-    
-    COMPARISON TABLE
-    - Create one continuous table with four columns:
-      “What’s included”, “Launch”, “Growth”, “Scale”.
-    - First column occupies approximately 31% of the table width; the other three columns share the remaining width equally.
-    - Left-align the first column and center-align all package columns.
-    - Use a pale blue-gray header background, approximately #DFE7EC.
-    - Highlight the entire Growth column with a slightly lighter pale blue-gray background, approximately #E7EEF5, including its header and every body cell.
-    - Keep all other body cells white.
-    - Thin warm light-gray horizontal borders between rows, approximately #DEDFD8.
-    - Add a subtle outer border and approximately 6px outer corner radius.
-    - No shadows, gradients, icons, buttons, alternating row colors, or hover effects.
-    - Use dark charcoal text with clean sans-serif typography.
-    - Header labels and first-column row labels should be bold.
-    - Body text should be regular weight, approximately 14px.
-    - Use approximately 16px horizontal cell padding and 18px vertical padding.
-    - Rows should be approximately 58px tall, expanding naturally when text wraps.
-    - Keep borders and highlighted backgrounds continuous without gaps.
-    
-    PREFILL THESE TABLE ROWS
-    Use the following values in this exact column order:
-    Feature | Launch | Growth | Scale
-    
-    Project investment | $1,000 | $3,000 | $10,000
-    Design approach | Branded premium theme | Customized theme templates | Bespoke UI & sections
-    Products loaded | Up to 25 | Up to 150 via CSV | Unlimited via bulk import
-    Pages | 4 pages | Up to 8 | 20+ (scope confirmed)
-    App setup | 1 app | Up to 3 apps | Up to 8 + integrations
-    Email marketing | Basic notifications | 2 Klaviyo flows | Full Klaviyo flow suite
-    Migration | Available as add-on | Products & customers | Products, customers & orders
-    SEO | Titles & meta descriptions | On-page, redirects & sitemap | Technical audit, schema & mapping
-    Revision rounds | 1 | 2 | 3
-    Post-launch support | 7 days | Confirm in proposal | 60 days
-    Dedicated project manager | — | — | Included
-    Estimated timeline | 1–2 weeks | 3–5 weeks | 8–12 weeks
-    
-    FOOTNOTE
-    Below the table, add small muted gray text, left-aligned:
-    “Custom checkout capabilities depend on your Shopify plan and platform eligibility. ‘20+ pages’ and custom integrations are scoped during discovery.”
-    Use approximately 12px text with 16–20px space above it.
-    
-    MOBILE BEHAVIOR
-    - Use approximately 20px section side gutters.
-    - Stack the FAQ link below the heading and align it left.
-    - Preserve the comparison table layout using horizontal scrolling within the table container.
-    - Set a suitable minimum table width of approximately 800px so text remains readable.
-    - Keep the first column sticky while scrolling horizontally.
-    - Preserve white backgrounds on sticky body cells and the header background on the sticky header cell.
-    - Ensure the table scrolls without making the entire page overflow.
-    - Keep the Growth column highlight visible throughout.
-    
-    SHOPIFY EDITOR SETTINGS
-    - Make the eyebrow, heading, FAQ text, FAQ link, column titles, and footnote editable.
-    - Use repeatable row blocks, each with four text fields: feature name, Launch value, Growth value, Scale value.
-    - Prefill all 12 rows with the content above.
-    - Allow rows to be added, removed, and reordered.
-    - Add controls for section background, text color, header background, highlighted column background, border color, and highlighted column selection.
-    - Add desktop and mobile heading sizes, table text size, maximum width, cell padding, and section padding settings.
-    - Use valid Shopify schema defaults and range increments.
-    - Scope all styles to this section.
-    - Use semantic table markup with proper column headers and row headers.
-    - Prioritize matching the attached reference rather than introducing additional design elements.
-{% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
 {% style %}
-  .ai-package-{{ ai_gen_id }} { display:block; width:100%; background:{{ block.settings.section_bg }}; color:{{ block.settings.text_color }}; padding:{{ block.settings.section_padding }}px 20px; }
-  .ai-package-{{ ai_gen_id }}__inner { width:100%; max-width:{{ block.settings.max_width }}px; margin:0 auto; }
-  .ai-package-{{ ai_gen_id }}__top { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; }
-  .ai-package-{{ ai_gen_id }}__eyebrow { margin:0 0 12px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
-  .ai-package-{{ ai_gen_id }}__heading { margin:0; font-size:{{ block.settings.heading_desktop }}px; line-height:1.12; font-weight:400; letter-spacing:-.025em; }
-  .ai-package-{{ ai_gen_id }}__faq { color:#74797c; font-size:14px; text-decoration:none; margin-bottom:6px; }
-  .ai-package-{{ ai_gen_id }}__faq:hover { text-decoration:underline; }
-  .ai-package-{{ ai_gen_id }}__scroll { width:100%; overflow-x:auto; margin-top:30px; border:1px solid {{ block.settings.border_color }}; border-radius:6px; -webkit-overflow-scrolling:touch; }
-  .ai-package-{{ ai_gen_id }}__table { border-collapse:separate; border-spacing:0; width:100%; min-width:800px; table-layout:fixed; font-size:{{ block.settings.table_text_size }}px; }
-  .ai-package-{{ ai_gen_id }}__table th, .ai-package-{{ ai_gen_id }}__table td { padding:{{ block.settings.cell_padding }}px 16px; text-align:center; vertical-align:middle; border-bottom:1px solid {{ block.settings.border_color }}; font-weight:400; }
-  .ai-package-{{ ai_gen_id }}__table thead th { background:{{ block.settings.header_bg }}; font-weight:700; }
-  .ai-package-{{ ai_gen_id }}__table tbody th { text-align:left; font-weight:700; }
-  .ai-package-{{ ai_gen_id }}__table tr:last-child th, .ai-package-{{ ai_gen_id }}__table tr:last-child td { border-bottom:0; }
-  .ai-package-{{ ai_gen_id }}__table th:first-child, .ai-package-{{ ai_gen_id }}__table td:first-child { width:31%; text-align:left; position:sticky; left:0; z-index:2; }
-  .ai-package-{{ ai_gen_id }}__table thead th:first-child { background:{{ block.settings.header_bg }}; z-index:4; }
-  .ai-package-{{ ai_gen_id }}__table tbody th { background:{{ block.settings.section_bg }}; }
-  .ai-package-{{ ai_gen_id }}__table .ai-package-{{ ai_gen_id }}__highlight { background:{{ block.settings.highlight_bg }}; }
-  .ai-package-{{ ai_gen_id }}__table thead .ai-package-{{ ai_gen_id }}__highlight { background:{{ block.settings.highlight_bg }}; }
-  .ai-package-{{ ai_gen_id }}__footnote { margin:16px 0 0; color:#74797c; font-size:12px; line-height:1.5; }
-  @media (max-width:749px) {
-    .ai-package-{{ ai_gen_id }} { padding:32px 20px; }
-    .ai-package-{{ ai_gen_id }}__top { display:block; }
-    .ai-package-{{ ai_gen_id }}__heading { font-size:{{ block.settings.heading_mobile }}px; }
-    .ai-package-{{ ai_gen_id }}__faq { display:inline-block; margin-top:14px; }
-    .ai-package-{{ ai_gen_id }}__table th:first-child, .ai-package-{{ ai_gen_id }}__table td:first-child { width:220px; }
+  .ai-package-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background: {{ block.settings.section_bg }};
+    color: {{ block.settings.text_color }};
+    padding: {{ block.settings.section_padding }}px 20px;
+  }
+
+  .ai-package-{{ ai_gen_id }}__inner {
+    width: 100%;
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-package-{{ ai_gen_id }}__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+
+  .ai-package-{{ ai_gen_id }}__eyebrow {
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .ai-package-{{ ai_gen_id }}__heading {
+    margin: 0;
+    font-size: {{ block.settings.heading_desktop }}px;
+    line-height: 1.12;
+    font-weight: 400;
+    letter-spacing: -.025em;
+  }
+
+  .ai-package-{{ ai_gen_id }}__faq {
+    color: #74797c;
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 6px;
+  }
+
+  .ai-package-{{ ai_gen_id }}__faq:hover {
+    text-decoration: underline;
+  }
+
+  .ai-package-{{ ai_gen_id }}__scroll {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 30px;
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ai-package-{{ ai_gen_id }}__table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    min-width: 800px;
+    table-layout: fixed;
+    font-size: {{ block.settings.table_text_size }}px;
+  }
+
+  .ai-package-{{ ai_gen_id }}__table th,
+  .ai-package-{{ ai_gen_id }}__table td {
+    padding: {{ block.settings.cell_padding }}px 16px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid {{ block.settings.border_color }};
+    font-weight: 400;
+  }
+
+  .ai-package-{{ ai_gen_id }}__table thead th {
+    background: {{ block.settings.header_bg }};
+    font-weight: 700;
+  }
+
+  .ai-package-{{ ai_gen_id }}__table tbody th {
+    text-align: left;
+    font-weight: 700;
+  }
+
+  .ai-package-{{ ai_gen_id }}__table tr:last-child th,
+  .ai-package-{{ ai_gen_id }}__table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .ai-package-{{ ai_gen_id }}__table th:first-child,
+  .ai-package-{{ ai_gen_id }}__table td:first-child {
+    width: 31%;
+    text-align: left;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+  }
+
+  .ai-package-{{ ai_gen_id }}__table thead th:first-child {
+    background: {{ block.settings.header_bg }};
+    z-index: 4;
+  }
+
+  .ai-package-{{ ai_gen_id }}__table tbody th {
+    background: {{ block.settings.section_bg }};
+  }
+
+  .ai-package-{{ ai_gen_id }}__table .ai-package-{{ ai_gen_id }}__highlight {
+    background: {{ block.settings.highlight_bg }};
+  }
+
+  .ai-package-{{ ai_gen_id }}__table thead .ai-package-{{ ai_gen_id }}__highlight {
+    background: {{ block.settings.highlight_bg }};
+  }
+
+  .ai-package-{{ ai_gen_id }}__footnote {
+    margin: 16px 0 0;
+    color: #74797c;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 749px) {
+    .ai-package-{{ ai_gen_id }} {
+      padding: 32px 20px;
+    }
+
+    .ai-package-{{ ai_gen_id }}__top {
+      display: block;
+    }
+
+    .ai-package-{{ ai_gen_id }}__heading {
+      font-size: {{ block.settings.heading_mobile }}px;
+    }
+
+    .ai-package-{{ ai_gen_id }}__faq {
+      display: inline-block;
+      margin-top: 14px;
+    }
+
+    .ai-package-{{ ai_gen_id }}__table th:first-child,
+    .ai-package-{{ ai_gen_id }}__table td:first-child {
+      width: 220px;
+    }
   }
 {% endstyle %}
-<section class="ai-package-{{ ai_gen_id }}" style="width:100%;" {{ block.shopify_attributes }}>
+
+<section
+  class="ai-package-{{ ai_gen_id }}"
+  style="width:100%;"
+  {{ block.shopify_attributes }}
+>
   <div class="ai-package-{{ ai_gen_id }}__inner">
     <div class="ai-package-{{ ai_gen_id }}__top">
-      <div><p class="ai-package-{{ ai_gen_id }}__eyebrow">{{ block.settings.eyebrow | escape }}</p><h2 class="ai-package-{{ ai_gen_id }}__heading">{{ block.settings.heading | escape }}</h2></div>
-      {% if block.settings.faq_text != blank %}<a class="ai-package-{{ ai_gen_id }}__faq" href="{{ block.settings.faq_link }}">{{ block.settings.faq_text | escape }}</a>{% endif %}
+      <div>
+        <p class="ai-package-{{ ai_gen_id }}__eyebrow">
+          {{ block.settings.eyebrow | escape }}
+        </p>
+
+        <h2 class="ai-package-{{ ai_gen_id }}__heading">
+          {{ block.settings.heading | escape }}
+        </h2>
+      </div>
+
+      {% if block.settings.faq_text != blank %}
+        <a
+          class="ai-package-{{ ai_gen_id }}__faq"
+          href="{{ block.settings.faq_link }}"
+        >
+          {{ block.settings.faq_text | escape }}
+        </a>
+      {% endif %}
     </div>
+
     {% assign highlight = block.settings.highlight_column %}
-    <div class="ai-package-{{ ai_gen_id }}__scroll" role="region" aria-label="Package comparison table" tabindex="0">
+
+    <div
+      class="ai-package-{{ ai_gen_id }}__scroll"
+      role="region"
+      aria-label="Package comparison table"
+      tabindex="0"
+    >
       <table class="ai-package-{{ ai_gen_id }}__table">
-        <thead><tr><th scope="col">{{ block.settings.first_title | escape }}</th><th scope="col" {% if highlight == 'launch' %}class="ai-package-{{ ai_gen_id }}__highlight"{% endif %}>{{ block.settings.launch_title | escape }}</th><th scope="col" {% if highlight == 'growth' %}class="ai-package-{{ ai_gen_id }}__highlight"{% endif %}>{{ block.settings.growth_title | escape }}</th><th scope="col" {% if highlight == 'scale' %}class="ai-package-{{ ai_gen_id }}__highlight"{% endif %}>{{ block.settings.scale_title | escape }}</th></tr></thead>
+        <thead>
+          <tr>
+            <th scope="col">
+              {{ block.settings.first_title | escape }}
+            </th>
+
+            <th
+              scope="col"
+              {% if highlight == 'launch' %}
+                class="ai-package-{{ ai_gen_id }}__highlight"
+              {% endif %}
+            >
+              {{ block.settings.launch_title | escape }}
+            </th>
+
+            <th
+              scope="col"
+              {% if highlight == 'growth' %}
+                class="ai-package-{{ ai_gen_id }}__highlight"
+              {% endif %}
+            >
+              {{ block.settings.growth_title | escape }}
+            </th>
+
+            <th
+              scope="col"
+              {% if highlight == 'scale' %}
+                class="ai-package-{{ ai_gen_id }}__highlight"
+              {% endif %}
+            >
+              {{ block.settings.scale_title | escape }}
+            </th>
+          </tr>
+        </thead>
+
         <tbody>
-          {% for i in (1..12) %}
-            {% assign feature_key = 'feature_' | append: i %}{% assign launch_key = 'launch_' | append: i %}{% assign growth_key = 'growth_' | append: i %}{% assign scale_key = 'scale_' | append: i %}
-            <tr><th scope="row">{{ block.settings[feature_key] | escape }}</th><td {% if highlight == 'launch' %}class="ai-package-{{ ai_gen_id }}__highlight"{% endif %}>{{ block.settings[launch_key] | escape }}</td><td {% if highlight == 'growth' %}class="ai-package-{{ ai_gen_id }}__highlight"{% endif %}>{{ block.settings[growth_key] | escape }}</td><td {% if highlight == 'scale' %}class="ai-package-{{ ai_gen_id }}__highlight"{% endif %}>{{ block.settings[scale_key] | escape }}</td></tr>
+          {% for i in (1..15) %}
+            {% assign feature_key = 'updated_feature_' | append: i %}
+            {% assign launch_key = 'updated_launch_' | append: i %}
+            {% assign growth_key = 'updated_growth_' | append: i %}
+            {% assign scale_key = 'updated_scale_' | append: i %}
+
+            <tr>
+              <th scope="row">
+                {{ block.settings[feature_key] | escape }}
+              </th>
+
+              <td
+                {% if highlight == 'launch' %}
+                  class="ai-package-{{ ai_gen_id }}__highlight"
+                {% endif %}
+              >
+                {{ block.settings[launch_key] | escape }}
+              </td>
+
+              <td
+                {% if highlight == 'growth' %}
+                  class="ai-package-{{ ai_gen_id }}__highlight"
+                {% endif %}
+              >
+                {{ block.settings[growth_key] | escape }}
+              </td>
+
+              <td
+                {% if highlight == 'scale' %}
+                  class="ai-package-{{ ai_gen_id }}__highlight"
+                {% endif %}
+              >
+                {{ block.settings[scale_key] | escape }}
+              </td>
+            </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
-    <p class="ai-package-{{ ai_gen_id }}__footnote">{{ block.settings.footnote | escape }}</p>
+
+    <p class="ai-package-{{ ai_gen_id }}__footnote">
+      {{ block.settings.updated_footnote | escape }}
+    </p>
   </div>
 </section>
+
 {% schema %}
 {
   "name": "Package comparison",
   "settings": [
-    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"THE DETAILS, MADE SIMPLE"},
-    {"type":"text","id":"heading","label":"Heading","default":"Find your perfect fit."},
-    {"type":"text","id":"faq_text","label":"FAQ link text","default":"Have a question? Read the FAQs ↗"},
-    {"type":"url","id":"faq_link","label":"FAQ link"},
-    {"type":"text","id":"first_title","label":"Feature column title","default":"What’s included"},
-    {"type":"text","id":"launch_title","label":"Launch title","default":"Launch"},
-    {"type":"text","id":"growth_title","label":"Growth title","default":"Growth"},
-    {"type":"text","id":"scale_title","label":"Scale title","default":"Scale"},
-    {"type":"textarea","id":"footnote","label":"Footnote","default":"Custom checkout capabilities depend on your Shopify plan and platform eligibility. ‘20+ pages’ and custom integrations are scoped during discovery."},
-    {"type":"header","content":"Layout and colors"},
-    {"type":"range","id":"max_width","label":"Maximum width","min":800,"max":1600,"step":40,"unit":"px","default":1440},
-    {"type":"range","id":"desktop_width_percent","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100},
-    {"type":"range","id":"heading_desktop","label":"Desktop heading size","min":30,"max":60,"step":2,"unit":"px","default":46},
-    {"type":"range","id":"heading_mobile","label":"Mobile heading size","min":24,"max":40,"step":2,"unit":"px","default":32},
-    {"type":"range","id":"table_text_size","label":"Table text size","min":12,"max":18,"step":1,"unit":"px","default":14},
-    {"type":"range","id":"cell_padding","label":"Cell vertical padding","min":10,"max":26,"step":2,"unit":"px","default":18},
-    {"type":"range","id":"section_padding","label":"Section vertical padding","min":24,"max":80,"step":4,"unit":"px","default":48},
-    {"type":"color","id":"section_bg","label":"Section background","default":"#FFFFFF"},
-    {"type":"color","id":"text_color","label":"Text color","default":"#292D30"},
-    {"type":"color","id":"header_bg","label":"Header background","default":"#DFE7EC"},
-    {"type":"color","id":"highlight_bg","label":"Highlighted column background","default":"#E7EEF5"},
-    {"type":"color","id":"border_color","label":"Border color","default":"#DEDFD8"},
-    {"type":"select","id":"highlight_column","label":"Highlighted column","options":[{"value":"launch","label":"Launch"},{"value":"growth","label":"Growth"},{"value":"scale","label":"Scale"}],"default":"growth"},
-    {"type":"header","content":"Comparison rows"},
-    {"type":"text","id":"feature_1","label":"Feature 1","default":"Project investment"},{"type":"text","id":"launch_1","label":"Launch 1","default":"$1,000"},{"type":"text","id":"growth_1","label":"Growth 1","default":"$3,000"},{"type":"text","id":"scale_1","label":"Scale 1","default":"$10,000"},
-    {"type":"text","id":"feature_2","label":"Feature 2","default":"Design approach"},{"type":"text","id":"launch_2","label":"Launch 2","default":"Branded premium theme"},{"type":"text","id":"growth_2","label":"Growth 2","default":"Customized theme templates"},{"type":"text","id":"scale_2","label":"Scale 2","default":"Bespoke UI & sections"},
-    {"type":"text","id":"feature_3","label":"Feature 3","default":"Products loaded"},{"type":"text","id":"launch_3","label":"Launch 3","default":"Up to 25"},{"type":"text","id":"growth_3","label":"Growth 3","default":"Up to 150 via CSV"},{"type":"text","id":"scale_3","label":"Scale 3","default":"Unlimited via bulk import"},
-    {"type":"text","id":"feature_4","label":"Feature 4","default":"Pages"},{"type":"text","id":"launch_4","label":"Launch 4","default":"4 pages"},{"type":"text","id":"growth_4","label":"Growth 4","default":"Up to 8"},{"type":"text","id":"scale_4","label":"Scale 4","default":"20+ (scope confirmed)"},
-    {"type":"text","id":"feature_5","label":"Feature 5","default":"App setup"},{"type":"text","id":"launch_5","label":"Launch 5","default":"1 app"},{"type":"text","id":"growth_5","label":"Growth 5","default":"Up to 3 apps"},{"type":"text","id":"scale_5","label":"Scale 5","default":"Up to 8 + integrations"},
-    {"type":"text","id":"feature_6","label":"Feature 6","default":"Email marketing"},{"type":"text","id":"launch_6","label":"Launch 6","default":"Basic notifications"},{"type":"text","id":"growth_6","label":"Growth 6","default":"2 Klaviyo flows"},{"type":"text","id":"scale_6","label":"Scale 6","default":"Full Klaviyo flow suite"},
-    {"type":"text","id":"feature_7","label":"Feature 7","default":"Migration"},{"type":"text","id":"launch_7","label":"Launch 7","default":"Available as add-on"},{"type":"text","id":"growth_7","label":"Growth 7","default":"Products & customers"},{"type":"text","id":"scale_7","label":"Scale 7","default":"Products, customers & orders"},
-    {"type":"text","id":"feature_8","label":"Feature 8","default":"SEO"},{"type":"text","id":"launch_8","label":"Launch 8","default":"Titles & meta descriptions"},{"type":"text","id":"growth_8","label":"Growth 8","default":"On-page, redirects & sitemap"},{"type":"text","id":"scale_8","label":"Scale 8","default":"Technical audit, schema & mapping"},
-    {"type":"text","id":"feature_9","label":"Feature 9","default":"Revision rounds"},{"type":"text","id":"launch_9","label":"Launch 9","default":"1"},{"type":"text","id":"growth_9","label":"Growth 9","default":"2"},{"type":"text","id":"scale_9","label":"Scale 9","default":"3"},
-    {"type":"text","id":"feature_10","label":"Feature 10","default":"Post-launch support"},{"type":"text","id":"launch_10","label":"Launch 10","default":"7 days"},{"type":"text","id":"growth_10","label":"Growth 10","default":"Confirm in proposal"},{"type":"text","id":"scale_10","label":"Scale 10","default":"60 days"},
-    {"type":"text","id":"feature_11","label":"Feature 11","default":"Dedicated project manager"},{"type":"text","id":"launch_11","label":"Launch 11","default":"—"},{"type":"text","id":"growth_11","label":"Growth 11","default":"—"},{"type":"text","id":"scale_11","label":"Scale 11","default":"Included"},
-    {"type":"text","id":"feature_12","label":"Feature 12","default":"Estimated timeline"},{"type":"text","id":"launch_12","label":"Launch 12","default":"1–2 weeks"},{"type":"text","id":"growth_12","label":"Growth 12","default":"3–5 weeks"},{"type":"text","id":"scale_12","label":"Scale 12","default":"8–12 weeks"}
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE DETAILS, MADE SIMPLE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Find your perfect fit."
+    },
+    {
+      "type": "text",
+      "id": "faq_text",
+      "label": "FAQ link text",
+      "default": "Have a question? Read the FAQs ↗"
+    },
+    {
+      "type": "url",
+      "id": "faq_link",
+      "label": "FAQ link"
+    },
+    {
+      "type": "text",
+      "id": "first_title",
+      "label": "Feature column title",
+      "default": "What’s included"
+    },
+    {
+      "type": "text",
+      "id": "launch_title",
+      "label": "Launch title",
+      "default": "Launch"
+    },
+    {
+      "type": "text",
+      "id": "growth_title",
+      "label": "Growth title",
+      "default": "Growth"
+    },
+    {
+      "type": "text",
+      "id": "scale_title",
+      "label": "Scale title",
+      "default": "Scale"
+    },
+    {
+      "type": "textarea",
+      "id": "updated_footnote",
+      "label": "Footnote",
+      "default": "Custom checkout capabilities depend on your Shopify plan and platform eligibility. ‘30+ pages’ and custom integrations are scoped during discovery."
+    },
+    {
+      "type": "header",
+      "content": "Layout and colors"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 800,
+      "max": 1600,
+      "step": 40,
+      "unit": "px",
+      "default": 1440
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "heading_desktop",
+      "label": "Desktop heading size",
+      "min": 30,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 46
+    },
+    {
+      "type": "range",
+      "id": "heading_mobile",
+      "label": "Mobile heading size",
+      "min": 24,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "table_text_size",
+      "label": "Table text size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "cell_padding",
+      "label": "Cell vertical padding",
+      "min": 10,
+      "max": 26,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section vertical padding",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#292D30"
+    },
+    {
+      "type": "color",
+      "id": "header_bg",
+      "label": "Header background",
+      "default": "#DFE7EC"
+    },
+    {
+      "type": "color",
+      "id": "highlight_bg",
+      "label": "Highlighted column background",
+      "default": "#E7EEF5"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#DEDFD8"
+    },
+    {
+      "type": "select",
+      "id": "highlight_column",
+      "label": "Highlighted column",
+      "options": [
+        { "value": "launch", "label": "Launch" },
+        { "value": "growth", "label": "Growth" },
+        { "value": "scale", "label": "Scale" }
+      ],
+      "default": "growth"
+    },
+    {
+      "type": "header",
+      "content": "Comparison rows"
+    },
+
+    { "type": "text", "id": "updated_feature_1", "label": "Feature 1", "default": "Project investment" },
+    { "type": "text", "id": "updated_launch_1", "label": "Launch 1", "default": "$1,000" },
+    { "type": "text", "id": "updated_growth_1", "label": "Growth 1", "default": "$3,000" },
+    { "type": "text", "id": "updated_scale_1", "label": "Scale 1", "default": "$10,000" },
+
+    { "type": "text", "id": "updated_feature_2", "label": "Feature 2", "default": "Design approach" },
+    { "type": "text", "id": "updated_launch_2", "label": "Launch 2", "default": "Premium theme customisation based on your brand guidelines" },
+    { "type": "text", "id": "updated_growth_2", "label": "Growth 2", "default": "Customised theme templates" },
+    { "type": "text", "id": "updated_scale_2", "label": "Scale 2", "default": "Unlimited custom wireframes" },
+
+    { "type": "text", "id": "updated_feature_3", "label": "Feature 3", "default": "Products loaded" },
+    { "type": "text", "id": "updated_launch_3", "label": "Launch 3", "default": "Up to 25" },
+    { "type": "text", "id": "updated_growth_3", "label": "Growth 3", "default": "Up to 100 products" },
+    { "type": "text", "id": "updated_scale_3", "label": "Scale 3", "default": "Unlimited via bulk import" },
+
+    { "type": "text", "id": "updated_feature_4", "label": "Feature 4", "default": "Page customisation" },
+    { "type": "text", "id": "updated_launch_4", "label": "Launch 4", "default": "Home, collection & product pages + 15 pages customised" },
+    { "type": "text", "id": "updated_growth_4", "label": "Growth 4", "default": "20 pages customised" },
+    { "type": "text", "id": "updated_scale_4", "label": "Scale 4", "default": "Bulk page import & 30+ pages customised" },
+
+    { "type": "text", "id": "updated_feature_5", "label": "Feature 5", "default": "App setup" },
+    { "type": "text", "id": "updated_launch_5", "label": "Launch 5", "default": "3 apps installed & configured" },
+    { "type": "text", "id": "updated_growth_5", "label": "Growth 5", "default": "Up to 5 apps installed & configured" },
+    { "type": "text", "id": "updated_scale_5", "label": "Scale 5", "default": "10+ apps installed with custom integrations" },
+
+    { "type": "text", "id": "updated_feature_6", "label": "Feature 6", "default": "Marketing strategy" },
+    { "type": "text", "id": "updated_launch_6", "label": "Launch 6", "default": "—" },
+    { "type": "text", "id": "updated_growth_6", "label": "Growth 6", "default": "Marketing strategies included" },
+    { "type": "text", "id": "updated_scale_6", "label": "Scale 6", "default": "Multichannel marketing strategy" },
+
+    { "type": "text", "id": "updated_feature_7", "label": "Feature 7", "default": "Migration" },
+    { "type": "text", "id": "updated_launch_7", "label": "Launch 7", "default": "Available as add-on" },
+    { "type": "text", "id": "updated_growth_7", "label": "Growth 7", "default": "Product migration, if required" },
+    { "type": "text", "id": "updated_scale_7", "label": "Scale 7", "default": "Products, customers & orders" },
+
+    { "type": "text", "id": "updated_feature_8", "label": "Feature 8", "default": "Mobile & page speed" },
+    { "type": "text", "id": "updated_launch_8", "label": "Launch 8", "default": "Mobile responsive customisation" },
+    { "type": "text", "id": "updated_growth_8", "label": "Growth 8", "default": "Mobile & page speed optimisation" },
+    { "type": "text", "id": "updated_scale_8", "label": "Scale 8", "default": "Performance tuning & CRO review" },
+
+    { "type": "text", "id": "updated_feature_9", "label": "Feature 9", "default": "Revision rounds" },
+    { "type": "text", "id": "updated_launch_9", "label": "Launch 9", "default": "2" },
+    { "type": "text", "id": "updated_growth_9", "label": "Growth 9", "default": "3" },
+    { "type": "text", "id": "updated_scale_9", "label": "Scale 9", "default": "5" },
+
+    { "type": "text", "id": "updated_feature_10", "label": "Feature 10", "default": "Post-launch support" },
+    { "type": "text", "id": "updated_launch_10", "label": "Launch 10", "default": "7 days of free support after project completion" },
+    { "type": "text", "id": "updated_growth_10", "label": "Growth 10", "default": "30 days" },
+    { "type": "text", "id": "updated_scale_10", "label": "Scale 10", "default": "60 days" },
+
+    { "type": "text", "id": "updated_feature_11", "label": "Feature 11", "default": "Dedicated project manager" },
+    { "type": "text", "id": "updated_launch_11", "label": "Launch 11", "default": "—" },
+    { "type": "text", "id": "updated_growth_11", "label": "Growth 11", "default": "—" },
+    { "type": "text", "id": "updated_scale_11", "label": "Scale 11", "default": "Included" },
+
+    { "type": "text", "id": "updated_feature_12", "label": "Feature 12", "default": "Estimated timeline" },
+    { "type": "text", "id": "updated_launch_12", "label": "Launch 12", "default": "2 weeks" },
+    { "type": "text", "id": "updated_growth_12", "label": "Growth 12", "default": "3–5 weeks" },
+    { "type": "text", "id": "updated_scale_12", "label": "Scale 12", "default": "8–12 weeks" },
+
+    { "type": "text", "id": "updated_feature_13", "label": "Feature 13", "default": "Training" },
+    { "type": "text", "id": "updated_launch_13", "label": "Launch 13", "default": "Recorded training walkthrough" },
+    { "type": "text", "id": "updated_growth_13", "label": "Growth 13", "default": "Recorded training walkthrough" },
+    { "type": "text", "id": "updated_scale_13", "label": "Scale 13", "default": "Training included" },
+
+    { "type": "text", "id": "updated_feature_14", "label": "Feature 14", "default": "Store setup" },
+    { "type": "text", "id": "updated_launch_14", "label": "Launch 14", "default": "Payments, shipping, taxes & domain transfer" },
+    { "type": "text", "id": "updated_growth_14", "label": "Growth 14", "default": "Full setup, discounts & market settings" },
+    { "type": "text", "id": "updated_scale_14", "label": "Scale 14", "default": "Advanced store setup" },
+
+    { "type": "text", "id": "updated_feature_15", "label": "Feature 15", "default": "Multichannel integration" },
+    { "type": "text", "id": "updated_launch_15", "label": "Launch 15", "default": "—" },
+    { "type": "text", "id": "updated_growth_15", "label": "Growth 15", "default": "—" },
+    { "type": "text", "id": "updated_scale_15", "label": "Scale 15", "default": "Included" }
   ],
-  "presets": [{"name":"Package comparison"}],
+  "presets": [
+    {
+      "name": "Package comparison"
+    }
+  ],
   "tag": null,
   "class": "package-comparison-block"
 }

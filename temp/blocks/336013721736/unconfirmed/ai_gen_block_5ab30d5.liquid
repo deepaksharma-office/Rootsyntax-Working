@@ -1,6 +1,176 @@
+{% doc %}
+  @prompt
+    Create a Shopify pricing comparison section that closely matches the attached reference image.
+    
+    LAYOUT
+    - White background with a centered container, maximum width 1400px.
+    - Desktop: three equal-width pricing cards in one row with 18–20px gaps.
+    - Generous spacing above the cards and 40px horizontal section padding.
+    - Mobile: stack the cards vertically, use 20px side padding, and prevent horizontal overflow.
+    
+    SECTION HEADER
+    - Small uppercase eyebrow with a blue dot: “SHOPIFY WEBSITE PACKAGES”. Use wide letter spacing.
+    - Large, left-aligned headline on two lines:
+      “Your next chapter.”
+      “Built on Shopify.”
+    - First line: dark charcoal, regular sans-serif.
+    - Second line: bright orange #FF7014, italic sans-serif.
+    - Desktop heading approximately 64px; mobile approximately 38px.
+    - Add a thin light-gray divider below the heading.
+    - Below the divider, place a light-gray rounded pill on the left: “One-time project pricing”.
+    - Right-align this small note: “All prices in USD · No monthly agency commitment”.
+    - On mobile, allow these elements to wrap naturally.
+    
+    PRICING CARD DESIGN
+    - Equal-height cards with approximately 28px internal padding and 8px corner radius.
+    - Launch and Scale: very light gray background #F5F7F5, thin gray border, dark text.
+    - Growth: dark charcoal-green background #20271F, white body text, orange accents.
+    - Use a clean sans-serif for body text and prices. Use a bold editorial serif for plan names.
+    - Align prices, buttons, dividers, and feature lists consistently across all cards.
+    - Place delivery estimates at the bottom using a flex column layout.
+    - Each button spans the card width, with its label on the left and an up-right arrow on the right.
+    - Launch and Scale buttons: white background, thin dark border, dark text.
+    - Growth button: solid orange background with dark text.
+    - Separate each button from its features with a thin horizontal divider.
+    - Features use small checkmarks: blue on light cards, orange on the dark card.
+    - Keep typography compact and readable, matching the reference’s hierarchy.
+    - Ensure all text has readable contrast on the highlighted card.
+    
+    CARD 1
+    Eyebrow: “01 / START STRONG”
+    Plan: “Launch”
+    Description: “A professional first store, without the complexity.”
+    Price: “$1,000”
+    Price note: “USD · One-time investment”
+    Button: “Choose Launch”
+    Feature heading: “YOUR LAUNCH ESSENTIALS”
+    Features:
+    - Premium theme installed & branded
+    - Up to 25 products loaded
+    - Home, About, Contact + 1 policy page
+    - Payments, shipping, taxes & domain
+    - 1 app installed & configured
+    - Basic SEO & notification emails
+    - Mobile responsiveness check
+    - Recorded training walkthrough
+    - 1 revision round · 7 days of support
+    Delivery: “Estimated delivery: 1–2 weeks”
+    
+    CARD 2
+    Eyebrow: “02 / BUILD MOMENTUM”
+    Add an orange pill badge at the top right: “THE GROWTH PICK”
+    Plan: “Growth”
+    Description: “A tailored store for brands ready to go further.”
+    Price: “$3,000”
+    Price note: “USD · One-time investment”
+    Button: “Choose Growth”
+    Feature heading: “A MORE TAILORED FOUNDATION”
+    Features:
+    - 30-minute strategy call
+    - Tailored home, collection & product templates
+    - Up to 150 products · up to 8 pages
+    - Full setup, discounts & market settings
+    - Up to 3 apps installed & configured
+    - Klaviyo welcome & abandoned cart flows
+    - On-page SEO, redirects & sitemap
+    - Basic product & customer migration
+    - Mobile & speed optimization
+    - Recorded training · 2 revision rounds
+    Delivery: “Estimated delivery: 3–5 weeks”
+    
+    CARD 3
+    Eyebrow: “03 / THINK BIGGER”
+    Plan: “Scale”
+    Description: “A bespoke experience for your next stage of growth.”
+    Price: “$10,000”
+    Price note: “USD · One-time investment”
+    Button: “Choose Scale”
+    Feature heading: “A FULLY CUSTOM FOUNDATION”
+    Features:
+    - Discovery & competitor review
+    - Custom wireframes, UI & bespoke sections
+    - Unlimited bulk product import · 20+ pages
+    - Multi-market & advanced store setup
+    - Up to 8 apps + custom integrations
+    - Full Klaviyo flows, analytics & tracking
+    - Technical SEO, schema & redirect mapping
+    - Product, customer & order migration
+    - Performance tuning & CRO review
+    - Training · 3 revision rounds
+    - Dedicated PM · 60 days of support
+    Delivery: “Estimated delivery: 8–12 weeks”
+    
+    BOTTOM NOTE
+    Below the cards, display a centered, small disclaimer:
+    “Shopify subscriptions, paid themes, and third-party app charges should be confirmed separately before your project begins.”
+    
+    THEME EDITOR CONTROLS
+    - Build this as one reusable section with editable pricing-card blocks.
+    - Allow editing of all headings, descriptions, prices, price notes, badge text, button labels, button links, features, and delivery estimates.
+    - Features should be entered as multiline text, with each line rendered as one checked item.
+    - Include a highlighted-card toggle and optional badge for each card.
+    - Expose section width, desktop/mobile padding, card gap, colors, typography, and separate desktop/mobile font sizes.
+    - Use the theme’s font pickers for heading, plan-name, and body fonts.
+    - Use semantic HTML, accessible links, and scoped CSS.
+    - No imag
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% style %}
+  {{ block.settings.heading_font | font_face }}
+  {{ block.settings.plan_font | font_face }}
+  {{ block.settings.body_font | font_face }}
+  .ai-price-{{ ai_gen_id }}{display:block;width:100%;padding:{{ block.settings.pad_desktop }}px 20px;background:{{ block.settings.bg }};color:{{ block.settings.ink }};box-sizing:border-box}
+  .ai-price-{{ ai_gen_id }}__inner{max-width:1400px;width:100%;margin:auto}
+  .ai-price-{{ ai_gen_id }}__eyebrow{font:600 11px/1.4 {{ block.settings.body_font.family }},sans-serif;letter-spacing:.16em;text-transform:uppercase;margin:0 0 18px}
+  .ai-price-{{ ai_gen_id }}__dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:{{ block.settings.dot }};margin-right:9px}
+  .ai-price-{{ ai_gen_id }}__title{font:400 {{ block.settings.head_desktop }}px/1.03 {{ block.settings.heading_font.family }},sans-serif;letter-spacing:-.045em;margin:0}
+  .ai-price-{{ ai_gen_id }}__title em{font-style:italic;color:{{ block.settings.orange }}}
+  .ai-price-{{ ai_gen_id }}__meta{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:28px;padding-top:18px;border-top:1px solid {{ block.settings.rule }}}
+  .ai-price-{{ ai_gen_id }}__pill{background:{{ block.settings.pill }};border-radius:30px;padding:8px 14px;font:500 12px/1.3 {{ block.settings.body_font.family }},sans-serif}
+  .ai-price-{{ ai_gen_id }}__note{font:400 12px/1.5 {{ block.settings.body_font.family }},sans-serif;text-align:right;margin:0}
+  .ai-price-{{ ai_gen_id }}__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:{{ block.settings.gap }}px;margin-top:48px;align-items:stretch}
+  .ai-price-{{ ai_gen_id }}__card{display:flex;flex-direction:column;min-width:0;box-sizing:border-box;padding:28px;border:1px solid {{ block.settings.border }};border-radius:8px;background:{{ block.settings.card_bg }};color:{{ block.settings.card_ink }}}
+  .ai-price-{{ ai_gen_id }}__card--highlight{background:{{ block.settings.dark_bg }};border-color:{{ block.settings.dark_bg }};color:{{ block.settings.dark_ink }}}
+  .ai-price-{{ ai_gen_id }}__top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .ai-price-{{ ai_gen_id }}__eyebrow-card{font:600 10px/1.4 {{ block.settings.body_font.family }},sans-serif;letter-spacing:.13em;color:{{ block.settings.muted }};margin:0}
+  .ai-price-{{ ai_gen_id }}__card--highlight .ai-price-{{ ai_gen_id }}__eyebrow-card{color:{{ block.settings.dark_muted }}}
+  .ai-price-{{ ai_gen_id }}__badge{padding:6px 9px;border-radius:20px;background:{{ block.settings.orange }};color:#20271f;font:700 9px/1.2 {{ block.settings.body_font.family }},sans-serif;letter-spacing:.08em}
+  .ai-price-{{ ai_gen_id }}__plan{font:700 30px/1.1 {{ block.settings.plan_font.family }},serif;margin:20px 0 7px}
+  .ai-price-{{ ai_gen_id }}__desc{font:400 13px/1.55 {{ block.settings.body_font.family }},sans-serif;margin:0;min-height:42px}
+  .ai-price-{{ ai_gen_id }}__price{font:600 37px/1.1 {{ block.settings.body_font.family }},sans-serif;letter-spacing:-.04em;margin:24px 0 3px}
+  .ai-price-{{ ai_gen_id }}__price-note{font:400 11px/1.5 {{ block.settings.body_font.family }},sans-serif;color:{{ block.settings.muted }};margin:0}
+  .ai-price-{{ ai_gen_id }}__card--highlight .ai-price-{{ ai_gen_id }}__price-note{color:{{ block.settings.dark_muted }}}
+  .ai-price-{{ ai_gen_id }}__button{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;margin-top:22px;border:1px solid {{ block.settings.ink }};border-radius:4px;background:#fff;color:{{ block.settings.ink }};font:600 12px/1.3 {{ block.settings.body_font.family }},sans-serif;text-decoration:none}
+  .ai-price-{{ ai_gen_id }}__card--highlight .ai-price-{{ ai_gen_id }}__button{background:{{ block.settings.orange }};border-color:{{ block.settings.orange }};color:#20271f}
+  .ai-price-{{ ai_gen_id }}__button:focus-visible{outline:3px solid {{ block.settings.orange }};outline-offset:3px}
+  .ai-price-{{ ai_gen_id }}__features{margin-top:19px;padding-top:18px;border-top:1px solid {{ block.settings.border }}}
+  .ai-price-{{ ai_gen_id }}__card--highlight .ai-price-{{ ai_gen_id }}__features{border-color:{{ block.settings.dark_rule }}}
+  .ai-price-{{ ai_gen_id }}__feature-title{font:700 9px/1.4 {{ block.settings.body_font.family }},sans-serif;letter-spacing:.13em;margin:0 0 13px}
+  .ai-price-{{ ai_gen_id }}__list{list-style:none;margin:0;padding:0}
+  .ai-price-{{ ai_gen_id }}__list li{display:flex;gap:9px;margin:0 0 9px;font:400 11px/1.45 {{ block.settings.body_font.family }},sans-serif}
+  .ai-price-{{ ai_gen_id }}__check{color:{{ block.settings.blue }};font-weight:700;flex:0 0 auto}
+  .ai-price-{{ ai_gen_id }}__card--highlight .ai-price-{{ ai_gen_id }}__check{color:{{ block.settings.orange }}}
+  .ai-price-{{ ai_gen_id }}__delivery{font:500 10px/1.5 {{ block.settings.body_font.family }},sans-serif;color:{{ block.settings.muted }};margin:auto 0 0;padding-top:19px}
+  .ai-price-{{ ai_gen_id }}__card--highlight .ai-price-{{ ai_gen_id }}__delivery{color:{{ block.settings.dark_muted }}}
+  .ai-price-{{ ai_gen_id }}__disclaimer{max-width:760px;margin:25px auto 0;text-align:center;font:400 11px/1.6 {{ block.settings.body_font.family }},sans-serif;color:{{ block.settings.muted }}}
+  @media(max-width:749px){.ai-price-{{ ai_gen_id }}{padding:{{ block.settings.pad_mobile }}px 20px}.ai-price-{{ ai_gen_id }}__title{font-size:{{ block.settings.head_mobile }}px}.ai-price-{{ ai_gen_id }}__meta{flex-wrap:wrap;align-items:flex-start}.ai-price-{{ ai_gen_id }}__note{text-align:left}.ai-price-{{ ai_gen_id }}__grid{grid-template-columns:1fr;gap:20px;margin-top:32px}.ai-price-{{ ai_gen_id }}__card{padding:24px}.ai-price-{{ ai_gen_id }}__desc{min-height:0}}
+{% endstyle %}
+<section class="ai-price-{{ ai_gen_id }}" {{ block.shopify_attributes }}><div class="ai-price-{{ ai_gen_id }}__inner"><header><p class="ai-price-{{ ai_gen_id }}__eyebrow"><span class="ai-price-{{ ai_gen_id }}__dot" aria-hidden="true"></span>{{ block.settings.eyebrow | escape }}</p><h2 class="ai-price-{{ ai_gen_id }}__title">{{ block.settings.line_one | escape }}<br><em>{{ block.settings.line_two | escape }}</em></h2><div class="ai-price-{{ ai_gen_id }}__meta"><span class="ai-price-{{ ai_gen_id }}__pill">{{ block.settings.pill_text | escape }}</span><p class="ai-price-{{ ai_gen_id }}__note">{{ block.settings.header_note | escape }}</p></div></header><div class="ai-price-{{ ai_gen_id }}__grid">{% for i in (1..3) %}{% liquid
+assign prefix = 'card_' | append: i | append: '_'
+assign eyebrow_key = prefix | append: 'eyebrow'
+assign name_key = prefix | append: 'name'
+assign desc_key = prefix | append: 'description'
+assign price_key = prefix | append: 'price'
+assign note_key = prefix | append: 'price_note'
+assign label_key = prefix | append: 'button_label'
+assign url_key = prefix | append: 'button_url'
+assign heading_key = prefix | append: 'feature_heading'
+assign features_key = prefix | append: 'features'
+assign delivery_key = prefix | append: 'delivery'
+assign badge_key = prefix | append: 'badge'
+assign highlight_key = prefix | append: 'highlight'
+assign feat = block.settings[features_key] | newline_to_br | split: '<br />'
+%}<article class="ai-price-{{ ai_gen_id }}__card{% if block.settings[highlight_key] %} ai-price-{{ ai_gen_id }}__card--highlight{% endif %}"><div class="ai-price-{{ ai_gen_id }}__top"><p class="ai-price-{{ ai_gen_id }}__eyebrow-card">{{ block.settings[eyebrow_key] | escape }}</p>{% if block.settings[badge_key] != blank %}<span class="ai-price-{{ ai_gen_id }}__badge">{{ block.settings[badge_key] | escape }}</span>{% endif %}</div><h3 class="ai-price-{{ ai_gen_id }}__plan">{{ block.settings[name_key] | escape }}</h3><p class="ai-price-{{ ai_gen_id }}__desc">{{ block.settings[desc_key] | escape }}</p><p class="ai-price-{{ ai_gen_id }}__price">{{ block.settings[price_key] | escape }}</p><p class="ai-price-{{ ai_gen_id }}__price-note">{{ block.settings[note_key] | escape }}</p>{% if block.settings[url_key] != blank %}<a class="ai-price-{{ ai_gen_id }}__button" href="{{ block.settings[url_key] }}"><span>{{ block.settings[label_key] | escape }}</span><span aria-hidden="true">↗</span></a>{% else %}<span class="ai-price-{{ ai_gen_id }}__button"><span>{{ block.settings[label_key] | escape }}</span><span aria-hidden="true">↗</span></span>{% endif %}<div class="ai-price-{{ ai_gen_id }}__features"><h4 class="ai-price-{{ ai_gen_id }}__feature-title">{{ block.settings[heading_key] | escape }}</h4><ul class="ai-price-{{ ai_gen_id }}__list">{% for item in feat %}{% assign item_text = item | strip_html | strip %}{% if item_text != blank %}<li><span class="ai-price-{{ ai_gen_id }}__check" aria-hidden="true">✓</span><span>{{ item_text | escape }}</span></li>{% endif %}{% endfor %}</ul></div><p class="ai-price-{{ ai_gen_id }}__delivery">{{ block.settings[delivery_key] | escape }}</p></article>{% endfor %}</div><p class="ai-price-{{ ai_gen_id }}__disclaimer">{{ block.settings.disclaimer | escape }}</p></div></section>
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{"name":"Pricing comparison","settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"SHOPIFY WEBSITE PACKAGES"},{"type":"text","id":"line_one","label":"Headline line one","default":"Your next chapter."},{"type":"text","id":"line_two","label":"Headline line two","default":"Built on Shopify."},{"type":"text","id":"pill_text","label":"Pricing pill","default":"One-time project pricing"},{"type":"text","id":"header_note","label":"Header note","default":"All prices in USD · No monthly agency commitment"},{"type":"text","id":"disclaimer","label":"Disclaimer","default":"Shopify subscriptions, paid themes, and third-party app charges should be confirmed separately before your project begins."},{"type":"range","id":"section_width","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100},{"type":"range","id":"pad_desktop","label":"Desktop vertical padding","min":20,"max":120,"step":5,"unit":"px","default":70},{"type":"range","id":"pad_mobile","label":"Mobile vertical padding","min":20,"max":80,"step":5,"unit":"px","default":40},{"type":"range","id":"gap","label":"Card gap","min":10,"max":40,"step":2,"unit":"px","default":20},{"type":"range","id":"head_desktop","label":"Desktop heading size","min":40,"max":80,"step":2,"unit":"px","default":64},{"type":"range","id":"head_mobile","label":"Mobile heading size","min":28,"max":50,"step":2,"unit":"px","default":38},{"type":"font_picker","id":"heading_font","label":"Heading font","default":"inter_n4"},{"type":"font_picker","id":"plan_font","label":"Plan name font","default":"serif"},{"type":"font_picker","id":"body_font","label":"Body font","default":"inter_n4"},{"type":"color","id":"bg","label":"Section background","default":"#FFFFFF"},{"type":"color","id":"ink","label":"Section text","default":"#20271F"},{"type":"color","id":"orange","label":"Accent orange","default":"#FF7014"},{"type":"color","id":"dot","label":"Eyebrow dot","default":"#2673D8"},{"type":"color","id":"rule","label":"Divider","default":"#E1E4E1"},{"type":"color","id":"pill","label":"Pill background","default":"#F0F1EF"},{"type":"color","id":"card_bg","label":"Card background","default":"#F5F7F5"},{"type":"color","id":"border","label":"Card border","default":"#DDE1DD"},{"type":"color","id":"card_ink","label":"Card text","default":"#20271F"},{"type":"color","id":"muted","label":"Muted text","default":"#535B53"},{"type":"color","id":"dark_bg","label":"Highlighted background","default":"#20271F"},{"type":"color","id":"dark_ink","label":"Highlighted text","default":"#FFFFFF"},{"type":"color","id":"dark_muted","label":"Highlighted secondary text","default":"#D0D5CF"},{"type":"color","id":"dark_rule","label":"Highlighted divider","default":"#485047"},{"type":"color","id":"blue","label":"Checkmark color","default":"#2673D8"},{"type":"header","content":"Card 1"},{"type":"text","id":"card_1_eyebrow","label":"Eyebrow","default":"01 / START STRONG"},{"type":"text","id":"card_1_name","label":"Plan name","default":"Launch"},{"type":"textarea","id":"card_1_description","label":"Description","default":"A professional first store, without the complexity."},{"type":"text","id":"card_1_price","label":"Price","default":"$1,000"},{"type":"text","id":"card_1_price_note","label":"Price note","default":"USD · One-time investment"},{"type":"text","id":"card_1_button_label","label":"Button label","default":"Choose Launch"},{"type":"url","id":"card_1_button_url","label":"Button link"},{"type":"text","id":"card_1_feature_heading","label":"Feature heading","default":"YOUR LAUNCH ESSENTIALS"},{"type":"textarea","id":"card_1_features","label":"Features","default":"Premium theme installed & branded\nUp to 25 products loaded\nHome, About, Contact + 1 policy page\nPayments, shipping, taxes & domain\n1 app installed & configured\nBasic SEO & notification emails\nMobile responsiveness check\nRecorded training walkthrough\n1 revision round · 7 days of support"},{"type":"text","id":"card_1_delivery","label":"Delivery estimate","default":"Estimated delivery: 1–2 weeks"},{"type":"text","id":"card_1_badge","label":"Badge"},{"type":"checkbox","id":"card_1_highlight","label":"Highlight card","default":false},{"type":"header","content":"Card 2"},{"type":"text","id":"card_2_eyebrow","label":"Eyebrow","default":"02 / BUILD MOMENTUM"},{"type":"text","id":"card_2_name","label":"Plan name","default":"Growth"},{"type":"textarea","id":"card_2_description","label":"Description","default":"A tailored store for brands ready to go further."},{"type":"text","id":"card_2_price","label":"Price","default":"$3,000"},{"type":"text","id":"card_2_price_note","label":"Price note","default":"USD · One-time investment"},{"type":"text","id":"card_2_button_label","label":"Button label","default":"Choose Growth"},{"type":"url","id":"card_2_button_url","label":"Button link"},{"type":"text","id":"card_2_feature_heading","label":"Feature heading","default":"A MORE TAILORED FOUNDATION"},{"type":"textarea","id":"card_2_features","label":"Features","default":"30-minute strategy call\nTailored home, collection & product templates\nUp to 150 products · up to 8 pages\nFull setup, discounts & market settings\nUp to 3 apps installed & configured\nKlaviyo welcome & abandoned cart flows\nOn-page SEO, redirects & sitemap\nBasic product & customer migration\nMobile & speed optimization\nRecorded training · 2 revision rounds"},{"type":"text","id":"card_2_delivery","label":"Delivery estimate","default":"Estimated delivery: 3–5 weeks"},{"type":"text","id":"card_2_badge","label":"Badge","default":"THE GROWTH PICK"},{"type":"checkbox","id":"card_2_highlight","label":"Highlight card","default":true},{"type":"header","content":"Card 3"},{"type":"text","id":"card_3_eyebrow","label":"Eyebrow","default":"03 / THINK BIGGER"},{"type":"text","id":"card_3_name","label":"Plan name","default":"Scale"},{"type":"textarea","id":"card_3_description","label":"Description","default":"A bespoke experience for your next stage of growth."},{"type":"text","id":"card_3_price","label":"Price","default":"$10,000"},{"type":"text","id":"card_3_price_note","label":"Price note","default":"USD · One-time investment"},{"type":"text","id":"card_3_button_label","label":"Button label","default":"Choose Scale"},{"type":"url","id":"card_3_button_url","label":"Button link"},{"type":"text","id":"card_3_feature_heading","label":"Feature heading","default":"A FULLY CUSTOM FOUNDATION"},{"type":"textarea","id":"card_3_features","label":"Features","default":"Discovery & competitor review\nCustom wireframes, UI & bespoke sections\nUnlimited bulk product import · 20+ pages\nMulti-market & advanced store setup\nUp to 8 apps + custom integrations\nFull Klaviyo flows, analytics & tracking\nTechnical SEO, schema & redirect mapping\nProduct, customer & order migration\nPerformance tuning & CRO review\nTraining · 3 revision rounds\nDedicated PM · 60 days of support"},{"type":"text","id":"card_3_delivery","label":"Delivery estimate","default":"Estimated delivery: 8–12 weeks"},{"type":"text","id":"card_3_badge","label":"Badge"},{"type":"checkbox","id":"card_3_highlight","label":"Highlight card","default":false}],"presets":[{"name":"Pricing comparison"}],"tag":null,"class":"pricing-comparison-block"}
 {% endschema %}

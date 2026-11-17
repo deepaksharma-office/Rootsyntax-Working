@@ -24,9 +24,9 @@
 
   .ai-pricing-faq-{{ ai_gen_id }}__banner {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 28px;
+    align-items: center;
+    gap: 24px;
     padding: 24px 32px;
     background: {{ block.settings.top_background }};
     border: 1px solid {{ block.settings.border_color }};
@@ -83,7 +83,7 @@
 
   .ai-pricing-faq-{{ ai_gen_id }}__button:focus-visible,
   .ai-pricing-faq-{{ ai_gen_id }}__trigger:focus-visible {
-    outline: 3px solid #1b1b1b;
+    outline: 3px solid #000000;
     outline-offset: 3px;
   }
 
@@ -104,6 +104,7 @@
     display: grid;
     grid-template-columns: minmax(0, 40fr) minmax(0, 56fr);
     gap: 4%;
+    color: #000000;
   }
 
   .ai-pricing-faq-{{ ai_gen_id }}__intro {
@@ -128,7 +129,6 @@
 
   .ai-pricing-faq-{{ ai_gen_id }}__intro-text {
     margin: 17px 0 0;
-    color: {{ block.settings.muted_color }};
     font-size: 16px;
     line-height: 1.5;
   }
@@ -151,7 +151,6 @@
     gap: 20px;
     border: 0;
     background: transparent;
-    color: inherit;
     font: inherit;
     text-align: left;
     cursor: pointer;
@@ -204,9 +203,21 @@
 
   .ai-pricing-faq-{{ ai_gen_id }}__answer {
     padding: 0 36px 21px 0;
-    color: {{ block.settings.muted_color }};
     font-size: 14px;
     line-height: 1.65;
+  }
+
+  /* Keep all FAQ text and icons black, including theme overrides. */
+  .ai-pricing-faq-{{ ai_gen_id }}__faq .ai-pricing-faq-{{ ai_gen_id }}__eyebrow,
+  .ai-pricing-faq-{{ ai_gen_id }}__faq .ai-pricing-faq-{{ ai_gen_id }}__faq-title,
+  .ai-pricing-faq-{{ ai_gen_id }}__faq .ai-pricing-faq-{{ ai_gen_id }}__intro-text,
+  .ai-pricing-faq-{{ ai_gen_id }}__faq .ai-pricing-faq-{{ ai_gen_id }}__trigger,
+  .ai-pricing-faq-{{ ai_gen_id }}__faq .ai-pricing-faq-{{ ai_gen_id }}__question,
+  .ai-pricing-faq-{{ ai_gen_id }}__faq .ai-pricing-faq-{{ ai_gen_id }}__icon,
+  .ai-pricing-faq-{{ ai_gen_id }}__faq .ai-pricing-faq-{{ ai_gen_id }}__answer {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    opacity: 1;
   }
 
   .ai-pricing-faq-{{ ai_gen_id }}__cta {
@@ -223,7 +234,8 @@
 
   .ai-pricing-faq-{{ ai_gen_id }}__bottom-title {
     margin: 0 0 8px;
-    color: #ffffff;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     font-size: 40px;
     font-weight: 400;
     line-height: 1.12;
@@ -232,7 +244,8 @@
 
   .ai-pricing-faq-{{ ai_gen_id }}__bottom-text {
     margin: 0;
-    color: #ffffff;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     font-size: 16px;
     line-height: 1.5;
   }
@@ -275,7 +288,7 @@
       margin-bottom: 14px;
     }
 
-    .ai-pricing-faq-{{ ai_gen_id }}__faq-title {
+    .ai-pricing-faq- Diagnose{{ ai_gen_id }}__faq-title {
       font-size: 32px;
     }
 
@@ -332,7 +345,6 @@
         href="{{ block.settings.top_link | default: '/pages/contact' }}"
       >
         <span>{{ block.settings.top_button | escape }}</span>
-
         <svg
           class="ai-pricing-faq-{{ ai_gen_id }}__arrow"
           viewBox="0 0 16 16"
@@ -458,49 +470,69 @@
     const triggers = Array.from(
       list.querySelectorAll('.ai-pricing-faq-{{ ai_gen_id }}__trigger')
     );
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    );
 
-    const closeItem = (trigger) => {
-      const panel = element.querySelector(
+    const getPanel = (trigger) => {
+      return element.querySelector(
         `#${CSS.escape(trigger.getAttribute('aria-controls'))}`
       );
+    };
+
+    const closeItem = (trigger) => {
+      const panel = getPanel(trigger);
 
       if (!panel || trigger.getAttribute('aria-expanded') !== 'true') return;
 
       trigger.setAttribute('aria-expanded', 'false');
       panel.setAttribute('aria-hidden', 'true');
       panel.inert = true;
+
+      if (reducedMotion.matches) {
+        panel.style.height = '0px';
+        return;
+      }
+
       panel.style.height = `${panel.scrollHeight}px`;
 
       requestAnimationFrame(() => {
-        panel.style.height = '0px';
+        if (trigger.getAttribute('aria-expanded') === 'false') {
+          panel.style.height = '0px';
+        }
       });
     };
 
     const openItem = (trigger) => {
-      const panel = element.querySelector(
-        `#${CSS.escape(trigger.getAttribute('aria-controls'))}`
-      );
+      const panel = getPanel(trigger);
 
       if (!panel) return;
 
       trigger.setAttribute('aria-expanded', 'true');
-      panel.inert = false;
       panel.setAttribute('aria-hidden', 'false');
-      panel.style.height = `${panel.scrollHeight}px`;
+      panel.inert = false;
 
-      const finish = (event) => {
+      if (reducedMotion.matches) {
+        panel.style.height = 'auto';
+        return;
+      }
+
+      panel.style.height = `${panel.scrollHeight}px`;
+    };
+
+    triggers.forEach((trigger) => {
+      const panel = getPanel(trigger);
+
+      panel.addEventListener('transitionend', (event) => {
         if (
+          event.target === panel &&
           event.propertyName === 'height' &&
           trigger.getAttribute('aria-expanded') === 'true'
         ) {
           panel.style.height = 'auto';
         }
-      };
+      });
 
-      panel.addEventListener('transitionend', finish, { once: true });
-    };
-
-    triggers.forEach((trigger) => {
       trigger.addEventListener('click', () => {
         const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
@@ -522,231 +554,55 @@
 {
   "name": "Project FAQ banners",
   "settings": [
-    {
-      "type": "range",
-      "id": "desktop_width_percent",
-      "label": "Desktop width",
-      "min": 50,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "default": 100
-    },
-    {
-      "type": "range",
-      "id": "max_width",
-      "label": "Maximum content width",
-      "min": 900,
-      "max": 1800,
-      "step": 50,
-      "unit": "px",
-      "default": 1450
-    },
-    {
-      "type": "font_picker",
-      "id": "body_font",
-      "label": "Body font",
-      "default": "work_sans_n4"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text",
-      "default": "#292B2D"
-    },
-    {
-      "type": "color",
-      "id": "muted_color",
-      "label": "Muted text",
-      "default": "#646A6D"
-    },
-    {
-      "type": "color",
-      "id": "border_color",
-      "label": "Borders",
-      "default": "#D9DEDF"
-    },
-    {
-      "type": "color",
-      "id": "top_background",
-      "label": "Top banner background",
-      "default": "#F2F5F6"
-    },
-    {
-      "type": "color",
-      "id": "footer_match_background",
-      "label": "Bottom banner background",
-      "default": "#121E4E"
-    },
-    {
-      "type": "color",
-      "id": "button_color",
-      "label": "Button background",
-      "default": "#FF7414"
-    },
-    {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Button text",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "header",
-      "content": "Custom project banner"
-    },
-    {
-      "type": "text",
-      "id": "top_heading",
-      "label": "Heading",
-      "default": "A little outside the box?"
-    },
-    {
-      "type": "textarea",
-      "id": "top_text",
-      "label": "Supporting text",
-      "default": "Custom design, advanced integrations, B2B, and ongoing marketing or SEO can be scoped separately."
-    },
-    {
-      "type": "text",
-      "id": "top_button",
-      "label": "Button label",
-      "default": "Discuss your project"
-    },
-    {
-      "type": "url",
-      "id": "top_link",
-      "label": "Button link"
-    },
-    {
-      "type": "header",
-      "content": "FAQ introduction"
-    },
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "GOOD QUESTIONS"
-    },
-    {
-      "type": "text",
-      "id": "faq_heading",
-      "label": "Heading",
-      "default": "A few things<br>to know."
-    },
-    {
-      "type": "text",
-      "id": "faq_subheading",
-      "label": "Supporting text",
-      "default": "Clarity before the first click."
-    },
-    {
-      "type": "header",
-      "content": "FAQ questions and answers"
-    },
-    {
-      "type": "text",
-      "id": "question_1",
-      "label": "Question 1",
-      "default": "Which package is right for my business?"
-    },
-    {
-      "type": "textarea",
-      "id": "answer_1",
-      "label": "Answer 1",
-      "default": "Launch suits a straightforward first store, Growth supports more customization, and Scale is designed for a bespoke build. We’ll help you choose based on your requirements."
-    },
-    {
-      "type": "text",
-      "id": "question_2",
-      "label": "Question 2",
-      "default": "Are these one-time or monthly prices?"
-    },
-    {
-      "type": "textarea",
-      "id": "answer_2",
-      "label": "Answer 2",
-      "default": "These are one-time project prices. Shopify subscriptions, paid themes, apps, and ongoing services are separate."
-    },
-    {
-      "type": "text",
-      "id": "question_3",
-      "label": "Question 3",
-      "default": "How long will my store take to build?"
-    },
-    {
-      "type": "textarea",
-      "id": "answer_3",
-      "label": "Answer 3",
-      "default": "Estimated timelines are 1–2 weeks for Launch, 3–5 weeks for Growth, and 8–12 weeks for Scale. Your final schedule is confirmed after reviewing the scope and required content."
-    },
-    {
-      "type": "text",
-      "id": "question_4",
-      "label": "Question 4",
-      "default": "Can you migrate my existing store?"
-    },
-    {
-      "type": "textarea",
-      "id": "answer_4",
-      "label": "Answer 4",
-      "default": "Yes. Migration options depend on your platform, data, and selected package. We’ll confirm what is included before the project begins."
-    },
-    {
-      "type": "text",
-      "id": "question_5",
-      "label": "Question 5",
-      "default": "What happens after launch?"
-    },
-    {
-      "type": "textarea",
-      "id": "answer_5",
-      "label": "Answer 5",
-      "default": "We provide handover guidance and the support agreed in your proposal. Ongoing maintenance and marketing can be scoped separately."
-    },
-    {
-      "type": "text",
-      "id": "question_6",
-      "label": "Question 6",
-      "default": "Can I request features outside a package?"
-    },
-    {
-      "type": "textarea",
-      "id": "answer_6",
-      "label": "Answer 6",
-      "default": "Yes. Custom features, integrations, B2B requirements, and additional services can be quoted separately."
-    },
-    {
-      "type": "header",
-      "content": "Bottom call to action"
-    },
-    {
-      "type": "text",
-      "id": "bottom_heading",
-      "label": "Heading",
-      "default": "Big plans for your brand?"
-    },
-    {
-      "type": "text",
-      "id": "bottom_text",
-      "label": "Supporting text",
-      "default": "Let’s find the right way to bring them to life."
-    },
-    {
-      "type": "text",
-      "id": "bottom_button",
-      "label": "Button label",
-      "default": "Let’s build your next chapter"
-    },
-    {
-      "type": "url",
-      "id": "bottom_link",
-      "label": "Button link"
-    }
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "max_width", "label": "Maximum content width", "min": 900, "max": 1800, "step": 50, "unit": "px", "default": 1450 },
+    { "type": "font_picker", "id": "body_font", "label": "Body font", "default": "work_sans_n4" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#292B2D" },
+    { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#646A6D" },
+    { "type": "color", "id": "border_color", "label": "Borders", "default": "#D9DEDF" },
+    { "type": "color", "id": "top_background", "label": "Top banner background", "default": "#F2F5F6" },
+    { "type": "color", "id": "footer_match_background", "label": "Bottom banner background", "default": "#121E4E" },
+    { "type": "color", "id": "button_color", "label": "Button background", "default": "#FF7414" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "Custom project banner" },
+    { "type": "text", "id": "top_heading", "label": "Heading", "default": "A little outside the box?" },
+    { "type": "textarea", "id": "top_text", "label": "Supporting text", "default": "Custom design, advanced integrations, B2B, and ongoing marketing or SEO can be scoped separately." },
+    { "type": "text", "id": "top_button", "label": "Button label", "default": "Discuss your project" },
+    { "type": "url", "id": "top_link", "label": "Button link" },
+
+    { "type": "header", "content": "FAQ introduction" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "GOOD QUESTIONS" },
+    { "type": "text", "id": "faq_heading", "label": "Heading", "default": "A few things<br>to know." },
+    { "type": "text", "id": "faq_subheading", "label": "Supporting text", "default": "Clarity before the first click." },
+
+    { "type": "header", "content": "FAQ questions and answers" },
+    { "type": "text", "id": "question_1", "label": "Question 1", "default": "Which package is right for my business?" },
+    { "type": "textarea", "id": "answer_1", "label": "Answer 1", "default": "Launch suits a straightforward first store, Growth supports more customization, and Scale is designed for a bespoke build. We’ll help you choose based on your requirements." },
+
+    { "type": "text", "id": "question_2", "label": "Question 2", "default": "Are these one-time or monthly prices?" },
+    { "type": "textarea", "id": "answer_2", "label": "Answer 2", "default": "These are one-time project prices. Shopify subscriptions, paid themes, apps, and ongoing services are separate." },
+
+    { "type": "text", "id": "question_3", "label": "Question 3", "default": "How long will my store take to build?" },
+    { "type": "textarea", "id": "answer_3", "label": "Answer 3", "default": "Estimated timelines are 1–2 weeks for Launch, 3–5 weeks for Growth, and 8–12 weeks for Scale. Your final schedule is confirmed after reviewing the scope and required content." },
+
+    { "type": "text", "id": "question_4", "label": "Question 4", "default": "Can you migrate my existing store?" },
+    { "type": "textarea", "id": "answer_4", "label": "Answer 4", "default": "Yes. Migration options depend on your platform, data, and selected package. We’ll confirm what is included before the project begins." },
+
+    { "type": "text", "id": "question_5", "label": "Question 5", "default": "What happens after launch?" },
+    { "type": "textarea", "id": "answer_5", "label": "Answer 5", "default": "We provide handover guidance and the support agreed in your proposal. Ongoing maintenance and marketing can be scoped separately." },
+
+    { "type": "text", "id": "question_6", "label": "Question 6", "default": "Can I request features outside a package?" },
+    { "type": "textarea", "id": "answer_6", "label": "Answer 6", "default": "Yes. Custom features, integrations, B2B requirements, and additional services can be quoted separately." },
+
+    { "type": "header", "content": "Bottom call to action" },
+    { "type": "text", "id": "bottom_heading", "label": "Heading", "default": "Big plans for your brand?" },
+    { "type": "text", "id": "bottom_text", "label": "Supporting text", "default": "Let’s find the right way to bring them to life." },
+    { "type": "text", "id": "bottom_button", "label": "Button label", "default": "Let’s build your next chapter" },
+    { "type": "url", "id": "bottom_link", "label": "Button link" }
   ],
   "presets": [
-    {
-      "name": "Project FAQ banners"
-    }
+    { "name": "Project FAQ banners" }
   ],
   "tag": null,
   "class": "project-faq-banners"

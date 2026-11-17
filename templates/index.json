@@ -322,7 +322,7 @@
         "arrow_background": "#f5f6fa",
         "arrow_color": "#a7adbb",
         "button_label": "Schedule A Call Today!",
-        "button_link": "shopify://pages/book-a-call-now",
+        "button_link": "shopify://pages/book-a-call-contact-us",
         "button_background": "#f97316",
         "button_text_color": "#ffffff",
         "button_radius": 30
@@ -1273,7 +1273,7 @@
         "label_size": 16,
         "description_size": 18,
         "button_text": "Get Free Proposal",
-        "button_background": "#203C90",
+        "button_background": "#203c90",
         "button_gradient": false,
         "button_gradient_start": "#9749e8",
         "button_gradient_middle": "#db4f9a",

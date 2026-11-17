@@ -250,7 +250,7 @@
           "type": "stat",
           "settings": {
             "title": "Successful Projects Delivered",
-            "number": "146+",
+            "number": "3000+",
             "show_arrow": true,
             "visual_image": "shopify://shop_images/01_animated_sliders.gif",
             "chart_color": "#8b4dff",
@@ -275,7 +275,7 @@
         "stat_Cnb6HH": {
           "type": "stat",
           "settings": {
-            "title": "Countires Served",
+            "title": "Countires \nServed",
             "number": "26+",
             "show_arrow": true,
             "visual_image": "shopify://shop_images/03_animated_line_chart.gif",

@@ -1,115 +1,3 @@
-{% doc %}
-  @prompt
-    Create a premium, responsive Shopify pricing section that closely matches the attached reference. Use the reference as the primary guide for layout, spacing, typography, colors, and proportions.
-
-    SECTION LAYOUT
-    - White background with a centered container, approximately 1240px maximum width.
-    - Generous whitespace and around 60px vertical padding.
-    - Small uppercase navy eyebrow with a tiny blue dot: “SHOPIFY WEBSITE PACKAGES”.
-    - Large, left-aligned heading on two lines:
-      “Your next chapter.”
-      “Built on Shopify.”
-    - First line: dark charcoal, regular weight.
-    - Second line: orange, italic, regular weight.
-    - Desktop heading approximately 64px; mobile approximately 38px.
-    - Thin light-gray horizontal divider below the heading.
-    - Below the divider, place a small pale blue-gray pill on the left reading “One-time project pricing”.
-    - On the right, show small muted text: “All prices in USD · No monthly agency commitment”.
-
-    PRICING CARDS
-    Create three equal-width cards in a desktop grid, with 16px gaps and equal heights. Use subtle borders, 8px corner radii, approximately 28px internal padding, and no shadows.
-
-    LEFT CARD
-    - Very light gray background and dark text.
-    - Small navy uppercase label: “01 / START STRONG”.
-    - Title: “Launch”.
-    - Description: “A professional first store, without the complexity.”
-    - Large price: “$1,000”.
-    - Small text below: “USD · One-time investment”.
-    - Full-width white button with a thin dark border, text “Choose Launch”, and a small diagonal up-right arrow at the far right.
-    - Thin divider.
-    - Small bold uppercase heading: “YOUR LAUNCH ESSENTIALS”.
-    - Feature list with small blue checkmarks:
-      Premium theme installed & branded
-      Up to 25 products loaded
-      Home, About, Contact + 1 policy page
-      Payments, shipping, taxes & domain
-      1 app installed & configured
-      Basic SEO & notification emails
-      Mobile responsiveness check
-      Recorded training walkthrough
-      1 revision round · 7 days of support
-    - Bold footer pinned near the bottom: “Estimated delivery: 1–2 weeks”.
-
-    CENTER CARD
-    - Deep charcoal-green background, approximately #1F251E, with white text.
-    - Small orange uppercase label: “02 / BUILD MOMENTUM”.
-    - Orange pill badge at the upper right reading “THE GROWTH PICK”.
-    - Title: “Growth”.
-    - Description: “A tailored store for brands ready to go further.”
-    - Large price: “$3,000”.
-    - Small muted text: “USD · One-time investment”.
-    - Full-width orange button, approximately #FF7414, with dark text “Choose Growth” and a diagonal up-right arrow aligned right.
-    - Subtle divider.
-    - Small bold uppercase heading: “A MORE TAILORED FOUNDATION”.
-    - Feature list with orange checkmarks:
-      30-minute strategy call
-      Tailored home, collection & product templates
-      Up to 150 products · up to 8 pages
-      Full setup, discounts & market settings
-      Up to 3 apps installed & configured
-      Klaviyo welcome & abandoned cart flows
-      On-page SEO, redirects & sitemap
-      Basic product & customer migration
-      Mobile & speed optimization
-      Recorded training · 2 revision rounds
-    - Bold footer pinned near the bottom: “Estimated delivery: 3–5 weeks”.
-
-    RIGHT CARD
-    - Match the left card’s light-gray styling.
-    - Small navy uppercase label: “03 / THINK BIGGER”.
-    - Title: “Scale”.
-    - Description: “A bespoke experience for your next stage of growth.”
-    - Large price: “$10,000”.
-    - Small text: “USD · One-time investment”.
-    - Outlined white button: “Choose Scale”, with a diagonal up-right arrow aligned right.
-    - Thin divider.
-    - Small bold uppercase heading: “A FULLY CUSTOM FOUNDATION”.
-    - Feature list with small blue checkmarks:
-      Discovery & competitor review
-      Custom wireframes, UI & bespoke sections
-      Unlimited bulk product import · 20+ pages
-      Multi-market & advanced store setup
-      Up to 8 apps + custom integrations
-      Full Klaviyo flows, analytics & tracking
-      Technical SEO, schema & redirect mapping
-      Product, customer & order migration
-      Performance tuning & CRO review
-      Training · 3 revision rounds
-      Dedicated PM · 60 days of support
-    - Bold footer pinned near the bottom: “Estimated delivery: 8–12 weeks”.
-
-    BOTTOM NOTE
-    Centered beneath the cards in small muted gray text:
-    “Shopify subscriptions, paid themes, and third-party app charges should be confirmed separately before your project begins.”
-
-    DESIGN DETAILS
-    - Use a clean sans-serif font and regular-weight headings.
-    - Keep descriptions and features compact with comfortable line spacing.
-    - Align titles, prices, buttons, dividers, and bottom delivery text consistently across cards.
-    - Use flex layouts inside cards so delivery text stays aligned at the bottom despite different feature counts.
-    - Keep the center card the same size and vertical position as the others.
-    - Do not add images, gradients, decorative graphics, animations, or hover movement.
-
-    MOBILE
-    - Stack cards vertically in this order: Launch, Growth, Scale.
-    - Use 20px side gutters and prevent horizontal overflow.
-    - Allow the pricing pill and currency note to stack neatly.
-    - Keep buttons full width and all text readable.
-
-    SHOPIFY EDITOR SETTINGS
-    - Make sectio
-{% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
@@ -176,189 +64,189 @@
     <p class="ai-pricing-{{ ai_gen_id }}__eyebrow">
       <span class="ai-pricing-{{ ai_gen_id }}__dot" aria-hidden="true"></span>{{ block.settings.eyebrow | escape }}
     </p>
+
     <h2 class="ai-pricing-{{ ai_gen_id }}__heading">
       {{ block.settings.heading_first | escape -}}
       <em>{{ block.settings.heading_second | escape }}</em>
     </h2>
+
     <hr class="ai-pricing-{{ ai_gen_id }}__rule">
+
     <div class="ai-pricing-{{ ai_gen_id }}__meta">
       <span class="ai-pricing-{{ ai_gen_id }}__pill">One-time project pricing</span>
       <p class="ai-pricing-{{ ai_gen_id }}__currency">All prices in USD · No monthly agency commitment</p>
     </div>
+
     <div class="ai-pricing-{{ ai_gen_id }}__grid">
       <article class="ai-pricing-{{ ai_gen_id }}__card">
         <div class="ai-pricing-{{ ai_gen_id }}__card-top">
           <p class="ai-pricing-{{ ai_gen_id }}__number">01 / START STRONG</p>
         </div>
+
         <h3 class="ai-pricing-{{ ai_gen_id }}__title">Launch</h3>
         <p class="ai-pricing-{{ ai_gen_id }}__description">A professional first store, without the complexity.</p>
         <p class="ai-pricing-{{ ai_gen_id }}__price">$1,000</p>
         <p class="ai-pricing-{{ ai_gen_id }}__price-note">USD · One-time investment</p>
-        <a class="ai-pricing-{{ ai_gen_id }}__button" href="{{ block.settings.launch_link | default: '#' }}"
-          ><span>Choose Launch</span><span class="ai-pricing-{{ ai_gen_id }}__arrow" aria-hidden="true">↗</span></a
-        >
+
+        <a class="ai-pricing-{{ ai_gen_id }}__button" href="{{ block.settings.launch_link | default: '#' }}">
+          <span>Choose Launch</span>
+          <span class="ai-pricing-{{ ai_gen_id }}__arrow" aria-hidden="true">↗</span>
+        </a>
+
         <hr class="ai-pricing-{{ ai_gen_id }}__divider">
+
         <h4 class="ai-pricing-{{ ai_gen_id }}__feature-title">YOUR LAUNCH ESSENTIALS</h4>
+
         <ul class="ai-pricing-{{ ai_gen_id }}__features">
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Premium theme installed &amp; branded</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Premium theme customisation based on your brand guidelines</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Up to 25 products loaded</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Home, collection &amp; product pages + 15 pages customised</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Home, About, Contact + 1 policy page</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Payments, shipping, taxes &amp; domain transfer</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Payments, shipping, taxes &amp; domain</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>3 apps installed &amp; configured</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>1 app installed &amp; configured</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Mobile responsive customisation</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Basic SEO &amp; notification emails</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Recorded training walkthrough</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Mobile responsiveness check</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>2 revision rounds</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Recorded training walkthrough</span>
-          </li>
-          <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>1 revision round · 7 days of support</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>7 days of free support after project completion</span>
           </li>
         </ul>
-        <p class="ai-pricing-{{ ai_gen_id }}__delivery">Estimated delivery: 1–2 weeks</p>
+
+        <p class="ai-pricing-{{ ai_gen_id }}__delivery">Estimated delivery: 2 weeks</p>
       </article>
+
       <article class="ai-pricing-{{ ai_gen_id }}__card ai-pricing-{{ ai_gen_id }}__card--featured">
         <div class="ai-pricing-{{ ai_gen_id }}__card-top">
           <p class="ai-pricing-{{ ai_gen_id }}__number">02 / BUILD MOMENTUM</p>
           <span class="ai-pricing-{{ ai_gen_id }}__badge">THE GROWTH PICK</span>
         </div>
+
         <h3 class="ai-pricing-{{ ai_gen_id }}__title">Growth</h3>
         <p class="ai-pricing-{{ ai_gen_id }}__description">A tailored store for brands ready to go further.</p>
         <p class="ai-pricing-{{ ai_gen_id }}__price">$3,000</p>
         <p class="ai-pricing-{{ ai_gen_id }}__price-note">USD · One-time investment</p>
-        <a class="ai-pricing-{{ ai_gen_id }}__button" href="{{ block.settings.growth_link | default: '#' }}"
-          ><span>Choose Growth</span><span class="ai-pricing-{{ ai_gen_id }}__arrow" aria-hidden="true">↗</span></a
-        >
+
+        <a class="ai-pricing-{{ ai_gen_id }}__button" href="{{ block.settings.growth_link | default: '#' }}">
+          <span>Choose Growth</span>
+          <span class="ai-pricing-{{ ai_gen_id }}__arrow" aria-hidden="true">↗</span>
+        </a>
+
         <hr class="ai-pricing-{{ ai_gen_id }}__divider">
+
         <h4 class="ai-pricing-{{ ai_gen_id }}__feature-title">A MORE TAILORED FOUNDATION</h4>
+
         <ul class="ai-pricing-{{ ai_gen_id }}__features">
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>30-minute strategy call</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Up to 100 products loaded &amp; 20 pages customised</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Tailored home, collection &amp; product templates</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Marketing strategies</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Up to 150 products · up to 8 pages</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Up to 5 apps installed &amp; configured</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Full setup, discounts &amp; market settings</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Product migration, if required</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Up to 3 apps installed &amp; configured</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Mobile &amp; page speed optimisation</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Klaviyo welcome &amp; abandoned cart flows</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Recorded training walkthrough</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>On-page SEO, redirects &amp; sitemap</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>3 revision rounds</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Basic product &amp; customer migration</span>
-          </li>
-          <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Mobile &amp; speed optimization</span>
-          </li>
-          <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Recorded training · 2 revision rounds</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>30 days of support</span>
           </li>
         </ul>
+
         <p class="ai-pricing-{{ ai_gen_id }}__delivery">Estimated delivery: 3–5 weeks</p>
       </article>
+
       <article class="ai-pricing-{{ ai_gen_id }}__card">
         <div class="ai-pricing-{{ ai_gen_id }}__card-top">
           <p class="ai-pricing-{{ ai_gen_id }}__number">03 / THINK BIGGER</p>
         </div>
+
         <h3 class="ai-pricing-{{ ai_gen_id }}__title">Scale</h3>
         <p class="ai-pricing-{{ ai_gen_id }}__description">A bespoke experience for your next stage of growth.</p>
         <p class="ai-pricing-{{ ai_gen_id }}__price">$10,000</p>
         <p class="ai-pricing-{{ ai_gen_id }}__price-note">USD · One-time investment</p>
-        <a class="ai-pricing-{{ ai_gen_id }}__button" href="{{ block.settings.scale_link | default: '#' }}"
-          ><span>Choose Scale</span><span class="ai-pricing-{{ ai_gen_id }}__arrow" aria-hidden="true">↗</span></a
-        >
+
+        <a class="ai-pricing-{{ ai_gen_id }}__button" href="{{ block.settings.scale_link | default: '#' }}">
+          <span>Choose Scale</span>
+          <span class="ai-pricing-{{ ai_gen_id }}__arrow" aria-hidden="true">↗</span>
+        </a>
+
         <hr class="ai-pricing-{{ ai_gen_id }}__divider">
+
         <h4 class="ai-pricing-{{ ai_gen_id }}__feature-title">A FULLY CUSTOM FOUNDATION</h4>
+
         <ul class="ai-pricing-{{ ai_gen_id }}__features">
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Discovery &amp; competitor review</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Unlimited custom wireframes</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Custom wireframes, UI &amp; bespoke sections</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Bulk product &amp; page import · 30+ pages customised</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Unlimited bulk product import · 20+ pages</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Multichannel integration, marketing strategy &amp; advanced store setup</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Multi-market &amp; advanced store setup</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>10+ apps installed with custom integrations</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Up to 8 apps + custom integrations</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>5 revision rounds</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Full Klaviyo flows, analytics &amp; tracking</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>Dedicated project manager</span>
           </li>
           <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Technical SEO, schema &amp; redirect mapping</span>
-          </li>
-          <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Product, customer &amp; order migration</span>
-          </li>
-          <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Performance tuning &amp; CRO review</span>
-          </li>
-          <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Training · 3 revision rounds</span>
-          </li>
-          <li>
-            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span
-            ><span>Dedicated PM · 60 days of support</span>
+            <span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span>
+            <span>60 days of support</span>
           </li>
         </ul>
+
         <p class="ai-pricing-{{ ai_gen_id }}__delivery">Estimated delivery: 8–12 weeks</p>
       </article>
     </div>
+
     <p class="ai-pricing-{{ ai_gen_id }}__note">
       Shopify subscriptions, paid themes, and third-party app charges should be confirmed separately before your project
       begins.

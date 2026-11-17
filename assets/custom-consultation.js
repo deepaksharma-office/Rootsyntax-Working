@@ -21,10 +21,6 @@ if (!customElements.get('cust-consultation-form')) {
         input.setAttribute('aria-invalid', 'true');
       }, { capture: true, signal: this._controller.signal });
 
-      if (!this._endpoint()) {
-        if (this._button) this._button.disabled = true;
-        this._setStatus('Form temporarily unavailable.', 'error');
-      }
     }
 
     disconnectedCallback() {
@@ -87,14 +83,30 @@ if (!customElements.get('cust-consultation-form')) {
       return data;
     }
 
+    _prepareNativeSubmission() {
+      for (const name of ['name', 'email', 'phone', 'service', 'website', 'message']) {
+        const input = this._form.elements.namedItem(name);
+        if (!input || !input.value) continue;
+        let hidden = this._form.querySelector(`[data-native-field="${name}"]`);
+        if (!hidden) {
+          hidden = document.createElement('input');
+          hidden.type = 'hidden';
+          hidden.dataset.nativeField = name;
+          hidden.name = `contact[${name === 'service' ? 'Service' : name === 'website' ? 'Website' : name === 'message' ? 'body' : name}]`;
+          this._form.append(hidden);
+        }
+        hidden.value = input.value;
+      }
+    }
+
     async _submit(event) {
-      event.preventDefault();
       if (this._submitting) return;
       const endpoint = this._endpoint();
       if (!endpoint) {
-        this._setStatus(this._form.dataset.errorMessage, 'error');
+        this._prepareNativeSubmission();
         return;
       }
+      event.preventDefault();
 
       this._setStatus('');
       for (const input of this._form.elements) this._clearFieldError(input);

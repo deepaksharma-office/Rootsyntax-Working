@@ -101,7 +101,7 @@
       {% if section.settings.form_description != blank %}<p class="cust__consultation-form-description">{{ section.settings.form_description | escape }}</p>{% endif %}
       <cust-consultation-form>
       <form class="cust__consultation-form" method="post"
-        {% if section.settings.proxy_path != blank %}action="{{ section.settings.proxy_path | escape }}"{% endif %}
+        action="{% if section.settings.proxy_path != blank %}{{ section.settings.proxy_path | escape }}{% else %}{{ routes.root_url }}contact#cust__consultation-{{ section.id }}{% endif %}"
         data-proxy-path="{{ section.settings.proxy_path | escape }}"
         data-success-message="{{ section.settings.success_message | escape }}"
         data-error-message="{{ section.settings.error_message | escape }}"
@@ -116,6 +116,8 @@
         data-email-error="{{ section.settings.email_error | escape }}"
         data-phone-error="{{ section.settings.phone_error | escape }}"
       >
+        <input type="hidden" name="form_type" value="contact">
+        <input type="hidden" name="utf8" value="✓">
         {% if section.settings.show_name %}
           <div class="cust__consultation-field">
             <label for="cust__name-{{ section.id }}">{{ section.settings.name_label | escape }}{% if section.settings.name_required %} <span aria-hidden="true">*</span>{% endif %}</label>
@@ -172,7 +174,7 @@
             <input id="cust__website-confirm-{{ section.id }}" name="website_confirm" type="text" tabindex="-1" autocomplete="off">
           </div>
         {% endif %}
-        <button class="cust__consultation-submit{% if section.settings.button_gradient %} cust__consultation-submit--gradient{% endif %}{% if section.settings.button_shadow %} cust__consultation-submit--shadow{% endif %}" type="submit"{% if section.settings.proxy_path == blank or section.settings.show_email == false %} disabled{% endif %}>
+        <button class="cust__consultation-submit{% if section.settings.button_gradient %} cust__consultation-submit--gradient{% endif %}{% if section.settings.button_shadow %} cust__consultation-submit--shadow{% endif %}" type="submit"{% if section.settings.show_email == false %} disabled{% endif %}>
           <span>{{ section.settings.button_text | escape }}</span>
           <span aria-hidden="true">→</span>
         </button>

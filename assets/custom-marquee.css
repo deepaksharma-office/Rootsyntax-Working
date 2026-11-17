@@ -25,7 +25,7 @@
     justify-content: center;
     gap: 8px;
     min-width: var(--client-width);
-    min-height: var(--client-height);
+    min-height: 100%;
     padding: var(--client-padding);
     border-radius: var(--client-radius);
     background: var(--client-card-background);
@@ -36,7 +36,7 @@
   .client-marquee .client-marquee__image {
     display: block;
     width: var(--client-width);
-    height: var(--client-height);
+    height: 100%;
     max-width: none;
     object-fit: contain;
   }
@@ -51,7 +51,15 @@
     .client-marquee[data-pause-on-hover="true"] .client-marquee__viewport:hover .client-marquee__track,
     .client-marquee[data-pause-on-hover="true"] .client-marquee__viewport:focus-within .client-marquee__track { animation-play-state: paused; }
   
-  @keyframes client-marquee-scroll { to { transform: translateX(-50%); } }
+  @keyframes client-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
   @media (max-width: 749px) {
     .client-marquee .client-marquee__text { font-size: var(--client-font-size-mobile); }
   }

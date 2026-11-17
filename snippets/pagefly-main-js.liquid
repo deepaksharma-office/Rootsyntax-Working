@@ -1,5 +1,5 @@
 
-  {% if shop.metafields.pagefly.acceptTracking or shop.metafields.pagefly.pfAnalyticsEnabled.value %}
+  {% if shop.metafields.pagefly.acceptTracking.value or shop.metafields.pagefly.pfAnalyticsEnabled.value %}
   {% if shop.metafields.pagefly.measurementId %}
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ shop.metafields.pagefly.measurementId }}"></script>
@@ -90,20 +90,6 @@
       sessionTimeout: {{ shop.metafields.pagefly.sessionTimeout | default: 30 }},
       timezoneOffset: {{ shop.metafields.pagefly.timezoneOffset | default: 0 }}
     };
-    if(typeof analyticsSrc === 'undefined'){
-      let analyticsSrc = "https://cdn.pagefly.io/pagefly/core/analytics.js";
-      const scriptPFAnalytic = document.createElement('script');
-      scriptPFAnalytic.src = analyticsSrc;
-      scriptPFAnalytic.async = true;
-      scriptPFAnalytic.defer = false;
-      scriptPFAnalytic.onload = () => {
-        console.log("load analytics new version successfully")
-      };
-      scriptPFAnalytic.onerror = () => {
-        console.log("load analytics new version unsuccessfully")
-      };
-      document.body.appendChild(scriptPFAnalytic);
-    }
   }, { once: true });
   </script>
   {% endif %}

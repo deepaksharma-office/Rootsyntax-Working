@@ -15,6 +15,7 @@
         "heading": {
           "type": "text",
           "name": "Title",
+          "disabled": true,
           "settings": {
             "text": "<h1>{{ closest.page.title }}</h1>",
             "width": "100%",
@@ -40,6 +41,7 @@
         },
         "page-content": {
           "type": "page-content",
+          "disabled": true,
           "settings": {
             "text_color": ""
           },
@@ -50,11 +52,12 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
-        "gap": 32,
-        "background_color": "{{ settings.color_palette.color2 }}",
-        "padding-block-start": 40,
+        "gap": 0,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 0,
         "padding-block-end": 80
       }
     },
@@ -250,10 +253,249 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "179274394989e61221": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_51dc646_mAWQ7B": {
+          "type": "ai_gen_block_51dc646",
+          "settings": {
+            "desktop_width_percent": 100,
+            "eyebrow": "SHOPIFY WEBSITE PACKAGES",
+            "heading_first": "Your next chapter.",
+            "heading_second": "Built on Shopify.",
+            "launch_link": "",
+            "growth_link": "",
+            "scale_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_51dc646_mAWQ7B"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "#ffffff",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "1792744574c4ad5737": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ca28062_3C7xxn": {
+          "type": "ai_gen_block_ca28062",
+          "settings": {
+            "eyebrow": "THE DETAILS, MADE SIMPLE",
+            "heading": "Find your perfect fit.",
+            "faq_text": "Have a question? Read the FAQs ↗",
+            "faq_link": "",
+            "first_title": "What’s included",
+            "launch_title": "Launch",
+            "growth_title": "Growth",
+            "scale_title": "Scale",
+            "footnote": "Custom checkout capabilities depend on your Shopify plan and platform eligibility. ‘20+ pages’ and custom integrations are scoped during discovery.",
+            "max_width": 1440,
+            "desktop_width_percent": 100,
+            "heading_desktop": 46,
+            "heading_mobile": 32,
+            "table_text_size": 14,
+            "cell_padding": 18,
+            "section_padding": 48,
+            "section_bg": "#ffffff",
+            "text_color": "#292d30",
+            "header_bg": "#dfe7ec",
+            "highlight_bg": "#e7eef5",
+            "border_color": "#dedfd8",
+            "highlight_column": "growth",
+            "feature_1": "Project investment",
+            "launch_1": "$1,000",
+            "growth_1": "$3,000",
+            "scale_1": "$10,000",
+            "feature_2": "Design approach",
+            "launch_2": "Branded premium theme",
+            "growth_2": "Customized theme templates",
+            "scale_2": "Bespoke UI & sections",
+            "feature_3": "Products loaded",
+            "launch_3": "Up to 25",
+            "growth_3": "Up to 150 via CSV",
+            "scale_3": "Unlimited via bulk import",
+            "feature_4": "Pages",
+            "launch_4": "4 pages",
+            "growth_4": "Up to 8",
+            "scale_4": "20+ (scope confirmed)",
+            "feature_5": "App setup",
+            "launch_5": "1 app",
+            "growth_5": "Up to 3 apps",
+            "scale_5": "Up to 8 + integrations",
+            "feature_6": "Email marketing",
+            "launch_6": "Basic notifications",
+            "growth_6": "2 Klaviyo flows",
+            "scale_6": "Full Klaviyo flow suite",
+            "feature_7": "Migration",
+            "launch_7": "Available as add-on",
+            "growth_7": "Products & customers",
+            "scale_7": "Products, customers & orders",
+            "feature_8": "SEO",
+            "launch_8": "Titles & meta descriptions",
+            "growth_8": "On-page, redirects & sitemap",
+            "scale_8": "Technical audit, schema & mapping",
+            "feature_9": "Revision rounds",
+            "launch_9": "1",
+            "growth_9": "2",
+            "scale_9": "3",
+            "feature_10": "Post-launch support",
+            "launch_10": "7 days",
+            "growth_10": "Confirm in proposal",
+            "scale_10": "60 days",
+            "feature_11": "Dedicated project manager",
+            "launch_11": "—",
+            "growth_11": "—",
+            "scale_11": "Included",
+            "feature_12": "Estimated timeline",
+            "launch_12": "1–2 weeks",
+            "growth_12": "3–5 weeks",
+            "scale_12": "8–12 weeks"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ca28062_3C7xxn"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "#f7f9fd",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "1792751266e68f8b6c": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_31b4087_L6EC4T": {
+          "type": "ai_gen_block_31b4087",
+          "settings": {
+            "desktop_width_percent": 100,
+            "max_width": 1450,
+            "body_font": "work_sans_n4",
+            "text_color": "#292B2D",
+            "muted_color": "#646A6D",
+            "border_color": "#D9DEDF",
+            "top_background": "#F2F5F6",
+            "bottom_background": "#699FF0",
+            "button_color": "#FF7414",
+            "button_text_color": "#FFFFFF",
+            "top_heading": "A little outside the box?",
+            "top_text": "Custom design, advanced integrations, B2B, and ongoing marketing or SEO can be scoped separately.",
+            "top_button": "Discuss your project",
+            "top_link": "",
+            "eyebrow": "GOOD QUESTIONS",
+            "faq_heading": "A few thingsto know.",
+            "faq_subheading": "Clarity before the first click.",
+            "question_1": "Which package is right for my business?",
+            "answer_1": "Launch suits a straightforward first store, Growth supports more customization, and Scale is designed for a bespoke build. We’ll help you choose based on your requirements.",
+            "question_2": "Are these one-time or monthly prices?",
+            "answer_2": "These are one-time project prices. Shopify subscriptions, paid themes, apps, and ongoing services are separate.",
+            "question_3": "How long will my store take to build?",
+            "answer_3": "Estimated timelines are 1–2 weeks for Launch, 3–5 weeks for Growth, and 8–12 weeks for Scale. Your final schedule is confirmed after reviewing the scope and required content.",
+            "question_4": "Can you migrate my existing store?",
+            "answer_4": "Yes. Migration options depend on your platform, data, and selected package. We’ll confirm what is included before the project begins.",
+            "question_5": "What happens after launch?",
+            "answer_5": "We provide handover guidance and the support agreed in your proposal. Ongoing maintenance and marketing can be scoped separately.",
+            "question_6": "Can I request features outside a package?",
+            "answer_6": "Yes. Custom features, integrations, B2B requirements, and additional services can be quoted separately.",
+            "bottom_heading": "Big plans for your brand?",
+            "bottom_text": "Let’s find the right way to bring them to life.",
+            "bottom_button": "Let’s build your next chapter",
+            "bottom_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_31b4087_L6EC4T"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "#F7F9FD",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
-    "17852329203009c5fc"
+    "17852329203009c5fc",
+    "179274394989e61221",
+    "1792744574c4ad5737",
+    "1792751266e68f8b6c"
   ]
 }

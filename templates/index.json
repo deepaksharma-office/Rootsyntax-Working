@@ -1273,8 +1273,8 @@
         "label_size": 16,
         "description_size": 18,
         "button_text": "Get Free Proposal",
-        "button_background": "#9749e8",
-        "button_gradient": true,
+        "button_background": "#203C90",
+        "button_gradient": false,
         "button_gradient_start": "#9749e8",
         "button_gradient_middle": "#db4f9a",
         "button_gradient_end": "#ff801d",
@@ -1283,7 +1283,7 @@
         "button_height": 64,
         "button_font_size": 18,
         "button_font_weight": "700",
-        "button_hover_opacity": 90,
+        "button_hover_opacity": 100,
         "button_shadow": true
       }
     },

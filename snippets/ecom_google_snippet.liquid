@@ -79,7 +79,7 @@
       {%- for variant in product.variants -%}
         {
           "@type": "Offer",
-          "price": "{{ variant.price | money_without_currency | replace: ",", "" }}",
+          "price": "{{ variant.price | divided_by: 100.0 }}",
           "priceCurrency": "{{ shop.currency }}",
           "itemCondition": "https://schema.org/NewCondition",
           "url": "{{ shop.secure_url }}{{ variant.url }}",
@@ -313,15 +313,7 @@
         "@type": "AggregateRating",
         "ratingCount": {{ reviewCount }},
         "ratingValue": {{ reviewRating }}
-        },
-        "review": {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": {{ reviewRating }},
-          "bestRating": 5,
         }
-      }
       {% endif %}
     {%- endif -%}
 

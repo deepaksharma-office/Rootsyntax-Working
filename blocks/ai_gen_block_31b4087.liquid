@@ -1,94 +1,3 @@
-{% doc %}
-  @prompt
-    Create a responsive Shopify section matching the attached reference as closely as possible. It contains three areas: a custom-project banner, a two-column FAQ, and a bottom call-to-action banner.
-    
-    OVERALL STYLE
-    - White background, clean sans-serif typography, dark charcoal text.
-    - Centered container with an editable maximum width, default 1440px.
-    - Approximately 30px desktop side gutters and 20px mobile gutters.
-    - Minimal styling, generous whitespace, thin warm-gray borders.
-    - Match the reference proportions and alignment.
-    - No images, gradients, or decorative graphics.
-    
-    1. TOP CUSTOM-PROJECT BANNER
-    - Full-width pale gray-blue panel, approximately #F2F5F6.
-    - Thin light-gray border and 8px corner radius.
-    - Approximately 32px horizontal padding and 24px vertical padding.
-    - Desktop: text on the left, orange pill button on the right, vertically centered.
-    - Heading: “A little outside the box?”
-    - Heading approximately 24px, regular weight.
-    - Supporting text below: “Custom design, advanced integrations, B2B, and ongoing marketing or SEO can be scoped separately.”
-    - Supporting text approximately 14px, muted gray.
-    - Button: “Discuss your project” followed by a small diagonal up-right arrow.
-    - Button background approximately #FF7414, white bold text, fully rounded corners, subtle shadow.
-    - Button approximately 280px wide and 60px tall at a 1440px viewport.
-    
-    2. FAQ AREA
-    - Leave approximately 68px after the top banner.
-    - Add a thin horizontal divider across the entire container above the FAQ.
-    - Two-column desktop layout: left approximately 40%, right approximately 56%, with a generous gap.
-    - Keep the FAQ introduction near the top of the left column.
-    
-    LEFT COLUMN
-    - Small bold uppercase eyebrow: “GOOD QUESTIONS”.
-    - Large regular-weight heading on two lines:
-      “A few things”
-      “to know.”
-    - Heading approximately 46px with tight line height.
-    - Muted supporting text: “Clarity before the first click.”
-    - Supporting text approximately 16px.
-    
-    RIGHT COLUMN
-    - Six accordion rows, initially closed.
-    - Use these exact questions:
-      1. Which package is right for my business?
-      2. Are these one-time or monthly prices?
-      3. How long will my store take to build?
-      4. Can you migrate my existing store?
-      5. What happens after launch?
-      6. Can I request features outside a package?
-    - Question text approximately 16px, regular weight.
-    - Each row has generous vertical padding and a thin light-gray bottom border.
-    - Place a small plus icon at the far right, aligned consistently.
-    - Show a minus icon when a row is open.
-    - Use plain rows without card backgrounds or rounded containers.
-    - Only one accordion can be open at a time.
-    - Animate opening and closing smoothly by transitioning the answer container height.
-    - Answers should appear below the question in smaller muted text with comfortable line spacing.
-    - Use accessible buttons with aria-expanded and associated answer panels.
-    - Support keyboard interaction and reduced-motion preferences.
-    
-    Prefill these editable draft answers:
-    1. “Launch suits a straightforward first store, Growth supports more customization, and Scale is designed for a bespoke build. We’ll help you choose based on your requirements.”
-    2. “These are one-time project prices. Shopify subscriptions, paid themes, apps, and ongoing services are separate.”
-    3. “Estimated timelines are 1–2 weeks for Launch, 3–5 weeks for Growth, and 8–12 weeks for Scale. Your final schedule is confirmed after reviewing the scope and required content.”
-    4. “Yes. Migration options depend on your platform, data, and selected package. We’ll confirm what is included before the project begins.”
-    5. “We provide handover guidance and the support agreed in your proposal. Ongoing maintenance and marketing can be scoped separately.”
-    6. “Yes. Custom features, integrations, B2B requirements, and additional services can be quoted separately.”
-    
-    3. BOTTOM CALL-TO-ACTION BANNER
-    - Leave approximately 60px below the FAQ.
-    - Full-width solid cornflower-blue panel, approximately #699FF0.
-    - Approximately 8px corner radius.
-    - Approximately 40px horizontal padding and 36px vertical padding.
-    - Desktop: text on the left and orange pill button on the right, vertically centered.
-    - Large dark heading: “Big plans for your brand?”
-    - Heading approximately 40px, regular weight.
-    - Supporting text: “Let’s find the right way to bring them to life.”
-    - Supporting text approximately 16px.
-    - Button text: “Let’s build your next chapter” with a small diagonal up-right arrow.
-    - Match the top button’s orange color, white bold text, rounded shape, and subtle shadow.
-    - Bottom button should be wider to accommodate its text.
-    
-    MOBILE LAYOUT
-    - Stack banner text and buttons vertically, aligned left.
-    - Make buttons full width with comfortable padding and allow text to wrap if needed.
-    - Stack the FAQ introduction above the accordions.
-    - Reduce large headings to approximately 32px.
-    - Use 24px internal banner padding.
-    - Reduce vertical gaps to approximately 36–40px.
-    - Keep plus/minus icons aligned right and prevent
-{% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
@@ -100,89 +9,365 @@
     padding: 30px 20px;
     box-sizing: border-box;
   }
+
   .ai-pricing-faq-{{ ai_gen_id }} *,
   .ai-pricing-faq-{{ ai_gen_id }} *::before,
-  .ai-pricing-faq-{{ ai_gen_id }} *::after { box-sizing: border-box; }
-  .ai-pricing-faq-{{ ai_gen_id }}__inner { width: 100%; max-width: {{ block.settings.max_width }}px; margin: 0 auto; }
+  .ai-pricing-faq-{{ ai_gen_id }} *::after {
+    box-sizing: border-box;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__inner {
+    width: 100%;
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
   .ai-pricing-faq-{{ ai_gen_id }}__banner {
-    display: flex; align-items: center; justify-content: space-between; gap: 28px;
-    padding: 24px 32px; background: {{ block.settings.top_background }};
-    border: 1px solid {{ block.settings.border_color }}; border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 24px 32px;
+    background: {{ block.settings.top_background }};
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: 8px;
   }
-  .ai-pricing-faq-{{ ai_gen_id }}__banner-copy { min-width: 0; }
-  .ai-pricing-faq-{{ ai_gen_id }}__top-title { margin: 0 0 7px; font-size: 24px; line-height: 1.25; font-weight: 400; }
-  .ai-pricing-faq-{{ ai_gen_id }}__top-text { margin: 0; color: {{ block.settings.muted_color }}; font-size: 14px; line-height: 1.55; }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__banner-copy {
+    min-width: 0;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__top-title {
+    margin: 0 0 7px;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 400;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__top-text {
+    margin: 0;
+    color: {{ block.settings.muted_color }};
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
   .ai-pricing-faq-{{ ai_gen_id }}__button {
-    flex: 0 0 auto; min-height: 60px; padding: 14px 26px; display: inline-flex; justify-content: center; align-items: center; gap: 12px;
-    border: 0; border-radius: 999px; background: {{ block.settings.button_color }}; color: {{ block.settings.button_text_color }};
-    font: 700 15px/1.25 inherit; text-align: center; text-decoration: none; box-shadow: 0 3px 8px rgba(35, 35, 35, .14); cursor: pointer;
+    flex: 0 0 auto;
+    min-height: 60px;
+    padding: 14px 26px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border: 0;
+    border-radius: 999px;
+    background: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 3px 8px rgba(35, 35, 35, .14);
+    cursor: pointer;
   }
-  .ai-pricing-faq-{{ ai_gen_id }}__button--top { width: 280px; }
-  .ai-pricing-faq-{{ ai_gen_id }}__button--bottom { min-width: 310px; }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__button--top {
+    width: 280px;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__button--bottom {
+    min-width: 310px;
+  }
+
   .ai-pricing-faq-{{ ai_gen_id }}__button:focus-visible,
-  .ai-pricing-faq-{{ ai_gen_id }}__trigger:focus-visible { outline: 3px solid #1b1b1b; outline-offset: 3px; }
-  .ai-pricing-faq-{{ ai_gen_id }}__arrow { width: 15px; height: 15px; flex: 0 0 15px; }
-  .ai-pricing-faq-{{ ai_gen_id }}__faq { margin-top: 68px; padding-top: 34px; border-top: 1px solid {{ block.settings.border_color }}; display: grid; grid-template-columns: minmax(0, 40fr) minmax(0, 56fr); gap: 4%; }
-  .ai-pricing-faq-{{ ai_gen_id }}__intro { padding-top: 2px; }
-  .ai-pricing-faq-{{ ai_gen_id }}__eyebrow { margin: 0 0 20px; font-size: 12px; font-weight: 700; letter-spacing: .08em; line-height: 1.3; }
-  .ai-pricing-faq-{{ ai_gen_id }}__faq-title { margin: 0; font-size: 46px; font-weight: 400; line-height: 1.03; letter-spacing: -.025em; }
-  .ai-pricing-faq-{{ ai_gen_id }}__intro-text { margin: 17px 0 0; color: {{ block.settings.muted_color }}; font-size: 16px; line-height: 1.5; }
-  .ai-pricing-faq-{{ ai_gen_id }}__list { min-width: 0; }
-  .ai-pricing-faq-{{ ai_gen_id }}__item { border-bottom: 1px solid {{ block.settings.border_color }}; }
+  .ai-pricing-faq-{{ ai_gen_id }}__trigger:focus-visible {
+    outline: 3px solid #1b1b1b;
+    outline-offset: 3px;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__cta .ai-pricing-faq-{{ ai_gen_id }}__button:focus-visible {
+    outline-color: #ffffff;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__arrow {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 15px;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__faq {
+    margin-top: 68px;
+    padding-top: 34px;
+    border-top: 1px solid {{ block.settings.border_color }};
+    display: grid;
+    grid-template-columns: minmax(0, 40fr) minmax(0, 56fr);
+    gap: 4%;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__intro {
+    padding-top: 2px;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__eyebrow {
+    margin: 0 0 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    line-height: 1.3;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__faq-title {
+    margin: 0;
+    font-size: 46px;
+    font-weight: 400;
+    line-height: 1.03;
+    letter-spacing: -.025em;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__intro-text {
+    margin: 17px 0 0;
+    color: {{ block.settings.muted_color }};
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__list {
+    min-width: 0;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__item {
+    border-bottom: 1px solid {{ block.settings.border_color }};
+  }
+
   .ai-pricing-faq-{{ ai_gen_id }}__trigger {
-    width: 100%; min-height: 72px; padding: 21px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px;
-    border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer;
+    width: 100%;
+    min-height: 72px;
+    padding: 21px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
   }
-  .ai-pricing-faq-{{ ai_gen_id }}__question { font-size: 16px; font-weight: 400; line-height: 1.45; }
-  .ai-pricing-faq-{{ ai_gen_id }}__icon { position: relative; width: 16px; height: 16px; flex: 0 0 16px; }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__question {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+  }
+
   .ai-pricing-faq-{{ ai_gen_id }}__icon::before,
-  .ai-pricing-faq-{{ ai_gen_id }}__icon::after { position: absolute; top: 50%; left: 50%; content: ''; background: currentColor; transform: translate(-50%, -50%); }
-  .ai-pricing-faq-{{ ai_gen_id }}__icon::before { width: 14px; height: 1.5px; }
-  .ai-pricing-faq-{{ ai_gen_id }}__icon::after { width: 1.5px; height: 14px; transition: opacity .25s ease; }
-  .ai-pricing-faq-{{ ai_gen_id }}__trigger[aria-expanded='true'] .ai-pricing-faq-{{ ai_gen_id }}__icon::after { opacity: 0; }
-  .ai-pricing-faq-{{ ai_gen_id }}__panel { height: 0; overflow: hidden; transition: height .28s ease; }
-  .ai-pricing-faq-{{ ai_gen_id }}__answer { padding: 0 36px 21px 0; color: {{ block.settings.muted_color }}; font-size: 14px; line-height: 1.65; }
-  .ai-pricing-faq-{{ ai_gen_id }}__cta { margin-top: 60px; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 28px; background: {{ block.settings.bottom_background }}; border-radius: 8px; }
-  .ai-pricing-faq-{{ ai_gen_id }}__bottom-title { margin: 0 0 8px; font-size: 40px; font-weight: 400; line-height: 1.12; letter-spacing: -.02em; }
-  .ai-pricing-faq-{{ ai_gen_id }}__bottom-text { margin: 0; font-size: 16px; line-height: 1.5; }
-  @media screen and (max-width: 749px) {
-    .ai-pricing-faq-{{ ai_gen_id }} { padding: 24px 20px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__banner, .ai-pricing-faq-{{ ai_gen_id }}__cta { align-items: stretch; flex-direction: column; gap: 20px; padding: 24px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__top-title { font-size: 22px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__button, .ai-pricing-faq-{{ ai_gen_id }}__button--top, .ai-pricing-faq-{{ ai_gen_id }}__button--bottom { width: 100%; min-width: 0; min-height: 56px; padding: 14px 18px; white-space: normal; }
-    .ai-pricing-faq-{{ ai_gen_id }}__faq { margin-top: 40px; padding-top: 28px; grid-template-columns: minmax(0, 1fr); gap: 28px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__eyebrow { margin-bottom: 14px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__faq-title { font-size: 32px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__intro-text { margin-top: 12px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__trigger { min-height: 66px; padding: 19px 0; gap: 16px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__question { font-size: 15px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__cta { margin-top: 40px; }
-    .ai-pricing-faq-{{ ai_gen_id }}__bottom-title { font-size: 32px; }
+  .ai-pricing-faq-{{ ai_gen_id }}__icon::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: '';
+    background: currentColor;
+    transform: translate(-50%, -50%);
   }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__icon::before {
+    width: 14px;
+    height: 1.5px;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__icon::after {
+    width: 1.5px;
+    height: 14px;
+    transition: opacity .25s ease;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__trigger[aria-expanded='true']
+  .ai-pricing-faq-{{ ai_gen_id }}__icon::after {
+    opacity: 0;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__panel {
+    height: 0;
+    overflow: hidden;
+    transition: height .28s ease;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__answer {
+    padding: 0 36px 21px 0;
+    color: {{ block.settings.muted_color }};
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__cta {
+    margin-top: 60px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    background: {{ block.settings.footer_match_background }};
+    color: #ffffff;
+    border-radius: 8px;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__bottom-title {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -.02em;
+  }
+
+  .ai-pricing-faq-{{ ai_gen_id }}__bottom-text {
+    margin: 0;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-pricing-faq-{{ ai_gen_id }} {
+      padding: 24px 20px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__banner,
+    .ai-pricing-faq-{{ ai_gen_id }}__cta {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 20px;
+      padding: 24px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__top-title {
+      font-size: 22px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__button,
+    .ai-pricing-faq-{{ ai_gen_id }}__button--top,
+    .ai-pricing-faq-{{ ai_gen_id }}__button--bottom {
+      width: 100%;
+      min-width: 0;
+      min-height: 56px;
+      padding: 14px 18px;
+      white-space: normal;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__faq {
+      margin-top: 40px;
+      padding-top: 28px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__eyebrow {
+      margin-bottom: 14px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__faq-title {
+      font-size: 32px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__intro-text {
+      margin-top: 12px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__trigger {
+      min-height: 66px;
+      padding: 19px 0;
+      gap: 16px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__question {
+      font-size: 15px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__cta {
+      margin-top: 40px;
+    }
+
+    .ai-pricing-faq-{{ ai_gen_id }}__bottom-title {
+      font-size: 32px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .ai-pricing-faq-{{ ai_gen_id }}__panel, .ai-pricing-faq-{{ ai_gen_id }}__icon::after { transition: none; }
+    .ai-pricing-faq-{{ ai_gen_id }}__panel,
+    .ai-pricing-faq-{{ ai_gen_id }}__icon::after {
+      transition: none;
+    }
   }
 {% endstyle %}
 
-<div class="ai-pricing-faq-{{ ai_gen_id }}" style="width: {{ block.settings.desktop_width_percent }}%;" {{ block.shopify_attributes }}>
+<div
+  class="ai-pricing-faq-{{ ai_gen_id }}"
+  style="width: {{ block.settings.desktop_width_percent }}%;"
+  {{ block.shopify_attributes }}
+>
   <div class="ai-pricing-faq-{{ ai_gen_id }}__inner">
     <div class="ai-pricing-faq-{{ ai_gen_id }}__banner">
       <div class="ai-pricing-faq-{{ ai_gen_id }}__banner-copy">
-        <h2 class="ai-pricing-faq-{{ ai_gen_id }}__top-title">{{ block.settings.top_heading | escape }}</h2>
-        <p class="ai-pricing-faq-{{ ai_gen_id }}__top-text">{{ block.settings.top_text | escape }}</p>
+        <h2 class="ai-pricing-faq-{{ ai_gen_id }}__top-title">
+          {{ block.settings.top_heading | escape }}
+        </h2>
+
+        <p class="ai-pricing-faq-{{ ai_gen_id }}__top-text">
+          {{ block.settings.top_text | escape }}
+        </p>
       </div>
-      <a class="ai-pricing-faq-{{ ai_gen_id }}__button ai-pricing-faq-{{ ai_gen_id }}__button--top" href="{{ block.settings.top_link | default: '/pages/contact' }}">
+
+      <a
+        class="ai-pricing-faq-{{ ai_gen_id }}__button ai-pricing-faq-{{ ai_gen_id }}__button--top"
+        href="{{ block.settings.top_link | default: '/pages/contact' }}"
+      >
         <span>{{ block.settings.top_button | escape }}</span>
-        <svg class="ai-pricing-faq-{{ ai_gen_id }}__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+        <svg
+          class="ai-pricing-faq-{{ ai_gen_id }}__arrow"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 13 13 3M5 3h8v8"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </a>
     </div>
 
-    <section class="ai-pricing-faq-{{ ai_gen_id }}__faq" aria-label="{{ block.settings.eyebrow | escape }}">
+    <section
+      class="ai-pricing-faq-{{ ai_gen_id }}__faq"
+      aria-label="{{ block.settings.eyebrow | escape }}"
+    >
       <div class="ai-pricing-faq-{{ ai_gen_id }}__intro">
-        <p class="ai-pricing-faq-{{ ai_gen_id }}__eyebrow">{{ block.settings.eyebrow | escape }}</p>
-        <h2 class="ai-pricing-faq-{{ ai_gen_id }}__faq-title">{{ block.settings.faq_heading }}</h2>
-        <p class="ai-pricing-faq-{{ ai_gen_id }}__intro-text">{{ block.settings.faq_subheading | escape }}</p>
+        <p class="ai-pricing-faq-{{ ai_gen_id }}__eyebrow">
+          {{ block.settings.eyebrow | escape }}
+        </p>
+
+        <h2 class="ai-pricing-faq-{{ ai_gen_id }}__faq-title">
+          {{ block.settings.faq_heading }}
+        </h2>
+
+        <p class="ai-pricing-faq-{{ ai_gen_id }}__intro-text">
+          {{ block.settings.faq_subheading | escape }}
+        </p>
       </div>
+
       <div class="ai-pricing-faq-{{ ai_gen_id }}__list" data-accordion>
         {% for i in (1..6) %}
           {% liquid
@@ -192,13 +377,33 @@
             assign answer = block.settings[answer_key]
             assign panel_id = 'ai-faq-panel-' | append: ai_gen_id | append: '-' | append: i
           %}
+
           <div class="ai-pricing-faq-{{ ai_gen_id }}__item">
-            <button class="ai-pricing-faq-{{ ai_gen_id }}__trigger" type="button" aria-expanded="false" aria-controls="{{ panel_id }}">
-              <span class="ai-pricing-faq-{{ ai_gen_id }}__question">{{ question | escape }}</span>
-              <span class="ai-pricing-faq-{{ ai_gen_id }}__icon" aria-hidden="true"></span>
+            <button
+              class="ai-pricing-faq-{{ ai_gen_id }}__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="{{ panel_id }}"
+            >
+              <span class="ai-pricing-faq-{{ ai_gen_id }}__question">
+                {{ question | escape }}
+              </span>
+
+              <span
+                class="ai-pricing-faq-{{ ai_gen_id }}__icon"
+                aria-hidden="true"
+              ></span>
             </button>
-            <div class="ai-pricing-faq-{{ ai_gen_id }}__panel" id="{{ panel_id }}" aria-hidden="true" inert>
-              <div class="ai-pricing-faq-{{ ai_gen_id }}__answer">{{ answer | escape }}</div>
+
+            <div
+              class="ai-pricing-faq-{{ ai_gen_id }}__panel"
+              id="{{ panel_id }}"
+              aria-hidden="true"
+              inert
+            >
+              <div class="ai-pricing-faq-{{ ai_gen_id }}__answer">
+                {{ answer | escape }}
+              </div>
             </div>
           </div>
         {% endfor %}
@@ -207,12 +412,35 @@
 
     <div class="ai-pricing-faq-{{ ai_gen_id }}__cta">
       <div>
-        <h2 class="ai-pricing-faq-{{ ai_gen_id }}__bottom-title">{{ block.settings.bottom_heading | escape }}</h2>
-        <p class="ai-pricing-faq-{{ ai_gen_id }}__bottom-text">{{ block.settings.bottom_text | escape }}</p>
+        <h2 class="ai-pricing-faq-{{ ai_gen_id }}__bottom-title">
+          {{ block.settings.bottom_heading | escape }}
+        </h2>
+
+        <p class="ai-pricing-faq-{{ ai_gen_id }}__bottom-text">
+          {{ block.settings.bottom_text | escape }}
+        </p>
       </div>
-      <a class="ai-pricing-faq-{{ ai_gen_id }}__button ai-pricing-faq-{{ ai_gen_id }}__button--bottom" href="{{ block.settings.bottom_link | default: '/pages/contact' }}">
+
+      <a
+        class="ai-pricing-faq-{{ ai_gen_id }}__button ai-pricing-faq-{{ ai_gen_id }}__button--bottom"
+        href="{{ block.settings.bottom_link | default: '/pages/contact' }}"
+      >
         <span>{{ block.settings.bottom_button | escape }}</span>
-        <svg class="ai-pricing-faq-{{ ai_gen_id }}__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+        <svg
+          class="ai-pricing-faq-{{ ai_gen_id }}__arrow"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 13 13 3M5 3h8v8"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </a>
     </div>
   </div>
@@ -221,39 +449,70 @@
 <script>
   (() => {
     const element = document.querySelector('.ai-pricing-faq-{{ ai_gen_id }}');
+
     if (!element || element.dataset.accordionReady === 'true') return;
+
     element.dataset.accordionReady = 'true';
+
     const list = element.querySelector('[data-accordion]');
-    const triggers = Array.from(list.querySelectorAll('.ai-pricing-faq-{{ ai_gen_id }}__trigger'));
+    const triggers = Array.from(
+      list.querySelectorAll('.ai-pricing-faq-{{ ai_gen_id }}__trigger')
+    );
 
     const closeItem = (trigger) => {
-      const panel = element.querySelector(`#${CSS.escape(trigger.getAttribute('aria-controls'))}`);
+      const panel = element.querySelector(
+        `#${CSS.escape(trigger.getAttribute('aria-controls'))}`
+      );
+
       if (!panel || trigger.getAttribute('aria-expanded') !== 'true') return;
+
       trigger.setAttribute('aria-expanded', 'false');
       panel.setAttribute('aria-hidden', 'true');
       panel.inert = true;
       panel.style.height = `${panel.scrollHeight}px`;
-      requestAnimationFrame(() => { panel.style.height = '0px'; });
+
+      requestAnimationFrame(() => {
+        panel.style.height = '0px';
+      });
     };
 
     const openItem = (trigger) => {
-      const panel = element.querySelector(`#${CSS.escape(trigger.getAttribute('aria-controls'))}`);
+      const panel = element.querySelector(
+        `#${CSS.escape(trigger.getAttribute('aria-controls'))}`
+      );
+
       if (!panel) return;
+
       trigger.setAttribute('aria-expanded', 'true');
       panel.inert = false;
       panel.setAttribute('aria-hidden', 'false');
       panel.style.height = `${panel.scrollHeight}px`;
+
       const finish = (event) => {
-        if (event.propertyName === 'height' && trigger.getAttribute('aria-expanded') === 'true') panel.style.height = 'auto';
+        if (
+          event.propertyName === 'height' &&
+          trigger.getAttribute('aria-expanded') === 'true'
+        ) {
+          panel.style.height = 'auto';
+        }
       };
+
       panel.addEventListener('transitionend', finish, { once: true });
     };
 
     triggers.forEach((trigger) => {
       trigger.addEventListener('click', () => {
         const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-        triggers.forEach((other) => { if (other !== trigger) closeItem(other); });
-        if (isOpen) closeItem(trigger); else openItem(trigger);
+
+        triggers.forEach((other) => {
+          if (other !== trigger) closeItem(other);
+        });
+
+        if (isOpen) {
+          closeItem(trigger);
+        } else {
+          openItem(trigger);
+        }
       });
     });
   })();
@@ -263,45 +522,232 @@
 {
   "name": "Project FAQ banners",
   "settings": [
-    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
-    { "type": "range", "id": "max_width", "label": "Maximum content width", "min": 900, "max": 1800, "step": 50, "unit": "px", "default": 1450 },
-    { "type": "font_picker", "id": "body_font", "label": "Body font", "default": "work_sans_n4" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#292B2D" },
-    { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#646A6D" },
-    { "type": "color", "id": "border_color", "label": "Borders", "default": "#D9DEDF" },
-    { "type": "color", "id": "top_background", "label": "Top banner background", "default": "#F2F5F6" },
-    { "type": "color", "id": "bottom_background", "label": "Bottom banner background", "default": "#699FF0" },
-    { "type": "color", "id": "button_color", "label": "Button background", "default": "#FF7414" },
-    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#FFFFFF" },
-    { "type": "header", "content": "Custom project banner" },
-    { "type": "text", "id": "top_heading", "label": "Heading", "default": "A little outside the box?" },
-    { "type": "textarea", "id": "top_text", "label": "Supporting text", "default": "Custom design, advanced integrations, B2B, and ongoing marketing or SEO can be scoped separately." },
-    { "type": "text", "id": "top_button", "label": "Button label", "default": "Discuss your project" },
-    { "type": "url", "id": "top_link", "label": "Button link" },
-    { "type": "header", "content": "FAQ introduction" },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "GOOD QUESTIONS" },
-    { "type": "text", "id": "faq_heading", "label": "Heading", "default": "A few things<br>to know." },
-    { "type": "text", "id": "faq_subheading", "label": "Supporting text", "default": "Clarity before the first click." },
-    { "type": "header", "content": "FAQ questions and answers" },
-    { "type": "text", "id": "question_1", "label": "Question 1", "default": "Which package is right for my business?" },
-    { "type": "textarea", "id": "answer_1", "label": "Answer 1", "default": "Launch suits a straightforward first store, Growth supports more customization, and Scale is designed for a bespoke build. We’ll help you choose based on your requirements." },
-    { "type": "text", "id": "question_2", "label": "Question 2", "default": "Are these one-time or monthly prices?" },
-    { "type": "textarea", "id": "answer_2", "label": "Answer 2", "default": "These are one-time project prices. Shopify subscriptions, paid themes, apps, and ongoing services are separate." },
-    { "type": "text", "id": "question_3", "label": "Question 3", "default": "How long will my store take to build?" },
-    { "type": "textarea", "id": "answer_3", "label": "Answer 3", "default": "Estimated timelines are 1–2 weeks for Launch, 3–5 weeks for Growth, and 8–12 weeks for Scale. Your final schedule is confirmed after reviewing the scope and required content." },
-    { "type": "text", "id": "question_4", "label": "Question 4", "default": "Can you migrate my existing store?" },
-    { "type": "textarea", "id": "answer_4", "label": "Answer 4", "default": "Yes. Migration options depend on your platform, data, and selected package. We’ll confirm what is included before the project begins." },
-    { "type": "text", "id": "question_5", "label": "Question 5", "default": "What happens after launch?" },
-    { "type": "textarea", "id": "answer_5", "label": "Answer 5", "default": "We provide handover guidance and the support agreed in your proposal. Ongoing maintenance and marketing can be scoped separately." },
-    { "type": "text", "id": "question_6", "label": "Question 6", "default": "Can I request features outside a package?" },
-    { "type": "textarea", "id": "answer_6", "label": "Answer 6", "default": "Yes. Custom features, integrations, B2B requirements, and additional services can be quoted separately." },
-    { "type": "header", "content": "Bottom call to action" },
-    { "type": "text", "id": "bottom_heading", "label": "Heading", "default": "Big plans for your brand?" },
-    { "type": "text", "id": "bottom_text", "label": "Supporting text", "default": "Let’s find the right way to bring them to life." },
-    { "type": "text", "id": "bottom_button", "label": "Button label", "default": "Let’s build your next chapter" },
-    { "type": "url", "id": "bottom_link", "label": "Button link" }
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum content width",
+      "min": 900,
+      "max": 1800,
+      "step": 50,
+      "unit": "px",
+      "default": 1450
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "work_sans_n4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#292B2D"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text",
+      "default": "#646A6D"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Borders",
+      "default": "#D9DEDF"
+    },
+    {
+      "type": "color",
+      "id": "top_background",
+      "label": "Top banner background",
+      "default": "#F2F5F6"
+    },
+    {
+      "type": "color",
+      "id": "footer_match_background",
+      "label": "Bottom banner background",
+      "default": "#121E4E"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background",
+      "default": "#FF7414"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Custom project banner"
+    },
+    {
+      "type": "text",
+      "id": "top_heading",
+      "label": "Heading",
+      "default": "A little outside the box?"
+    },
+    {
+      "type": "textarea",
+      "id": "top_text",
+      "label": "Supporting text",
+      "default": "Custom design, advanced integrations, B2B, and ongoing marketing or SEO can be scoped separately."
+    },
+    {
+      "type": "text",
+      "id": "top_button",
+      "label": "Button label",
+      "default": "Discuss your project"
+    },
+    {
+      "type": "url",
+      "id": "top_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "FAQ introduction"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "GOOD QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "Heading",
+      "default": "A few things<br>to know."
+    },
+    {
+      "type": "text",
+      "id": "faq_subheading",
+      "label": "Supporting text",
+      "default": "Clarity before the first click."
+    },
+    {
+      "type": "header",
+      "content": "FAQ questions and answers"
+    },
+    {
+      "type": "text",
+      "id": "question_1",
+      "label": "Question 1",
+      "default": "Which package is right for my business?"
+    },
+    {
+      "type": "textarea",
+      "id": "answer_1",
+      "label": "Answer 1",
+      "default": "Launch suits a straightforward first store, Growth supports more customization, and Scale is designed for a bespoke build. We’ll help you choose based on your requirements."
+    },
+    {
+      "type": "text",
+      "id": "question_2",
+      "label": "Question 2",
+      "default": "Are these one-time or monthly prices?"
+    },
+    {
+      "type": "textarea",
+      "id": "answer_2",
+      "label": "Answer 2",
+      "default": "These are one-time project prices. Shopify subscriptions, paid themes, apps, and ongoing services are separate."
+    },
+    {
+      "type": "text",
+      "id": "question_3",
+      "label": "Question 3",
+      "default": "How long will my store take to build?"
+    },
+    {
+      "type": "textarea",
+      "id": "answer_3",
+      "label": "Answer 3",
+      "default": "Estimated timelines are 1–2 weeks for Launch, 3–5 weeks for Growth, and 8–12 weeks for Scale. Your final schedule is confirmed after reviewing the scope and required content."
+    },
+    {
+      "type": "text",
+      "id": "question_4",
+      "label": "Question 4",
+      "default": "Can you migrate my existing store?"
+    },
+    {
+      "type": "textarea",
+      "id": "answer_4",
+      "label": "Answer 4",
+      "default": "Yes. Migration options depend on your platform, data, and selected package. We’ll confirm what is included before the project begins."
+    },
+    {
+      "type": "text",
+      "id": "question_5",
+      "label": "Question 5",
+      "default": "What happens after launch?"
+    },
+    {
+      "type": "textarea",
+      "id": "answer_5",
+      "label": "Answer 5",
+      "default": "We provide handover guidance and the support agreed in your proposal. Ongoing maintenance and marketing can be scoped separately."
+    },
+    {
+      "type": "text",
+      "id": "question_6",
+      "label": "Question 6",
+      "default": "Can I request features outside a package?"
+    },
+    {
+      "type": "textarea",
+      "id": "answer_6",
+      "label": "Answer 6",
+      "default": "Yes. Custom features, integrations, B2B requirements, and additional services can be quoted separately."
+    },
+    {
+      "type": "header",
+      "content": "Bottom call to action"
+    },
+    {
+      "type": "text",
+      "id": "bottom_heading",
+      "label": "Heading",
+      "default": "Big plans for your brand?"
+    },
+    {
+      "type": "text",
+      "id": "bottom_text",
+      "label": "Supporting text",
+      "default": "Let’s find the right way to bring them to life."
+    },
+    {
+      "type": "text",
+      "id": "bottom_button",
+      "label": "Button label",
+      "default": "Let’s build your next chapter"
+    },
+    {
+      "type": "url",
+      "id": "bottom_link",
+      "label": "Button link"
+    }
   ],
-  "presets": [{ "name": "Project FAQ banners" }],
+  "presets": [
+    {
+      "name": "Project FAQ banners"
+    }
+  ],
   "tag": null,
   "class": "project-faq-banners"
 }

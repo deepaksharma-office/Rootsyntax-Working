@@ -1,0 +1,267 @@
+{% doc %}
+  @prompt
+    Create a premium, responsive Shopify pricing section that closely matches the attached reference. Use the reference as the primary guide for layout, spacing, typography, colors, and proportions.
+    
+    SECTION LAYOUT
+    - White background with a centered container, approximately 1240px maximum width.
+    - Generous whitespace and around 60px vertical padding.
+    - Small uppercase navy eyebrow with a tiny blue dot: “SHOPIFY WEBSITE PACKAGES”.
+    - Large, left-aligned heading on two lines:
+      “Your next chapter.”
+      “Built on Shopify.”
+    - First line: dark charcoal, regular weight.
+    - Second line: orange, italic, regular weight.
+    - Desktop heading approximately 64px; mobile approximately 38px.
+    - Thin light-gray horizontal divider below the heading.
+    - Below the divider, place a small pale blue-gray pill on the left reading “One-time project pricing”.
+    - On the right, show small muted text: “All prices in USD · No monthly agency commitment”.
+    
+    PRICING CARDS
+    Create three equal-width cards in a desktop grid, with 16px gaps and equal heights. Use subtle borders, 8px corner radii, approximately 28px internal padding, and no shadows.
+    
+    LEFT CARD
+    - Very light gray background and dark text.
+    - Small navy uppercase label: “01 / START STRONG”.
+    - Title: “Launch”.
+    - Description: “A professional first store, without the complexity.”
+    - Large price: “$1,000”.
+    - Small text below: “USD · One-time investment”.
+    - Full-width white button with a thin dark border, text “Choose Launch”, and a small diagonal up-right arrow at the far right.
+    - Thin divider.
+    - Small bold uppercase heading: “YOUR LAUNCH ESSENTIALS”.
+    - Feature list with small blue checkmarks:
+      Premium theme installed & branded
+      Up to 25 products loaded
+      Home, About, Contact + 1 policy page
+      Payments, shipping, taxes & domain
+      1 app installed & configured
+      Basic SEO & notification emails
+      Mobile responsiveness check
+      Recorded training walkthrough
+      1 revision round · 7 days of support
+    - Bold footer pinned near the bottom: “Estimated delivery: 1–2 weeks”.
+    
+    CENTER CARD
+    - Deep charcoal-green background, approximately #1F251E, with white text.
+    - Small orange uppercase label: “02 / BUILD MOMENTUM”.
+    - Orange pill badge at the upper right reading “THE GROWTH PICK”.
+    - Title: “Growth”.
+    - Description: “A tailored store for brands ready to go further.”
+    - Large price: “$3,000”.
+    - Small muted text: “USD · One-time investment”.
+    - Full-width orange button, approximately #FF7414, with dark text “Choose Growth” and a diagonal up-right arrow aligned right.
+    - Subtle divider.
+    - Small bold uppercase heading: “A MORE TAILORED FOUNDATION”.
+    - Feature list with orange checkmarks:
+      30-minute strategy call
+      Tailored home, collection & product templates
+      Up to 150 products · up to 8 pages
+      Full setup, discounts & market settings
+      Up to 3 apps installed & configured
+      Klaviyo welcome & abandoned cart flows
+      On-page SEO, redirects & sitemap
+      Basic product & customer migration
+      Mobile & speed optimization
+      Recorded training · 2 revision rounds
+    - Bold footer pinned near the bottom: “Estimated delivery: 3–5 weeks”.
+    
+    RIGHT CARD
+    - Match the left card’s light-gray styling.
+    - Small navy uppercase label: “03 / THINK BIGGER”.
+    - Title: “Scale”.
+    - Description: “A bespoke experience for your next stage of growth.”
+    - Large price: “$10,000”.
+    - Small text: “USD · One-time investment”.
+    - Outlined white button: “Choose Scale”, with a diagonal up-right arrow aligned right.
+    - Thin divider.
+    - Small bold uppercase heading: “A FULLY CUSTOM FOUNDATION”.
+    - Feature list with small blue checkmarks:
+      Discovery & competitor review
+      Custom wireframes, UI & bespoke sections
+      Unlimited bulk product import · 20+ pages
+      Multi-market & advanced store setup
+      Up to 8 apps + custom integrations
+      Full Klaviyo flows, analytics & tracking
+      Technical SEO, schema & redirect mapping
+      Product, customer & order migration
+      Performance tuning & CRO review
+      Training · 3 revision rounds
+      Dedicated PM · 60 days of support
+    - Bold footer pinned near the bottom: “Estimated delivery: 8–12 weeks”.
+    
+    BOTTOM NOTE
+    Centered beneath the cards in small muted gray text:
+    “Shopify subscriptions, paid themes, and third-party app charges should be confirmed separately before your project begins.”
+    
+    DESIGN DETAILS
+    - Use a clean sans-serif font and regular-weight headings.
+    - Keep descriptions and features compact with comfortable line spacing.
+    - Align titles, prices, buttons, dividers, and bottom delivery text consistently across cards.
+    - Use flex layouts inside cards so delivery text stays aligned at the bottom despite different feature counts.
+    - Keep the center card the same size and vertical position as the others.
+    - Do not add images, gradients, decorative graphics, animations, or hover movement.
+    
+    MOBILE
+    - Stack cards vertically in this order: Launch, Growth, Scale.
+    - Use 20px side gutters and prevent horizontal overflow.
+    - Allow the pricing pill and currency note to stack neatly.
+    - Keep buttons full width and all text readable.
+    
+    SHOPIFY EDITOR SETTINGS
+    - Make sectio
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-pricing-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 60px 24px;
+    color: #252923;
+    background: #ffffff;
+    font-family: Inter, Arial, sans-serif;
+  }
+  .ai-pricing-{{ ai_gen_id }} * { box-sizing: border-box; }
+  .ai-pricing-{{ ai_gen_id }}__inner { max-width: 1240px; margin: 0 auto; }
+  .ai-pricing-{{ ai_gen_id }}__eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 20px; color: #193b60; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .ai-pricing-{{ ai_gen_id }}__dot { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: #3685c6; }
+  .ai-pricing-{{ ai_gen_id }}__heading { margin: 0; color: #272b27; font-size: clamp(38px, 5.2vw, 64px); font-weight: 400; letter-spacing: -.045em; line-height: 1.04; }
+  .ai-pricing-{{ ai_gen_id }}__heading em { display: block; color: #f47721; font-weight: 400; }
+  .ai-pricing-{{ ai_gen_id }}__rule { height: 1px; margin: 28px 0 18px; border: 0; background: #e3e5e2; }
+  .ai-pricing-{{ ai_gen_id }}__meta { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 26px; }
+  .ai-pricing-{{ ai_gen_id }}__pill { padding: 8px 13px; border-radius: 99px; background: #edf2f6; color: #344657; font-size: 12px; }
+  .ai-pricing-{{ ai_gen_id }}__currency { margin: 0; color: #707771; font-size: 12px; }
+  .ai-pricing-{{ ai_gen_id }}__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+  .ai-pricing-{{ ai_gen_id }}__card { display: flex; min-width: 0; flex-direction: column; padding: 27px; border: 1px solid #e0e2df; border-radius: 8px; background: #f7f8f7; }
+  .ai-pricing-{{ ai_gen_id }}__card--featured { border-color: #1f251e; background: #1f251e; color: #fff; }
+  .ai-pricing-{{ ai_gen_id }}__card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 22px; }
+  .ai-pricing-{{ ai_gen_id }}__label { margin: 0; color: #193b60; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .ai-pricing-{{ ai_gen_id }}__card--featured .ai-pricing-{{ ai_gen_id }}__label { color: #ff8a3d; }
+  .ai-pricing-{{ ai_gen_id }}__badge { padding: 6px 8px; border-radius: 99px; background: #ff7414; color: #1f251e; font-size: 9px; font-weight: 800; letter-spacing: .04em; white-space: nowrap; }
+  .ai-pricing-{{ ai_gen_id }}__title { margin: 22px 0 6px; font-size: 30px; font-weight: 500; letter-spacing: -.035em; line-height: 1.1; }
+  .ai-pricing-{{ ai_gen_id }}__description { min-height: 40px; margin: 0; color: #626963; font-size: 13px; line-height: 1.55; }
+  .ai-pricing-{{ ai_gen_id }}__card--featured .ai-pricing-{{ ai_gen_id }}__description { color: #c3c8c2; }
+  .ai-pricing-{{ ai_gen_id }}__price { margin: 22px 0 3px; font-size: 42px; font-weight: 500; letter-spacing: -.05em; line-height: 1; }
+  .ai-pricing-{{ ai_gen_id }}__price-note { margin: 0 0 19px; color: #727973; font-size: 11px; }
+  .ai-pricing-{{ ai_gen_id }}__card--featured .ai-pricing-{{ ai_gen_id }}__price-note { color: #c3c8c2; }
+  .ai-pricing-{{ ai_gen_id }}__button { display: flex; width: 100%; min-height: 47px; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 15px; border: 1px solid #343a35; border-radius: 4px; background: #fff; color: #252923; font-size: 13px; font-weight: 600; text-decoration: none; }
+  .ai-pricing-{{ ai_gen_id }}__button:focus-visible { outline: 3px solid #3685c6; outline-offset: 3px; }
+  .ai-pricing-{{ ai_gen_id }}__button--featured { border-color: #ff7414; background: #ff7414; color: #1f251e; }
+  .ai-pricing-{{ ai_gen_id }}__arrow { font-size: 18px; line-height: 1; }
+  .ai-pricing-{{ ai_gen_id }}__divider { width: 100%; height: 1px; margin: 21px 0 17px; border: 0; background: #dfe2df; }
+  .ai-pricing-{{ ai_gen_id }}__card--featured .ai-pricing-{{ ai_gen_id }}__divider { background: #414740; }
+  .ai-pricing-{{ ai_gen_id }}__features-title { margin: 0 0 13px; font-size: 10px; font-weight: 700; letter-spacing: .09em; line-height: 1.4; }
+  .ai-pricing-{{ ai_gen_id }}__features { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+  .ai-pricing-{{ ai_gen_id }}__features li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 7px; color: #454c46; font-size: 11px; line-height: 1.45; }
+  .ai-pricing-{{ ai_gen_id }}__card--featured .ai-pricing-{{ ai_gen_id }}__features li { color: #e1e5df; }
+  .ai-pricing-{{ ai_gen_id }}__check { color: #3278ac; font-size: 14px; font-weight: 700; }
+  .ai-pricing-{{ ai_gen_id }}__card--featured .ai-pricing-{{ ai_gen_id }}__check { color: #ff8a3d; }
+  .ai-pricing-{{ ai_gen_id }}__delivery { margin: auto 0 0; padding-top: 23px; color: #242a25; font-size: 11px; font-weight: 700; line-height: 1.45; }
+  .ai-pricing-{{ ai_gen_id }}__card--featured .ai-pricing-{{ ai_gen_id }}__delivery { color: #fff; }
+  .ai-pricing-{{ ai_gen_id }}__note { margin: 23px 0 0; color: #747a75; font-size: 11px; line-height: 1.5; text-align: center; }
+  @media screen and (max-width: 749px) {
+    .ai-pricing-{{ ai_gen_id }} { padding: 40px 20px; }
+    .ai-pricing-{{ ai_gen_id }}__meta { align-items: flex-start; flex-direction: column; gap: 9px; }
+    .ai-pricing-{{ ai_gen_id }}__grid { grid-template-columns: 1fr; gap: 14px; }
+    .ai-pricing-{{ ai_gen_id }}__card { padding: 23px; }
+    .ai-pricing-{{ ai_gen_id }}__description { min-height: 0; }
+  }
+{% endstyle %}
+
+<div class="ai-pricing-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-pricing-{{ ai_gen_id }}__inner">
+    <p class="ai-pricing-{{ ai_gen_id }}__eyebrow"><span class="ai-pricing-{{ ai_gen_id }}__dot" aria-hidden="true"></span>{{ block.settings.eyebrow | escape }}</p>
+    <h2 class="ai-pricing-{{ ai_gen_id }}__heading">{{ block.settings.heading_first | escape }}<em>{{ block.settings.heading_second | escape }}</em></h2>
+    <hr class="ai-pricing-{{ ai_gen_id }}__rule">
+    <div class="ai-pricing-{{ ai_gen_id }}__meta"><span class="ai-pricing-{{ ai_gen_id }}__pill">{{ block.settings.pricing_label | escape }}</span><p class="ai-pricing-{{ ai_gen_id }}__currency">{{ block.settings.currency_note | escape }}</p></div>
+    <div class="ai-pricing-{{ ai_gen_id }}__grid">
+      {% for i in (1..3) %}
+        {% liquid
+          assign label_key = 'tier_' | append: i | append: '_label'
+          assign title_key = 'tier_' | append: i | append: '_title'
+          assign description_key = 'tier_' | append: i | append: '_description'
+          assign price_key = 'tier_' | append: i | append: '_price'
+          assign button_key = 'tier_' | append: i | append: '_button'
+          assign link_key = 'tier_' | append: i | append: '_link'
+          assign features_title_key = 'tier_' | append: i | append: '_features_title'
+          assign features_key = 'tier_' | append: i | append: '_features'
+          assign delivery_key = 'tier_' | append: i | append: '_delivery'
+          assign tier_label = block.settings[label_key]
+          assign tier_title = block.settings[title_key]
+          assign tier_description = block.settings[description_key]
+          assign tier_price = block.settings[price_key]
+          assign tier_button = block.settings[button_key]
+          assign tier_link = block.settings[link_key]
+          assign features_title = block.settings[features_title_key]
+          assign tier_features = block.settings[features_key] | newline_to_br | split: '<br />'
+          assign tier_delivery = block.settings[delivery_key]
+        %}
+        <article class="ai-pricing-{{ ai_gen_id }}__card{% if i == 2 %} ai-pricing-{{ ai_gen_id }}__card--featured{% endif %}">
+          <div class="ai-pricing-{{ ai_gen_id }}__card-top"><p class="ai-pricing-{{ ai_gen_id }}__label">{{ tier_label | escape }}</p>{% if i == 2 %}<span class="ai-pricing-{{ ai_gen_id }}__badge">{{ block.settings.featured_badge | escape }}</span>{% endif %}</div>
+          <h3 class="ai-pricing-{{ ai_gen_id }}__title">{{ tier_title | escape }}</h3>
+          <p class="ai-pricing-{{ ai_gen_id }}__description">{{ tier_description | escape }}</p>
+          <p class="ai-pricing-{{ ai_gen_id }}__price">{{ tier_price | escape }}</p>
+          <p class="ai-pricing-{{ ai_gen_id }}__price-note">{{ block.settings.price_note | escape }}</p>
+          {% if tier_link != blank %}<a class="ai-pricing-{{ ai_gen_id }}__button{% if i == 2 %} ai-pricing-{{ ai_gen_id }}__button--featured{% endif %}" href="{{ tier_link }}"><span>{{ tier_button | escape }}</span><span class="ai-pricing-{{ ai_gen_id }}__arrow" aria-hidden="true">↗</span></a>{% else %}<a class="ai-pricing-{{ ai_gen_id }}__button{% if i == 2 %} ai-pricing-{{ ai_gen_id }}__button--featured{% endif %}" href="#"><span>{{ tier_button | escape }}</span><span class="ai-pricing-{{ ai_gen_id }}__arrow" aria-hidden="true">↗</span></a>{% endif %}
+          <hr class="ai-pricing-{{ ai_gen_id }}__divider">
+          <h4 class="ai-pricing-{{ ai_gen_id }}__features-title">{{ features_title | escape }}</h4>
+          <ul class="ai-pricing-{{ ai_gen_id }}__features">{% for feature in tier_features %}{% assign clean_feature = feature | strip %}{% if clean_feature != blank %}<li><span class="ai-pricing-{{ ai_gen_id }}__check" aria-hidden="true">✓</span><span>{{ clean_feature | escape }}</span></li>{% endif %}{% endfor %}</ul>
+          <p class="ai-pricing-{{ ai_gen_id }}__delivery">{{ tier_delivery | escape }}</p>
+        </article>
+      {% endfor %}
+    </div>
+    <p class="ai-pricing-{{ ai_gen_id }}__note">{{ block.settings.bottom_note | escape }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shopify pricing plans",
+  "settings": [
+    {"type":"range","id":"desktop_width_percent","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"SHOPIFY WEBSITE PACKAGES"},
+    {"type":"text","id":"heading_first","label":"Heading first line","default":"Your next chapter."},
+    {"type":"text","id":"heading_second","label":"Heading second line","default":"Built on Shopify."},
+    {"type":"text","id":"pricing_label","label":"Pricing pill","default":"One-time project pricing"},
+    {"type":"text","id":"currency_note","label":"Currency note","default":"All prices in USD · No monthly agency commitment"},
+    {"type":"text","id":"price_note","label":"Price note","default":"USD · One-time investment"},
+    {"type":"text","id":"featured_badge","label":"Featured badge","default":"THE GROWTH PICK"},
+    {"type":"header","content":"Launch plan"},
+    {"type":"text","id":"tier_1_label","label":"Plan label","default":"01 / START STRONG"},
+    {"type":"text","id":"tier_1_title","label":"Plan name","default":"Launch"},
+    {"type":"text","id":"tier_1_description","label":"Description","default":"A professional first store, without the complexity."},
+    {"type":"text","id":"tier_1_price","label":"Price","default":"$1,000"},
+    {"type":"text","id":"tier_1_button","label":"Button label","default":"Choose Launch"},
+    {"type":"url","id":"tier_1_link","label":"Button link"},
+    {"type":"text","id":"tier_1_features_title","label":"Features heading","default":"YOUR LAUNCH ESSENTIALS"},
+    {"type":"textarea","id":"tier_1_features","label":"Features (one per line)","default":"Premium theme installed & branded\nUp to 25 products loaded\nHome, About, Contact + 1 policy page\nPayments, shipping, taxes & domain\n1 app installed & configured\nBasic SEO & notification emails\nMobile responsiveness check\nRecorded training walkthrough\n1 revision round · 7 days of support"},
+    {"type":"text","id":"tier_1_delivery","label":"Delivery footer","default":"Estimated delivery: 1–2 weeks"},
+    {"type":"header","content":"Growth plan"},
+    {"type":"text","id":"tier_2_label","label":"Plan label","default":"02 / BUILD MOMENTUM"},
+    {"type":"text","id":"tier_2_title","label":"Plan name","default":"Growth"},
+    {"type":"text","id":"tier_2_description","label":"Description","default":"A tailored store for brands ready to go further."},
+    {"type":"text","id":"tier_2_price","label":"Price","default":"$3,000"},
+    {"type":"text","id":"tier_2_button","label":"Button label","default":"Choose Growth"},
+    {"type":"url","id":"tier_2_link","label":"Button link"},
+    {"type":"text","id":"tier_2_features_title","label":"Features heading","default":"A MORE TAILORED FOUNDATION"},
+    {"type":"textarea","id":"tier_2_features","label":"Features (one per line)","default":"30-minute strategy call\nTailored home, collection & product templates\nUp to 150 products · up to 8 pages\nFull setup, discounts & market settings\nUp to 3 apps installed & configured\nKlaviyo welcome & abandoned cart flows\nOn-page SEO, redirects & sitemap\nBasic product & customer migration\nMobile & speed optimization\nRecorded training · 2 revision rounds"},
+    {"type":"text","id":"tier_2_delivery","label":"Delivery footer","default":"Estimated delivery: 3–5 weeks"},
+    {"type":"header","content":"Scale plan"},
+    {"type":"text","id":"tier_3_label","label":"Plan label","default":"03 / THINK BIGGER"},
+    {"type":"text","id":"tier_3_title","label":"Plan name","default":"Scale"},
+    {"type":"text","id":"tier_3_description","label":"Description","default":"A bespoke experience for your next stage of growth."},
+    {"type":"text","id":"tier_3_price","label":"Price","default":"$10,000"},
+    {"type":"text","id":"tier_3_button","label":"Button label","default":"Choose Scale"},
+    {"type":"url","id":"tier_3_link","label":"Button link"},
+    {"type":"text","id":"tier_3_features_title","label":"Features heading","default":"A FULLY CUSTOM FOUNDATION"},
+    {"type":"textarea","id":"tier_3_features","label":"Features (one per line)","default":"Discovery & competitor review\nCustom wireframes, UI & bespoke sections\nUnlimited bulk product import · 20+ pages\nMulti-market & advanced store setup\nUp to 8 apps + custom integrations\nFull Klaviyo flows, analytics & tracking\nTechnical SEO, schema & redirect mapping\nProduct, customer & order migration\nPerformance tuning & CRO review\nTraining · 3 revision rounds\nDedicated PM · 60 days of support"},
+    {"type":"text","id":"tier_3_delivery","label":"Delivery footer","default":"Estimated delivery: 8–12 weeks"},
+    {"type":"text","id":"bottom_note","label":"Note below plans","default":"Shopify subscriptions, paid themes, and third-party app charges should be confirmed separately before your project begins."}
+  ],
+  "presets": [{"name":"Shopify pricing plans"}],
+  "tag": null,
+  "class": "shopify-pricing-plans"
+}
+{% endschema %}

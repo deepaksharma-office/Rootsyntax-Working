@@ -368,7 +368,7 @@
             "updated_growth_9": "3",
             "updated_scale_9": "5",
             "updated_feature_10": "Post-launch support",
-            "updated_launch_10": "7 days of free support after project completion",
+            "updated_launch_10": "15 days of free support after project completion",
             "updated_growth_10": "30 days",
             "updated_scale_10": "60 days",
             "updated_feature_11": "Dedicated project manager",
@@ -390,7 +390,11 @@
             "updated_feature_15": "Multichannel integration",
             "updated_launch_15": "—",
             "updated_growth_15": "—",
-            "updated_scale_15": "Included"
+            "updated_scale_15": "Included",
+            "updated_feature_16": "Marketing and SEO",
+            "updated_launch_16": "—",
+            "updated_growth_16": "Included",
+            "updated_scale_16": "Included"
           },
           "blocks": {}
         }
@@ -440,6 +444,7 @@
             "muted_color": "#646a6d",
             "border_color": "#d9dedf",
             "top_background": "#f2f5f6",
+            "footer_match_background": "#121e4e",
             "button_color": "#ff7414",
             "button_text_color": "#ffffff",
             "top_heading": "A little outside the box?",

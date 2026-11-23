@@ -265,7 +265,7 @@
             "title": "Average Revenue Growth",
             "number": "125%",
             "show_arrow": true,
-            "visual_image": "shopify://shop_images/02_animated_growth_curve.gif",
+            "visual_image": "shopify://shop_images/02_animated_growth_curve_rising.gif",
             "chart_color": "#8b4dff",
             "custom_card_background": "",
             "custom_title_color": "",
@@ -1429,7 +1429,7 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 12,
-        "background_color": "#121E4E",
+        "background_color": "#121e4e",
         "padding-block-start": 48,
         "padding-block-end": 48
       }

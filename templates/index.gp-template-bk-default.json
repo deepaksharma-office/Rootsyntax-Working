@@ -250,7 +250,7 @@
           "type": "stat",
           "settings": {
             "title": "Successful Projects Delivered",
-            "number": "146+",
+            "number": "3000+",
             "show_arrow": true,
             "visual_image": "shopify://shop_images/01_animated_sliders.gif",
             "chart_color": "#8b4dff",
@@ -263,9 +263,9 @@
           "type": "stat",
           "settings": {
             "title": "Average Revenue Growth",
-            "number": "18%",
+            "number": "125%",
             "show_arrow": true,
-            "visual_image": "shopify://shop_images/02_animated_growth_curve.gif",
+            "visual_image": "shopify://shop_images/02_animated_growth_curve_rising.gif",
             "chart_color": "#8b4dff",
             "custom_card_background": "",
             "custom_title_color": "",
@@ -275,8 +275,8 @@
         "stat_Cnb6HH": {
           "type": "stat",
           "settings": {
-            "title": "Shopify Tasks Completed",
-            "number": "450+",
+            "title": "Countires \nServed",
+            "number": "26+",
             "show_arrow": true,
             "visual_image": "shopify://shop_images/03_animated_line_chart.gif",
             "chart_color": "#8b4dff",
@@ -289,7 +289,7 @@
           "type": "stat",
           "settings": {
             "title": "Years of Shopify Experience",
-            "number": "4+",
+            "number": "8+",
             "show_arrow": true,
             "visual_image": "shopify://shop_images/04_animated_bar_chart.gif",
             "chart_color": "#8b4dff",
@@ -322,7 +322,7 @@
         "arrow_background": "#f5f6fa",
         "arrow_color": "#a7adbb",
         "button_label": "Schedule A Call Today!",
-        "button_link": "shopify://pages/book-a-call-now",
+        "button_link": "shopify://pages/book-a-call-contact-us",
         "button_background": "#f97316",
         "button_text_color": "#ffffff",
         "button_radius": 30
@@ -1273,7 +1273,7 @@
         "label_size": 16,
         "description_size": 18,
         "button_text": "Get Free Proposal",
-        "button_background": "#203C90",
+        "button_background": "#203c90",
         "button_gradient": false,
         "button_gradient_start": "#9749e8",
         "button_gradient_middle": "#db4f9a",
@@ -1285,6 +1285,153 @@
         "button_font_weight": "700",
         "button_hover_opacity": 100,
         "button_shadow": true
+      }
+    },
+    "featured_blog_posts_H46WhP": {
+      "type": "featured-blog-posts",
+      "blocks": {
+        "static-blog-title": {
+          "type": "_featured-blog-posts-title",
+          "name": "t:names.title",
+          "static": true,
+          "settings": {
+            "text": "<p><strong>Insights for Ecommerce Growth</strong><br/></p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-blog-post-card": {
+          "type": "_featured-blog-posts-card",
+          "name": "t:names.blog_card",
+          "static": true,
+          "settings": {
+            "alignment": "left",
+            "gap": 8,
+            "background_color": "{{ settings.color_palette.color1 }}",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 20,
+            "padding-block-start": 20,
+            "padding-block-end": 20,
+            "padding-inline-start": 20,
+            "padding-inline-end": 20
+          },
+          "blocks": {
+            "image": {
+              "type": "_featured-blog-posts-image",
+              "static": true,
+              "settings": {
+                "image_ratio": "landscape",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0
+              },
+              "blocks": {}
+            },
+            "title": {
+              "type": "_heading",
+              "name": "t:names.title",
+              "static": true,
+              "settings": {
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text": "<h4>{{ closest.article.title }}</h4>",
+                "read_only": false,
+                "alignment": "left",
+                "show_alignment": false,
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "blog-post-info-text": {
+              "type": "_blog-post-info-text",
+              "name": "t:names.details",
+              "static": true,
+              "settings": {
+                "show_date": true,
+                "show_author": true,
+                "type_preset": "",
+                "alignment": "left",
+                "text_color": "",
+                "show_alignment": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "blog-post-description": {
+              "type": "_blog-post-description",
+              "name": "t:names.excerpt",
+              "static": true,
+              "settings": {
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "padding-block-start": 8,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "name": "t:names.blog_posts_grid",
+      "settings": {
+        "blog": "resources",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "post_limit": 3,
+        "columns": 3,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 8,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 12,
+        "background_color": "#121e4e",
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "custom-insights": {
@@ -1338,12 +1485,13 @@
         "custom_insights_02",
         "custom_insights_03"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "",
         "heading": "Insights for Ecommerce Growth",
         "description": "",
         "article_source": "manual",
-        "blog": "",
+        "blog": "shopify-updates-of-2025",
         "article_count": 3,
         "default_category": "Insights",
         "blog_read_more": "Read More",
@@ -1407,6 +1555,7 @@
     },
     "custom-success-cta": {
       "type": "custom-success-cta",
+      "disabled": true,
       "settings": {
         "heading": "Ready to Build the Next Success Story?",
         "description": "From ambitious established brands to growing Shopify merchants, we drive measurable growth and long-term success.",
@@ -1456,7 +1605,7 @@
         "secondary_hover_color": "#1d2c52",
         "show_primary": true,
         "primary_text": "Book a Strategy Call",
-        "primary_link": "shopify://pages/book-a-call-now",
+        "primary_link": "",
         "primary_new_tab": false,
         "show_arrow": false,
         "primary_background": "#f47722",
@@ -1483,6 +1632,7 @@
     "custom-featured-testimonials",
     "custom-case-studies",
     "custom-consultation",
+    "featured_blog_posts_H46WhP",
     "custom-insights",
     "custom-success-cta"
   ]

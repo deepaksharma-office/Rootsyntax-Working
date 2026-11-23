@@ -264,7 +264,7 @@
             "link_label": "Explore service",
             "new_tab": false,
             "icon": "store",
-            "custom_accent": "#000000"
+            "custom_accent": "{{ settings.color_palette.background }}"
           }
         },
         "service_aGJzVE": {

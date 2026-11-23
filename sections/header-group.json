@@ -89,7 +89,7 @@
             "link": "/pages/book-a-call-contact-us",
             "open_in_new_tab": false,
             "style_class": "button-custom",
-            "custom_button_background": "#f97316",
+            "custom_button_background": "#121E4E",
             "custom_button_text": "{{ settings.color_palette.color1 }}",
             "custom_button_border": "{{ settings.color_palette.background }}",
             "link_text_color": "",
